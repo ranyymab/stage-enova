@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1111.json",
+        "2-Date": "2025-11-11",
+        "3-Hour": "06:12:57",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815839231495,
+        "8-Longitude": 10.592282944064
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1111.json",
+        "2-Date": "2025-11-11",
+        "3-Hour": "06:14:43",
+        "4-Notes": "Target_reached : 17",
+        "5-Stop_point": "17",
+        "6-Latitude": 35.819001377532,
+        "7-Longitude": 10.589214127369
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1111.json",
+        "2-Date": "2025-11-11",
+        "3-Hour": "08:22:57",
+        "4-Notes": "Between None and None; Goal : 37",
+        "5-Start_point": "17",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817943385562,
+        "8-Longitude": 10.591348610869
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1111.json",
+        "2-Date": "2025-11-11",
+        "3-Hour": "08:24:54",
+        "4-Notes": "Target_reached : 32",
+        "5-Stop_point": "32",
+        "6-Latitude": 35.817466519639,
+        "7-Longitude": 10.591900519764
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1111.json",
+        "2-Date": "2025-11-11",
+        "3-Hour": "01:25:57",
+        "4-Notes": "Between None and None; Goal : 52",
+        "5-Start_point": "32",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815079804128,
+        "8-Longitude": 10.591161224308
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1111.json",
+        "2-Date": "2025-11-11",
+        "3-Hour": "01:27:02",
+        "4-Notes": "Target_reached : 57",
+        "5-Stop_point": "57",
+        "6-Latitude": 35.81765805,
+        "7-Longitude": 10.588869831535
+    }
+]

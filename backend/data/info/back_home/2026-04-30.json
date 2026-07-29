@@ -1,0 +1,275 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:07:03", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774409166667, 
+        "8-Longitude": 10.591357715
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:07:03", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774409166667, 
+        "7-Longitude": 10.591357715
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:07:06", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774408166667, 
+        "8-Longitude": 10.59135775
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:07:06", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774408166667, 
+        "7-Longitude": 10.59135775
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking_3004.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:40:25", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817739188333334, 
+        "8-Longitude": 10.591356945
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking_3004.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:40:25", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817739188333334, 
+        "7-Longitude": 10.591356945
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking_3004.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:45:35", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81751899333333, 
+        "8-Longitude": 10.591342615
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking_3004.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:46:19", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81773106166666, 
+        "7-Longitude": 10.591353768333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:19:51", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774212166667, 
+        "8-Longitude": 10.591358861666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:19:51", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774212166667, 
+        "7-Longitude": 10.591358861666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:39:29", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774151166667, 
+        "8-Longitude": 10.591358806666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:39:29", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774151166667, 
+        "7-Longitude": 10.591358806666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:44:22", 
+        "4-Notes": "Between 2 and 1", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81788353, 
+        "8-Longitude": 10.591349975
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:44:48", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81775002, 
+        "7-Longitude": 10.5913604
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:57:47", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81782033333333, 
+        "8-Longitude": 10.591353011666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:58:02", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817751451666666, 
+        "7-Longitude": 10.591359228333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "17:36:00", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774066333333, 
+        "8-Longitude": 10.591359975
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "17:36:00", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774066333333, 
+        "7-Longitude": 10.591359975
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "17:51:25", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774103666667, 
+        "8-Longitude": 10.591359501666666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "17:51:25", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774103833333, 
+        "7-Longitude": 10.591359435
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:04:55", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81745545166667, 
+        "8-Longitude": 10.591347921666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:05:31", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817730493333336, 
+        "7-Longitude": 10.591357258333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:15:55", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81758609333333, 
+        "8-Longitude": 10.59134865
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:16:14", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81773011833333, 
+        "7-Longitude": 10.59135799
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:21:51", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773992833333, 
+        "8-Longitude": 10.591359733333332
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:21:51", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81773992833333, 
+        "7-Longitude": 10.591359733333332
+    }
+]

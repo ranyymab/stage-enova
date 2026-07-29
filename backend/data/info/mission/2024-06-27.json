@@ -1,0 +1,22 @@
+[
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "Test_Gps.json", 
+        "2-Date": "2024-06-27", 
+        "3-Hour": "17:05:39", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "1", 
+        "6-Latitude": 35.817633685, 
+        "7-Longitude": 10.591368833333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Test_Gps.json", 
+        "2-Date": "2024-06-27", 
+        "3-Hour": "17:06:46", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "2", 
+        "6-Latitude": 35.817421593333336, 
+        "7-Longitude": 10.591383458333333
+    }
+]

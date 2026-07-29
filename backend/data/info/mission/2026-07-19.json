@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_A.json",
+        "2-Date": "19-7-2026",
+        "3-Hour": "23:35:33",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "10",
+        "6-Distance": "0.082",
+        "7-Latitude": 35.8175330514,
+        "8-Longitude": 10.5911039965
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_A.json",
+        "2-Date": "20-7-2026",
+        "3-Hour": "00:06:33",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.81780828,
+        "7-Longitude": 10.5909739712
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_A.json",
+        "2-Date": "19-7-2026",
+        "3-Hour": "20:55:04",
+        "4-Notes": "Between 3 and 4; Goal: 1",
+        "5-Start_point": "8",
+        "6-Distance": "0.137",
+        "7-Latitude": 35.8177827904,
+        "8-Longitude": 10.591370067
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_A.json",
+        "2-Date": "19-7-2026",
+        "3-Hour": "21:11:04",
+        "4-Notes": "Automatic_end",
+        "5-Stop_point": "3",
+        "6-Latitude": 35.8178216843,
+        "7-Longitude": 10.5911663714
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "19-7-2026",
+        "3-Hour": "05:07:47",
+        "4-Notes": "Between 3 and 4; Goal: 1",
+        "5-Start_point": "3",
+        "6-Distance": "0.209",
+        "7-Latitude": 35.8178486648,
+        "8-Longitude": 10.591456501
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "20-7-2026",
+        "3-Hour": "05:25:47",
+        "4-Notes": "Emergency_pressed",
+        "5-Stop_point": "7",
+        "6-Latitude": 35.8176312476,
+        "7-Longitude": 10.5915204111
+    }
+]

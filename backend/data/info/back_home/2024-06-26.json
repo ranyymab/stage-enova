@@ -1,0 +1,338 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "09:07:35", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81766788833333, 
+        "8-Longitude": 10.59137242
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "09:07:35", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81766788833333, 
+        "7-Longitude": 10.59137242
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "09:08:40", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81766368, 
+        "8-Longitude": 10.591371511666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "09:08:40", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81766368, 
+        "7-Longitude": 10.591371511666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "09:10:01", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81758150666667, 
+        "8-Longitude": 10.591367075
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "09:10:19", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817645565, 
+        "7-Longitude": 10.591361936666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "13:15:11", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81765682, 
+        "8-Longitude": 10.591367586666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "13:15:11", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81765682, 
+        "7-Longitude": 10.591367586666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:20:56", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81765383, 
+        "8-Longitude": 10.591367883333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:20:56", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81765383, 
+        "7-Longitude": 10.591367883333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:06", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81765385666667, 
+        "8-Longitude": 10.59136795
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:06", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81765385666667, 
+        "7-Longitude": 10.59136795
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:21", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817653836666665, 
+        "8-Longitude": 10.591367888333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:21", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817653836666665, 
+        "7-Longitude": 10.591367888333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:42", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817653828333334, 
+        "8-Longitude": 10.591367893333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:42", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817653828333334, 
+        "7-Longitude": 10.591367893333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:59", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81765386166666, 
+        "8-Longitude": 10.591367908333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:22:59", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81765385666667, 
+        "7-Longitude": 10.59136792
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:03", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81765385333333, 
+        "8-Longitude": 10.5913679
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:03", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81765385333333, 
+        "7-Longitude": 10.5913679
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:03", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817653838333335, 
+        "8-Longitude": 10.591367903333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:03", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817653838333335, 
+        "7-Longitude": 10.591367903333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:04", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81765384, 
+        "8-Longitude": 10.591367911666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:04", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81765384, 
+        "7-Longitude": 10.591367911666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:15", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817653845, 
+        "8-Longitude": 10.591367893333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:23:15", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817653845, 
+        "7-Longitude": 10.591367893333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:24:04", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817653871666664, 
+        "8-Longitude": 10.591367888333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:24:04", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817653871666664, 
+        "7-Longitude": 10.591367888333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:24:29", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81765583166667, 
+        "8-Longitude": 10.591367856666666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:24:29", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81765584, 
+        "7-Longitude": 10.591367866666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:26:39", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817654901666664, 
+        "8-Longitude": 10.591366605
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Docking_2606.json", 
+        "2-Date": "26-6-2024", 
+        "3-Hour": "14:26:40", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817654901666664, 
+        "7-Longitude": 10.591366605
+    }
+]

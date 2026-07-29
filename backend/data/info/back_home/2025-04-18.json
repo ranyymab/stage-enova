@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1804.json",
+        "2-Date": "18-4-2025",
+        "3-Hour": "20:44:05",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815406287429,
+        "8-Longitude": 10.591097513674
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1804.json",
+        "2-Date": "18-4-2025",
+        "3-Hour": "20:45:07",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.818097135731,
+        "7-Longitude": 10.591078032232
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1804.json",
+        "2-Date": "18-4-2025",
+        "3-Hour": "08:11:20",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820208066554,
+        "8-Longitude": 10.589395005828
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1804.json",
+        "2-Date": "18-4-2025",
+        "3-Hour": "08:12:49",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.818246891181,
+        "7-Longitude": 10.594094593574
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1804.json",
+        "2-Date": "18-4-2025",
+        "3-Hour": "17:23:29",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815716015043,
+        "8-Longitude": 10.588362632228
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1804.json",
+        "2-Date": "18-4-2025",
+        "3-Hour": "17:24:15",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.815187649599,
+        "7-Longitude": 10.592645660595
+    }
+]

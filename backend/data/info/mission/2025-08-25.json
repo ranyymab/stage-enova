@@ -1,0 +1,75 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "06:05:07",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "0",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.818335023882,
+        "8-Longitude": 10.592776126448
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "06:08:58",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "8",
+        "6-Latitude": 35.816995492339,
+        "7-Longitude": 10.588927033195
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "07:02:28",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "12",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.814951106715,
+        "8-Longitude": 10.592005047774
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "07:05:59",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "21",
+        "6-Latitude": 35.819037996155,
+        "7-Longitude": 10.592270306042
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "08:12:59",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "31",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.819259711938,
+        "8-Longitude": 10.593894414469
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "08:15:27",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "42",
+        "6-Latitude": 35.81492213815,
+        "7-Longitude": 10.591731303063
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_Global_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "09:59:42",
+        "4-Notes": "Mission_complete",
+        "5-Stop_point": "50",
+        "6-Latitude": 35.816723879105,
+        "7-Longitude": 10.591516890753
+    }
+]

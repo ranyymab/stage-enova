@@ -1,0 +1,75 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0108.json",
+        "2-Date": "1-8-2025",
+        "3-Hour": "06:33:59",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "6",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.817998442608,
+        "8-Longitude": 10.593325580537
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0108.json",
+        "2-Date": "1-8-2025",
+        "3-Hour": "06:36:30",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "11",
+        "6-Latitude": 35.816166315017,
+        "7-Longitude": 10.590563746738
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0108.json",
+        "2-Date": "1-8-2025",
+        "3-Hour": "07:38:07",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "20",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.8162833229,
+        "8-Longitude": 10.590001895095
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0108.json",
+        "2-Date": "1-8-2025",
+        "3-Hour": "07:41:43",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "38",
+        "6-Latitude": 35.820200032708,
+        "7-Longitude": 10.593593687625
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0108.json",
+        "2-Date": "1-8-2025",
+        "3-Hour": "08:22:08",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "43",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.81705056846,
+        "8-Longitude": 10.59195845575
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0108.json",
+        "2-Date": "1-8-2025",
+        "3-Hour": "08:25:51",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "49",
+        "6-Latitude": 35.815157511648,
+        "7-Longitude": 10.591922148442
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_Global_0108.json",
+        "2-Date": "1-8-2025",
+        "3-Hour": "09:59:36",
+        "4-Notes": "Mission_complete",
+        "5-Stop_point": "52",
+        "6-Latitude": 35.819925049579,
+        "7-Longitude": 10.592135730855
+    }
+]

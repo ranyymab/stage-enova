@@ -1,0 +1,44 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_evitement.json", 
+        "2-Date": "26-12-2025", 
+        "3-Hour": "11:45:46", 
+        "4-Notes": "Between 4 and 3; Goal : 2", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81837421833333, 
+        "8-Longitude": 10.591341386666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_evitement.json", 
+        "2-Date": "26-12-2025", 
+        "3-Hour": "11:46:07", 
+        "4-Notes": "Target_reached : 2", 
+        "5-Stop_point": "2", 
+        "6-Latitude": 35.81823743166667, 
+        "7-Longitude": 10.591334005
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_evitement.json", 
+        "2-Date": "26-12-2025", 
+        "3-Hour": "11:46:17", 
+        "4-Notes": "Between None and None; Goal : 4", 
+        "5-Start_point": "2", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.818234325, 
+        "8-Longitude": 10.591334048333334
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "Mission_evitement.json", 
+        "2-Date": "26-12-2025", 
+        "3-Hour": "11:46:31", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "2", 
+        "6-Latitude": 35.81826935833333, 
+        "7-Longitude": 10.591321891666666
+    }
+]

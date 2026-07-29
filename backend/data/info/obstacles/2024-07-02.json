@@ -1,0 +1,20 @@
+[
+    {
+        "0-Date": "2024-07-02", 
+        "1-Hour": "09:36:40", 
+        "2-Mission_name": "MissionRTK.json", 
+        "3-Last_point": "2", 
+        "4-Delay": "8.80006504059", 
+        "5-Latitude": 35.81745073166667, 
+        "6-Longitude": 10.591369743333333
+    }, 
+    {
+        "0-Date": "2024-07-02", 
+        "1-Hour": "14:24:48", 
+        "2-Mission_name": "GLOBAL TT.json", 
+        "3-Last_point": "3", 
+        "4-Delay": "6.30040407181", 
+        "5-Latitude": 35.817186076666665, 
+        "6-Longitude": 10.590932211666667
+    }
+]

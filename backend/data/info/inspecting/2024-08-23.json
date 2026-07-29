@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Global.json", 
+        "2-Date": "2024-08-23", 
+        "3-Hour": "02:09:59", 
+        "4-Notes": "Between None and None; Goal : 35", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.815887161666666, 
+        "8-Longitude": 10.592164698333333
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "Mission_Global.json", 
+        "2-Date": "2024-08-23", 
+        "3-Hour": "02:10:45", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "24", 
+        "6-Latitude": 35.81638425166667, 
+        "7-Longitude": 10.592128623333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Global.json", 
+        "2-Date": "2024-08-23", 
+        "3-Hour": "02:10:47", 
+        "4-Notes": "Between 24 and 25; Goal : 30", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.816397726666665, 
+        "8-Longitude": 10.592127661666666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_Global.json", 
+        "2-Date": "2024-08-23", 
+        "3-Hour": "02:11:53", 
+        "4-Notes": "Target_reached : 30", 
+        "5-Stop_point": "30", 
+        "6-Latitude": 35.81738532166667, 
+        "7-Longitude": 10.592058343333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Global.json", 
+        "2-Date": "2024-08-23", 
+        "3-Hour": "02:13:26", 
+        "4-Notes": "Between 30 and 31; Goal : 28", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81749696333333, 
+        "8-Longitude": 10.592062648333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_Global.json", 
+        "2-Date": "2024-08-23", 
+        "3-Hour": "02:14:07", 
+        "4-Notes": "Target_reached : 28", 
+        "5-Stop_point": "28", 
+        "6-Latitude": 35.817112315, 
+        "7-Longitude": 10.59207747
+    }
+]

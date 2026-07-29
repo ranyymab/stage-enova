@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "10:33:27",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815181672823,
+        "8-Longitude": 10.588984904524
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "10:35:49",
+        "4-Notes": "Target_reached : 11",
+        "5-Stop_point": "11",
+        "6-Latitude": 35.815036494783,
+        "7-Longitude": 10.592208929796
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "06:16:17",
+        "4-Notes": "Between None and None; Goal : 31",
+        "5-Start_point": "11",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.814961521325,
+        "8-Longitude": 10.592610395923
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "06:18:28",
+        "4-Notes": "Target_reached : 40",
+        "5-Stop_point": "40",
+        "6-Latitude": 35.818924036037,
+        "7-Longitude": 10.589385682237
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "12:40:29",
+        "4-Notes": "Between None and None; Goal : 60",
+        "5-Start_point": "40",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818067068835,
+        "8-Longitude": 10.593633961702
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "12:42:49",
+        "4-Notes": "Target_reached : 51",
+        "5-Stop_point": "51",
+        "6-Latitude": 35.818458756126,
+        "7-Longitude": 10.592155362669
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "04:06:46",
+        "4-Notes": "Between None and None; Goal : 71",
+        "5-Start_point": "51",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815547775352,
+        "8-Longitude": 10.589477061678
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "04:08:41",
+        "4-Notes": "Target_reached : 65",
+        "5-Stop_point": "65",
+        "6-Latitude": 35.816739372413,
+        "7-Longitude": 10.588379156551
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "02:31:17",
+        "4-Notes": "Between None and None; Goal : 85",
+        "5-Start_point": "65",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817743054702,
+        "8-Longitude": 10.593313678996
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "02:33:25",
+        "4-Notes": "Target_reached : 80",
+        "5-Stop_point": "80",
+        "6-Latitude": 35.818129723982,
+        "7-Longitude": 10.594114235033
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "05:11:10",
+        "4-Notes": "Between None and None; Goal : 100",
+        "5-Start_point": "80",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818669405844,
+        "8-Longitude": 10.591904360447
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1206.json",
+        "2-Date": "2026-06-12",
+        "3-Hour": "05:13:13",
+        "4-Notes": "Target_reached : 97",
+        "5-Stop_point": "97",
+        "6-Latitude": 35.819805892428,
+        "7-Longitude": 10.590748445854
+    }
+]

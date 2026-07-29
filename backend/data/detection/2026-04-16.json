@@ -1,0 +1,14 @@
+[
+    {
+        "hour": "06:30:26",
+        "objectDetected": "person",
+        "gps": {
+            "latitude": 35.817615168843,
+            "longitude": 10.591517791802
+        },
+        "image": {
+            "fileName": "2.png",
+            "filePath": ""
+        }
+    }
+]

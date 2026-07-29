@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "17:39:21",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81520877322,
+        "8-Longitude": 10.591392712059
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "17:40:15",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.8152603232,
+        "7-Longitude": 10.594011997975
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "10:09:01",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818736774023,
+        "8-Longitude": 10.589647843996
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "10:10:39",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.814977282309,
+        "7-Longitude": 10.594203616137
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "13:56:40",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819798426168,
+        "8-Longitude": 10.588736969375
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "13:57:24",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.818154025396,
+        "7-Longitude": 10.592610075493
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "17:44:00",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817666263014,
+        "8-Longitude": 10.589763906637
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1006.json",
+        "2-Date": "10-6-2024",
+        "3-Hour": "17:45:56",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.820055958957,
+        "7-Longitude": 10.593462643393
+    }
+]

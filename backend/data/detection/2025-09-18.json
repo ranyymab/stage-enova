@@ -1,0 +1,50 @@
+[
+    {
+        "hour": "19:04:24",
+        "objectDetected": "debris",
+        "gps": {
+            "latitude": 35.816142222853,
+            "longitude": 10.589117498326
+        },
+        "image": {
+            "fileName": "1.jpg",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "17:00:30",
+        "objectDetected": "vehicle",
+        "gps": {
+            "latitude": 35.820245175892,
+            "longitude": 10.593069047816
+        },
+        "image": {
+            "fileName": "4.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "23:41:44",
+        "objectDetected": "vehicle",
+        "gps": {
+            "latitude": 35.815053504723,
+            "longitude": 10.590408593625
+        },
+        "image": {
+            "fileName": "4.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "06:39:11",
+        "objectDetected": "obstacle",
+        "gps": {
+            "latitude": 35.815248800936,
+            "longitude": 10.591746165683
+        },
+        "image": {
+            "fileName": "obstacle_20250918_063911.jpg",
+            "filePath": ""
+        }
+    }
+]

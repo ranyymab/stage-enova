@@ -1,0 +1,74 @@
+[
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:11:45", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "39", 
+        "4-Delay": "24.6002249718", 
+        "5-Latitude": 35.817833158333336, 
+        "6-Longitude": 10.593149813333333
+    }, 
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:12:36", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "39", 
+        "4-Delay": "8.60006308556", 
+        "5-Latitude": 35.817774514999996, 
+        "6-Longitude": 10.593172208333334
+    }, 
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:12:48", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "39", 
+        "4-Delay": "5.80008912086", 
+        "5-Latitude": 35.817764665, 
+        "6-Longitude": 10.59318795
+    }, 
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:13:57", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "43", 
+        "4-Delay": "13.400386095", 
+        "5-Latitude": 35.817478115, 
+        "6-Longitude": 10.593291366666667
+    }, 
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:14:11", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "43", 
+        "4-Delay": "8.79991292953", 
+        "5-Latitude": 35.817504326666665, 
+        "6-Longitude": 10.59329802
+    }, 
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:15:16", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "40", 
+        "4-Delay": "18.5000400543", 
+        "5-Latitude": 35.817779045, 
+        "6-Longitude": 10.59317671
+    }, 
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:16:38", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "39", 
+        "4-Delay": "6.40005898476", 
+        "5-Latitude": 35.817921915, 
+        "6-Longitude": 10.593117515
+    }, 
+    {
+        "0-Date": "2024-07-01", 
+        "1-Hour": "11:17:00", 
+        "2-Mission_name": "_rec.json", 
+        "3-Last_point": "38", 
+        "4-Delay": "17.5964829922", 
+        "5-Latitude": 35.81793076, 
+        "6-Longitude": 10.593115451666666
+    }
+]

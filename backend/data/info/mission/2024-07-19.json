@@ -1,0 +1,96 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "06:46:38",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "4",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.819709778596,
+        "8-Longitude": 10.591592825473
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "06:49:19",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "22",
+        "6-Latitude": 35.815367121162,
+        "7-Longitude": 10.590028609468
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "07:50:39",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "25",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.81498649668,
+        "8-Longitude": 10.590818953263
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "07:53:31",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "44",
+        "6-Latitude": 35.815076842906,
+        "7-Longitude": 10.593320126324
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "08:15:45",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "54",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.814798612113,
+        "8-Longitude": 10.591392254381
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "08:18:22",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "63",
+        "6-Latitude": 35.816447631927,
+        "7-Longitude": 10.588309386016
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "09:42:05",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "68",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.818123982296,
+        "8-Longitude": 10.589423883471
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "09:45:32",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "84",
+        "6-Latitude": 35.815106075937,
+        "7-Longitude": 10.591456356672
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_Global_1907.json",
+        "2-Date": "19-7-2024",
+        "3-Hour": "10:59:30",
+        "4-Notes": "Mission_complete",
+        "5-Stop_point": "94",
+        "6-Latitude": 35.818024911715,
+        "7-Longitude": 10.590642722395
+    }
+]

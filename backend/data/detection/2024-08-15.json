@@ -1,0 +1,50 @@
+[
+    {
+        "hour": "12:13:17",
+        "objectDetected": "vehicle",
+        "gps": {
+            "latitude": 35.81825321895,
+            "longitude": 10.590633014682
+        },
+        "image": {
+            "fileName": "4.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "23:11:23",
+        "objectDetected": "animal",
+        "gps": {
+            "latitude": 35.818164087431,
+            "longitude": 10.593097014141
+        },
+        "image": {
+            "fileName": "3.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "21:33:40",
+        "objectDetected": "animal",
+        "gps": {
+            "latitude": 35.815882445651,
+            "longitude": 10.588983729824
+        },
+        "image": {
+            "fileName": "3.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "09:22:22",
+        "objectDetected": "obstacle",
+        "gps": {
+            "latitude": 35.818281824976,
+            "longitude": 10.591967850527
+        },
+        "image": {
+            "fileName": "obstacle_20240815_092222.jpg",
+            "filePath": ""
+        }
+    }
+]

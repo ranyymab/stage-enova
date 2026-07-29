@@ -1,0 +1,331 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "11:06:38", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817741463333334, 
+        "8-Longitude": 10.591354591666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "11:06:38", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774143, 
+        "7-Longitude": 10.59135464
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "15:21:30", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773893, 
+        "8-Longitude": 10.59135563
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "15:21:30", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81773893, 
+        "7-Longitude": 10.59135563
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "15:25:24", 
+        "4-Notes": "Between 1 and 0", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81787927333333, 
+        "8-Longitude": 10.591341858333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "15:25:42", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774839333333, 
+        "7-Longitude": 10.59135919
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "15:54:26", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773883333334, 
+        "8-Longitude": 10.591355688333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "15:54:26", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81773883333334, 
+        "7-Longitude": 10.591355688333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:06:42", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81741074833333, 
+        "8-Longitude": 10.591346153333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:07:29", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81772934166667, 
+        "7-Longitude": 10.591354048333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:09:24", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817283526666664, 
+        "8-Longitude": 10.591386513333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:10:39", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817420121666665, 
+        "8-Longitude": 10.591378983333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:11:31", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81772960333333, 
+        "7-Longitude": 10.591355421666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:12:21", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817735688333336, 
+        "8-Longitude": 10.59135593
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:12:21", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817735688333336, 
+        "7-Longitude": 10.59135593
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:12:41", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773569333333, 
+        "8-Longitude": 10.591355925
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:12:41", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81773568, 
+        "7-Longitude": 10.591355896666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:13:45", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817739855, 
+        "8-Longitude": 10.59135509
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:13:45", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817739855, 
+        "7-Longitude": 10.59135509
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:15:33", 
+        "4-Notes": "Between 1 and 2", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.818196406666665, 
+        "8-Longitude": 10.591329241666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:15:35", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.81820051, 
+        "7-Longitude": 10.591328708333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:15:41", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.818207578333336, 
+        "8-Longitude": 10.591327991666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:16:55", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.818102493333335, 
+        "8-Longitude": 10.59133528
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:16:58", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.818102495, 
+        "8-Longitude": 10.591335293333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:17:04", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81810252166667, 
+        "8-Longitude": 10.591335315
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:17:23", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.818102475, 
+        "8-Longitude": 10.591335225
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:17:32", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81810253166667, 
+        "8-Longitude": 10.591335258333332
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:17:50", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.818102491666664, 
+        "8-Longitude": 10.591335233333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:18:38", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817749515, 
+        "7-Longitude": 10.591358755
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:20:18", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774357, 
+        "8-Longitude": 10.591358493333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "_rec.json", 
+        "2-Date": "6-5-2026", 
+        "3-Hour": "16:20:18", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817743585, 
+        "7-Longitude": 10.591358473333333
+    }
+]

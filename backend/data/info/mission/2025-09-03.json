@@ -1,0 +1,138 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "06:57:34",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "3",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.815005884772,
+        "8-Longitude": 10.591064450766
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "06:00:53",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "13",
+        "6-Latitude": 35.815334147126,
+        "7-Longitude": 10.590764451509
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "07:40:51",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "17",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.818664535713,
+        "8-Longitude": 10.592255583097
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "07:43:59",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "30",
+        "6-Latitude": 35.8152704683,
+        "7-Longitude": 10.59388533303
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "08:15:23",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "40",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.820362284939,
+        "8-Longitude": 10.593095115013
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "08:18:05",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "59",
+        "6-Latitude": 35.820104994763,
+        "7-Longitude": 10.593684681006
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "09:34:32",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "68",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.820475115372,
+        "8-Longitude": 10.592685740392
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "09:37:52",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "82",
+        "6-Latitude": 35.820266820234,
+        "7-Longitude": 10.591349304993
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "10:57:16",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "85",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.820523049242,
+        "8-Longitude": 10.593868454447
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "10:00:07",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "99",
+        "6-Latitude": 35.817910623688,
+        "7-Longitude": 10.589264297939
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "11:33:32",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "108",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.820380818776,
+        "8-Longitude": 10.593600648124
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "11:36:32",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "120",
+        "6-Latitude": 35.818126525771,
+        "7-Longitude": 10.590942121567
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_Global_0309.json",
+        "2-Date": "3-9-2025",
+        "3-Hour": "12:59:11",
+        "4-Notes": "Mission_complete",
+        "5-Stop_point": "127",
+        "6-Latitude": 35.817326007077,
+        "7-Longitude": 10.588369204146
+    }
+]

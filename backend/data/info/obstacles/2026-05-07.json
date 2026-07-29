@@ -1,0 +1,20 @@
+[
+    {
+        "0-Date": "7-5-2026", 
+        "1-Hour": "15:14:17", 
+        "2-Mission_name": "test3points.json", 
+        "3-Last_point": "0", 
+        "4-Delay": "76.5000510216", 
+        "5-Latitude": 35.817697343333336, 
+        "6-Longitude": 10.591299726666668
+    }, 
+    {
+        "0-Date": "7-5-2026", 
+        "1-Hour": "15:15:04", 
+        "2-Mission_name": "test3points.json", 
+        "3-Last_point": "0", 
+        "4-Delay": "10.7991728783", 
+        "5-Latitude": 35.81773783333333, 
+        "6-Longitude": 10.591297105
+    }
+]

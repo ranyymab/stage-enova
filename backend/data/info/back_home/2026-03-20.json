@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "14:47:13",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818445891378,
+        "8-Longitude": 10.588538749274
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "14:48:37",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.817476613452,
+        "7-Longitude": 10.588697853465
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "07:35:37",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815088811781,
+        "8-Longitude": 10.591264675021
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "07:36:38",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816514999671,
+        "7-Longitude": 10.591359566587
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "09:25:52",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819272633581,
+        "8-Longitude": 10.592063125094
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "09:26:35",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.817999568558,
+        "7-Longitude": 10.591333167717
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "15:01:55",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817770358609,
+        "8-Longitude": 10.590766149488
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2003.json",
+        "2-Date": "20-3-2026",
+        "3-Hour": "15:02:30",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.815633327599,
+        "7-Longitude": 10.58840136509
+    }
+]

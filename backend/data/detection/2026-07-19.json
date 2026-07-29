@@ -1,0 +1,14 @@
+[
+    {
+        "hour": "23:17:02",
+        "objectDetected": "animal",
+        "gps": {
+            "latitude": 35.8178544956,
+            "longitude": 10.591447543
+        },
+        "image": {
+            "fileName": "3.png",
+            "filePath": ""
+        }
+    }
+]

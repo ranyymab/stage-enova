@@ -1,0 +1,44 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionA3107.json", 
+        "2-Date": "2024-07-31", 
+        "3-Hour": "11:33:24", 
+        "4-Notes": "Between 3 and 4; Goal : 1", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81733775666667, 
+        "8-Longitude": 10.591393278333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionA3107.json", 
+        "2-Date": "2024-07-31", 
+        "3-Hour": "11:33:40", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "3", 
+        "6-Latitude": 35.81738504, 
+        "7-Longitude": 10.59137355
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionA3107.json", 
+        "2-Date": "2024-07-31", 
+        "3-Hour": "11:34:03", 
+        "4-Notes": "Between 3 and 2; Goal : 1", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817463325, 
+        "8-Longitude": 10.591382943333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionA3107.json", 
+        "2-Date": "2024-07-31", 
+        "3-Hour": "11:34:17", 
+        "4-Notes": "Target_reached : 1", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.81757879, 
+        "7-Longitude": 10.591375631666667
+    }
+]

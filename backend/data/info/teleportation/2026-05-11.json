@@ -1,0 +1,90 @@
+[
+    {
+        "0-Info": "stop", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "09:18:37", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81770307666667, 
+        "5-Longitude": 10.591359978333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "09:44:45", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817702993333334, 
+        "5-Longitude": 10.591360045
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "10:01:55", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81566629666667, 
+        "5-Longitude": 10.592012116666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "10:07:18", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.815666246666666, 
+        "5-Longitude": 10.592012203333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "10:14:54", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81566188666667, 
+        "5-Longitude": 10.59201628
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "10:26:21", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.815660593333334, 
+        "5-Longitude": 10.592019606666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "10:33:33", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81718061666667, 
+        "5-Longitude": 10.591386268333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "11:49:43", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817312906666665, 
+        "5-Longitude": 10.59131408
+    }, 
+    {
+        "0-Info": "stop", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "16:12:55", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "16:32:20", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "11-5-2026", 
+        "2-Hour": "17:08:28", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }
+]

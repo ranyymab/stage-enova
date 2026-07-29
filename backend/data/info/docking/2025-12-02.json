@@ -1,0 +1,71 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_0212.json", 
+        "2-Date": "2025-12-02", 
+        "3-Hour": "10:54:02", 
+        "4-Notes": "Going to Station with Docking_0212.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773455333333, 
+        "8-Longitude": 10.591359005
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2025-12-02", 
+        "3-Hour": "10:55:28", 
+        "4-Battery": 41, 
+        "5-Latitude": 35.81741608, 
+        "6-Longitude": 10.591335773333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2025-12-02", 
+        "3-Hour": "10:56:05", 
+        "4-Battery": 41, 
+        "5-Latitude": 35.81739817333333, 
+        "6-Longitude": 10.591336305
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2025-12-02", 
+        "3-Hour": "10:56:10", 
+        "4-Battery": 41, 
+        "5-Latitude": 35.81739817, 
+        "6-Longitude": 10.591336306666667
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2025-12-02", 
+        "3-Hour": "10:57:11", 
+        "4-Battery": 42, 
+        "5-Latitude": 35.81739824666667, 
+        "6-Longitude": 10.591336368333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Docking_0212.json", 
+        "2-Date": "2025-12-02", 
+        "3-Hour": "10:57:25", 
+        "4-Notes": "Going to Home with Docking_0212.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817418286666665, 
+        "8-Longitude": 10.591330901666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Global_0212.json", 
+        "2-Date": "2025-12-02", 
+        "3-Hour": "16:32:10", 
+        "4-Notes": "Going to Station with Docking_0212.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817732675, 
+        "8-Longitude": 10.591357513333334
+    }
+]

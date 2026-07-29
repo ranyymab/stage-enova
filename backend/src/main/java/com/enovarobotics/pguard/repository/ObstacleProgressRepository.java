@@ -1,0 +1,16 @@
+package com.enovarobotics.pguard.repository;
+
+import com.enovarobotics.pguard.model.entity.ObstacleProgress;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public interface ObstacleProgressRepository extends JpaRepository<ObstacleProgress, Long> {
+
+    List<ObstacleProgress> findByEventDateOrderByEventDatetimeAsc(LocalDate eventDate);
+
+    List<ObstacleProgress> findTop20ByOrderByEventDatetimeDesc();
+
+    long countByEventDate(LocalDate eventDate);
+}

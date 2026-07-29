@@ -1,0 +1,50 @@
+[
+  {
+    "robotId": "ROBOT-001",
+    "eventDate": "2026-06-24",
+    "rawHour": "01:14:07",
+    "objectDetected": "person",
+    "latitude": 35.8174,
+    "longitude": 10.5913,
+    "imageFileName": "intrusion_20260624_011407.jpg",
+    "imageFilePath": "/images/detections/intrusion_20260624_011407.jpg",
+    "criticite": "CRITIQUE",
+    "statut": "NOUVELLE"
+  },
+  {
+    "robotId": "ROBOT-001",
+    "eventDate": "2026-06-23",
+    "rawHour": "23:48:33",
+    "objectDetected": "vehicle",
+    "latitude": 35.8169,
+    "longitude": 10.5908,
+    "imageFileName": "vehicle_20260623_234833.jpg",
+    "imageFilePath": "/images/detections/vehicle_20260623_234833.jpg",
+    "criticite": "HAUTE",
+    "statut": "EN_COURS"
+  },
+  {
+    "robotId": "ROBOT-001",
+    "eventDate": "2026-06-23",
+    "rawHour": "22:05:11",
+    "objectDetected": "animal",
+    "latitude": 35.8171,
+    "longitude": 10.5916,
+    "imageFileName": "animal_20260623_220511.jpg",
+    "imageFilePath": "/images/detections/animal_20260623_220511.jpg",
+    "criticite": "MOYENNE",
+    "statut": "RESOLUE"
+  },
+  {
+    "robotId": "ROBOT-001",
+    "eventDate": "2026-06-22",
+    "rawHour": "02:30:44",
+    "objectDetected": "unknown",
+    "latitude": null,
+    "longitude": null,
+    "imageFileName": "unknown_20260622_023044.jpg",
+    "imageFilePath": "/images/detections/unknown_20260622_023044.jpg",
+    "criticite": "FAIBLE",
+    "statut": "RESOLUE"
+  }
+]

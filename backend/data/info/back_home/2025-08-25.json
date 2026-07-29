@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "09:38:18",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818689540904,
+        "8-Longitude": 10.594191903049
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "09:39:52",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.81695346162,
+        "7-Longitude": 10.588402689393
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "12:22:46",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81824840728,
+        "8-Longitude": 10.592503754165
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "12:23:51",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816982973729,
+        "7-Longitude": 10.593045853651
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "19:59:13",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819152672321,
+        "8-Longitude": 10.592230938333
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "19:00:22",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.818994039994,
+        "7-Longitude": 10.591713220522
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "14:52:01",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815469219985,
+        "8-Longitude": 10.592467363506
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2508.json",
+        "2-Date": "25-8-2025",
+        "3-Hour": "14:53:29",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.819358177917,
+        "7-Longitude": 10.589673179434
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2406.json",
+        "2-Date": "26-7-2026",
+        "3-Hour": "23:54:28",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "1",
+        "6-Distance": "0.372",
+        "7-Latitude": 35.8177488471,
+        "8-Longitude": 10.5910998821
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2406.json",
+        "2-Date": "27-7-2026",
+        "3-Hour": "00:05:28",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "2",
+        "6-Latitude": 35.817372872,
+        "7-Longitude": 10.5909493353
+    }
+]

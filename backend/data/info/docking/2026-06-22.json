@@ -1,0 +1,83 @@
+[
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "22-6-2026",
+        "3-Hour": "03:00:00",
+        "4-Battery": 85,
+        "5-Latitude": 35.8158481108,
+        "6-Longitude": 10.5922137876
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "22-6-2026",
+        "3-Hour": "03:25:22",
+        "4-Battery": 79,
+        "5-Latitude": 35.8157704234,
+        "6-Longitude": 10.5921101166
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "22-6-2026",
+        "3-Hour": "03:25:45",
+        "4-Battery": 79,
+        "5-Latitude": 35.8157704234,
+        "6-Longitude": 10.5921101166
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "22-6-2026",
+        "3-Hour": "03:46:00",
+        "4-Battery": 88,
+        "5-Latitude": 35.8157208382,
+        "6-Longitude": 10.592135122
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "22-6-2026",
+        "3-Hour": "04:11:22",
+        "4-Battery": 82,
+        "5-Latitude": 35.8158721811,
+        "6-Longitude": 10.5921308095
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "22-6-2026",
+        "3-Hour": "04:11:45",
+        "4-Battery": 82,
+        "5-Latitude": 35.8158721811,
+        "6-Longitude": 10.5921308095
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "22-6-2026",
+        "3-Hour": "04:26:00",
+        "4-Battery": 97,
+        "5-Latitude": 35.8158013396,
+        "6-Longitude": 10.5921466303
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "22-6-2026",
+        "3-Hour": "04:51:22",
+        "4-Battery": 93,
+        "5-Latitude": 35.8158269093,
+        "6-Longitude": 10.5921777001
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "22-6-2026",
+        "3-Hour": "04:51:45",
+        "4-Battery": 93,
+        "5-Latitude": 35.8158269093,
+        "6-Longitude": 10.5921777001
+    }
+]

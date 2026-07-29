@@ -1,0 +1,107 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "06:16:01",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816015677556,
+        "8-Longitude": 10.594091364787
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "06:18:49",
+        "4-Notes": "Target_reached : 27",
+        "5-Stop_point": "27",
+        "6-Latitude": 35.818643905561,
+        "7-Longitude": 10.593507891633
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "13:41:16",
+        "4-Notes": "Between None and None; Goal : 47",
+        "5-Start_point": "27",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81819956729,
+        "8-Longitude": 10.592635613165
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "13:43:52",
+        "4-Notes": "Target_reached : 57",
+        "5-Stop_point": "57",
+        "6-Latitude": 35.818505833247,
+        "7-Longitude": 10.591605266822
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "07:37:40",
+        "4-Notes": "Between None and None; Goal : 77",
+        "5-Start_point": "57",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817353109337,
+        "8-Longitude": 10.590245578185
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "07:39:46",
+        "4-Notes": "Target_reached : 79",
+        "5-Stop_point": "79",
+        "6-Latitude": 35.815633848863,
+        "7-Longitude": 10.589690338856
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "16:05:31",
+        "4-Notes": "Between None and None; Goal : 99",
+        "5-Start_point": "79",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817303421377,
+        "8-Longitude": 10.589190005137
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "16:07:11",
+        "4-Notes": "Target_reached : 94",
+        "5-Stop_point": "94",
+        "6-Latitude": 35.817456340676,
+        "7-Longitude": 10.593193587926
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "06:41:18",
+        "4-Notes": "Between None and None; Goal : 114",
+        "5-Start_point": "94",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815833159529,
+        "8-Longitude": 10.5912431103
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2002.json",
+        "2-Date": "2025-02-20",
+        "3-Hour": "06:43:52",
+        "4-Notes": "Target_reached : 104",
+        "5-Stop_point": "104",
+        "6-Latitude": 35.816560961325,
+        "7-Longitude": 10.59361151826
+    }
+]

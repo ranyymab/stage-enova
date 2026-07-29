@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "14:46:04",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819998229067,
+        "8-Longitude": 10.59307278116
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "14:48:38",
+        "4-Notes": "Target_reached : 19",
+        "5-Stop_point": "19",
+        "6-Latitude": 35.818142059582,
+        "7-Longitude": 10.589903594749
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "04:33:59",
+        "4-Notes": "Between None and None; Goal : 39",
+        "5-Start_point": "19",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817614207249,
+        "8-Longitude": 10.59181718762
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "04:35:36",
+        "4-Notes": "Target_reached : 35",
+        "5-Stop_point": "35",
+        "6-Latitude": 35.820585641094,
+        "7-Longitude": 10.592493896909
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "18:45:17",
+        "4-Notes": "Between None and None; Goal : 55",
+        "5-Start_point": "35",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818776346806,
+        "8-Longitude": 10.592791369661
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "18:47:58",
+        "4-Notes": "Target_reached : 64",
+        "5-Stop_point": "64",
+        "6-Latitude": 35.819437560797,
+        "7-Longitude": 10.589846124768
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "19:47:39",
+        "4-Notes": "Between None and None; Goal : 84",
+        "5-Start_point": "64",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818936394219,
+        "8-Longitude": 10.590863495965
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "19:49:18",
+        "4-Notes": "Target_reached : 84",
+        "5-Stop_point": "84",
+        "6-Latitude": 35.819583205607,
+        "7-Longitude": 10.58838523626
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "07:09:52",
+        "4-Notes": "Between None and None; Goal : 104",
+        "5-Start_point": "84",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818283292337,
+        "8-Longitude": 10.593102614182
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "07:11:13",
+        "4-Notes": "Target_reached : 107",
+        "5-Stop_point": "107",
+        "6-Latitude": 35.819350465304,
+        "7-Longitude": 10.590919111626
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "19:16:57",
+        "4-Notes": "Between None and None; Goal : 127",
+        "5-Start_point": "107",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815465353909,
+        "8-Longitude": 10.592771809367
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1103.json",
+        "2-Date": "2026-03-11",
+        "3-Hour": "19:18:45",
+        "4-Notes": "Target_reached : 129",
+        "5-Stop_point": "129",
+        "6-Latitude": 35.815308575618,
+        "7-Longitude": 10.588905065815
+    }
+]

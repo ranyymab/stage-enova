@@ -1,0 +1,78 @@
+[
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "28-11-2024",
+        "3-Hour": "03:02:54",
+        "4-Battery": 86,
+        "5-Latitude": 35.817706224345,
+        "6-Longitude": 10.591295853868
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "round2.json",
+        "2-Date": "28-11-2024",
+        "3-Hour": "03:03:26",
+        "4-Notes": "Going to Home with Docking_Station.json",
+        "5-Start_point": "-1",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817706224345,
+        "8-Longitude": 10.591295853868
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "28-11-2024",
+        "3-Hour": "03:28:35",
+        "4-Battery": 83,
+        "5-Latitude": 35.817690488274,
+        "6-Longitude": 10.591248102299
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "28-11-2024",
+        "3-Hour": "03:29:48",
+        "4-Battery": 83,
+        "5-Latitude": 35.817690488274,
+        "6-Longitude": 10.591248102299
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "28-11-2024",
+        "3-Hour": "11:02:23",
+        "4-Battery": 86,
+        "5-Latitude": 35.817738631968,
+        "6-Longitude": 10.591281323616
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "round2.json",
+        "2-Date": "28-11-2024",
+        "3-Hour": "11:03:04",
+        "4-Notes": "Going to Home with Docking_Station.json",
+        "5-Start_point": "-1",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817738631968,
+        "8-Longitude": 10.591281323616
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "28-11-2024",
+        "3-Hour": "11:28:05",
+        "4-Battery": 81,
+        "5-Latitude": 35.817659158086,
+        "6-Longitude": 10.59132952804
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "28-11-2024",
+        "3-Hour": "11:29:01",
+        "4-Battery": 81,
+        "5-Latitude": 35.817659158086,
+        "6-Longitude": 10.59132952804
+    }
+]

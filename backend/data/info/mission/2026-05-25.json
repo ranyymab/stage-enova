@@ -1,0 +1,87 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:21:35", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "0.90740366293", 
+        "7-Latitude": 35.815824318333334, 
+        "8-Longitude": 10.59216414
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:22:41", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "0", 
+        "6-Latitude": 35.81601486, 
+        "7-Longitude": 10.59213616
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:25:12", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "1", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81601779166667, 
+        "8-Longitude": 10.592136466666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:32:17", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.10084093097", 
+        "7-Latitude": 35.81582606166667, 
+        "8-Longitude": 10.5921641
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:40:11", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "1", 
+        "6-Latitude": 35.815906645, 
+        "7-Longitude": 10.59215916
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:41:25", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.815902765, 
+        "8-Longitude": 10.592159256666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:41:36", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.00514720406", 
+        "7-Latitude": 35.8158252, 
+        "8-Longitude": 10.592164198333334
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "M_2505.json", 
+        "2-Date": "25-5-2026", 
+        "3-Hour": "10:48:24", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "1", 
+        "6-Latitude": 35.81609791333333, 
+        "7-Longitude": 10.592144398333334
+    }
+]

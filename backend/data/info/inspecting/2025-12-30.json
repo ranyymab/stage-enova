@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Global_2512.json", 
+        "2-Date": "30-12-2025", 
+        "3-Hour": "11:36:30", 
+        "4-Notes": "Between 55 and 54; Goal : 56", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81650070333333, 
+        "8-Longitude": 10.594810218333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_Global_2512.json", 
+        "2-Date": "30-12-2025", 
+        "3-Hour": "11:37:01", 
+        "4-Notes": "Target_reached : 56", 
+        "5-Stop_point": "56", 
+        "6-Latitude": 35.81631061666667, 
+        "7-Longitude": 10.594919391666666
+    }
+]

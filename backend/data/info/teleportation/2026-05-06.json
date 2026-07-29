@@ -1,0 +1,178 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:33:09", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:33:36", 
+        "3-Mode": "Axis", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:33:45", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:39:21", 
+        "3-Mode": "Axis", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:39:27", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:48:45", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:51:16", 
+        "3-Mode": "Axis", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "09:52:57", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "10:06:59", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817319223333335, 
+        "5-Longitude": 10.590833163333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "10:12:22", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81732190333334, 
+        "5-Longitude": 10.591313063333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "11:09:36", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81773588, 
+        "5-Longitude": 10.591359498333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "12:28:38", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81773970166667, 
+        "5-Longitude": 10.591357175
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "15:43:10", 
+        "3-Mode": "Axis", 
+        "4-Latitude": 35.817406625, 
+        "5-Longitude": 10.591311696666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "15:49:20", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817448473333336, 
+        "5-Longitude": 10.591348321666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:05:42", 
+        "3-Mode": "Axis", 
+        "4-Latitude": 35.81742646833333, 
+        "5-Longitude": 10.591306723333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:06:08", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817419083333334, 
+        "5-Longitude": 10.59132462
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:06:26", 
+        "3-Mode": "Axis", 
+        "4-Latitude": 35.81741908833333, 
+        "5-Longitude": 10.591324623333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:07:40", 
+        "3-Mode": "Axis", 
+        "4-Latitude": 35.81773550166667, 
+        "5-Longitude": 10.591354691666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:08:01", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817742870000004, 
+        "5-Longitude": 10.591358646666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:10:03", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81728354, 
+        "5-Longitude": 10.591386501666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:12:55", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817783643333335, 
+        "5-Longitude": 10.591355383333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "6-5-2026", 
+        "2-Hour": "16:26:46", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.81773449166667, 
+        "5-Longitude": 10.59135504
+    }
+]

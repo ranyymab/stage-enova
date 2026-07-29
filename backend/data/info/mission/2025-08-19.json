@@ -1,0 +1,96 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "06:54:33",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "9",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.819605232895,
+        "8-Longitude": 10.59115513379
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "06:57:54",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "17",
+        "6-Latitude": 35.816128893021,
+        "7-Longitude": 10.590857500487
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "07:17:54",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "24",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.81497475302,
+        "8-Longitude": 10.594058801265
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "07:20:06",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "33",
+        "6-Latitude": 35.818882755509,
+        "7-Longitude": 10.592159872258
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "08:02:49",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "39",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.820402320744,
+        "8-Longitude": 10.593054725594
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "08:05:33",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "55",
+        "6-Latitude": 35.815763948518,
+        "7-Longitude": 10.590597594351
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "09:35:03",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "58",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.818876473227,
+        "8-Longitude": 10.591442325989
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "09:38:23",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "67",
+        "6-Latitude": 35.81924658883,
+        "7-Longitude": 10.588340359166
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_Global_1908.json",
+        "2-Date": "19-8-2025",
+        "3-Hour": "10:59:35",
+        "4-Notes": "Mission_complete",
+        "5-Stop_point": "71",
+        "6-Latitude": 35.816110059624,
+        "7-Longitude": 10.591385534641
+    }
+]

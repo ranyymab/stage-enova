@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1505.json",
+        "2-Date": "2025-05-15",
+        "3-Hour": "08:23:37",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818153753148,
+        "8-Longitude": 10.589004840182
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1505.json",
+        "2-Date": "2025-05-15",
+        "3-Hour": "08:25:47",
+        "4-Notes": "Target_reached : 29",
+        "5-Stop_point": "29",
+        "6-Latitude": 35.817230975959,
+        "7-Longitude": 10.590662470599
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1505.json",
+        "2-Date": "2025-05-15",
+        "3-Hour": "15:54:29",
+        "4-Notes": "Between None and None; Goal : 49",
+        "5-Start_point": "29",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.814939189536,
+        "8-Longitude": 10.592182530844
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1505.json",
+        "2-Date": "2025-05-15",
+        "3-Hour": "15:56:25",
+        "4-Notes": "Target_reached : 57",
+        "5-Stop_point": "57",
+        "6-Latitude": 35.819880467599,
+        "7-Longitude": 10.588523657427
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1505.json",
+        "2-Date": "2025-05-15",
+        "3-Hour": "14:42:58",
+        "4-Notes": "Between None and None; Goal : 77",
+        "5-Start_point": "57",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819578964028,
+        "8-Longitude": 10.592068710095
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1505.json",
+        "2-Date": "2025-05-15",
+        "3-Hour": "14:44:40",
+        "4-Notes": "Target_reached : 67",
+        "5-Stop_point": "67",
+        "6-Latitude": 35.815996237211,
+        "7-Longitude": 10.589384426136
+    }
+]

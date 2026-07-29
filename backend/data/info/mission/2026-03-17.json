@@ -1,0 +1,75 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1703.json",
+        "2-Date": "17-3-2026",
+        "3-Hour": "06:06:26",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "6",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.817005146503,
+        "8-Longitude": 10.58909445082
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1703.json",
+        "2-Date": "17-3-2026",
+        "3-Hour": "06:09:28",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "21",
+        "6-Latitude": 35.816837971814,
+        "7-Longitude": 10.590211935392
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1703.json",
+        "2-Date": "17-3-2026",
+        "3-Hour": "07:31:42",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "31",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.817138112212,
+        "8-Longitude": 10.589966698322
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1703.json",
+        "2-Date": "17-3-2026",
+        "3-Hour": "07:34:22",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "48",
+        "6-Latitude": 35.816634842199,
+        "7-Longitude": 10.592809647269
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_1703.json",
+        "2-Date": "17-3-2026",
+        "3-Hour": "08:11:16",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "57",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.816812390389,
+        "8-Longitude": 10.594247188286
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_1703.json",
+        "2-Date": "17-3-2026",
+        "3-Hour": "08:14:03",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "77",
+        "6-Latitude": 35.817285720358,
+        "7-Longitude": 10.588334325213
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_Global_1703.json",
+        "2-Date": "17-3-2026",
+        "3-Hour": "09:59:50",
+        "4-Notes": "Mission_complete",
+        "5-Stop_point": "85",
+        "6-Latitude": 35.817842649373,
+        "7-Longitude": 10.590325470921
+    }
+]

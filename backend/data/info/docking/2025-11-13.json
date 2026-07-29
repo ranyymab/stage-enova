@@ -1,0 +1,40 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking1211.json", 
+        "2-Date": "13-11-2025", 
+        "3-Hour": "10:23:32", 
+        "4-Notes": "Going to Station with docking1211.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81771420333333, 
+        "8-Longitude": 10.591351161666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "13-11-2025", 
+        "3-Hour": "10:24:54", 
+        "4-Battery": 65, 
+        "5-Latitude": 35.817416635, 
+        "6-Longitude": 10.591331063333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "13-11-2025", 
+        "3-Hour": "10:25:31", 
+        "4-Battery": 65, 
+        "5-Latitude": 35.81739820333333, 
+        "6-Longitude": 10.591330046666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "13-11-2025", 
+        "3-Hour": "10:26:34", 
+        "4-Battery": 65, 
+        "5-Latitude": 35.817398231666665, 
+        "6-Longitude": 10.591330115
+    }
+]

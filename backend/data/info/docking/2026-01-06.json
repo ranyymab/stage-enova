@@ -1,0 +1,292 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:11:45", 
+        "4-Notes": "Going to Station with Akkurad_01.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817737193333336, 
+        "8-Longitude": 10.591362698333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:13:12", 
+        "4-Battery": 88, 
+        "5-Latitude": 35.81741938166667, 
+        "6-Longitude": 10.591340061666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:13:48", 
+        "4-Battery": 88, 
+        "5-Latitude": 35.81740160166667, 
+        "6-Longitude": 10.59134156
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:13:50", 
+        "4-Battery": 88, 
+        "5-Latitude": 35.81740159, 
+        "6-Longitude": 10.591341571666666
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:14:30", 
+        "4-Battery": 88, 
+        "5-Latitude": 35.81740161166667, 
+        "6-Longitude": 10.59134164
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:14:44", 
+        "4-Notes": "Going to Home with Akkurad_01.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81742149666667, 
+        "8-Longitude": 10.591336396666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:30:09", 
+        "4-Notes": "Going to Station with Akkurad_01.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773029833333, 
+        "8-Longitude": 10.591360985
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:31:41", 
+        "4-Battery": 86, 
+        "5-Latitude": 35.81741971333334, 
+        "6-Longitude": 10.59133997
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:32:18", 
+        "4-Battery": 86, 
+        "5-Latitude": 35.817401573333335, 
+        "6-Longitude": 10.591341465
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:32:19", 
+        "4-Battery": 86, 
+        "5-Latitude": 35.81740159, 
+        "6-Longitude": 10.591341435
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:48:15", 
+        "4-Battery": 91, 
+        "5-Latitude": 35.81740156, 
+        "6-Longitude": 10.591341428333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:48:29", 
+        "4-Notes": "Going to Home with Akkurad_01.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81742109666666, 
+        "8-Longitude": 10.591335785
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:57:18", 
+        "4-Notes": "Going to Station with Akkurad_01.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773028833334, 
+        "8-Longitude": 10.591361025
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:58:50", 
+        "4-Battery": 90, 
+        "5-Latitude": 35.817420418333334, 
+        "6-Longitude": 10.591339888333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:59:27", 
+        "4-Battery": 90, 
+        "5-Latitude": 35.817401705, 
+        "6-Longitude": 10.591341385
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "11:59:32", 
+        "4-Battery": 90, 
+        "5-Latitude": 35.817401651666664, 
+        "6-Longitude": 10.591341463333332
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "12:16:04", 
+        "4-Battery": 95, 
+        "5-Latitude": 35.817401555000004, 
+        "6-Longitude": 10.591341938333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "12:16:18", 
+        "4-Notes": "Going to Home with Akkurad_01.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81742122666667, 
+        "8-Longitude": 10.591335565
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "15:15:26", 
+        "4-Notes": "Going to Station with Akkurad_01.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773060166667, 
+        "8-Longitude": 10.591363793333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "15:16:57", 
+        "4-Battery": 76, 
+        "5-Latitude": 35.81741899, 
+        "6-Longitude": 10.591340268333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "15:17:34", 
+        "4-Battery": 76, 
+        "5-Latitude": 35.817401743333335, 
+        "6-Longitude": 10.591341671666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "15:17:36", 
+        "4-Battery": 76, 
+        "5-Latitude": 35.817401716666666, 
+        "6-Longitude": 10.591341645
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "15:42:36", 
+        "4-Battery": 83, 
+        "5-Latitude": 35.81740168333333, 
+        "6-Longitude": 10.591341485
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Akkurad_01.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "15:42:51", 
+        "4-Notes": "Going to Home with Akkurad_01.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817421825, 
+        "8-Longitude": 10.591335693333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Hachem.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "16:26:14", 
+        "4-Notes": "Going to Station with Mission_Hachem.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81753636, 
+        "8-Longitude": 10.591365156666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "16:28:00", 
+        "4-Battery": 79, 
+        "5-Latitude": 35.81741975833334, 
+        "6-Longitude": 10.591340771666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "16:28:38", 
+        "4-Battery": 79, 
+        "5-Latitude": 35.817401695, 
+        "6-Longitude": 10.591341681666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "16:28:41", 
+        "4-Battery": 79, 
+        "5-Latitude": 35.81740169166667, 
+        "6-Longitude": 10.59134168
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "16:29:46", 
+        "4-Battery": 79, 
+        "5-Latitude": 35.817401716666666, 
+        "6-Longitude": 10.591341698333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Hachem.json", 
+        "2-Date": "2026-01-06", 
+        "3-Hour": "16:30:00", 
+        "4-Notes": "Going to Home with Mission_Hachem.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817421208333336, 
+        "8-Longitude": 10.59133627
+    }
+]

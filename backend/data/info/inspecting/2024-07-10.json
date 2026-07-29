@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1007.json",
+        "2-Date": "2024-07-10",
+        "3-Hour": "02:43:05",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81563347942,
+        "8-Longitude": 10.592826615275
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1007.json",
+        "2-Date": "2024-07-10",
+        "3-Hour": "02:45:38",
+        "4-Notes": "Target_reached : 18",
+        "5-Stop_point": "18",
+        "6-Latitude": 35.817358677846,
+        "7-Longitude": 10.590844088639
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1007.json",
+        "2-Date": "2024-07-10",
+        "3-Hour": "17:07:22",
+        "4-Notes": "Between None and None; Goal : 38",
+        "5-Start_point": "18",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81735226512,
+        "8-Longitude": 10.589939001066
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1007.json",
+        "2-Date": "2024-07-10",
+        "3-Hour": "17:09:37",
+        "4-Notes": "Target_reached : 41",
+        "5-Stop_point": "41",
+        "6-Latitude": 35.815365338633,
+        "7-Longitude": 10.592369307358
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1007.json",
+        "2-Date": "2024-07-10",
+        "3-Hour": "02:14:25",
+        "4-Notes": "Between None and None; Goal : 61",
+        "5-Start_point": "41",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81761979652,
+        "8-Longitude": 10.592302795352
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1007.json",
+        "2-Date": "2024-07-10",
+        "3-Hour": "02:16:13",
+        "4-Notes": "Target_reached : 70",
+        "5-Stop_point": "70",
+        "6-Latitude": 35.815028691751,
+        "7-Longitude": 10.589526538746
+    }
+]

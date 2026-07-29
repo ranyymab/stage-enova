@@ -1,0 +1,96 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "06:16:57",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "0",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.815850240365,
+        "8-Longitude": 10.591602974092
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "06:19:45",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "16",
+        "6-Latitude": 35.820069478168,
+        "7-Longitude": 10.590990893321
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "07:26:33",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "19",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.820165095078,
+        "8-Longitude": 10.588706250975
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "07:29:08",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "24",
+        "6-Latitude": 35.815701610768,
+        "7-Longitude": 10.589944891845
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "08:50:44",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "30",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.814972671355,
+        "8-Longitude": 10.59169704861
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "08:53:43",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "41",
+        "6-Latitude": 35.819144291181,
+        "7-Longitude": 10.590684962968
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "09:10:28",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "51",
+        "6-Distance": "On_segment",
+        "7-Latitude": 35.81992153432,
+        "8-Longitude": 10.594129230506
+    },
+    {
+        "0-Info": "pause",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "09:13:38",
+        "4-Notes": "Pause_pressed",
+        "5-Last_point": "68",
+        "6-Latitude": 35.818074991541,
+        "7-Longitude": 10.590641481406
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_Global_2002.json",
+        "2-Date": "20-2-2025",
+        "3-Hour": "10:59:36",
+        "4-Notes": "Mission_complete",
+        "5-Stop_point": "74",
+        "6-Latitude": 35.815941547578,
+        "7-Longitude": 10.588321603279
+    }
+]

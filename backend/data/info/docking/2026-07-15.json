@@ -1,0 +1,29 @@
+[
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "15-7-2026",
+        "3-Hour": "20:00:00",
+        "4-Battery": 95.7,
+        "5-Latitude": 35.8178083034,
+        "6-Longitude": 10.5912447422
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "16-7-2026",
+        "3-Hour": "06:39:38",
+        "4-Battery": 24.0,
+        "5-Latitude": 35.817642169,
+        "6-Longitude": 10.5910557242
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "16-7-2026",
+        "3-Hour": "06:40:06",
+        "4-Battery": 94.2,
+        "5-Latitude": 35.817642169,
+        "6-Longitude": 10.5910557242
+    }
+]

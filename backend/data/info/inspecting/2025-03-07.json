@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "07:43:36",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815996823711,
+        "8-Longitude": 10.589558578477
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "07:45:19",
+        "4-Notes": "Target_reached : 10",
+        "5-Stop_point": "10",
+        "6-Latitude": 35.816921538491,
+        "7-Longitude": 10.590482766721
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "04:44:31",
+        "4-Notes": "Between None and None; Goal : 30",
+        "5-Start_point": "10",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820079929482,
+        "8-Longitude": 10.591312511201
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "04:46:22",
+        "4-Notes": "Target_reached : 40",
+        "5-Stop_point": "40",
+        "6-Latitude": 35.820694289016,
+        "7-Longitude": 10.590784322358
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "17:48:21",
+        "4-Notes": "Between None and None; Goal : 60",
+        "5-Start_point": "40",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816813267325,
+        "8-Longitude": 10.591554802097
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "17:50:23",
+        "4-Notes": "Target_reached : 53",
+        "5-Stop_point": "53",
+        "6-Latitude": 35.820258093153,
+        "7-Longitude": 10.591052941389
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "18:27:24",
+        "4-Notes": "Between None and None; Goal : 73",
+        "5-Start_point": "53",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815761370964,
+        "8-Longitude": 10.591869350861
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "18:29:27",
+        "4-Notes": "Target_reached : 72",
+        "5-Stop_point": "72",
+        "6-Latitude": 35.819770549652,
+        "7-Longitude": 10.592431303937
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "04:05:51",
+        "4-Notes": "Between None and None; Goal : 92",
+        "5-Start_point": "72",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818504643405,
+        "8-Longitude": 10.592512555734
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "04:07:59",
+        "4-Notes": "Target_reached : 85",
+        "5-Stop_point": "85",
+        "6-Latitude": 35.81523782764,
+        "7-Longitude": 10.58839855896
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "20:59:34",
+        "4-Notes": "Between None and None; Goal : 105",
+        "5-Start_point": "85",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817167677985,
+        "8-Longitude": 10.591278429575
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0703.json",
+        "2-Date": "2025-03-07",
+        "3-Hour": "20:01:51",
+        "4-Notes": "Target_reached : 98",
+        "5-Stop_point": "98",
+        "6-Latitude": 35.818501150908,
+        "7-Longitude": 10.59132016912
+    }
+]

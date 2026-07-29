@@ -1,0 +1,18 @@
+LOGO FILES - drop them here:
+
+    enova-logo.png        <- already working (light/white background version)
+    enova-logo-dark.png   <- NEW: add this one too, for dark mode
+
+Full paths once placed:
+    frontend/public/assets/enova-logo.png
+    frontend/public/assets/enova-logo-dark.png
+
+Why two files: the light logo (white background box) looks wrong against
+the dark sidebar/login background in dark mode. Add a second version
+suited for dark backgrounds (transparent background, light-colored text/
+icon) named exactly "enova-logo-dark.png", and it will automatically be
+used whenever dark mode is active - in both the sidebar and the login page.
+
+If enova-logo-dark.png isn't added yet, both places automatically fall
+back to the regular light logo instead of breaking - so nothing is lost
+in the meantime, it just won't look ideal on dark mode until you add it.

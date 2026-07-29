@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "mission_1512.json", 
+        "2-Date": "15-12-2025", 
+        "3-Hour": "11:52:57", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "0.208234225644", 
+        "7-Latitude": 35.81772070833333, 
+        "8-Longitude": 10.591364841666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "mission_1512.json", 
+        "2-Date": "15-12-2025", 
+        "3-Hour": "11:54:55", 
+        "4-Notes": "Automatic_end", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81771235833333, 
+        "7-Longitude": 10.591363523333333
+    }
+]

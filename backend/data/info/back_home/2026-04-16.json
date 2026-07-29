@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "08:42:24",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817695902179,
+        "8-Longitude": 10.591987997206
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "08:43:18",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.815432685392,
+        "7-Longitude": 10.591765572074
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "08:22:18",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815715915599,
+        "8-Longitude": 10.592148492957
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "08:23:15",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.819961871325,
+        "7-Longitude": 10.588756810938
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "12:03:26",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815194407024,
+        "8-Longitude": 10.590313092602
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "12:04:42",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.81828087182,
+        "7-Longitude": 10.590900054829
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "15:16:52",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815813276618,
+        "8-Longitude": 10.588698575831
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1604.json",
+        "2-Date": "16-4-2026",
+        "3-Hour": "15:17:20",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816766363916,
+        "7-Longitude": 10.589303324181
+    }
+]

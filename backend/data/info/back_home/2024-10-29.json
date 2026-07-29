@@ -1,0 +1,44 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2910.json",
+        "2-Date": "29-10-2024",
+        "3-Hour": "09:16:57",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818835499882,
+        "8-Longitude": 10.590449004984
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2910.json",
+        "2-Date": "29-10-2024",
+        "3-Hour": "09:17:35",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.814936931256,
+        "7-Longitude": 10.592539755874
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2910.json",
+        "2-Date": "29-10-2024",
+        "3-Hour": "10:36:11",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816468287579,
+        "8-Longitude": 10.59248222665
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2910.json",
+        "2-Date": "29-10-2024",
+        "3-Hour": "10:37:29",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.817961723266,
+        "7-Longitude": 10.590242085254
+    }
+]

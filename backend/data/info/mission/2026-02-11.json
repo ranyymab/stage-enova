@@ -1,0 +1,98 @@
+[
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "14:38:09", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "3", 
+        "6-Latitude": 35.81824225, 
+        "7-Longitude": 10.591329586666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "14:43:05", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.15784083156", 
+        "7-Latitude": 35.817998106666664, 
+        "8-Longitude": 10.591347151666668
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "14:45:52", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.13602088512", 
+        "7-Latitude": 35.81799791, 
+        "8-Longitude": 10.591347166666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "14:48:46", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.13954444696", 
+        "7-Latitude": 35.81799794166667, 
+        "8-Longitude": 10.591347121666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "14:51:37", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.16228558494", 
+        "7-Latitude": 35.81799814666667, 
+        "8-Longitude": 10.591347125
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "14:54:29", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.14270270783", 
+        "7-Latitude": 35.81799797, 
+        "8-Longitude": 10.591347091666666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "17:09:35", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "4", 
+        "6-Latitude": 35.81835528166667, 
+        "7-Longitude": 10.59135782
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "17:20:43", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.18818500699", 
+        "7-Latitude": 35.81799838, 
+        "8-Longitude": 10.591347095
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "11-2-2026", 
+        "3-Hour": "17:24:27", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.81801096, 
+        "7-Longitude": 10.591347158333333
+    }
+]

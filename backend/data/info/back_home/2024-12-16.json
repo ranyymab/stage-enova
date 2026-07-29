@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "13:30:43",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820392265337,
+        "8-Longitude": 10.590198939679
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "13:31:50",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816178080137,
+        "7-Longitude": 10.589966402588
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "18:23:52",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820321833748,
+        "8-Longitude": 10.590477988074
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "18:24:57",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816549028395,
+        "7-Longitude": 10.59217238553
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "17:51:03",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818334888397,
+        "8-Longitude": 10.593348837799
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "17:52:15",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.818844094732,
+        "7-Longitude": 10.593032816264
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "17:44:23",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816217897377,
+        "8-Longitude": 10.590608141275
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_1612.json",
+        "2-Date": "16-12-2024",
+        "3-Hour": "17:45:34",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.820118942592,
+        "7-Longitude": 10.592411490032
+    }
+]

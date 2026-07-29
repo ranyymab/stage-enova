@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2603.json",
+        "2-Date": "2026-03-26",
+        "3-Hour": "19:29:33",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815386740246,
+        "8-Longitude": 10.592480093726
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2603.json",
+        "2-Date": "2026-03-26",
+        "3-Hour": "19:31:13",
+        "4-Notes": "Target_reached : 26",
+        "5-Stop_point": "26",
+        "6-Latitude": 35.817499340304,
+        "7-Longitude": 10.59324339697
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2603.json",
+        "2-Date": "2026-03-26",
+        "3-Hour": "01:18:00",
+        "4-Notes": "Between None and None; Goal : 46",
+        "5-Start_point": "26",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815081165957,
+        "8-Longitude": 10.593549091432
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2603.json",
+        "2-Date": "2026-03-26",
+        "3-Hour": "01:20:31",
+        "4-Notes": "Target_reached : 54",
+        "5-Stop_point": "54",
+        "6-Latitude": 35.816633383969,
+        "7-Longitude": 10.589763161309
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2603.json",
+        "2-Date": "2026-03-26",
+        "3-Hour": "17:12:03",
+        "4-Notes": "Between None and None; Goal : 74",
+        "5-Start_point": "54",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818603788944,
+        "8-Longitude": 10.590849555276
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2603.json",
+        "2-Date": "2026-03-26",
+        "3-Hour": "17:14:03",
+        "4-Notes": "Target_reached : 80",
+        "5-Stop_point": "80",
+        "6-Latitude": 35.81952634698,
+        "7-Longitude": 10.591312290733
+    }
+]

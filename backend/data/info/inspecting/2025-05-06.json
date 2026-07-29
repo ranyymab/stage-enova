@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "15:00:16",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818233625251,
+        "8-Longitude": 10.592109595314
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "15:02:11",
+        "4-Notes": "Target_reached : 23",
+        "5-Stop_point": "23",
+        "6-Latitude": 35.818308124879,
+        "7-Longitude": 10.591255630837
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "10:41:19",
+        "4-Notes": "Between None and None; Goal : 43",
+        "5-Start_point": "23",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816671836396,
+        "8-Longitude": 10.59119967794
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "10:43:17",
+        "4-Notes": "Target_reached : 41",
+        "5-Stop_point": "41",
+        "6-Latitude": 35.8199035658,
+        "7-Longitude": 10.589794132012
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "21:28:07",
+        "4-Notes": "Between None and None; Goal : 61",
+        "5-Start_point": "41",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818767055325,
+        "8-Longitude": 10.591318373682
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "21:30:32",
+        "4-Notes": "Target_reached : 56",
+        "5-Stop_point": "56",
+        "6-Latitude": 35.817625482646,
+        "7-Longitude": 10.59021524529
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "03:48:27",
+        "4-Notes": "Between None and None; Goal : 76",
+        "5-Start_point": "56",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817523037974,
+        "8-Longitude": 10.58927878524
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0605.json",
+        "2-Date": "2025-05-06",
+        "3-Hour": "03:50:21",
+        "4-Notes": "Target_reached : 75",
+        "5-Stop_point": "75",
+        "6-Latitude": 35.815267407858,
+        "7-Longitude": 10.593472179346
+    }
+]

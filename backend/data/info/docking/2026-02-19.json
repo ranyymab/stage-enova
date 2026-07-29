@@ -1,0 +1,49 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "dock_1902.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "11:07:15", 
+        "4-Notes": "Going to Station with dock_1902.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81773286166667, 
+        "8-Longitude": 10.591362733333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "11:08:42", 
+        "4-Battery": 43, 
+        "5-Latitude": 35.81741599833333, 
+        "6-Longitude": 10.591337421666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "11:09:20", 
+        "4-Battery": 43, 
+        "5-Latitude": 35.81739791, 
+        "6-Longitude": 10.59133825
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "11:10:05", 
+        "4-Battery": 43, 
+        "5-Latitude": 35.81739794166667, 
+        "6-Longitude": 10.59133838
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "14:53:55", 
+        "4-Battery": 97, 
+        "5-Latitude": 35.817397963333335, 
+        "6-Longitude": 10.591338215
+    }
+]

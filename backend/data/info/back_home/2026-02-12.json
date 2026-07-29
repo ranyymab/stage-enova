@@ -1,0 +1,107 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:08:14", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817948881666666, 
+        "8-Longitude": 10.591352085
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:08:14", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817948881666666, 
+        "7-Longitude": 10.591352085
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:08:23", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817948873333336, 
+        "8-Longitude": 10.591352073333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:08:23", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817948873333336, 
+        "7-Longitude": 10.591352073333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:31:52", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81799159166667, 
+        "8-Longitude": 10.59134843
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:31:52", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81799159166667, 
+        "7-Longitude": 10.59134843
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:38:03", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817995831666664, 
+        "8-Longitude": 10.59134956
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:38:03", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817995831666664, 
+        "7-Longitude": 10.59134956
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:42:11", 
+        "4-Notes": "Between 1 and 0", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81804321166667, 
+        "8-Longitude": 10.591344903333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "MissionRBTQ.json", 
+        "2-Date": "12-2-2026", 
+        "3-Hour": "10:42:18", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817998055, 
+        "7-Longitude": 10.59134778
+    }
+]

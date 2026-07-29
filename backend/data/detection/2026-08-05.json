@@ -1,0 +1,14 @@
+[
+    {
+        "hour": "01:30:57",
+        "objectDetected": "debris",
+        "gps": {
+            "latitude": 35.8176688489,
+            "longitude": 10.5909312293
+        },
+        "image": {
+            "fileName": "1.jpg",
+            "filePath": ""
+        }
+    }
+]

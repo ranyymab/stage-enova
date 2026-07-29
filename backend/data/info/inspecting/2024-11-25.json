@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2511.json",
+        "2-Date": "2024-11-25",
+        "3-Hour": "20:05:40",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818277631824,
+        "8-Longitude": 10.592603192534
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2511.json",
+        "2-Date": "2024-11-25",
+        "3-Hour": "20:07:15",
+        "4-Notes": "Target_reached : 19",
+        "5-Stop_point": "19",
+        "6-Latitude": 35.816787121401,
+        "7-Longitude": 10.588327420248
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2511.json",
+        "2-Date": "2024-11-25",
+        "3-Hour": "04:39:23",
+        "4-Notes": "Between None and None; Goal : 39",
+        "5-Start_point": "19",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815851417171,
+        "8-Longitude": 10.594219621149
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2511.json",
+        "2-Date": "2024-11-25",
+        "3-Hour": "04:41:40",
+        "4-Notes": "Target_reached : 46",
+        "5-Stop_point": "46",
+        "6-Latitude": 35.81774524454,
+        "7-Longitude": 10.591085296042
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2511.json",
+        "2-Date": "2024-11-25",
+        "3-Hour": "07:07:50",
+        "4-Notes": "Between None and None; Goal : 66",
+        "5-Start_point": "46",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81865596295,
+        "8-Longitude": 10.589958559504
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2511.json",
+        "2-Date": "2024-11-25",
+        "3-Hour": "07:09:30",
+        "4-Notes": "Target_reached : 60",
+        "5-Stop_point": "60",
+        "6-Latitude": 35.818811462526,
+        "7-Longitude": 10.594111443027
+    }
+]

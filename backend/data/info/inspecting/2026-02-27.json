@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "20:52:04",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815855514015,
+        "8-Longitude": 10.589834759329
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "20:54:22",
+        "4-Notes": "Target_reached : 27",
+        "5-Stop_point": "27",
+        "6-Latitude": 35.819468715159,
+        "7-Longitude": 10.591353300902
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "04:20:57",
+        "4-Notes": "Between None and None; Goal : 47",
+        "5-Start_point": "27",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816777900374,
+        "8-Longitude": 10.592751925698
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "04:22:39",
+        "4-Notes": "Target_reached : 51",
+        "5-Stop_point": "51",
+        "6-Latitude": 35.816263432199,
+        "7-Longitude": 10.592609879383
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "20:42:07",
+        "4-Notes": "Between None and None; Goal : 71",
+        "5-Start_point": "51",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817054403675,
+        "8-Longitude": 10.590494472473
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "20:44:30",
+        "4-Notes": "Target_reached : 73",
+        "5-Stop_point": "73",
+        "6-Latitude": 35.814981346052,
+        "7-Longitude": 10.591251381601
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "19:15:57",
+        "4-Notes": "Between None and None; Goal : 93",
+        "5-Start_point": "73",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.814716157048,
+        "8-Longitude": 10.590010338697
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "19:17:19",
+        "4-Notes": "Target_reached : 83",
+        "5-Stop_point": "83",
+        "6-Latitude": 35.819000946935,
+        "7-Longitude": 10.590213599308
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "01:48:15",
+        "4-Notes": "Between None and None; Goal : 103",
+        "5-Start_point": "83",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815403378001,
+        "8-Longitude": 10.589957748579
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "01:50:09",
+        "4-Notes": "Target_reached : 112",
+        "5-Stop_point": "112",
+        "6-Latitude": 35.820238716411,
+        "7-Longitude": 10.592571059627
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "01:43:13",
+        "4-Notes": "Between None and None; Goal : 132",
+        "5-Start_point": "112",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815769266427,
+        "8-Longitude": 10.593125631419
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2702.json",
+        "2-Date": "2026-02-27",
+        "3-Hour": "01:45:49",
+        "4-Notes": "Target_reached : 140",
+        "5-Stop_point": "140",
+        "6-Latitude": 35.816995713755,
+        "7-Longitude": 10.592913672651
+    }
+]

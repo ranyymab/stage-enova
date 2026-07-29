@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2009.json",
+        "2-Date": "2024-09-20",
+        "3-Hour": "07:53:03",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815742424136,
+        "8-Longitude": 10.593551083337
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2009.json",
+        "2-Date": "2024-09-20",
+        "3-Hour": "07:55:23",
+        "4-Notes": "Target_reached : 17",
+        "5-Stop_point": "17",
+        "6-Latitude": 35.814898426267,
+        "7-Longitude": 10.58860335569
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2009.json",
+        "2-Date": "2024-09-20",
+        "3-Hour": "15:32:25",
+        "4-Notes": "Between None and None; Goal : 37",
+        "5-Start_point": "17",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818927803671,
+        "8-Longitude": 10.589943864991
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2009.json",
+        "2-Date": "2024-09-20",
+        "3-Hour": "15:34:15",
+        "4-Notes": "Target_reached : 47",
+        "5-Stop_point": "47",
+        "6-Latitude": 35.82023844141,
+        "7-Longitude": 10.592387046163
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2009.json",
+        "2-Date": "2024-09-20",
+        "3-Hour": "06:55:30",
+        "4-Notes": "Between None and None; Goal : 67",
+        "5-Start_point": "47",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816934800569,
+        "8-Longitude": 10.591864261561
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2009.json",
+        "2-Date": "2024-09-20",
+        "3-Hour": "06:57:53",
+        "4-Notes": "Target_reached : 75",
+        "5-Stop_point": "75",
+        "6-Latitude": 35.818008002324,
+        "7-Longitude": 10.590365494023
+    }
+]

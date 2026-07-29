@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission2_1001.json",
+        "2-Date": "16-7-2026",
+        "3-Hour": "06:36:38",
+        "4-Notes": "Retour station de charge (batterie 24%)",
+        "5-Start_point": "5",
+        "6-Distance": "0.064",
+        "7-Latitude": 35.8177365048,
+        "8-Longitude": 10.5915110854
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission2_1001.json",
+        "2-Date": "16-7-2026",
+        "3-Hour": "06:39:38",
+        "4-Notes": "Arrive a la station",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.817642169,
+        "7-Longitude": 10.5910557242
+    }
+]

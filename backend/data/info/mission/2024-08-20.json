@@ -1,0 +1,22 @@
+[
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "2024-08-20", 
+        "3-Hour": "11:56:48", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "3", 
+        "6-Latitude": 35.81745776, 
+        "7-Longitude": 10.591386746666666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_A.json", 
+        "2-Date": "2024-08-20", 
+        "3-Hour": "12:01:49", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "4", 
+        "6-Latitude": 35.81730125, 
+        "7-Longitude": 10.591397305
+    }
+]

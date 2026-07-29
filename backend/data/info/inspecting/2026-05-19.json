@@ -1,0 +1,107 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "20:08:01",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820043915244,
+        "8-Longitude": 10.593560248493
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "20:10:17",
+        "4-Notes": "Target_reached : 27",
+        "5-Stop_point": "27",
+        "6-Latitude": 35.820612230046,
+        "7-Longitude": 10.593803361303
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "04:55:12",
+        "4-Notes": "Between None and None; Goal : 47",
+        "5-Start_point": "27",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818109555512,
+        "8-Longitude": 10.593303660562
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "04:57:55",
+        "4-Notes": "Target_reached : 41",
+        "5-Stop_point": "41",
+        "6-Latitude": 35.816269305805,
+        "7-Longitude": 10.590517547093
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "07:23:03",
+        "4-Notes": "Between None and None; Goal : 61",
+        "5-Start_point": "41",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815261490278,
+        "8-Longitude": 10.591683552489
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "07:25:04",
+        "4-Notes": "Target_reached : 71",
+        "5-Stop_point": "71",
+        "6-Latitude": 35.820514740355,
+        "7-Longitude": 10.5935477182
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "13:07:30",
+        "4-Notes": "Between None and None; Goal : 91",
+        "5-Start_point": "71",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815349687211,
+        "8-Longitude": 10.590290813775
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "13:09:44",
+        "4-Notes": "Target_reached : 92",
+        "5-Stop_point": "92",
+        "6-Latitude": 35.819422498979,
+        "7-Longitude": 10.591483577972
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "18:56:03",
+        "4-Notes": "Between None and None; Goal : 112",
+        "5-Start_point": "92",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820067461162,
+        "8-Longitude": 10.592153690761
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1905.json",
+        "2-Date": "2026-05-19",
+        "3-Hour": "18:58:36",
+        "4-Notes": "Target_reached : 108",
+        "5-Stop_point": "108",
+        "6-Latitude": 35.820409951752,
+        "7-Longitude": 10.592702490326
+    }
+]

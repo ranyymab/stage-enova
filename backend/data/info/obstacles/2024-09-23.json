@@ -1,0 +1,38 @@
+[
+    {
+        "0-Date": "2024-09-23",
+        "1-Hour": "19:12:10",
+        "2-Mission_name": "Mission_A.json",
+        "3-Last_point": "0",
+        "4-Delay": "76.106326528",
+        "5-Latitude": 35.820676833488,
+        "6-Longitude": 10.591241072108
+    },
+    {
+        "0-Date": "2024-09-23",
+        "1-Hour": "10:14:46",
+        "2-Mission_name": "Mission_A.json",
+        "3-Last_point": "3",
+        "4-Delay": "78.865964337",
+        "5-Latitude": 35.820209232453,
+        "6-Longitude": 10.590720349867
+    },
+    {
+        "0-Date": "2024-09-23",
+        "1-Hour": "15:10:07",
+        "2-Mission_name": "Mission_A.json",
+        "3-Last_point": "6",
+        "4-Delay": "32.494358855",
+        "5-Latitude": 35.815967141375,
+        "6-Longitude": 10.588431479632
+    },
+    {
+        "0-Date": "2024-09-23",
+        "1-Hour": "17:16:49",
+        "2-Mission_name": "Mission_A.json",
+        "3-Last_point": "9",
+        "4-Delay": "45.1050075645",
+        "5-Latitude": 35.818603242281,
+        "6-Longitude": 10.588524180566
+    }
+]

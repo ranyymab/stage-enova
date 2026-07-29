@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "20:18:30",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817763820341,
+        "8-Longitude": 10.593365855098
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "20:20:37",
+        "4-Notes": "Target_reached : 24",
+        "5-Stop_point": "24",
+        "6-Latitude": 35.819679215983,
+        "7-Longitude": 10.592274348776
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "01:02:26",
+        "4-Notes": "Between None and None; Goal : 44",
+        "5-Start_point": "24",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815060537155,
+        "8-Longitude": 10.589546160941
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "01:04:36",
+        "4-Notes": "Target_reached : 37",
+        "5-Stop_point": "37",
+        "6-Latitude": 35.819537658309,
+        "7-Longitude": 10.590119848396
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "05:08:15",
+        "4-Notes": "Between None and None; Goal : 57",
+        "5-Start_point": "37",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817600235772,
+        "8-Longitude": 10.590108023094
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "05:10:19",
+        "4-Notes": "Target_reached : 57",
+        "5-Stop_point": "57",
+        "6-Latitude": 35.819884566495,
+        "7-Longitude": 10.593170170156
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "13:35:09",
+        "4-Notes": "Between None and None; Goal : 77",
+        "5-Start_point": "57",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815021885436,
+        "8-Longitude": 10.592656349219
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "13:37:40",
+        "4-Notes": "Target_reached : 70",
+        "5-Stop_point": "70",
+        "6-Latitude": 35.815604895339,
+        "7-Longitude": 10.590317670533
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "12:10:22",
+        "4-Notes": "Between None and None; Goal : 90",
+        "5-Start_point": "70",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817296941807,
+        "8-Longitude": 10.589816666916
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "12:12:25",
+        "4-Notes": "Target_reached : 88",
+        "5-Stop_point": "88",
+        "6-Latitude": 35.818148992302,
+        "7-Longitude": 10.589332405228
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "10:41:52",
+        "4-Notes": "Between None and None; Goal : 108",
+        "5-Start_point": "88",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818659548862,
+        "8-Longitude": 10.589958473662
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1301.json",
+        "2-Date": "2026-01-13",
+        "3-Hour": "10:43:45",
+        "4-Notes": "Target_reached : 100",
+        "5-Stop_point": "100",
+        "6-Latitude": 35.819298489603,
+        "7-Longitude": 10.588906452093
+    }
+]

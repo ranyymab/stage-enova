@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "12:21:34",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819431954093,
+        "8-Longitude": 10.592626744751
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "12:23:58",
+        "4-Notes": "Target_reached : 15",
+        "5-Stop_point": "15",
+        "6-Latitude": 35.816462998604,
+        "7-Longitude": 10.594055310559
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "16:24:19",
+        "4-Notes": "Between None and None; Goal : 35",
+        "5-Start_point": "15",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819075477732,
+        "8-Longitude": 10.592311986245
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "16:26:32",
+        "4-Notes": "Target_reached : 38",
+        "5-Stop_point": "38",
+        "6-Latitude": 35.819452562625,
+        "7-Longitude": 10.593478505106
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "17:58:58",
+        "4-Notes": "Between None and None; Goal : 58",
+        "5-Start_point": "38",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818154256458,
+        "8-Longitude": 10.593188331586
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "17:00:23",
+        "4-Notes": "Target_reached : 48",
+        "5-Stop_point": "48",
+        "6-Latitude": 35.819332221381,
+        "7-Longitude": 10.59268468044
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "17:11:53",
+        "4-Notes": "Between None and None; Goal : 68",
+        "5-Start_point": "48",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816148660354,
+        "8-Longitude": 10.592484437014
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "17:13:29",
+        "4-Notes": "Target_reached : 66",
+        "5-Stop_point": "66",
+        "6-Latitude": 35.816689307376,
+        "7-Longitude": 10.59413485671
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "22:44:21",
+        "4-Notes": "Between None and None; Goal : 86",
+        "5-Start_point": "66",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818360571434,
+        "8-Longitude": 10.592483143455
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "22:46:54",
+        "4-Notes": "Target_reached : 77",
+        "5-Stop_point": "77",
+        "6-Latitude": 35.816438177151,
+        "7-Longitude": 10.592134487709
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "07:13:48",
+        "4-Notes": "Between None and None; Goal : 97",
+        "5-Start_point": "77",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816448257499,
+        "8-Longitude": 10.589527839243
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2907.json",
+        "2-Date": "2025-07-29",
+        "3-Hour": "07:15:37",
+        "4-Notes": "Target_reached : 98",
+        "5-Stop_point": "98",
+        "6-Latitude": 35.815865973507,
+        "7-Longitude": 10.591457275182
+    }
+]

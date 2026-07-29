@@ -1,0 +1,38 @@
+[
+    {
+        "hour": "05:44:00",
+        "objectDetected": "vehicle",
+        "gps": {
+            "latitude": 35.817401,
+            "longitude": 10.593612
+        },
+        "image": {
+            "fileName": "4.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "21:11:51",
+        "objectDetected": "person",
+        "gps": {
+            "latitude": 35.817662,
+            "longitude": 10.592242
+        },
+        "image": {
+            "fileName": "2.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "20:29:08",
+        "objectDetected": "person",
+        "gps": {
+            "latitude": 35.817036,
+            "longitude": 10.59284
+        },
+        "image": {
+            "fileName": "2.png",
+            "filePath": ""
+        }
+    }
+]

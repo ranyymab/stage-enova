@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2312.json",
+        "2-Date": "2025-12-23",
+        "3-Hour": "09:49:46",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819433017092,
+        "8-Longitude": 10.592845353758
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2312.json",
+        "2-Date": "2025-12-23",
+        "3-Hour": "09:51:37",
+        "4-Notes": "Target_reached : 11",
+        "5-Stop_point": "11",
+        "6-Latitude": 35.81591857044,
+        "7-Longitude": 10.593982666162
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2312.json",
+        "2-Date": "2025-12-23",
+        "3-Hour": "03:32:31",
+        "4-Notes": "Between None and None; Goal : 31",
+        "5-Start_point": "11",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817723260776,
+        "8-Longitude": 10.591436304717
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2312.json",
+        "2-Date": "2025-12-23",
+        "3-Hour": "03:34:47",
+        "4-Notes": "Target_reached : 27",
+        "5-Stop_point": "27",
+        "6-Latitude": 35.817990260276,
+        "7-Longitude": 10.590959124791
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2312.json",
+        "2-Date": "2025-12-23",
+        "3-Hour": "08:13:25",
+        "4-Notes": "Between None and None; Goal : 47",
+        "5-Start_point": "27",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816854865397,
+        "8-Longitude": 10.591371815709
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2312.json",
+        "2-Date": "2025-12-23",
+        "3-Hour": "08:15:53",
+        "4-Notes": "Target_reached : 46",
+        "5-Stop_point": "46",
+        "6-Latitude": 35.819265885625,
+        "7-Longitude": 10.590997042749
+    }
+]

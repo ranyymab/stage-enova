@@ -1,0 +1,26 @@
+[
+    {
+        "0-Info": "stop", 
+        "1-Date": "24-11-2025", 
+        "2-Hour": "21:25:52", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "24-11-2025", 
+        "2-Hour": "21:41:10", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817235125, 
+        "5-Longitude": 10.590737756666666
+    }, 
+    {
+        "0-Info": "stop", 
+        "1-Date": "24-11-2025", 
+        "2-Hour": "21:51:00", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": 35.817397461666665, 
+        "5-Longitude": 10.590957505
+    }
+]

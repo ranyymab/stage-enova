@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1107.json",
+        "2-Date": "2026-07-11",
+        "3-Hour": "03:18:07",
+        "4-Notes": "Between None and None; Goal : 22",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8173125139,
+        "8-Longitude": 10.5911598145
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1107.json",
+        "2-Date": "2026-07-12",
+        "3-Hour": "03:23:07",
+        "4-Notes": "Target_reached : 15",
+        "5-Stop_point": "15",
+        "6-Latitude": 35.8177992155,
+        "7-Longitude": 10.5916358158
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1107.json",
+        "2-Date": "2026-07-11",
+        "3-Hour": "20:15:27",
+        "4-Notes": "Between None and None; Goal : 43",
+        "5-Start_point": "15",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8175402699,
+        "8-Longitude": 10.5909629177
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1107.json",
+        "2-Date": "2026-07-11",
+        "3-Hour": "20:18:27",
+        "4-Notes": "Target_reached : 28",
+        "5-Stop_point": "28",
+        "6-Latitude": 35.8174329432,
+        "7-Longitude": 10.5915232943
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1107.json",
+        "2-Date": "2026-07-11",
+        "3-Hour": "20:33:32",
+        "4-Notes": "Between None and None; Goal : 44",
+        "5-Start_point": "28",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8178435536,
+        "8-Longitude": 10.5911795002
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1107.json",
+        "2-Date": "2026-07-11",
+        "3-Hour": "20:35:32",
+        "4-Notes": "Target_reached : 39",
+        "5-Stop_point": "39",
+        "6-Latitude": 35.8173616827,
+        "7-Longitude": 10.5911047746
+    }
+]

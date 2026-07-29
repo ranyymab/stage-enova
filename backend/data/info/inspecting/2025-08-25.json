@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2508.json",
+        "2-Date": "2025-08-25",
+        "3-Hour": "12:35:20",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8155512741,
+        "8-Longitude": 10.589444538615
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2508.json",
+        "2-Date": "2025-08-25",
+        "3-Hour": "12:37:59",
+        "4-Notes": "Target_reached : 27",
+        "5-Stop_point": "27",
+        "6-Latitude": 35.816900143653,
+        "7-Longitude": 10.59014167095
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2508.json",
+        "2-Date": "2025-08-25",
+        "3-Hour": "09:04:56",
+        "4-Notes": "Between None and None; Goal : 47",
+        "5-Start_point": "27",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815482001624,
+        "8-Longitude": 10.593378052656
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2508.json",
+        "2-Date": "2025-08-25",
+        "3-Hour": "09:06:59",
+        "4-Notes": "Target_reached : 41",
+        "5-Stop_point": "41",
+        "6-Latitude": 35.814853873286,
+        "7-Longitude": 10.5942406
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2508.json",
+        "2-Date": "2025-08-25",
+        "3-Hour": "20:10:30",
+        "4-Notes": "Between None and None; Goal : 61",
+        "5-Start_point": "41",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815022892387,
+        "8-Longitude": 10.589038677116
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2508.json",
+        "2-Date": "2025-08-25",
+        "3-Hour": "20:12:10",
+        "4-Notes": "Target_reached : 58",
+        "5-Stop_point": "58",
+        "6-Latitude": 35.818045170416,
+        "7-Longitude": 10.589967584645
+    }
+]

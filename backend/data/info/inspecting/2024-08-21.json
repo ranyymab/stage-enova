@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "15:31:10",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818808180023,
+        "8-Longitude": 10.590793782612
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "15:33:14",
+        "4-Notes": "Target_reached : 12",
+        "5-Stop_point": "12",
+        "6-Latitude": 35.818092386795,
+        "7-Longitude": 10.593075285338
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "18:18:10",
+        "4-Notes": "Between None and None; Goal : 32",
+        "5-Start_point": "12",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816452539457,
+        "8-Longitude": 10.58994911751
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "18:20:31",
+        "4-Notes": "Target_reached : 36",
+        "5-Stop_point": "36",
+        "6-Latitude": 35.818093902767,
+        "7-Longitude": 10.592935285829
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "04:17:49",
+        "4-Notes": "Between None and None; Goal : 56",
+        "5-Start_point": "36",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817998357107,
+        "8-Longitude": 10.588979265972
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "04:19:52",
+        "4-Notes": "Target_reached : 63",
+        "5-Stop_point": "63",
+        "6-Latitude": 35.819639696848,
+        "7-Longitude": 10.590501170633
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "15:34:13",
+        "4-Notes": "Between None and None; Goal : 83",
+        "5-Start_point": "63",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819240717455,
+        "8-Longitude": 10.592860024785
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "15:36:48",
+        "4-Notes": "Target_reached : 86",
+        "5-Stop_point": "86",
+        "6-Latitude": 35.815314498633,
+        "7-Longitude": 10.593280424299
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "02:28:16",
+        "4-Notes": "Between None and None; Goal : 106",
+        "5-Start_point": "86",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816185189749,
+        "8-Longitude": 10.593548859078
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "02:30:55",
+        "4-Notes": "Target_reached : 107",
+        "5-Stop_point": "107",
+        "6-Latitude": 35.819873197753,
+        "7-Longitude": 10.588821898036
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "08:13:51",
+        "4-Notes": "Between None and None; Goal : 127",
+        "5-Start_point": "107",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820663746106,
+        "8-Longitude": 10.592953789899
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2108.json",
+        "2-Date": "2024-08-21",
+        "3-Hour": "08:15:39",
+        "4-Notes": "Target_reached : 135",
+        "5-Stop_point": "135",
+        "6-Latitude": 35.818834801523,
+        "7-Longitude": 10.593466292178
+    }
+]

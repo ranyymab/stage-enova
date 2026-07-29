@@ -1,0 +1,20 @@
+[
+    {
+        "0-Date": "2026-07-13",
+        "1-Hour": "22:36:25",
+        "2-Mission_name": "Mission GreenPath 2406.json",
+        "3-Last_point": "0",
+        "4-Delay": "17.1993087661",
+        "5-Latitude": 35.8174519883,
+        "6-Longitude": 10.5915026327
+    },
+    {
+        "0-Date": "2026-07-13",
+        "1-Hour": "22:39:25",
+        "2-Mission_name": "Mission GreenPath 2406.json",
+        "3-Last_point": "1",
+        "4-Delay": "59.0158230802",
+        "5-Latitude": 35.8178172831,
+        "6-Longitude": 10.5909382432
+    }
+]

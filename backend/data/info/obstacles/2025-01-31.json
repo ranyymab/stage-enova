@@ -1,0 +1,38 @@
+[
+    {
+        "0-Date": "2025-01-31", 
+        "1-Hour": "03:54:48", 
+        "2-Mission_name": "Mission 1 + GPS.json", 
+        "3-Last_point": "7", 
+        "4-Delay": "5.19982290268", 
+        "5-Latitude": 32.85991429166667, 
+        "6-Longitude": -96.88408951166667
+    }, 
+    {
+        "0-Date": "2025-01-31", 
+        "1-Hour": "04:18:24", 
+        "2-Mission_name": "Mission 1 + GPS.json", 
+        "3-Last_point": "42", 
+        "4-Delay": "68.2121379375", 
+        "5-Latitude": 32.861386063333335, 
+        "6-Longitude": -96.88342697
+    }, 
+    {
+        "0-Date": "2025-01-31", 
+        "1-Hour": "04:24:54", 
+        "2-Mission_name": "Mission 1 + GPS.json", 
+        "3-Last_point": "7", 
+        "4-Delay": "10.1999928951", 
+        "5-Latitude": 32.85995393333334, 
+        "6-Longitude": -96.88407296166666
+    }, 
+    {
+        "0-Date": "2025-01-31", 
+        "1-Hour": "04:40:04", 
+        "2-Mission_name": "Mission 1 + GPS.json", 
+        "3-Last_point": "7", 
+        "4-Delay": "44.6001551151", 
+        "5-Latitude": 32.85995603166667, 
+        "6-Longitude": -96.88407317666666
+    }
+]

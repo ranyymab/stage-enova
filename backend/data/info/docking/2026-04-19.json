@@ -1,0 +1,556 @@
+[
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "03:01:40", 
+        "4-Battery": 97, 
+        "5-Latitude": 48.966554161666664, 
+        "6-Longitude": 9.428275533333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "03:01:54", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.966533958333336, 
+        "8-Longitude": 9.428266533333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round2.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "03:26:12", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.966552815, 
+        "8-Longitude": 9.428035766666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "03:27:12", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.96654319666666, 
+        "6-Longitude": 9.428267098333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "03:27:46", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.96655404166667, 
+        "6-Longitude": 9.428275665
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "03:27:58", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.966554065, 
+        "6-Longitude": 9.428275678333334
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "07:38:41", 
+        "4-Battery": 86, 
+        "5-Latitude": 48.966554128333335, 
+        "6-Longitude": 9.428275666666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round2.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "07:38:55", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96653385166667, 
+        "8-Longitude": 9.428267553333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round2.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "07:39:54", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96655304833333, 
+        "8-Longitude": 9.428033055
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "08:19:34", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.96654285166667, 
+        "6-Longitude": 9.428268558333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "08:20:10", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.96655398833333, 
+        "6-Longitude": 9.428275566666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "restart n=1", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "08:20:43", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.966554001666665, 
+        "6-Longitude": 9.42827557
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "08:28:19", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.966554138333336, 
+        "6-Longitude": 9.428275621666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "restart n=2", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "08:28:52", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.966554136666666, 
+        "6-Longitude": 9.428275618333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "08:30:02", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.966554161666664, 
+        "6-Longitude": 9.428275663333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "08:30:15", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.966554185, 
+        "6-Longitude": 9.428275655
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:01:40", 
+        "4-Battery": 92, 
+        "5-Latitude": 48.96655419, 
+        "6-Longitude": 9.42827567
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round2.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:01:55", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96653386333333, 
+        "8-Longitude": 9.428268001666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:23:45", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.966536705, 
+        "8-Longitude": 9.428062951666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:24:51", 
+        "4-Battery": 88, 
+        "5-Latitude": 48.96654318833333, 
+        "6-Longitude": 9.428266335
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:25:27", 
+        "4-Battery": 88, 
+        "5-Latitude": 48.966554345, 
+        "6-Longitude": 9.42827559
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "restart n=1", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:27:28", 
+        "4-Battery": 88, 
+        "5-Latitude": 48.96655433833333, 
+        "6-Longitude": 9.428275606666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:28:20", 
+        "4-Battery": 88, 
+        "5-Latitude": 48.966554278333334, 
+        "6-Longitude": 9.428275663333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "09:28:31", 
+        "4-Battery": 88, 
+        "5-Latitude": 48.96655427666666, 
+        "6-Longitude": 9.42827568
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:43:16", 
+        "4-Battery": 94, 
+        "5-Latitude": 48.96655429333333, 
+        "6-Longitude": 9.428275675
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:43:30", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96653414666667, 
+        "8-Longitude": 9.428267323333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:44:09", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.966553428333334, 
+        "8-Longitude": 9.428033891666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:50:20", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.96654234166667, 
+        "6-Longitude": 9.428267053333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:50:56", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.966554265, 
+        "6-Longitude": 9.428275656666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "restart n=1", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:51:29", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.96655426666667, 
+        "6-Longitude": 9.428275631666667
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:52:23", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.966554288333334, 
+        "6-Longitude": 9.428275938333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "10:52:36", 
+        "4-Battery": 93, 
+        "5-Latitude": 48.96655425833333, 
+        "6-Longitude": 9.428275893333334
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "13:52:04", 
+        "4-Battery": 86, 
+        "5-Latitude": 48.966554243333334, 
+        "6-Longitude": 9.42827592
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "13:52:18", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96653344166667, 
+        "8-Longitude": 9.428269183333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "13:57:58", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96655320166667, 
+        "8-Longitude": 9.428033256666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "14:21:36", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.9665424, 
+        "6-Longitude": 9.42826726
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "14:22:12", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.966554206666665, 
+        "6-Longitude": 9.428275706666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "restart n=1", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "14:22:45", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.96655421333333, 
+        "6-Longitude": 9.4282757
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "14:26:54", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.96655421, 
+        "6-Longitude": 9.428275818333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "14:27:20", 
+        "4-Battery": 83, 
+        "5-Latitude": 48.966554225, 
+        "6-Longitude": 9.428275803333333
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "15:01:41", 
+        "4-Battery": 94, 
+        "5-Latitude": 48.966554261666666, 
+        "6-Longitude": 9.428275911666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "15:01:55", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.966533545, 
+        "8-Longitude": 9.428268343333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round2.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "15:26:13", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96655251666667, 
+        "8-Longitude": 9.4280373
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "15:27:13", 
+        "4-Battery": 90, 
+        "5-Latitude": 48.96654286166667, 
+        "6-Longitude": 9.428266823333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "15:27:47", 
+        "4-Battery": 90, 
+        "5-Latitude": 48.966554171666665, 
+        "6-Longitude": 9.428275628333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "15:27:53", 
+        "4-Battery": 90, 
+        "5-Latitude": 48.966554173333336, 
+        "6-Longitude": 9.428275631666667
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "19:01:41", 
+        "4-Battery": 85, 
+        "5-Latitude": 48.966554185, 
+        "6-Longitude": 9.42827564
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round2.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "19:01:55", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96653363833333, 
+        "8-Longitude": 9.428266568333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round3.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "19:36:55", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96655577166667, 
+        "8-Longitude": 9.428028471666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "19:39:26", 
+        "4-Battery": 81, 
+        "5-Latitude": 48.966542485, 
+        "6-Longitude": 9.42826616
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "19:40:00", 
+        "4-Battery": 81, 
+        "5-Latitude": 48.96655409666667, 
+        "6-Longitude": 9.42827564
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "19:40:13", 
+        "4-Battery": 81, 
+        "5-Latitude": 48.966554116666664, 
+        "6-Longitude": 9.428275621666666
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "23:06:42", 
+        "4-Battery": 90, 
+        "5-Latitude": 48.96655413166667, 
+        "6-Longitude": 9.428275561666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round3.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "23:06:56", 
+        "4-Notes": "Going to Home with Docking_Station.json", 
+        "5-Start_point": "-1", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96653400333334, 
+        "8-Longitude": 9.428267395
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round1_1.json", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "23:28:49", 
+        "4-Notes": "Going to Station with Docking_Station.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.966537475, 
+        "8-Longitude": 9.428059448333332
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "23:32:34", 
+        "4-Battery": 87, 
+        "5-Latitude": 48.96654288166667, 
+        "6-Longitude": 9.428266263333333
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "23:33:10", 
+        "4-Battery": 87, 
+        "5-Latitude": 48.96655423333333, 
+        "6-Longitude": 9.428275821666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2026-04-19", 
+        "3-Hour": "23:33:28", 
+        "4-Battery": 87, 
+        "5-Latitude": 48.96655424666667, 
+        "6-Longitude": 9.428275771666666
+    }
+]

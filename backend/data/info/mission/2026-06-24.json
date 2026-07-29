@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission1_1006.json",
+        "2-Date": "24-6-2026",
+        "3-Hour": "03:00:00",
+        "4-Notes": "Mission automatique ronde 1",
+        "5-Start_point": "4",
+        "6-Distance": "0.293",
+        "7-Latitude": 35.8168154576,
+        "8-Longitude": 10.5945467892
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission1_1006.json",
+        "2-Date": "24-6-2026",
+        "3-Hour": "03:21:00",
+        "4-Notes": "Retour base",
+        "5-Stop_point": "10",
+        "6-Latitude": 35.8157953523,
+        "7-Longitude": 10.5922019819
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission1_1006.json",
+        "2-Date": "24-6-2026",
+        "3-Hour": "03:26:00",
+        "4-Notes": "Mission automatique ronde 2",
+        "5-Start_point": "4",
+        "6-Distance": "0.258",
+        "7-Latitude": 35.8168932393,
+        "8-Longitude": 10.5945129351
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission1_1006.json",
+        "2-Date": "24-6-2026",
+        "3-Hour": "03:44:00",
+        "4-Notes": "Retour base",
+        "5-Stop_point": "10",
+        "6-Latitude": 35.8157603521,
+        "7-Longitude": 10.5921393767
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "round2.json",
+        "2-Date": "24-6-2026",
+        "3-Hour": "03:49:00",
+        "4-Notes": "Mission automatique ronde 3",
+        "5-Start_point": "0",
+        "6-Distance": "0.433",
+        "7-Latitude": 35.8158999795,
+        "8-Longitude": 10.5921259693
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "round2.json",
+        "2-Date": "24-6-2026",
+        "3-Hour": "04:11:00",
+        "4-Notes": "Retour base",
+        "5-Stop_point": "10",
+        "6-Latitude": 35.815835823,
+        "7-Longitude": 10.5921343113
+    }
+]

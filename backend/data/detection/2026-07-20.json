@@ -1,0 +1,38 @@
+[
+    {
+        "hour": "21:37:34",
+        "objectDetected": "person",
+        "gps": {
+            "latitude": 35.8174079563,
+            "longitude": 10.5915140943
+        },
+        "image": {
+            "fileName": "2.png",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "03:45:13",
+        "objectDetected": "obstacle",
+        "gps": {
+            "latitude": 35.817563073,
+            "longitude": 10.591133065
+        },
+        "image": {
+            "fileName": "obstacle_20260720_034513.jpg",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "23:43:31",
+        "objectDetected": "animal",
+        "gps": {
+            "latitude": 35.8173835075,
+            "longitude": 10.5911422661
+        },
+        "image": {
+            "fileName": "3.png",
+            "filePath": ""
+        }
+    }
+]

@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "09:43:18",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.814974453086,
+        "8-Longitude": 10.590692023813
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "09:44:01",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816336076421,
+        "7-Longitude": 10.590743096751
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "11:17:29",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819392303453,
+        "8-Longitude": 10.592243276724
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "11:18:20",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.818294476705,
+        "7-Longitude": 10.594155385734
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "18:20:14",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815282886184,
+        "8-Longitude": 10.589648948629
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "18:21:45",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.815082334751,
+        "7-Longitude": 10.590026987871
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "13:40:38",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818355896924,
+        "8-Longitude": 10.591063864916
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2404.json",
+        "2-Date": "24-4-2025",
+        "3-Hour": "13:41:59",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816672512091,
+        "7-Longitude": 10.590634237075
+    }
+]

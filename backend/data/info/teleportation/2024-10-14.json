@@ -1,0 +1,50 @@
+[
+    {
+        "0-Info": "start",
+        "1-Date": "2024-10-14",
+        "2-Hour": "12:30:59",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.814731743801,
+        "5-Longitude": 10.588846531505
+    },
+    {
+        "0-Info": "end",
+        "1-Date": "2024-10-14",
+        "2-Hour": "12:37:04",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.814731743801,
+        "5-Longitude": 10.588846531505
+    },
+    {
+        "0-Info": "start",
+        "1-Date": "2024-10-14",
+        "2-Hour": "10:46:24",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.816030621468,
+        "5-Longitude": 10.58878023842
+    },
+    {
+        "0-Info": "end",
+        "1-Date": "2024-10-14",
+        "2-Hour": "10:10:41",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.816030621468,
+        "5-Longitude": 10.58878023842
+    },
+    {
+        "0-Info": "start",
+        "1-Date": "2024-10-14",
+        "2-Hour": "12:40:31",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.81896963499,
+        "5-Longitude": 10.591884835383
+    },
+    {
+        "0-Info": "end",
+        "1-Date": "2024-10-14",
+        "2-Hour": "12:45:12",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.81896963499,
+        "5-Longitude": 10.591884835383
+    }
+]

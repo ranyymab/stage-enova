@@ -1,0 +1,53 @@
+[
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "mission06.json", 
+        "2-Date": "6-2-2026", 
+        "3-Hour": "10:26:10", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "3", 
+        "6-Latitude": 35.817698963333335, 
+        "7-Longitude": 10.591346436666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "mission06.json", 
+        "2-Date": "6-2-2026", 
+        "3-Hour": "10:26:12", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "2", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.817698891666666, 
+        "8-Longitude": 10.591346543333334
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "mission06.json", 
+        "2-Date": "6-2-2026", 
+        "3-Hour": "10:26:33", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "3", 
+        "6-Latitude": 35.817698525, 
+        "7-Longitude": 10.59134657
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testest.json", 
+        "2-Date": "6-2-2026", 
+        "3-Hour": "11:45:28", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "1", 
+        "6-Latitude": 35.81786073166667, 
+        "7-Longitude": 10.59136159
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testest.json", 
+        "2-Date": "6-2-2026", 
+        "3-Hour": "11:51:20", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "3", 
+        "6-Latitude": 35.817574915, 
+        "7-Longitude": 10.591326073333333
+    }
+]

@@ -1,0 +1,75 @@
+[
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:10:49", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "1", 
+        "6-Latitude": 35.818080988333335, 
+        "7-Longitude": 10.591329758333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:10:56", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "2", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81808115, 
+        "8-Longitude": 10.591329995
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:10:59", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "1", 
+        "6-Latitude": 35.81808110833333, 
+        "7-Longitude": 10.591330083333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:11:14", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "2", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.818081723333336, 
+        "8-Longitude": 10.59133057
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:11:26", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.81808191333333, 
+        "7-Longitude": 10.59133125
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:11:33", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "1", 
+        "6-Distance": "3.35857766363", 
+        "7-Latitude": 35.81808215833333, 
+        "8-Longitude": 10.591331648333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:12:03", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.818083511666664, 
+        "7-Longitude": 10.591331315
+    }
+]

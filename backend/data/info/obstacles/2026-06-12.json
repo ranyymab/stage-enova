@@ -1,0 +1,20 @@
+[
+    {
+        "0-Date": "2026-06-12",
+        "1-Hour": "09:56:02",
+        "2-Mission_name": "Mission_A.json",
+        "3-Last_point": "0",
+        "4-Delay": "6.0230061314",
+        "5-Latitude": 35.818503927536,
+        "6-Longitude": 10.588394063746
+    },
+    {
+        "0-Date": "2026-06-12",
+        "1-Hour": "07:08:51",
+        "2-Mission_name": "Mission_A.json",
+        "3-Last_point": "3",
+        "4-Delay": "24.6259422892",
+        "5-Latitude": 35.820413353552,
+        "6-Longitude": 10.592133631912
+    }
+]

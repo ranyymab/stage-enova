@@ -1,0 +1,78 @@
+[
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "7-8-2025",
+        "3-Hour": "03:02:16",
+        "4-Battery": 92,
+        "5-Latitude": 35.817640978063,
+        "6-Longitude": 10.591250025187
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "round2.json",
+        "2-Date": "7-8-2025",
+        "3-Hour": "03:03:12",
+        "4-Notes": "Going to Home with Docking_Station.json",
+        "5-Start_point": "-1",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817640978063,
+        "8-Longitude": 10.591250025187
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "7-8-2025",
+        "3-Hour": "03:28:57",
+        "4-Battery": 86,
+        "5-Latitude": 35.817706836364,
+        "6-Longitude": 10.59138553679
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "7-8-2025",
+        "3-Hour": "03:29:29",
+        "4-Battery": 86,
+        "5-Latitude": 35.817706836364,
+        "6-Longitude": 10.59138553679
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "7-8-2025",
+        "3-Hour": "11:02:21",
+        "4-Battery": 92,
+        "5-Latitude": 35.817733455271,
+        "6-Longitude": 10.591234063639
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "round2.json",
+        "2-Date": "7-8-2025",
+        "3-Hour": "11:03:02",
+        "4-Notes": "Going to Home with Docking_Station.json",
+        "5-Start_point": "-1",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817733455271,
+        "8-Longitude": 10.591234063639
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "7-8-2025",
+        "3-Hour": "11:28:56",
+        "4-Battery": 89,
+        "5-Latitude": 35.817766791572,
+        "6-Longitude": 10.591327812493
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "7-8-2025",
+        "3-Hour": "11:29:31",
+        "4-Battery": 89,
+        "5-Latitude": 35.817766791572,
+        "6-Longitude": 10.591327812493
+    }
+]

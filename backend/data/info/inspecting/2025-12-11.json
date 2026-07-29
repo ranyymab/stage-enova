@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1112.json",
+        "2-Date": "2025-12-11",
+        "3-Hour": "18:12:40",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819620010111,
+        "8-Longitude": 10.590095438373
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1112.json",
+        "2-Date": "2025-12-11",
+        "3-Hour": "18:14:05",
+        "4-Notes": "Target_reached : 29",
+        "5-Stop_point": "29",
+        "6-Latitude": 35.82014382348,
+        "7-Longitude": 10.59101111929
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1112.json",
+        "2-Date": "2025-12-11",
+        "3-Hour": "19:33:19",
+        "4-Notes": "Between None and None; Goal : 49",
+        "5-Start_point": "29",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817472732586,
+        "8-Longitude": 10.59385738157
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1112.json",
+        "2-Date": "2025-12-11",
+        "3-Hour": "19:35:50",
+        "4-Notes": "Target_reached : 47",
+        "5-Stop_point": "47",
+        "6-Latitude": 35.820252643224,
+        "7-Longitude": 10.593165311105
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1112.json",
+        "2-Date": "2025-12-11",
+        "3-Hour": "14:31:48",
+        "4-Notes": "Between None and None; Goal : 67",
+        "5-Start_point": "47",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816295255291,
+        "8-Longitude": 10.593855789048
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1112.json",
+        "2-Date": "2025-12-11",
+        "3-Hour": "14:33:33",
+        "4-Notes": "Target_reached : 62",
+        "5-Stop_point": "62",
+        "6-Latitude": 35.817838433724,
+        "7-Longitude": 10.59064731166
+    }
+]

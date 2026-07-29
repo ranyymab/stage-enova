@@ -1,0 +1,40 @@
+[
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "2-3-2026",
+        "3-Hour": "03:02:46",
+        "4-Battery": 98,
+        "5-Latitude": 35.817649639436,
+        "6-Longitude": 10.591340624602
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "round2.json",
+        "2-Date": "2-3-2026",
+        "3-Hour": "03:03:12",
+        "4-Notes": "Going to Home with Docking_Station.json",
+        "5-Start_point": "-1",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817649639436,
+        "8-Longitude": 10.591340624602
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "2-3-2026",
+        "3-Hour": "03:28:08",
+        "4-Battery": 95,
+        "5-Latitude": 35.817672660417,
+        "6-Longitude": 10.591395244607
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "2-3-2026",
+        "3-Hour": "03:29:47",
+        "4-Battery": 95,
+        "5-Latitude": 35.817672660417,
+        "6-Longitude": 10.591395244607
+    }
+]

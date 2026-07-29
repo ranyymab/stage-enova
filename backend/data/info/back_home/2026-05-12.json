@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "mission0705.json", 
+        "2-Date": "12-5-2026", 
+        "3-Hour": "14:51:31", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81772028333334, 
+        "8-Longitude": 10.59136771
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "mission0705.json", 
+        "2-Date": "12-5-2026", 
+        "3-Hour": "14:51:31", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81772028333334, 
+        "7-Longitude": 10.59136771
+    }
+]

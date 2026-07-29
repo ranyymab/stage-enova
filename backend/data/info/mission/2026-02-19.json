@@ -1,0 +1,77 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_1802.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "10:21:45", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.19775902133", 
+        "7-Latitude": 35.817757291666666, 
+        "8-Longitude": 10.591365106666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_1802.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "10:25:28", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.06209644592", 
+        "7-Latitude": 35.81775192166667, 
+        "8-Longitude": 10.591354356666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_1802.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "10:39:04", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.81784631666667, 
+        "7-Longitude": 10.59136045
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mision_1902.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "10:50:49", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.03146423807", 
+        "7-Latitude": 35.81774346833333, 
+        "8-Longitude": 10.5913615
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mision_1902.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "10:55:15", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81776275833333, 
+        "8-Longitude": 10.59135946
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mision_1902.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "10:55:18", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.09222218745", 
+        "7-Latitude": 35.817745335, 
+        "8-Longitude": 10.591361211666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mision_1902.json", 
+        "2-Date": "19-2-2026", 
+        "3-Hour": "10:55:50", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.81790092833333, 
+        "7-Longitude": 10.591345908333333
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "round3.json", 
+        "2-Date": "28-5-2026", 
+        "3-Hour": "20:46:13", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 48.96660742666667, 
+        "8-Longitude": 9.427840861666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "round3.json", 
+        "2-Date": "28-5-2026", 
+        "3-Hour": "20:46:34", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 48.966556796666666, 
+        "7-Longitude": 9.42802193
+    }
+]

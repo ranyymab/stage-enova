@@ -1,0 +1,18 @@
+[
+    {
+        "0-Info": "stop", 
+        "1-Date": "16-2-2026", 
+        "2-Hour": "12:13:04", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Date": "16-2-2026", 
+        "2-Hour": "16:28:05", 
+        "3-Mode": "Xbox", 
+        "4-Latitude": NaN, 
+        "5-Longitude": NaN
+    }
+]

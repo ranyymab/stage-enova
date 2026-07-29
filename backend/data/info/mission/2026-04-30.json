@@ -1,0 +1,360 @@
+[
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:08:35", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.81820521, 
+        "7-Longitude": 10.59133132
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:09:05", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "5", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.818208328333334, 
+        "8-Longitude": 10.591331015
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:10:08", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818217145, 
+        "7-Longitude": 10.591334468333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:10:15", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "3", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81821118166667, 
+        "8-Longitude": 10.591333458333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:11:20", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.09628541097", 
+        "7-Latitude": 35.817750546666666, 
+        "8-Longitude": 10.591359698333333
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:12:33", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818205508333335, 
+        "7-Longitude": 10.591332408333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:12:42", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "5", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81820891833333, 
+        "8-Longitude": 10.591332866666667
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:13:39", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818216811666666, 
+        "7-Longitude": 10.591330436666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:14:00", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "3", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.818211096666666, 
+        "8-Longitude": 10.591329155
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:15:07", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.05577898335", 
+        "7-Latitude": 35.81775018166667, 
+        "8-Longitude": 10.591359663333334
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:16:20", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818205685, 
+        "7-Longitude": 10.591332338333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:16:29", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "5", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.818208775, 
+        "8-Longitude": 10.59133263
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:17:16", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818215871666666, 
+        "7-Longitude": 10.591336343333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:17:21", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "3", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81820989, 
+        "8-Longitude": 10.591335931666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:18:26", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.09891923288", 
+        "7-Latitude": 35.817749995, 
+        "8-Longitude": 10.591360508333333
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:19:39", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.81820481333333, 
+        "7-Longitude": 10.591332398333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:19:46", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "5", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81820833166667, 
+        "8-Longitude": 10.591332755
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:20:43", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818218693333336, 
+        "7-Longitude": 10.591330595
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:20:54", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "3", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81821293666667, 
+        "8-Longitude": 10.591329485
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:21:59", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.12511313779", 
+        "7-Latitude": 35.817750806666666, 
+        "8-Longitude": 10.59135965
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "10:23:11", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818203545, 
+        "7-Longitude": 10.591331805
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:40:41", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818204875, 
+        "7-Longitude": 10.591331046666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:41:50", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "5", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81820842, 
+        "8-Longitude": 10.591331045
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:42:47", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.81821634333333, 
+        "7-Longitude": 10.591330398333334
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:43:34", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "3", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81821042833333, 
+        "8-Longitude": 10.591329076666666
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "16:44:18", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "2", 
+        "6-Latitude": 35.81789096333333, 
+        "7-Longitude": 10.591349998333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:22:07", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "2", 
+        "6-Latitude": 35.81770746666667, 
+        "7-Longitude": 10.59139349
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:22:13", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "4.68954722162", 
+        "7-Latitude": 35.81771100833333, 
+        "8-Longitude": 10.591396611666667
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:23:24", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818204888333334, 
+        "7-Longitude": 10.591331785
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:23:32", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "5", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81820845833333, 
+        "8-Longitude": 10.591331451666667
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:24:39", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "4", 
+        "6-Latitude": 35.818214525, 
+        "7-Longitude": 10.59132909
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:24:43", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "3", 
+        "6-Distance": "On_segment", 
+        "7-Latitude": 35.81820918166667, 
+        "8-Longitude": 10.59133421
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:25:49", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.03094308712", 
+        "7-Latitude": 35.817749905, 
+        "8-Longitude": 10.591360843333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "testtablette.json", 
+        "2-Date": "30-4-2026", 
+        "3-Hour": "18:38:42", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817752438333336, 
+        "7-Longitude": 10.591332478333333
+    }
+]

@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "21:56:52",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815136489014,
+        "8-Longitude": 10.589718527505
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "21:58:04",
+        "4-Notes": "Target_reached : 13",
+        "5-Stop_point": "13",
+        "6-Latitude": 35.819495872613,
+        "7-Longitude": 10.593510910573
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "16:02:33",
+        "4-Notes": "Between None and None; Goal : 33",
+        "5-Start_point": "13",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815950063539,
+        "8-Longitude": 10.590243859563
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "16:04:47",
+        "4-Notes": "Target_reached : 29",
+        "5-Stop_point": "29",
+        "6-Latitude": 35.818500507097,
+        "7-Longitude": 10.590854096992
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "10:18:54",
+        "4-Notes": "Between None and None; Goal : 49",
+        "5-Start_point": "29",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815792894212,
+        "8-Longitude": 10.588902216286
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "10:20:37",
+        "4-Notes": "Target_reached : 55",
+        "5-Stop_point": "55",
+        "6-Latitude": 35.817848751361,
+        "7-Longitude": 10.590598405352
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "05:31:54",
+        "4-Notes": "Between None and None; Goal : 75",
+        "5-Start_point": "55",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818419773605,
+        "8-Longitude": 10.59260042503
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1908.json",
+        "2-Date": "2025-08-19",
+        "3-Hour": "05:33:50",
+        "4-Notes": "Target_reached : 72",
+        "5-Stop_point": "72",
+        "6-Latitude": 35.817238434004,
+        "7-Longitude": 10.5936932126
+    }
+]

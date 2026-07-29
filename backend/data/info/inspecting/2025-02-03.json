@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-03", 
+        "3-Hour": "22:06:20", 
+        "4-Notes": "Between None and None; Goal : 31", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 32.86142797, 
+        "8-Longitude": -96.88398537166667
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-03", 
+        "3-Hour": "22:06:21", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "29", 
+        "6-Latitude": 32.861426533333336, 
+        "7-Longitude": -96.883984025
+    }
+]

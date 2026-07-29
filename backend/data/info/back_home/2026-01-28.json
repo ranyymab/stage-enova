@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "08:44:14",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815494634514,
+        "8-Longitude": 10.590673139297
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "08:45:46",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.815299247358,
+        "7-Longitude": 10.590534262238
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "20:17:30",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817104693639,
+        "8-Longitude": 10.5939649247
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "20:18:32",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.816611011524,
+        "7-Longitude": 10.592306678768
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "13:06:57",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818477331885,
+        "8-Longitude": 10.590691850915
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "13:07:56",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.820134237457,
+        "7-Longitude": 10.59250731713
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "19:49:14",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818424864994,
+        "8-Longitude": 10.589022793167
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_2801.json",
+        "2-Date": "28-1-2026",
+        "3-Hour": "19:50:10",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.814858698216,
+        "7-Longitude": 10.591726491376
+    }
+]

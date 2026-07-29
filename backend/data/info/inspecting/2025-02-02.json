@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-02", 
+        "3-Hour": "01:54:37", 
+        "4-Notes": "Between 52 and 53; Goal : 31", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 32.860787385, 
+        "8-Longitude": -96.88408551666667
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-02", 
+        "3-Hour": "01:56:52", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "44", 
+        "6-Latitude": 32.86142634666667, 
+        "7-Longitude": -96.88383877833333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-02", 
+        "3-Hour": "01:57:06", 
+        "4-Notes": "Between 44 and 43; Goal : 1", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 32.86142620166667, 
+        "8-Longitude": -96.88383463
+    }, 
+    {
+        "0-Info": "pause", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-02", 
+        "3-Hour": "01:57:17", 
+        "4-Notes": "Pause_pressed", 
+        "5-Last_point": "44", 
+        "6-Latitude": 32.86144189, 
+        "7-Longitude": -96.883800395
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-02", 
+        "3-Hour": "01:59:01", 
+        "4-Notes": "Between 44 and 33; Goal : 1", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 32.861392476666666, 
+        "8-Longitude": -96.883727725
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission GreenPath.json", 
+        "2-Date": "2025-02-02", 
+        "3-Hour": "02:02:33", 
+        "4-Notes": "Target_reached : 1", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 32.86041943, 
+        "7-Longitude": -96.88410244833334
+    }
+]

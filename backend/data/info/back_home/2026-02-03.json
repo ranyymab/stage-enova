@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_0302.json",
+        "2-Date": "3-2-2026",
+        "3-Hour": "16:14:24",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819718123543,
+        "8-Longitude": 10.588861876882
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_0302.json",
+        "2-Date": "3-2-2026",
+        "3-Hour": "16:15:26",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.819813067821,
+        "7-Longitude": 10.592468966996
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_0302.json",
+        "2-Date": "3-2-2026",
+        "3-Hour": "09:29:31",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.820490543259,
+        "8-Longitude": 10.593890585404
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_0302.json",
+        "2-Date": "3-2-2026",
+        "3-Hour": "09:30:17",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.818654455005,
+        "7-Longitude": 10.590222224778
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "mission_0302.json",
+        "2-Date": "3-2-2026",
+        "3-Hour": "18:26:53",
+        "4-Notes": "Between None and None",
+        "5-Start_point": "None",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817101399662,
+        "8-Longitude": 10.593840813268
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "mission_0302.json",
+        "2-Date": "3-2-2026",
+        "3-Hour": "18:27:27",
+        "4-Notes": "Home_reached",
+        "5-Stop_point": "0",
+        "6-Latitude": 35.819743257567,
+        "7-Longitude": 10.591144009741
+    }
+]

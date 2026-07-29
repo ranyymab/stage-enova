@@ -1,0 +1,86 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "14:06:16",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81963103196,
+        "8-Longitude": 10.592755065342
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "14:08:54",
+        "4-Notes": "Target_reached : 29",
+        "5-Stop_point": "29",
+        "6-Latitude": 35.815875528803,
+        "7-Longitude": 10.589024474844
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "07:45:21",
+        "4-Notes": "Between None and None; Goal : 49",
+        "5-Start_point": "29",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817057378939,
+        "8-Longitude": 10.59104227605
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "07:47:40",
+        "4-Notes": "Target_reached : 42",
+        "5-Stop_point": "42",
+        "6-Latitude": 35.819242896051,
+        "7-Longitude": 10.588579002171
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "15:29:42",
+        "4-Notes": "Between None and None; Goal : 62",
+        "5-Start_point": "42",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819724797425,
+        "8-Longitude": 10.591832866647
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "15:31:31",
+        "4-Notes": "Target_reached : 70",
+        "5-Stop_point": "70",
+        "6-Latitude": 35.82043714193,
+        "7-Longitude": 10.589107816087
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "18:59:27",
+        "4-Notes": "Between None and None; Goal : 90",
+        "5-Start_point": "70",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.814726025766,
+        "8-Longitude": 10.592717283582
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 0210.json",
+        "2-Date": "2024-10-02",
+        "3-Hour": "18:01:58",
+        "4-Notes": "Target_reached : 98",
+        "5-Stop_point": "98",
+        "6-Latitude": 35.817597591781,
+        "7-Longitude": 10.591349997394
+    }
+]

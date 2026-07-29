@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "test_2409.json", 
+        "2-Date": "2024-09-24", 
+        "3-Hour": "19:50:28", 
+        "4-Notes": "Between None and None; Goal : 1", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81766998333333, 
+        "8-Longitude": 10.591363378333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "test_2409.json", 
+        "2-Date": "2024-09-24", 
+        "3-Hour": "19:50:50", 
+        "4-Notes": "Target_reached : 1", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 35.81759760833334, 
+        "7-Longitude": 10.591362655
+    }
+]

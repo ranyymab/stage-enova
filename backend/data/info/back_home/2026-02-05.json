@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:05:58", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81795538833333, 
+        "8-Longitude": 10.591337618333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "mission_0502.json", 
+        "2-Date": "5-2-2026", 
+        "3-Hour": "11:05:58", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81795538833333, 
+        "7-Longitude": 10.591337618333334
+    }
+]

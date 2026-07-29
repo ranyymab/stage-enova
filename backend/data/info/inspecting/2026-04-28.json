@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "20:54:25",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818395791287,
+        "8-Longitude": 10.589264374109
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "20:56:53",
+        "4-Notes": "Target_reached : 19",
+        "5-Stop_point": "19",
+        "6-Latitude": 35.816316119503,
+        "7-Longitude": 10.591058991887
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "11:51:56",
+        "4-Notes": "Between None and None; Goal : 39",
+        "5-Start_point": "19",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.81769338285,
+        "8-Longitude": 10.593756387677
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "11:53:15",
+        "4-Notes": "Target_reached : 29",
+        "5-Stop_point": "29",
+        "6-Latitude": 35.817889022569,
+        "7-Longitude": 10.592351872709
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "06:13:19",
+        "4-Notes": "Between None and None; Goal : 49",
+        "5-Start_point": "29",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819163679812,
+        "8-Longitude": 10.593705724775
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "06:15:05",
+        "4-Notes": "Target_reached : 55",
+        "5-Stop_point": "55",
+        "6-Latitude": 35.814728604542,
+        "7-Longitude": 10.588491458416
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "04:46:21",
+        "4-Notes": "Between None and None; Goal : 75",
+        "5-Start_point": "55",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817426215201,
+        "8-Longitude": 10.589056114199
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "04:48:38",
+        "4-Notes": "Target_reached : 75",
+        "5-Stop_point": "75",
+        "6-Latitude": 35.816179603094,
+        "7-Longitude": 10.593538633263
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "11:29:18",
+        "4-Notes": "Between None and None; Goal : 95",
+        "5-Start_point": "75",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.815348074195,
+        "8-Longitude": 10.591507463116
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "11:31:53",
+        "4-Notes": "Target_reached : 103",
+        "5-Stop_point": "103",
+        "6-Latitude": 35.820268999277,
+        "7-Longitude": 10.590605036299
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "01:10:17",
+        "4-Notes": "Between None and None; Goal : 123",
+        "5-Start_point": "103",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817693925269,
+        "8-Longitude": 10.593153956478
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2804.json",
+        "2-Date": "2026-04-28",
+        "3-Hour": "01:12:48",
+        "4-Notes": "Target_reached : 118",
+        "5-Stop_point": "118",
+        "6-Latitude": 35.816913535702,
+        "7-Longitude": 10.588668604686
+    }
+]

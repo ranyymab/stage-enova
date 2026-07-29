@@ -1,0 +1,49 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_Global.json", 
+        "2-Date": "2024-08-28", 
+        "3-Hour": "13:22:13", 
+        "4-Notes": "Going to Station with Mission_Docking.json", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81766819333333, 
+        "8-Longitude": 10.591363528333334
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "start", 
+        "2-Date": "2024-08-28", 
+        "3-Hour": "13:23:35", 
+        "4-Battery": 80, 
+        "5-Latitude": 35.81742051166667, 
+        "6-Longitude": 10.591334556666666
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "failed", 
+        "2-Date": "2024-08-28", 
+        "3-Hour": "13:24:09", 
+        "4-Battery": 80, 
+        "5-Latitude": 35.817407841666665, 
+        "6-Longitude": 10.59133608
+    }, 
+    {
+        "0-Info": "docking", 
+        "1-State": "success", 
+        "2-Date": "2024-08-28", 
+        "3-Hour": "13:24:16", 
+        "4-Battery": 80, 
+        "5-Latitude": 35.817407841666665, 
+        "6-Longitude": 10.591336061666667
+    }, 
+    {
+        "0-Info": "undocking", 
+        "1-State": "start", 
+        "2-Date": "2024-08-28", 
+        "3-Hour": "14:45:06", 
+        "4-Battery": 100, 
+        "5-Latitude": 35.817407905, 
+        "6-Longitude": 10.59133587
+    }
+]

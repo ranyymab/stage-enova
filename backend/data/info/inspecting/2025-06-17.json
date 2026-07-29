@@ -1,0 +1,128 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "12:46:35",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817967544456,
+        "8-Longitude": 10.590539604771
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "12:48:22",
+        "4-Notes": "Target_reached : 27",
+        "5-Stop_point": "27",
+        "6-Latitude": 35.815574174177,
+        "7-Longitude": 10.592711169736
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "12:29:22",
+        "4-Notes": "Between None and None; Goal : 47",
+        "5-Start_point": "27",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817142009874,
+        "8-Longitude": 10.591781270748
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "12:31:56",
+        "4-Notes": "Target_reached : 46",
+        "5-Stop_point": "46",
+        "6-Latitude": 35.815585799117,
+        "7-Longitude": 10.592335947654
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "12:27:05",
+        "4-Notes": "Between None and None; Goal : 66",
+        "5-Start_point": "46",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.817667064068,
+        "8-Longitude": 10.591553611553
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "12:29:59",
+        "4-Notes": "Target_reached : 75",
+        "5-Stop_point": "75",
+        "6-Latitude": 35.81621920184,
+        "7-Longitude": 10.589125848952
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "18:55:43",
+        "4-Notes": "Between None and None; Goal : 95",
+        "5-Start_point": "75",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816852012139,
+        "8-Longitude": 10.591099331044
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "18:57:58",
+        "4-Notes": "Target_reached : 90",
+        "5-Stop_point": "90",
+        "6-Latitude": 35.820038445442,
+        "7-Longitude": 10.590360722567
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "20:21:34",
+        "4-Notes": "Between None and None; Goal : 110",
+        "5-Start_point": "90",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819858269256,
+        "8-Longitude": 10.592050376857
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "20:23:51",
+        "4-Notes": "Target_reached : 120",
+        "5-Stop_point": "120",
+        "6-Latitude": 35.819692078546,
+        "7-Longitude": 10.589256567817
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "07:52:44",
+        "4-Notes": "Between None and None; Goal : 140",
+        "5-Start_point": "120",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818142155546,
+        "8-Longitude": 10.594163391868
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1706.json",
+        "2-Date": "2025-06-17",
+        "3-Hour": "07:54:07",
+        "4-Notes": "Target_reached : 142",
+        "5-Stop_point": "142",
+        "6-Latitude": 35.815190460373,
+        "7-Longitude": 10.590813856406
+    }
+]

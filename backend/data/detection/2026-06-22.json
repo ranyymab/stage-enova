@@ -1,0 +1,26 @@
+[
+    {
+        "hour": "23:29:59",
+        "objectDetected": "obstacle",
+        "gps": {
+            "latitude": 35.815117,
+            "longitude": 10.590925
+        },
+        "image": {
+            "fileName": "obstacle_20260622_232959.jpg",
+            "filePath": ""
+        }
+    },
+    {
+        "hour": "21:54:49",
+        "objectDetected": "animal",
+        "gps": {
+            "latitude": 35.815473,
+            "longitude": 10.591443
+        },
+        "image": {
+            "fileName": "3.png",
+            "filePath": ""
+        }
+    }
+]

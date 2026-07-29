@@ -1,0 +1,212 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "12:00:00", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81798583333333, 
+        "8-Longitude": 10.59133749
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "12:00:00", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81798581166667, 
+        "7-Longitude": 10.59133746
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_A_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "14:31:43", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81772356166667, 
+        "8-Longitude": 10.591355025
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_A_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "14:31:43", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81772356166667, 
+        "7-Longitude": 10.591355025
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_A_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "14:41:53", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817674133333334, 
+        "8-Longitude": 10.591359585
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_A_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "14:42:04", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817729811666666, 
+        "7-Longitude": 10.591366391666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission_A_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "14:58:45", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817725261666666, 
+        "8-Longitude": 10.59135381
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission_A_1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "14:58:46", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817725261666666, 
+        "7-Longitude": 10.59135381
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:13:19", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774778166667, 
+        "8-Longitude": 10.59135475
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:13:19", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774778166667, 
+        "7-Longitude": 10.59135475
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:36:45", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817741528333336, 
+        "8-Longitude": 10.591351281666666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:36:45", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817741528333336, 
+        "7-Longitude": 10.591351281666666
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:37:00", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "0", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817741543333334, 
+        "8-Longitude": 10.591351345
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:37:00", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817741543333334, 
+        "7-Longitude": 10.591351345
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:38:09", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774517, 
+        "8-Longitude": 10.59135352
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "15:38:09", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774517, 
+        "7-Longitude": 10.59135352
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "16:15:48", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774054, 
+        "8-Longitude": 10.591350718333333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "16:15:48", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774054, 
+        "7-Longitude": 10.591350718333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "16:52:36", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81774135333333, 
+        "8-Longitude": 10.59135633
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "docking1302.json", 
+        "2-Date": "13-2-2026", 
+        "3-Hour": "16:52:36", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81774135333333, 
+        "7-Longitude": 10.59135633
+    }
+]

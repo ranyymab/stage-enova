@@ -1,0 +1,83 @@
+[
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "10:56:33", 
+        "2-Mission_name": "round1.json", 
+        "3-Last_point": "32", 
+        "4-Delay": "13.6000249386", 
+        "5-Latitude": 48.96470006166667, 
+        "6-Longitude": 9.427189876666667
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "10:56:47", 
+        "2-Mission_name": "round1.json", 
+        "3-Last_point": "33", 
+        "4-Delay": "6.5002720356", 
+        "5-Latitude": 48.964665335, 
+        "6-Longitude": 9.42722739
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "14:53:55", 
+        "2-Mission_name": "round1_1.json", 
+        "3-Last_point": "24", 
+        "4-Delay": "46.4171719551", 
+        "5-Latitude": 48.964813768333336, 
+        "6-Longitude": 9.426778043333334
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "15:00:25", 
+        "2-Mission_name": "round1_1.json", 
+        "3-Last_point": "50", 
+        "4-Delay": "21.8001279831", 
+        "5-Latitude": 48.965762141666666, 
+        "6-Longitude": 9.428339126666666
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "17:35:30", 
+        "2-Mission_name": "round4.json", 
+        "3-Last_point": "75", 
+        "4-Delay": "13.0469801426", 
+        "5-Latitude": 48.964445596666664, 
+        "6-Longitude": 9.42691558
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "17:41:12", 
+        "2-Mission_name": "round4.json", 
+        "3-Last_point": "99", 
+        "4-Delay": "39.1005311012", 
+        "5-Latitude": 48.96601375, 
+        "6-Longitude": 9.428010405
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "17:43:48", 
+        "2-Mission_name": "round4.json", 
+        "3-Last_point": "107", 
+        "4-Delay": "8.8998670578", 
+        "5-Latitude": 48.966478045, 
+        "6-Longitude": 9.428130848333334
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "18:03:59", 
+        "2-Mission_name": "round1_1.json", 
+        "3-Last_point": "9", 
+        "4-Delay": "6.20004010201", 
+        "5-Latitude": 48.96615375166667, 
+        "6-Longitude": 9.427370735
+    }, 
+    {
+        "0-Date": "2026-03-30", 
+        "1-Hour": "18:04:56", 
+        "2-Mission_name": "round1_1.json", 
+        "3-Last_point": "9", 
+        "4-Delay": "9.40005302429", 
+        "5-Latitude": 48.966153453333334, 
+        "6-Longitude": 9.427371136666666
+    }
+]

@@ -1,0 +1,110 @@
+[
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "03:00:00",
+        "4-Battery": 92,
+        "5-Latitude": 35.8157672434,
+        "6-Longitude": 10.5921844618
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "03:25:22",
+        "4-Battery": 85,
+        "5-Latitude": 35.8157222445,
+        "6-Longitude": 10.5922058332
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "28-6-2026",
+        "3-Hour": "03:25:45",
+        "4-Battery": 85,
+        "5-Latitude": 35.8157222445,
+        "6-Longitude": 10.5922058332
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "03:58:00",
+        "4-Battery": 99,
+        "5-Latitude": 35.8157838172,
+        "6-Longitude": 10.5921174175
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "04:23:22",
+        "4-Battery": 91,
+        "5-Latitude": 35.8158082712,
+        "6-Longitude": 10.5922192426
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "28-6-2026",
+        "3-Hour": "04:23:45",
+        "4-Battery": 91,
+        "5-Latitude": 35.8158082712,
+        "6-Longitude": 10.5922192426
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "04:53:00",
+        "4-Battery": 99,
+        "5-Latitude": 35.815769508,
+        "6-Longitude": 10.5921044486
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "05:18:22",
+        "4-Battery": 92,
+        "5-Latitude": 35.8158858277,
+        "6-Longitude": 10.5921905649
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "28-6-2026",
+        "3-Hour": "05:18:45",
+        "4-Battery": 92,
+        "5-Latitude": 35.8158858277,
+        "6-Longitude": 10.5921905649
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "05:42:00",
+        "4-Battery": 99,
+        "5-Latitude": 35.815813662,
+        "6-Longitude": 10.5921750922
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "28-6-2026",
+        "3-Hour": "06:07:22",
+        "4-Battery": 94,
+        "5-Latitude": 35.8159185338,
+        "6-Longitude": 10.5922163299
+    },
+    {
+        "0-Info": "docking",
+        "1-State": "success",
+        "2-Date": "28-6-2026",
+        "3-Hour": "06:07:45",
+        "4-Battery": 94,
+        "5-Latitude": 35.8159185338,
+        "6-Longitude": 10.5922163299
+    }
+]

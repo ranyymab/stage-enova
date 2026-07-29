@@ -1,0 +1,44 @@
+[
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Test_Gps.json", 
+        "2-Date": "27-6-2024", 
+        "3-Hour": "17:04:20", 
+        "4-Notes": "Between None and None", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.817669765, 
+        "8-Longitude": 10.591371171666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Test_Gps.json", 
+        "2-Date": "27-6-2024", 
+        "3-Hour": "17:04:20", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.817669765, 
+        "7-Longitude": 10.591371171666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Test_Gps.json", 
+        "2-Date": "27-6-2024", 
+        "3-Hour": "17:05:51", 
+        "4-Notes": "Between 1 and 0", 
+        "5-Start_point": "None", 
+        "6-Distance": "Unknown", 
+        "7-Latitude": 35.81763663666667, 
+        "8-Longitude": 10.591368743333334
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Test_Gps.json", 
+        "2-Date": "27-6-2024", 
+        "3-Hour": "17:05:54", 
+        "4-Notes": "Home_reached", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 35.81766088, 
+        "7-Longitude": 10.591367548333332
+    }
+]

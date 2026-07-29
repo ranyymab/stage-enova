@@ -1,0 +1,213 @@
+[
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:31:52", 
+        "4-Notes": "Automatic_end", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 32.861465566666666, 
+        "7-Longitude": -96.88403221833333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:31:56", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "0.601065302509", 
+        "7-Latitude": 32.861465485, 
+        "8-Longitude": -96.88403167166666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:33:49", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "13", 
+        "6-Latitude": 32.861383606666664, 
+        "7-Longitude": -96.883358895
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:37:21", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "13", 
+        "6-Distance": "1.102978962", 
+        "7-Latitude": 32.86138257333333, 
+        "8-Longitude": -96.88335065666666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:37:29", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "14", 
+        "6-Latitude": 32.86136791166667, 
+        "7-Longitude": -96.88338399
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:38:02", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "14", 
+        "6-Distance": "0.672810521493", 
+        "7-Latitude": 32.86136958666667, 
+        "8-Longitude": -96.88339377666667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:38:10", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "15", 
+        "6-Latitude": 32.861389306666666, 
+        "7-Longitude": -96.88343762
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:39:48", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "10", 
+        "6-Distance": "1.41301148909", 
+        "7-Latitude": 32.861389933333335, 
+        "8-Longitude": -96.883438885
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "21:39:51", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "15", 
+        "6-Latitude": 32.86139347333334, 
+        "7-Longitude": -96.88345470166666
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission P1.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "22:02:33", 
+        "4-Notes": "Automatic_end", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 32.861451618333334, 
+        "7-Longitude": -96.88402087666667
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission P1.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "22:02:37", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "1", 
+        "6-Distance": "2.16433854554", 
+        "7-Latitude": 32.86145122833334, 
+        "8-Longitude": -96.884020415
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission P1.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "22:09:19", 
+        "4-Notes": "Automatic_end", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 32.861453368333336, 
+        "7-Longitude": -96.88405643833333
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission P1.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "22:14:16", 
+        "4-Notes": "Automatic_end", 
+        "5-Stop_point": "0", 
+        "6-Latitude": 32.861445401666664, 
+        "7-Longitude": -96.88403635
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "Mission P1.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "22:14:24", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "0.2717081475", 
+        "7-Latitude": 32.86144455, 
+        "8-Longitude": -96.88403666166667
+    }, 
+    {
+        "0-Info": "end", 
+        "1-Mission_name": "Mission P1.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "22:14:39", 
+        "4-Notes": "Emergency_pressed", 
+        "5-Stop_point": "1", 
+        "6-Latitude": 32.86144779833333, 
+        "7-Longitude": -96.883997505
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "P-two.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "23:00:46", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "0.986332891743", 
+        "7-Latitude": 32.86045890166667, 
+        "8-Longitude": -96.884144715
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "P-two.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "23:04:33", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "1.04036959909", 
+        "7-Latitude": 32.860458513333334, 
+        "8-Longitude": -96.88414513333333
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "P-two.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "23:12:53", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "0.986116848095", 
+        "7-Latitude": 32.860464975, 
+        "8-Longitude": -96.88414537
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "P-two.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "23:12:59", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "0", 
+        "6-Distance": "0.933596842755", 
+        "7-Latitude": 32.86046510166667, 
+        "8-Longitude": -96.884144745
+    }, 
+    {
+        "0-Info": "start", 
+        "1-Mission_name": "P-two.json", 
+        "2-Date": "2025-01-30", 
+        "3-Hour": "23:14:22", 
+        "4-Notes": "Start_pressed", 
+        "5-Start_point": "1", 
+        "6-Distance": "1.16273920252", 
+        "7-Latitude": 32.860431713333334, 
+        "8-Longitude": -96.884108015
+    }
+]

@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1402.json",
+        "2-Date": "2025-02-14",
+        "3-Hour": "22:59:56",
+        "4-Notes": "Between None and None; Goal : 20",
+        "5-Start_point": "0",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.818344241279,
+        "8-Longitude": 10.594087884303
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1402.json",
+        "2-Date": "2025-02-14",
+        "3-Hour": "22:01:23",
+        "4-Notes": "Target_reached : 26",
+        "5-Stop_point": "26",
+        "6-Latitude": 35.820122791715,
+        "7-Longitude": 10.58934888517
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1402.json",
+        "2-Date": "2025-02-14",
+        "3-Hour": "02:27:31",
+        "4-Notes": "Between None and None; Goal : 46",
+        "5-Start_point": "26",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.819736453611,
+        "8-Longitude": 10.591382106904
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1402.json",
+        "2-Date": "2025-02-14",
+        "3-Hour": "02:29:21",
+        "4-Notes": "Target_reached : 48",
+        "5-Stop_point": "48",
+        "6-Latitude": 35.815722903787,
+        "7-Longitude": 10.594118370422
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1402.json",
+        "2-Date": "2025-02-14",
+        "3-Hour": "18:54:49",
+        "4-Notes": "Between None and None; Goal : 68",
+        "5-Start_point": "48",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.82018427105,
+        "8-Longitude": 10.589798591341
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1402.json",
+        "2-Date": "2025-02-14",
+        "3-Hour": "18:56:16",
+        "4-Notes": "Target_reached : 61",
+        "5-Stop_point": "61",
+        "6-Latitude": 35.816440388437,
+        "7-Longitude": 10.591198748098
+    }
+]

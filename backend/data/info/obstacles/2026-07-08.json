@@ -1,0 +1,47 @@
+[
+    {
+        "0-Date": "2026-07-08",
+        "1-Hour": "23:39:22",
+        "2-Mission_name": "Mission GreenPath 2406.json",
+        "3-Last_point": "0",
+        "4-Delay": "88.0150036119",
+        "5-Latitude": 35.8178956152,
+        "6-Longitude": 10.5911361846
+    },
+    {
+        "0-Date": "2026-07-08",
+        "1-Hour": "23:43:22",
+        "2-Mission_name": "Mission GreenPath 2406.json",
+        "3-Last_point": "1",
+        "4-Delay": "61.7219543461",
+        "5-Latitude": 35.8174646882,
+        "6-Longitude": 10.5913527432
+    },
+    {
+        "0-Date": "2026-07-08",
+        "1-Hour": "23:44:22",
+        "2-Mission_name": "Mission GreenPath 2406.json",
+        "3-Last_point": "2",
+        "4-Delay": "74.9555009706",
+        "5-Latitude": 35.8178463702,
+        "6-Longitude": 10.5914961377
+    },
+    {
+        "0-Date": "2026-07-08",
+        "1-Hour": "23:47:22",
+        "2-Mission_name": "Mission GreenPath 2406.json",
+        "3-Last_point": "3",
+        "4-Delay": "72.1738761791",
+        "5-Latitude": 35.8177654446,
+        "6-Longitude": 10.5910840947
+    },
+    {
+        "0-Date": "2026-07-08",
+        "1-Hour": "23:49:22",
+        "2-Mission_name": "Mission GreenPath 2406.json",
+        "3-Last_point": "4",
+        "4-Delay": "60.9988012761",
+        "5-Latitude": 35.8176819707,
+        "6-Longitude": 10.5913967129
+    }
+]

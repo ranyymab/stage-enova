@@ -155,12 +155,6 @@ interface NavItem {
       height: 40px;
       object-fit: contain;
       flex-shrink: 0;
-      filter: drop-shadow(0 1px 2px rgba(0, 174, 160, 0.25));
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .brand:hover .brand-logo {
-      transform: scale(1.06) rotate(-3deg);
     }
 
     .brand-fallback {
@@ -176,11 +170,6 @@ interface NavItem {
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .brand:hover .brand-fallback {
-      transform: scale(1.06) rotate(-3deg);
     }
 
     .brand-text {
@@ -234,42 +223,19 @@ interface NavItem {
       transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
     }
 
-    .nav-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 3px;
-      height: 0;
-      background: #fff;
-      border-radius: 0 3px 3px 0;
-      transform: translateY(-50%);
-      transition: height 0.2s ease;
-    }
-
-    .nav-item.active::before {
-      height: 60%;
-    }
-
     .nav-item:hover {
       background: var(--panel-raised);
       color: var(--text-primary);
-      transform: translateX(2px);
     }
 
     .nav-item.active {
-      background: linear-gradient(120deg, var(--accent-primary), color-mix(in srgb, var(--accent-primary) 70%, #00E0C6));
-      color: #fff;
+      background: var(--accent-primary-soft);
+      color: var(--accent-primary);
       font-weight: 600;
-      box-shadow: 0 4px 14px color-mix(in srgb, var(--accent-primary) 35%, transparent);
-    }
-
-    .nav-item.active:hover {
-      transform: none;
     }
 
     .nav-item.active .nav-icon {
-      color: #fff;
+      color: var(--accent-primary);
     }
 
     .nav-icon {
@@ -280,11 +246,7 @@ interface NavItem {
       justify-content: center;
       color: var(--text-secondary);
       flex-shrink: 0;
-      transition: transform 0.18s ease, color 0.18s ease;
-    }
-
-    .nav-item:hover .nav-icon {
-      transform: scale(1.15);
+      transition: color 0.15s ease;
     }
 
     .nav-label {

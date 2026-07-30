@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
         <span class="placeholder-date">{{ today | date: 'EEEE d MMMM yyyy' }}</span>
       </header>
       <div class="placeholder-body">
-        <p class="placeholder-icon">{{ icon }}</p>
+        <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 4v5"/></svg>
         <p class="placeholder-text">Cette page sera connectée à <code>{{ endpoint }}</code> une fois le backend disponible.</p>
       </div>
     </div>
@@ -47,9 +47,10 @@ import { ActivatedRoute } from '@angular/router';
       color: var(--text-muted);
     }
     .placeholder-icon {
-      font-size: 28px;
+      width: 30px;
+      height: 30px;
       margin: 0;
-      color: var(--text-secondary);
+      color: var(--text-muted);
     }
     .placeholder-text {
       margin: 0;

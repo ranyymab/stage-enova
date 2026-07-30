@@ -63,7 +63,7 @@
         <div class="position-coords mono">{{ positionLabel() }}</div>
         <div class="position-meta">{{ robotLive!.position.source }} - {{ robotLive!.position.label }}</div>
         <div class="position-backhome" *ngIf="kpi?.retourBaseEnCours">
-          <span class="backhome-icon">⌂</span> Retour a la base en cours
+          <svg class="backhome-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg> Retour a la base en cours
         </div>
       </div>
     </div>

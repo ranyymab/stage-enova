@@ -28,15 +28,15 @@ import { CommonModule } from '@angular/common';
   `,
   styles: [`
     :host { display: inline-flex; position: relative; }
-    .ring-track { stroke: rgba(255, 255, 255, 0.25); }
+    .ring-track { stroke: var(--border-subtle); }
     .ring-fill {
-      stroke: #fff;
+      stroke: var(--accent-primary);
       stroke-linecap: round;
-      transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+      transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
-    .ring-fill.is-critical { stroke: #FFE082; }
+    .ring-fill.is-critical { stroke: var(--accent-critical); }
     .ring-fill.is-charging {
-      animation: ringCharging 1.6s ease-in-out infinite, ringGlow 1.6s ease-in-out infinite;
+      animation: ringCharging 1.6s ease-in-out infinite;
     }
 
     @keyframes ringCharging {
@@ -44,13 +44,8 @@ import { CommonModule } from '@angular/common';
       50% { opacity: 0.55; }
     }
 
-    @keyframes ringGlow {
-      0%, 100% { filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0)); }
-      50% { filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.85)); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .ring-fill { transition: none; animation: none !important; filter: none !important; }
+      .ring-fill { transition: none; animation: none !important; }
     }
   `],
 })

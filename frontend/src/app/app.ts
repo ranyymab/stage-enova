@@ -49,8 +49,12 @@ export class App {
     }
   }
 
-  isLoginPage(): boolean {
-    return this.currentUrl.startsWith('/login');
+  isAuthPage(): boolean {
+    return (
+      this.currentUrl.startsWith('/login') ||
+      this.currentUrl.startsWith('/signup') ||
+      this.currentUrl.startsWith('/verify-email')
+    );
   }
 
   pageLabel(): string {

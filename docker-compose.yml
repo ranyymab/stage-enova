@@ -35,6 +35,17 @@ services:
       APP_SEED_ENABLED: "true"
       APP_DATA_DIR: ./data
       APP_REAL_DATA_IMPORT_ENABLED: "true"
+      # -- Sécurité / authentification (voir SETUP_AUTH.md) --------------
+      JWT_SECRET: ${JWT_SECRET:-pguard_secret_key_minimum_256_bits_longue_changez_moi_en_prod}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:4200}
+      # -- Envoi d'e-mails (code de vérification à l'inscription) --------
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      MAIL_LOG_CODE_FALLBACK: ${MAIL_LOG_CODE_FALLBACK:-true}
+      # -- Connexion Google Sign-In ---------------------------------------
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
 
   frontend:
     build: ./frontend

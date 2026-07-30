@@ -11,18 +11,25 @@ import { Observable, tap } from 'rxjs';
 
 import {
   CurrentUser,
+  GoogleLoginRequest,
   LoginRequest,
   LoginResponse,
+  MessageResponse,
+  RegisterRequest,
+  ResendCodeRequest,
+  VerifyEmailRequest,
 } from '../../shared/models/auth.models';
+import { AUTH_CONFIG } from '../config/app-config';
 
 const TOKEN_KEY = 'enova_token';
 const USER_KEY = 'enova_user';
+const PENDING_EMAIL_KEY = 'enova_pending_verification_email';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:8081/api/auth';
+  private readonly API_URL = AUTH_CONFIG.API_BASE_URL;
   private readonly platformId = inject(PLATFORM_ID);
 
   currentUser = signal<CurrentUser | null>(null);
@@ -38,26 +45,70 @@ export class AuthService {
     return isPlatformBrowser(this.platformId);
   }
 
+  // ---------------------------------------------------------------
+  // Connexion classique
+  // ---------------------------------------------------------------
+
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.http
       .post<LoginResponse>(`${this.API_URL}/login`, credentials)
+      .pipe(tap((response) => this.persistSession(response)));
+  }
+
+  // ---------------------------------------------------------------
+  // Inscription + vérification par code envoyé par e-mail
+  // ---------------------------------------------------------------
+
+  register(request: RegisterRequest): Observable<MessageResponse> {
+    return this.http
+      .post<MessageResponse>(`${this.API_URL}/register`, request)
+      .pipe(tap(() => this.setPendingVerificationEmail(request.email)));
+  }
+
+  verifyEmail(request: VerifyEmailRequest): Observable<LoginResponse> {
+    return this.http
+      .post<LoginResponse>(`${this.API_URL}/verify-email`, request)
       .pipe(
         tap((response) => {
-          const user: CurrentUser = {
-            email: response.email,
-            fullName: response.fullName,
-            role: response.role,
-          };
-
-          if (this.isBrowser) {
-            localStorage.setItem(TOKEN_KEY, response.token);
-            localStorage.setItem(USER_KEY, JSON.stringify(user));
-          }
-
-          this.currentUser.set(user);
+          this.persistSession(response);
+          this.clearPendingVerificationEmail();
         })
       );
   }
+
+  resendCode(request: ResendCodeRequest): Observable<MessageResponse> {
+    return this.http.post<MessageResponse>(`${this.API_URL}/resend-code`, request);
+  }
+
+  getPendingVerificationEmail(): string | null {
+    if (!this.isBrowser) return null;
+    return sessionStorage.getItem(PENDING_EMAIL_KEY);
+  }
+
+  private setPendingVerificationEmail(email: string): void {
+    if (this.isBrowser) {
+      sessionStorage.setItem(PENDING_EMAIL_KEY, email);
+    }
+  }
+
+  private clearPendingVerificationEmail(): void {
+    if (this.isBrowser) {
+      sessionStorage.removeItem(PENDING_EMAIL_KEY);
+    }
+  }
+
+  // ---------------------------------------------------------------
+  // Connexion via Google Sign-In
+  // ---------------------------------------------------------------
+
+  loginWithGoogle(idToken: string): Observable<LoginResponse> {
+    const request: GoogleLoginRequest = { idToken };
+    return this.http
+      .post<LoginResponse>(`${this.API_URL}/google`, request)
+      .pipe(tap((response) => this.persistSession(response)));
+  }
+
+  // ---------------------------------------------------------------
 
   logout(): void {
     if (this.isBrowser) {
@@ -79,6 +130,21 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  private persistSession(response: LoginResponse): void {
+    const user: CurrentUser = {
+      email: response.email,
+      fullName: response.fullName,
+      role: response.role,
+    };
+
+    if (this.isBrowser) {
+      localStorage.setItem(TOKEN_KEY, response.token);
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+    }
+
+    this.currentUser.set(user);
   }
 
   private readStoredUser(): CurrentUser | null {

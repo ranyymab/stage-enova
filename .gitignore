@@ -1,0 +1,15 @@
+# Secrets (jamais commiter de vraies valeurs)
+.env
+.env.local
+
+# Backend (Maven)
+backend/target/
+
+# Frontend (Angular / Node)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# IDE
+.idea/
+*.iml

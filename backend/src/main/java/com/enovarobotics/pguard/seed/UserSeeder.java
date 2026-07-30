@@ -42,6 +42,8 @@ public class UserSeeder {
                 .fullName("Administrateur PGuard")
                 .passwordHash(passwordEncoder.encode("Admin123!"))
                 .role(User.Role.ADMINISTRATEUR)
+                .authProvider(User.AuthProvider.LOCAL)
+                .emailVerified(true)
                 .build());
 
         userRepository.save(User.builder()
@@ -49,6 +51,8 @@ public class UserSeeder {
                 .fullName("Opérateur PGuard")
                 .passwordHash(passwordEncoder.encode("Operateur123!"))
                 .role(User.Role.OPERATEUR)
+                .authProvider(User.AuthProvider.LOCAL)
+                .emailVerified(true)
                 .build());
 
         log.info("Comptes par défaut créés :");

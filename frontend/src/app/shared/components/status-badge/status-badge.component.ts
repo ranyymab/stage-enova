@@ -37,20 +37,17 @@ import { MissionStatut } from '../../models/dashboard.models';
 
     .is-mission .dot {
       background: var(--accent-active);
-      box-shadow: 0 0 0 0 rgba(61, 220, 151, 0.6);
-      animation: pulse 2s infinite;
+      animation: pulseGood 2s infinite;
     }
 
     .is-teleop .dot {
       background: var(--accent-critical);
-      box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.6);
-      animation: pulse 2s infinite;
+      animation: pulseCritical 2s infinite;
     }
 
     .is-retour .dot {
       background: #F2A93B;
-      box-shadow: 0 0 0 0 rgba(242, 169, 59, 0.6);
-      animation: pulse 2s infinite;
+      animation: pulseWarning 2s infinite;
     }
 
     .is-mission .label {
@@ -78,14 +75,26 @@ import { MissionStatut } from '../../models/dashboard.models';
       font-size: 12px;
     }
 
-    @keyframes pulse {
+    @keyframes pulseGood {
       0% { box-shadow: 0 0 0 0 rgba(61, 220, 151, 0.5); }
       70% { box-shadow: 0 0 0 8px rgba(61, 220, 151, 0); }
       100% { box-shadow: 0 0 0 0 rgba(61, 220, 151, 0); }
     }
 
+    @keyframes pulseCritical {
+      0% { box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(229, 72, 77, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(229, 72, 77, 0); }
+    }
+
+    @keyframes pulseWarning {
+      0% { box-shadow: 0 0 0 0 rgba(242, 169, 59, 0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(242, 169, 59, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(242, 169, 59, 0); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .is-mission .dot { animation: none; }
+      .is-mission .dot, .is-teleop .dot, .is-retour .dot { animation: none; }
     }
   `],
 })

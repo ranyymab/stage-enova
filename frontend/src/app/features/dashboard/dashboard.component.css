@@ -116,29 +116,10 @@
 
 .header-left h1 {
   margin: 0;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
-  background: linear-gradient(90deg, var(--text-primary) 0%, var(--accent-active) 45%, var(--text-primary) 90%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: titleShimmer 6s ease-in-out infinite;
-}
-
-@keyframes titleShimmer {
-  0%, 100% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .header-left h1 {
-    animation: none;
-    background: none;
-    -webkit-background-clip: initial;
-    background-clip: initial;
-    color: var(--text-primary);
-  }
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .header-date {
@@ -255,13 +236,7 @@
 
 .position-card.is-retour {
   border-color: rgba(242, 169, 59, 0.5);
-  box-shadow: 0 0 0 1px rgba(242, 169, 59, 0.15), 0 0 16px rgba(242, 169, 59, 0.12);
-  animation: retourGlow 2.4s ease-in-out infinite;
-}
-
-@keyframes retourGlow {
-  0%, 100% { box-shadow: 0 0 0 1px rgba(242, 169, 59, 0.15), 0 0 16px rgba(242, 169, 59, 0.12); }
-  50% { box-shadow: 0 0 0 1px rgba(242, 169, 59, 0.3), 0 0 22px rgba(242, 169, 59, 0.22); }
+  box-shadow: 0 0 0 1px rgba(242, 169, 59, 0.18);
 }
 
 .position-backhome {
@@ -274,17 +249,13 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .backhome-icon {
-  font-family: var(--font-mono);
-  animation: softPulse 1.6s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .position-card.is-retour { animation: none; }
-  .backhome-icon { animation: none; }
+  display: inline-flex;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 
 .position-row {

@@ -5,9 +5,12 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export type KpiTone = 'neutral' | 'good' | 'warning' | 'critical';
 
 /**
- * Tuile KPI dans le style "Berry" : bloc de couleur pleine avec degrade,
- * icone en filigrane, valeur en grand. Le ton (good/warning/critical/
- * neutral) determine le degrade utilise.
+ * Tuile KPI, style epure : carte plane (fond panel, bordure fine), une
+ * icone dans une pastille de couleur douce en haut, puis la valeur en
+ * grand. Le ton (good/warning/critical/neutral) ne colore que la pastille
+ * et la valeur, jamais toute la carte - le fond reste neutre pour rester
+ * lisible et calme visuellement, y compris quand plusieurs cartes
+ * "warning"/"critical" sont affichees en meme temps.
  *
  * La valeur numerique s'anime (count-up) a chaque changement au lieu de
  * sauter directement au nouveau chiffre, pour que les rafraichissements
@@ -20,9 +23,9 @@ export type KpiTone = 'neutral' | 'good' | 'warning' | 'critical';
   imports: [CommonModule],
   template: `
     <div class="kpi-card" [class]="'tone-' + tone">
-      <span class="kpi-icon" aria-hidden="true" *ngIf="!hideIcon" [innerHTML]="iconHtml"></span>
-      <span class="kpi-visual" *ngIf="hideIcon"><ng-content select="[kpi-visual]"></ng-content></span>
       <div class="kpi-top">
+        <span class="kpi-icon-chip" aria-hidden="true" *ngIf="!hideIcon" [innerHTML]="iconHtml"></span>
+        <span class="kpi-visual" *ngIf="hideIcon"><ng-content select="[kpi-visual]"></ng-content></span>
         <span class="kpi-label">{{ label }}</span>
       </div>
       <div class="kpi-value">{{ displayValue }}<span class="kpi-unit" *ngIf="unit">{{ unit }}</span></div>
@@ -32,133 +35,84 @@ export type KpiTone = 'neutral' | 'good' | 'warning' | 'critical';
   styles: [`
     .kpi-card {
       position: relative;
-      overflow: hidden;
       border-radius: 14px;
-      padding: 20px 22px;
+      padding: 18px 20px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      color: #fff;
+      gap: 8px;
+      background: var(--panel-base);
+      border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-card);
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
-      will-change: transform;
-      background-size: 180% 180%;
-      animation: kpiGradientDrift 9s ease-in-out infinite;
-    }
-
-    @keyframes kpiGradientDrift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    /* Diagonal shine that sweeps across on hover */
-    .kpi-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.16) 35%, transparent 50%);
-      transform: translateX(-120%);
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      pointer-events: none;
-    }
-
-    .kpi-card:hover::before {
-      transform: translateX(120%);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .kpi-card:hover {
       box-shadow: var(--shadow-card-hover);
-      transform: translateY(-3px);
-    }
-
-    .kpi-card:hover .kpi-icon {
-      transform: scale(1.08) rotate(-4deg);
-      opacity: 0.4;
-      animation-play-state: paused;
-    }
-
-    .tone-neutral { background-image: linear-gradient(135deg, #007E74 0%, #00AEA0 100%); }
-    .tone-good { background-image: linear-gradient(135deg, #00AEA0 0%, #3FD6C4 100%); }
-    .tone-warning { background-image: linear-gradient(135deg, #A8420E 0%, #CA5215 100%); }
-    .tone-critical {
-      background-image: linear-gradient(135deg, #D32F4B 0%, #FF5252 100%);
-      animation: kpiGradientDrift 9s ease-in-out infinite, kpiCriticalPulse 2.2s ease-in-out infinite;
-    }
-
-    @keyframes kpiCriticalPulse {
-      0%, 100% { box-shadow: var(--shadow-card), 0 0 0 0 rgba(255, 82, 82, 0.35); }
-      50% { box-shadow: var(--shadow-card), 0 0 0 8px rgba(255, 82, 82, 0); }
-    }
-
-    .kpi-icon {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      width: 34px;
-      height: 34px;
-      display: inline-flex;
-      color: #fff;
-      opacity: 0.28;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-      animation: kpiIconFloat 4s ease-in-out infinite;
-    }
-
-    @keyframes kpiIconFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
-    }
-
-    .kpi-visual {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      display: inline-flex;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .kpi-card:hover .kpi-visual {
-      transform: scale(1.08);
+      border-color: color-mix(in srgb, var(--accent-primary) 25%, var(--border-subtle));
     }
 
     .kpi-top {
       display: flex;
-      align-items: baseline;
+      align-items: center;
+      gap: 10px;
     }
 
+    .kpi-icon-chip {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 8px;
+    }
+
+    .kpi-icon-chip ::ng-deep svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .kpi-visual {
+      flex-shrink: 0;
+      display: inline-flex;
+    }
+
+    .tone-neutral .kpi-icon-chip { background: var(--accent-primary-soft); color: var(--accent-primary); }
+    .tone-good .kpi-icon-chip { background: rgba(61, 220, 151, 0.14); color: #1FA76B; }
+    .tone-warning .kpi-icon-chip { background: color-mix(in srgb, var(--accent-warning) 14%, transparent); color: var(--accent-warning); }
+    .tone-critical .kpi-icon-chip { background: rgba(229, 72, 77, 0.12); color: var(--accent-critical); }
+
+    :root[data-theme='dark'] .tone-good .kpi-icon-chip { color: #3DDC97; }
+
     .kpi-label {
-      font-size: 12.5px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: rgba(255, 255, 255, 0.85);
+      font-size: 12px;
+      letter-spacing: 0.01em;
+      color: var(--text-secondary);
       font-weight: 600;
     }
 
     .kpi-value {
       font-family: var(--font-mono);
-      font-size: 30px;
+      font-size: 26px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-primary);
       line-height: 1.15;
       font-variant-numeric: tabular-nums;
     }
 
+    .tone-critical .kpi-value { color: var(--accent-critical); }
+
     .kpi-unit {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       margin-left: 3px;
-      opacity: 0.85;
+      color: var(--text-muted);
     }
 
     .kpi-sub {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .kpi-card, .kpi-card::before, .kpi-icon {
-        transition: none !important;
-        animation: none !important;
-      }
+      color: var(--text-muted);
     }
   `],
 })

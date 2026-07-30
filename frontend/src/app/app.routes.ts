@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { LoginComponent } from './features/login/login.component';
+import { SignupComponent } from './features/signup/signup.component';
+import { VerifyEmailComponent } from './features/verify-email/verify-email.component';
 import { AnomaliesComponent } from './features/anomalies/anomalies.component';
 import { MissionsComponent } from './features/missions/missions.component';
 import { KilometrageComponent } from './features/kilometrage/kilometrage.component';
@@ -11,6 +13,8 @@ import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'verify-email', component: VerifyEmailComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
   { path: 'mission', component: MissionsComponent, canActivate: [authGuard] },

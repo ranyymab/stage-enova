@@ -1,30 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { GoogleIdentityService } from '../../core/services/google-identity.service';
 import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   template: `
     <div class="login-screen">
-      <div class="aurora aurora-1"></div>
-      <div class="aurora aurora-2"></div>
-      <div class="aurora aurora-3"></div>
-      <div class="grid-overlay"></div>
-
       <div class="login-card enter-scale">
-        <div class="scan-line"></div>
-        <div class="status-strip">
-          <span class="status-dot"></span>
-          <span>Systeme en ligne</span>
-          <span class="status-sep">·</span>
-          <span class="mono">{{ liveClock }}</span>
-        </div>
-
         <div class="brand enter-fade-up" style="--stagger-index: 1">
           <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing"
                (error)="onLogoError()" alt="Enova Robotics" />
@@ -37,6 +25,9 @@ import { ThemeService } from '../../core/services/theme.service';
 
         <h1 class="enter-fade-up" style="--stagger-index: 2">Connexion</h1>
         <p class="subtitle enter-fade-up" style="--stagger-index: 2">Surveillance ROBOT-001 · accès opérateur / administrateur</p>
+
+        <div #googleButton class="google-btn-container enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"></div>
+        <div class="divider enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"><span>ou</span></div>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <label class="field enter-fade-up" style="--stagger-index: 3">
@@ -77,6 +68,10 @@ import { ThemeService } from '../../core/services/theme.service';
             {{ success ? 'Connecte' : (loading ? 'Connexion...' : 'Se connecter') }}
           </button>
         </form>
+
+        <p class="switch-link enter-fade-up" style="--stagger-index: 5">
+          Pas encore de compte ? <a routerLink="/signup">Créer un compte</a>
+        </p>
       </div>
     </div>
   `,
@@ -100,111 +95,22 @@ import { ThemeService } from '../../core/services/theme.service';
       overflow: hidden;
     }
 
-    .aurora {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.35;
-      pointer-events: none;
-      animation: auroraDrift 14s ease-in-out infinite;
-    }
-
-    .aurora-1 { width: 460px; height: 460px; background: var(--brand-primary, var(--accent-primary)); top: -140px; left: -120px; animation-delay: 0s; }
-    .aurora-2 { width: 380px; height: 380px; background: var(--brand-secondary, #E9BE87); bottom: -140px; right: -100px; animation-delay: -4s; }
-    .aurora-3 { width: 320px; height: 320px; background: var(--brand-accent, #CA5215); bottom: 10%; left: 8%; opacity: 0.18; animation-delay: -8s; }
-
-    @keyframes auroraDrift {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(30px, -20px) scale(1.08); }
-    }
-
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(color-mix(in srgb, var(--border-subtle) 60%, transparent) 1px, transparent 1px),
-        linear-gradient(90deg, color-mix(in srgb, var(--border-subtle) 60%, transparent) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: radial-gradient(ellipse 70% 70% at center, black 30%, transparent 80%);
-      pointer-events: none;
-    }
-
     .login-card {
       position: relative;
       z-index: 1;
       width: 100%;
       max-width: 380px;
-      background: color-mix(in srgb, var(--panel-base) 92%, transparent);
-      backdrop-filter: blur(10px);
+      background: var(--panel-base);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 34px 30px;
-      box-shadow: 0 20px 50px rgba(0, 60, 55, 0.12), 0 0 0 1px rgba(0, 174, 160, 0.04);
-      animation: cardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-      overflow: hidden;
-    }
-
-    .scan-line {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      top: 0;
-      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-      opacity: 0.8;
-      animation: scanSweep 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
-      pointer-events: none;
-    }
-
-    @keyframes scanSweep {
-      0% { top: 0; opacity: 0; }
-      8% { opacity: 1; }
-      92% { opacity: 1; }
-      100% { top: 100%; opacity: 0; }
-    }
-
-    .status-strip {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 10.5px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 20px;
-    }
-
-    .status-strip .mono {
-      font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
-      margin-left: auto;
-      letter-spacing: 0;
-      text-transform: none;
-    }
-
-    .status-sep { opacity: 0.4; }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent-active, var(--accent-primary));
-      box-shadow: 0 0 0 0 rgba(0, 174, 160, 0.5);
-      animation: statusPulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes statusPulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 174, 160, 0.5); }
-      70% { box-shadow: 0 0 0 6px rgba(0, 174, 160, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 174, 160, 0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .scan-line, .status-dot { animation: none; }
+      box-shadow: 0 20px 50px rgba(0, 60, 55, 0.08);
+      animation: cardEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     @keyframes cardEnter {
-      from { opacity: 0; transform: translateY(18px) scale(0.97); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .brand {
@@ -218,21 +124,13 @@ import { ThemeService } from '../../core/services/theme.service';
       width: 44px;
       height: 44px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 6px rgba(0, 174, 160, 0.3));
-      animation: logoPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-      animation-delay: 0.15s;
-    }
-
-    @keyframes logoPop {
-      from { opacity: 0; transform: scale(0.6) rotate(-8deg); }
-      to { opacity: 1; transform: scale(1) rotate(0); }
     }
 
     .brand-fallback {
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: linear-gradient(150deg, var(--brand-primary, var(--accent-primary)), #00857c);
+      background: var(--accent-primary);
       color: #fff;
       font-family: var(--font-mono);
       font-weight: 700;
@@ -241,8 +139,6 @@ import { ThemeService } from '../../core/services/theme.service';
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      animation: logoPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-      animation-delay: 0.15s;
     }
 
     .brand-text {
@@ -368,7 +264,7 @@ import { ThemeService } from '../../core/services/theme.service';
     button {
       position: relative;
       margin-top: 8px;
-      background: linear-gradient(120deg, var(--brand-primary, var(--accent-primary)), color-mix(in srgb, var(--brand-primary, var(--accent-primary)) 70%, #00E0C6));
+      background: var(--accent-primary);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -380,18 +276,15 @@ import { ThemeService } from '../../core/services/theme.service';
       align-items: center;
       justify-content: center;
       gap: 8px;
-      overflow: hidden;
-      transition: transform 0.15s ease, box-shadow 0.25s ease, opacity 0.15s ease;
-      box-shadow: 0 6px 18px color-mix(in srgb, var(--accent-primary) 30%, transparent);
+      transition: background 0.15s ease, opacity 0.15s ease;
     }
 
     button:not(:disabled):hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px color-mix(in srgb, var(--accent-primary) 40%, transparent);
+      background: color-mix(in srgb, var(--accent-primary) 88%, black);
     }
 
     button:not(:disabled):active {
-      transform: translateY(0) scale(0.98);
+      transform: scale(0.98);
     }
 
     button:disabled {
@@ -402,7 +295,7 @@ import { ThemeService } from '../../core/services/theme.service';
     button.is-success:disabled {
       opacity: 1;
       cursor: default;
-      background: linear-gradient(120deg, #00AEA0, #3FD6C4);
+      background: #1FA76B;
     }
 
     .btn-spinner {
@@ -442,21 +335,58 @@ import { ThemeService } from '../../core/services/theme.service';
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .google-btn-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4px;
+      min-height: 40px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0 20px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    .switch-link {
+      text-align: center;
+      margin: 20px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .switch-link a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .aurora, .login-card, .brand-logo, .btn-spinner, .error, .btn-check, .scan-line, .status-dot {
+      .login-card, .brand-logo, .btn-spinner, .error, .btn-check {
         animation: none !important;
       }
     }
   `],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('googleButton') googleButtonRef?: ElementRef<HTMLDivElement>;
+
   loading = false;
   success = false;
   showPassword = false;
   errorMessage = '';
+  googleConfigured = false;
   form;
-  liveClock = '';
-  private clockInterval: any = null;
 
   /** Vrai seulement si AUCUNE version du logo (claire ou sombre) n'est disponible. */
   logoMissing = false;
@@ -465,6 +395,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private readonly fb: FormBuilder,
     private readonly authService: AuthService,
+    private readonly googleIdentity: GoogleIdentityService,
     private readonly router: Router,
     public readonly themeService: ThemeService
   ) {
@@ -472,20 +403,21 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
+
+    this.googleConfigured = this.googleIdentity.isConfigured();
   }
 
-  ngOnInit(): void {
-    this.updateClock();
-    this.clockInterval = setInterval(() => this.updateClock(), 1000);
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    if (this.googleConfigured && this.googleButtonRef) {
+      this.googleIdentity.renderButton(this.googleButtonRef.nativeElement, (idToken) =>
+        this.handleGoogleCredential(idToken)
+      );
+    }
   }
 
-  ngOnDestroy(): void {
-    if (this.clockInterval) clearInterval(this.clockInterval);
-  }
-
-  private updateClock(): void {
-    this.liveClock = new Date().toLocaleTimeString('fr-FR');
-  }
+  ngOnDestroy(): void {}
 
   logoSrc(): string {
     if (this.themeService.mode() === 'dark' && !this.darkLogoFailed) {
@@ -516,9 +448,26 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.success = true;
         setTimeout(() => this.router.navigate(['/dashboard']), 550);
       },
-      error: () => {
+      error: (err) => {
         this.loading = false;
-        this.errorMessage = 'Email ou mot de passe incorrect.';
+        this.errorMessage = err?.error?.error || 'Email ou mot de passe incorrect.';
+      },
+    });
+  }
+
+  private handleGoogleCredential(idToken: string): void {
+    this.loading = true;
+    this.errorMessage = '';
+
+    this.authService.loginWithGoogle(idToken).subscribe({
+      next: () => {
+        this.loading = false;
+        this.success = true;
+        setTimeout(() => this.router.navigate(['/dashboard']), 550);
+      },
+      error: (err) => {
+        this.loading = false;
+        this.errorMessage = err?.error?.error || 'Connexion Google impossible.';
       },
     });
   }

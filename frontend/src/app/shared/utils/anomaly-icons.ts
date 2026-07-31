@@ -16,7 +16,7 @@ export const ANOMALY_ICONS: Record<string, string> = {
   vehicle:
     '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2A2 2 0 0 1 19.5 8L21 13"/><rect x="2.5" y="13" width="19" height="5" rx="1.5"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg>',
   animal:
-    '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10c1.5-2 3.5-3 5-2M20 10c-1.5-2-3.5-3-5-2"/><ellipse cx="12" cy="14" rx="6" ry="5"/><circle cx="9.5" cy="13" r="0.8" fill="currentColor"/><circle cx="14.5" cy="13" r="0.8" fill="currentColor"/></svg>',
+    '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15.5" r="4.2"/><circle cx="6.5" cy="8.5" r="1.9"/><circle cx="17.5" cy="8.5" r="1.9"/><circle cx="9.3" cy="5.3" r="1.7"/><circle cx="14.7" cy="5.3" r="1.7"/></svg>',
   obstacle:
     '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 9.5v4"/><circle cx="12" cy="16.2" r="0.6" fill="currentColor"/></svg>',
   debris:

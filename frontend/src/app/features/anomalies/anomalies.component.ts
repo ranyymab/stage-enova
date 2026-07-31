@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
+import { getAnomalyIcon } from '../../shared/utils/anomaly-icons';
 
 interface Anomalie {
   id: number;
@@ -54,14 +55,7 @@ interface Anomalie {
 
           <div class="card-image" [attr.data-obj]="a.objectDetected?.toLowerCase()">
             <img *ngIf="imageUrl(a) as src" [src]="src" [alt]="a.objectDetected" class="card-image-photo" (error)="onImageError($event)">
-            <span class="card-image-icon" *ngIf="!imageUrl(a)" [ngSwitch]="a.objectDetected?.toLowerCase()">
-              <svg *ngSwitchCase="'person'" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.5"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
-              <svg *ngSwitchCase="'vehicle'" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2A2 2 0 0 1 19.5 8L21 13"/><rect x="2.5" y="13" width="19" height="5" rx="1.5"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg>
-              <svg *ngSwitchCase="'animal'" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10c1.5-2 3.5-3 5-2M20 10c-1.5-2-3.5-3-5-2"/><ellipse cx="12" cy="14" rx="6" ry="5"/><circle cx="9.5" cy="13" r="0.8" fill="currentColor"/><circle cx="14.5" cy="13" r="0.8" fill="currentColor"/></svg>
-              <svg *ngSwitchCase="'obstacle'" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 9.5v4"/><circle cx="12" cy="16.2" r="0.6" fill="currentColor"/></svg>
-              <svg *ngSwitchCase="'debris'" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l4-3 4 2 4-2 4 3-1 11H5z"/><path d="M8 9v9M12 9v9M16 9v9"/></svg>
-              <svg *ngSwitchDefault width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1.3 1-1.3 1.9"/><circle cx="12" cy="16.8" r="0.4" fill="currentColor"/></svg>
-            </span>
+            <span class="card-image-icon" *ngIf="!imageUrl(a)" [innerHTML]="objectIcon(a.objectDetected)"></span>
           </div>
 
           <div class="card-top">
@@ -128,6 +122,8 @@ interface Anomalie {
 
     .card-image-icon {
       display: inline-flex;
+      width: 34px;
+      height: 34px;
       color: var(--text-secondary);
       opacity: 0.75;
       transition: transform 0.2s ease;
@@ -212,7 +208,7 @@ interface Anomalie {
 })
 export class AnomaliesComponent implements OnInit {
   private http = inject(HttpClient);
-  private readonly API_ORIGIN = 'http://localhost:8081';
+  private readonly API_ORIGIN = 'https://stage-enova-3.onrender.com';
   anomalies: Anomalie[] = [];
   loading = true;
   private statutFilter = '';
@@ -224,7 +220,7 @@ export class AnomaliesComponent implements OnInit {
 
   load() {
     this.loading = true;
-    let url = 'http://localhost:8081/api/anomalies';
+    let url = 'https://stage-enova-3.onrender.com/api/anomalies';
     const p: string[] = [];
     if (this.statutFilter) p.push('statut=' + this.statutFilter);
     if (this.criticiteFilter) p.push('criticite=' + this.criticiteFilter);
@@ -258,6 +254,10 @@ export class AnomaliesComponent implements OnInit {
     const card = img.closest('.anomalie-card');
     const id = card?.getAttribute('data-anomaly-id');
     if (id) this.brokenImages.add(Number(id));
+  }
+
+  objectIcon(type: string | null | undefined): string {
+    return getAnomalyIcon(type);
   }
 
 }

@@ -79,7 +79,15 @@ public class AuthController {
         }
         userRepository.save(user);
 
-        verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        String devCode = verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
+
+        if (devCode != null) {
+            log.warn("SMTP non configure ou en echec : code renvoye directement au client (mode developpement) pour {}", email);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(MessageResponse.of(
+                            "SMTP non configure sur ce serveur : voici votre code de test (ne s'affichera pas en production).",
+                            devCode));
+        }
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(MessageResponse.of("Un code de vérification a été envoyé à " + email));
@@ -105,11 +113,16 @@ public class AuthController {
     public ResponseEntity<?> resendCode(@Valid @RequestBody ResendCodeRequest request) {
         String email = request.getEmail().toLowerCase().trim();
 
-        userRepository.findByEmail(email).ifPresent(user -> {
-            if (!user.isEmailVerified()) {
-                verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
-            }
-        });
+        String devCode = userRepository.findByEmail(email)
+                .filter(user -> !user.isEmailVerified())
+                .map(user -> verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION))
+                .orElse(null);
+
+        if (devCode != null) {
+            return ResponseEntity.ok(MessageResponse.of(
+                    "SMTP non configure sur ce serveur : voici votre code de test (ne s'affichera pas en production).",
+                    devCode));
+        }
 
         // Réponse identique que l'e-mail existe ou non (anti-énumération).
         return ResponseEntity.ok(MessageResponse.of("Si un compte en attente existe pour cet e-mail, un nouveau code a été envoyé."));

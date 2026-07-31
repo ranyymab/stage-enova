@@ -12,5 +12,9 @@ public interface ObstacleProgressRepository extends JpaRepository<ObstacleProgre
 
     List<ObstacleProgress> findTop20ByOrderByEventDatetimeDesc();
 
+    /** Tout l'historique jusqu'a une date donnee incluse (jamais le futur),
+     *  sans la limite artificielle de findTop20. */
+    List<ObstacleProgress> findByEventDateLessThanEqualOrderByEventDatetimeDesc(LocalDate maxDate);
+
     long countByEventDate(LocalDate eventDate);
 }

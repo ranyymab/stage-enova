@@ -4,7 +4,6 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -13,9 +12,13 @@ import org.springframework.stereotype.Service;
  * Envoi des e-mails transactionnels (code de vérification d'inscription).
  * Utilise spring-boot-starter-mail (JavaMailSender) configuré avec un vrai
  * serveur SMTP dans application.properties (voir spring.mail.*). En
- * développement sans SMTP configuré, l'envoi échoue proprement et le code
- * est tout de même journalisé (log) pour ne pas bloquer les tests locaux —
- * mais en production, `app.mail.log-code-fallback` doit rester à false.
+ * développement sans SMTP configuré, l'envoi échoue proprement, le code
+ * est journalisé (log) pour ne pas bloquer les tests locaux, et la méthode
+ * retourne {@code false} pour que l'appelant sache que l'e-mail n'est PAS
+ * réellement parti (voir VerificationCodeService/AuthController, qui
+ * renvoient alors le code directement dans la réponse API en mode dev
+ * plutôt que de laisser croire à un envoi réussi) — mais en production,
+ * `app.mail.log-code-fallback` doit rester à false.
  */
 @Service
 @RequiredArgsConstructor
@@ -33,7 +36,13 @@ public class EmailService {
     @Value("${app.mail.log-code-fallback:false}")
     private boolean logCodeFallback;
 
-    public void sendVerificationCode(String toEmail, String fullName, String code) {
+    /** Indique si un code non livré par e-mail doit être renvoyé au client
+     *  (mode démo/dev) plutôt que de rester uniquement dans les logs serveur. */
+    public boolean isLogCodeFallbackEnabled() {
+        return logCodeFallback;
+    }
+
+    public boolean sendVerificationCode(String toEmail, String fullName, String code) {
         String subject = "Votre code de vérification PGuard Monitor";
         String html = buildVerificationEmailHtml(fullName, code);
 
@@ -48,16 +57,32 @@ public class EmailService {
             }
             mailSender.send(message);
             log.info("Code de vérification envoyé à {}", maskEmail(toEmail));
-        } catch (MailException | jakarta.mail.MessagingException | java.io.UnsupportedEncodingException e) {
+            return true;
+        } catch (Exception e) {
+            // Catch volontairement large (et non plus limité à MailException /
+            // MessagingException / UnsupportedEncodingException) : n'importe
+            // quelle erreur d'envoi (SMTP non configuré, identifiants invalides,
+            // hôte injoignable, timeout réseau...) doit retomber ici plutôt que
+            // de remonter et faire échouer l'inscription (@Transactional
+            // annulerait alors la création du compte ET du code, laissant
+            // l'utilisateur totalement bloqué sans jamais recevoir de code).
             log.error("Échec d'envoi de l'e-mail de vérification à {} : {}", maskEmail(toEmail), e.getMessage());
+            // L'inscription ne doit JAMAIS échouer à cause d'un problème SMTP.
+            // Si app.mail.log-code-fallback est actif (par défaut), le code est
+            // renvoyé à l'appelant (VerificationCodeService -> AuthController)
+            // pour être affiché directement dans l'interface (voir le bandeau
+            // "Serveur d'e-mail non configuré" côté frontend) plutôt que de
+            // rester invisible dans les logs serveur. Sinon, il est seulement
+            // journalisé côté serveur, mais l'inscription reste acceptée dans
+            // les deux cas : l'utilisateur ne se retrouve jamais bloqué sans
+            // aucun moyen de récupérer son code.
             if (logCodeFallback) {
-                // Utilisé UNIQUEMENT en développement local quand aucun SMTP n'est
-                // configuré, pour ne pas bloquer les tests manuels. Ne jamais
-                // activer app.mail.log-code-fallback en production.
                 log.warn("[DEV ONLY] Code de vérification pour {} : {}", maskEmail(toEmail), code);
             } else {
-                throw new EmailDeliveryException("Impossible d'envoyer l'e-mail de vérification", e);
+                log.warn("Code de vérification pour {} (non exposé au client, app.mail.log-code-fallback=false) : {}",
+                        maskEmail(toEmail), code);
             }
+            return false;
         }
     }
 

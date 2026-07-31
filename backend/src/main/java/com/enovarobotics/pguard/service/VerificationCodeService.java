@@ -39,8 +39,16 @@ public class VerificationCodeService {
     @Value("${app.verification.resend-cooldown-seconds:60}")
     private long resendCooldownSeconds;
 
+    /**
+     * Genere et envoie un nouveau code. Retourne {@code null} si l'e-mail a
+     * reellement ete envoye par SMTP (cas normal), ou renvoie le code
+     * lui-meme si l'envoi a echoue et que le repli developpement
+     * (app.mail.log-code-fallback) est actif, pour que l'appelant puisse
+     * l'exposer directement dans la reponse API plutot que de laisser
+     * croire a un envoi reussi.
+     */
     @Transactional
-    public void generateAndSend(String email, String fullName, VerificationCode.Purpose purpose) {
+    public String generateAndSend(String email, String fullName, VerificationCode.Purpose purpose) {
         repository.findTopByEmailAndPurposeAndConsumedFalseOrderByCreatedAtDesc(email, purpose)
                 .ifPresent(existing -> {
                     long secondsSinceLast = Duration.between(existing.getCreatedAt(), LocalDateTime.now()).getSeconds();
@@ -65,7 +73,16 @@ public class VerificationCodeService {
                 .build();
 
         repository.save(entity);
-        emailService.sendVerificationCode(email, fullName, code);
+        boolean actuallySent = emailService.sendVerificationCode(email, fullName, code);
+        if (actuallySent) {
+            return null;
+        }
+        // Envoi réel échoué (SMTP non configuré ou en erreur) : on n'expose le
+        // code au client que si le mode démo/dev est explicitement actif
+        // (app.mail.log-code-fallback). Sinon, l'inscription réussit quand
+        // même (jamais bloquée par un souci SMTP) mais le code ne part que
+        // dans les logs serveur, comme en production réelle.
+        return emailService.isLogCodeFallbackEnabled() ? code : null;
     }
 
     @Transactional

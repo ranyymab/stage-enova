@@ -22,12 +22,17 @@ import { ThemeService } from '../../core/services/theme.service';
         </div>
 
         <h1>Vérifiez votre e-mail</h1>
-        <p class="subtitle" *ngIf="email">
+        <p class="subtitle" *ngIf="email && !devCode">
           Un code à 6 chiffres a été envoyé à <strong>{{ email }}</strong>
         </p>
         <p class="subtitle" *ngIf="!email">
           Saisissez l'adresse e-mail utilisée à l'inscription et le code reçu.
         </p>
+
+        <div class="dev-banner" *ngIf="devCode">
+          <strong>Serveur d'e-mail non configuré.</strong>
+          Aucun e-mail réel ne peut être envoyé sur cette installation. Voici votre code de test, pré-rempli ci-dessous — il ne s'affichera jamais ainsi en production, une fois un vrai compte SMTP configuré.
+        </div>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <label class="field" *ngIf="!email">
@@ -82,6 +87,9 @@ import { ThemeService } from '../../core/services/theme.service';
     .brand-sub { font-size: 11px; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
     h1 { margin: 0 0 4px; font-size: 20px; color: var(--text-primary); }
     .subtitle { margin: 0 0 22px; font-size: 12.5px; color: var(--text-muted); }
+    .dev-banner { margin: 0 0 20px; font-size: 12px; line-height: 1.5; color: #92620A; background: rgba(242, 169, 59, 0.14); border: 1px solid rgba(242, 169, 59, 0.35); padding: 10px 12px; border-radius: 8px; }
+    .dev-banner strong { display: block; margin-bottom: 2px; }
+    :root[data-theme='dark'] .dev-banner { color: #F2A93B; }
     form { display: flex; flex-direction: column; gap: 16px; }
     .field { display: flex; flex-direction: column; gap: 6px; }
     .field-label { font-size: 12px; color: var(--text-secondary); font-weight: 600; }
@@ -109,6 +117,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
   private darkLogoFailed = false;
 
   email = '';
+  devCode: string | null = null;
   resendCooldown = 0;
   private cooldownTimer?: ReturnType<typeof setInterval>;
 
@@ -134,6 +143,11 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
     if (this.email) {
       this.form.patchValue({ email: this.email });
+    }
+
+    this.devCode = this.authService.getPendingDevCode();
+    if (this.devCode) {
+      this.form.patchValue({ code: this.devCode });
     }
 
     this.startCooldown(60);
@@ -193,6 +207,10 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.resending = false;
         this.resendMessage = res.message;
+        this.devCode = res.devCode ?? null;
+        if (this.devCode) {
+          this.form.patchValue({ code: this.devCode });
+        }
         this.startCooldown(60);
       },
       error: (err) => {

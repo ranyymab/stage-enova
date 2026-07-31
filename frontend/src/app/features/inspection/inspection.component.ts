@@ -70,7 +70,7 @@ export class InspectionComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<InspectionPoint[]>('http://localhost:8081/api/inspection?date=' + this.selectedDate)
+    this.http.get<InspectionPoint[]>('https://stage-enova-3.onrender.com/api/inspection?date=' + this.selectedDate)
       .subscribe({ next: d => { this.points = d; this.loading = false; }, error: () => { this.loading = false; } });
   }
 

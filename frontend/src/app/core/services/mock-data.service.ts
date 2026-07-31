@@ -18,7 +18,7 @@ import {
  */
 @Injectable({ providedIn: 'root' })
 export class MockDataService {
-  readonly API_ORIGIN = 'http://localhost:8081';
+  readonly API_ORIGIN = 'https://stage-enova-3.onrender.com';
   private readonly API_URL = `${this.API_ORIGIN}/api/dashboard`;
 
   constructor(private readonly http: HttpClient) {}

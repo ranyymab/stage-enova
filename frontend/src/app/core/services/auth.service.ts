@@ -24,6 +24,7 @@ import { AUTH_CONFIG } from '../config/app-config';
 const TOKEN_KEY = 'enova_token';
 const USER_KEY = 'enova_user';
 const PENDING_EMAIL_KEY = 'enova_pending_verification_email';
+const PENDING_DEV_CODE_KEY = 'enova_pending_dev_code';
 
 @Injectable({
   providedIn: 'root',
@@ -62,7 +63,12 @@ export class AuthService {
   register(request: RegisterRequest): Observable<MessageResponse> {
     return this.http
       .post<MessageResponse>(`${this.API_URL}/register`, request)
-      .pipe(tap(() => this.setPendingVerificationEmail(request.email)));
+      .pipe(
+        tap((response) => {
+          this.setPendingVerificationEmail(request.email);
+          this.setPendingDevCode(response.devCode ?? null);
+        })
+      );
   }
 
   verifyEmail(request: VerifyEmailRequest): Observable<LoginResponse> {
@@ -72,17 +78,36 @@ export class AuthService {
         tap((response) => {
           this.persistSession(response);
           this.clearPendingVerificationEmail();
+          this.setPendingDevCode(null);
         })
       );
   }
 
   resendCode(request: ResendCodeRequest): Observable<MessageResponse> {
-    return this.http.post<MessageResponse>(`${this.API_URL}/resend-code`, request);
+    return this.http
+      .post<MessageResponse>(`${this.API_URL}/resend-code`, request)
+      .pipe(tap((response) => this.setPendingDevCode(response.devCode ?? null)));
   }
 
   getPendingVerificationEmail(): string | null {
     if (!this.isBrowser) return null;
     return sessionStorage.getItem(PENDING_EMAIL_KEY);
+  }
+
+  /** Code affiché uniquement quand le serveur n'a pas pu envoyer un vrai
+   *  e-mail (SMTP non configuré) et l'a renvoyé directement à la place. */
+  getPendingDevCode(): string | null {
+    if (!this.isBrowser) return null;
+    return sessionStorage.getItem(PENDING_DEV_CODE_KEY);
+  }
+
+  private setPendingDevCode(code: string | null): void {
+    if (!this.isBrowser) return;
+    if (code) {
+      sessionStorage.setItem(PENDING_DEV_CODE_KEY, code);
+    } else {
+      sessionStorage.removeItem(PENDING_DEV_CODE_KEY);
+    }
   }
 
   private setPendingVerificationEmail(email: string): void {

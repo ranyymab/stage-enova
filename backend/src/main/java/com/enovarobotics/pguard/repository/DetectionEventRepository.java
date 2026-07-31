@@ -19,4 +19,10 @@ public interface DetectionEventRepository extends JpaRepository<DetectionEvent, 
     long countByEventDateAndStatutNot(LocalDate eventDate, DetectionEvent.StatutAnomalie statut);
 
     List<DetectionEvent> findByEventDateOrderByEventDatetimeDesc(LocalDate eventDate);
+
+    /** Tout l'historique jusqu'a une date donnee incluse (utilise avec
+     *  LocalDate.now() pour ne jamais exposer une anomalie datee dans le
+     *  futur), sans la limite artificielle de findTop20 qui masquait une
+     *  partie des anomalies reelles. */
+    List<DetectionEvent> findByEventDateLessThanEqualOrderByEventDatetimeDesc(LocalDate maxDate);
 }

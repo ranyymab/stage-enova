@@ -79,7 +79,7 @@ export class DockingComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<DockingEvent[]>('http://localhost:8081/api/mission?date=' + this.selectedDate + '&category=DOCKING')
+    this.http.get<DockingEvent[]>('https://stage-enova-3.onrender.com/api/mission?date=' + this.selectedDate + '&category=DOCKING')
       .subscribe({ next: d => { this.events = d; this.loading = false; }, error: () => { this.loading = false; } });
   }
 

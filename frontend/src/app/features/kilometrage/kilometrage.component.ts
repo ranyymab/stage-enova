@@ -116,7 +116,7 @@ export class KilometrageComponent implements OnInit {
   loading = true;
 
   ngOnInit() {
-    this.http.get<KmSummary[]>('http://localhost:8081/api/kilometrage').subscribe({
+    this.http.get<KmSummary[]>('https://stage-enova-3.onrender.com/api/kilometrage').subscribe({
       next: d => { this.summaries = [...d].reverse(); this.loading = false; },
       error: () => { this.loading = false; },
     });

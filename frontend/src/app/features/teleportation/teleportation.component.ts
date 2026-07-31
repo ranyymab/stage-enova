@@ -96,7 +96,7 @@ export class TeleoperationComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<TeleoperationEvent[]>('http://localhost:8081/api/teleportation?date=' + this.selectedDate)
+    this.http.get<TeleoperationEvent[]>('https://stage-enova-3.onrender.com/api/teleportation?date=' + this.selectedDate)
       .subscribe({ next: d => { this.events = d; this.loading = false; }, error: () => { this.loading = false; } });
   }
 

@@ -1,11 +1,15 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
- * Anneau de batterie anime en SVG. Le trait se remplit progressivement
- * jusqu'au pourcentage courant (via stroke-dashoffset anime en CSS), et
- * s'anime a nouveau a chaque changement de valeur (rafraichissement auto
- * du dashboard toutes les 30s) plutot que de sauter directement.
+ * Anneau de batterie anime en SVG. Le remplissage (stroke-dashoffset) est
+ * recalcule directement dans le template a chaque verification Angular, a
+ * partir des @Input() courants, plutot que d'etre mis en cache dans un
+ * champ mis a jour uniquement depuis ngOnChanges. L'ancienne version
+ * pouvait rester bloquee sur une valeur perimee (anneau visuellement vide
+ * alors que le pourcentage affiche a cote indiquait 100%) si Angular ne
+ * redeclenchait pas ngOnChanges exactement au moment attendu ; calculer la
+ * valeur en continu dans le template elimine cette classe de bug.
  */
 @Component({
   selector: 'app-battery-ring',
@@ -14,15 +18,14 @@ import { CommonModule } from '@angular/common';
   template: `
     <svg [attr.viewBox]="'0 0 ' + size + ' ' + size" [style.width.px]="size" [style.height.px]="size" class="ring">
       <circle
-        [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="radius"
+        [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="radius()"
         class="ring-track" [attr.stroke-width]="strokeWidth" fill="none" />
       <circle
-        [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="radius"
-        class="ring-fill" [class.is-critical]="percent < 30" [class.is-charging]="charging"
+        [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="radius()"
+        class="ring-fill" [class.is-critical]="clampedPercent() < 30" [class.is-charging]="charging"
         fill="none" [attr.stroke-width]="strokeWidth"
-        [attr.stroke-dasharray]="circumference"
-        [style.stroke-dashoffset.px]="dashOffset"
-        transform-origin="center"
+        [attr.stroke-dasharray]="circumference()"
+        [attr.stroke-dashoffset]="dashOffset()"
         [attr.transform]="'rotate(-90 ' + size / 2 + ' ' + size / 2 + ')'" />
     </svg>
   `,
@@ -49,23 +52,27 @@ import { CommonModule } from '@angular/common';
     }
   `],
 })
-export class BatteryRingComponent implements OnChanges {
+export class BatteryRingComponent {
   @Input() percent = 0;
   @Input() charging = false;
   @Input() size = 40;
 
   strokeWidth = 4;
-  radius = (this.size - this.strokeWidth) / 2;
-  circumference = 2 * Math.PI * this.radius;
-  dashOffset = this.circumference;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['size']) {
-      this.radius = (this.size - this.strokeWidth) / 2;
-      this.circumference = 2 * Math.PI * this.radius;
-    }
-    const clamped = Math.max(0, Math.min(100, this.percent || 0));
-    // Decalage du trait pointille : 0% -> offset plein cercle (rien de visible), 100% -> offset 0 (cercle complet).
-    this.dashOffset = this.circumference * (1 - clamped / 100);
+  radius(): number {
+    return (this.size - this.strokeWidth) / 2;
+  }
+
+  circumference(): number {
+    return 2 * Math.PI * this.radius();
+  }
+
+  clampedPercent(): number {
+    return Math.max(0, Math.min(100, this.percent || 0));
+  }
+
+  // 0% -> offset plein cercle (rien de visible), 100% -> offset 0 (cercle complet).
+  dashOffset(): number {
+    return this.circumference() * (1 - this.clampedPercent() / 100);
   }
 }

@@ -81,6 +81,14 @@ public class RobotSimulationService {
     @Value("${app.simulation.anomaly-chance:0.006}")
     private double anomalyChancePerTick;
 
+    /** Nombre maximum d'anomalies que la simulation peut générer par jour
+     *  (au-delà, plus aucune nouvelle anomalie n'est créée jusqu'au lendemain).
+     *  Évite qu'une longue journée de patrouille (plusieurs cycles) ne fasse
+     *  exploser le nombre d'anomalies "du jour" affichées sur le tableau de
+     *  bord et la page Anomalies. */
+    @Value("${app.simulation.max-anomalies-per-day:5}")
+    private int maxAnomaliesPerDay;
+
     // Boucle de patrouille reelle (quartier universitaire de Sousse, autour de
     // la base du projet - meme zone que la carte deja utilisee par le
     // frontend). Index 0 = poste de charge du robot ; la boucle revient sur
@@ -113,6 +121,7 @@ public class RobotSimulationService {
     private double batteryPercent = 85.0;
     private double todayDynamicMinutes = 0.0;
     private double todayStaticMinutes = 0.0;
+    private int todayAnomalyCount = 0;
     private LocalDate simDay = LocalDate.now();
     private final Random random = new Random();
 
@@ -143,6 +152,7 @@ public class RobotSimulationService {
             simDay = today;
             todayDynamicMinutes = 0.0;
             todayStaticMinutes = 0.0;
+            todayAnomalyCount = 0;
         }
 
         LocalDateTime now = LocalDateTime.now();
@@ -265,9 +275,13 @@ public class RobotSimulationService {
     }
 
     private void maybeLogAnomaly(double[] pos, LocalDateTime now) {
+        if (todayAnomalyCount >= maxAnomaliesPerDay) {
+            return;
+        }
         if (random.nextDouble() > anomalyChancePerTick) {
             return;
         }
+        todayAnomalyCount++;
         String objectDetected = OBJECT_TYPES[random.nextInt(OBJECT_TYPES.length)];
         DetectionEvent event = DetectionEvent.builder()
                 .robotId(robotId)

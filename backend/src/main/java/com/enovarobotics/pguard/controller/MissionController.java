@@ -32,6 +32,11 @@ public class MissionController {
         if (date != null) {
             return repository.findByCategoryAndEventDateOrderByEventDatetimeAsc(category, date);
         }
-        return repository.findByCategoryOrderByEventDatetimeDesc(category);
+        LocalDate today = LocalDate.now();
+        // Garde-fou : ne jamais renvoyer un evenement date dans le futur,
+        // meme si des donnees reelles importees en contiennent.
+        return repository.findByCategoryOrderByEventDatetimeDesc(category).stream()
+                .filter(m -> m.getEventDate() == null || !m.getEventDate().isAfter(today))
+                .toList();
     }
 }

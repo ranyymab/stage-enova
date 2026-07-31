@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_eH8ErIB3ZA1zAjNyCTYnIJSkRtn0",
+      "name": "stage-enova",
+      "directory": "frontend",
+      "orgId": "team_neUqcJr8EznFikeUWCAiJNGq"
+    }
+  ]
+}

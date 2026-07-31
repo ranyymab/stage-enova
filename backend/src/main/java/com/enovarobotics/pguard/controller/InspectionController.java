@@ -34,6 +34,9 @@ public class InspectionController {
         if (date != null) {
             return repository.findByEventDateOrderByEventDatetimeAsc(date);
         }
-        return repository.findTop20ByOrderByEventDatetimeDesc();
+        // Garde-fou : jamais un point d'inspection date dans le futur, et plus
+        // de limite arbitraire a 20 lignes (voir AnomaliesController, meme
+        // correctif).
+        return repository.findByEventDateLessThanEqualOrderByEventDatetimeDesc(LocalDate.now());
     }
 }

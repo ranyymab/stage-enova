@@ -153,7 +153,7 @@ export class MissionsComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<Mission[]>('http://localhost:8081/api/mission?date=' + this.selectedDate).subscribe({
+    this.http.get<Mission[]>('https://stage-enova-3.onrender.com/api/mission?date=' + this.selectedDate).subscribe({
       next: d => { this.missions = d; this.loading = false; },
       error: () => { this.loading = false; },
     });

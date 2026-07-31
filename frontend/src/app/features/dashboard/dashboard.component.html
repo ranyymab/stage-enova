@@ -153,7 +153,7 @@
         <tr *ngFor="let a of anomalies; let i = index; trackBy: trackByAnomaly" [class.is-pending]="isPending(a.heure)" class="enter-fade-up" [style.--stagger-index]="i">
           <td>{{ a.type }}</td>
           <td class="mono">{{ a.date }}</td>
-          <td class="mono">{{ a.heure }}</td>
+          <td class="mono">{{ a.heure }} <span class="pending-tag" *ngIf="isPending(a.heure)">à venir</span></td>
           <td><span class="crit-pill" [class]="'crit-' + a.criticite.toLowerCase()">{{ a.criticite }}</span></td>
           <td><span class="statut-pill" [class]="'statut-' + a.statut.toLowerCase()">{{ a.statut }}</span></td>
           <td>

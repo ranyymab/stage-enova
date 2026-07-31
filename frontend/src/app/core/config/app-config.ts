@@ -14,6 +14,6 @@
  * n'est jamais utilisé côté frontend.
  */
 export const AUTH_CONFIG = {
-  API_BASE_URL: 'http://localhost:8081/api/auth',
+  API_BASE_URL: 'https://stage-enova-3.onrender.com/api/auth',
   GOOGLE_CLIENT_ID: 'REPLACE_WITH_YOUR_GOOGLE_OAUTH_CLIENT_ID.apps.googleusercontent.com',
 };

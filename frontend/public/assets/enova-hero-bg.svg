@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071412" />
+      <stop offset="60%" stop-color="#0B2420" />
+      <stop offset="100%" stop-color="#00AEA0" stop-opacity="0.35" />
+    </linearGradient>
+    <linearGradient id="robotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1FC9BA" />
+      <stop offset="100%" stop-color="#00AEA0" />
+    </linearGradient>
+    <linearGradient id="laserGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1FC9BA" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#CA5215" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(31, 201, 186, 0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Dark Tech Background -->
+  <rect width="1200" height="400" fill="url(#bgGrad)" />
+  <rect width="1200" height="400" fill="url(#grid)" />
+
+  <!-- Ambient Glow Circles -->
+  <circle cx="1000" cy="150" r="220" fill="#00AEA0" opacity="0.15" filter="blur(40px)" />
+  <circle cx="850" cy="280" r="140" fill="#CA5215" opacity="0.12" filter="blur(30px)" />
+
+  <!-- Radar Circles -->
+  <circle cx="950" cy="200" r="160" fill="none" stroke="rgba(31, 201, 186, 0.2)" stroke-width="1.5" stroke-dasharray="6,6" />
+  <circle cx="950" cy="200" r="110" fill="none" stroke="rgba(31, 201, 186, 0.3)" stroke-width="1" />
+  <circle cx="950" cy="200" r="60" fill="none" stroke="rgba(31, 201, 186, 0.4)" stroke-width="1.5" />
+
+  <!-- Scanning Laser Line -->
+  <line x1="950" y1="200" x2="1150" y2="100" stroke="url(#laserGrad)" stroke-width="2.5" />
+
+  <!-- P-Guard Autonomous Robot Silhouette Graphic -->
+  <g transform="translate(860, 90)">
+    <!-- Base / Wheels Chassis -->
+    <rect x="30" y="160" width="120" height="30" rx="10" fill="#0B1A18" stroke="#1FC9BA" stroke-width="2" />
+    <circle cx="50" cy="185" r="14" fill="#142B27" stroke="#1FC9BA" stroke-width="2.5" />
+    <circle cx="130" cy="185" r="14" fill="#142B27" stroke="#1FC9BA" stroke-width="2.5" />
+    <circle cx="50" cy="185" r="6" fill="#1FC9BA" />
+    <circle cx="130" cy="185" r="6" fill="#1FC9BA" />
+
+    <!-- Robot Body Body Shell -->
+    <path d="M 40 160 L 50 70 Q 90 55 130 70 L 140 160 Z" fill="url(#robotGrad)" opacity="0.9" />
+    <path d="M 55 85 L 125 85 L 120 145 L 60 145 Z" fill="#071412" stroke="#1FC9BA" stroke-width="1.5" />
+
+    <!-- Camera Lens & Sensor Head -->
+    <rect x="75" y="30" width="30" height="30" rx="6" fill="#0B1A18" stroke="#CA5215" stroke-width="2" />
+    <circle cx="90" cy="45" r="8" fill="#CA5215" />
+    <circle cx="90" cy="45" r="3" fill="#FFFFFF" />
+
+    <!-- Sensor Mast -->
+    <line x1="90" y1="60" x2="90" y2="70" stroke="#1FC9BA" stroke-width="3" />
+
+    <!-- Status LEDs -->
+    <circle cx="68" cy="100" r="3" fill="#1FC9BA" />
+    <circle cx="90" cy="100" r="3" fill="#E9BE87" />
+    <circle cx="112" cy="100" r="3" fill="#CA5215" />
+
+    <!-- Telemetry Signal Waves -->
+    <path d="M 75 20 A 20 20 0 0 1 105 20" fill="none" stroke="#1FC9BA" stroke-width="2" stroke-linecap="round" />
+    <path d="M 68 12 A 30 30 0 0 1 112 12" fill="none" stroke="#1FC9BA" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+  </g>
+
+  <!-- Foreground Grid Lines & Accents -->
+  <line x1="0" y1="360" x2="1200" y2="360" stroke="rgba(31, 201, 186, 0.25)" stroke-width="1.5" />
+  <line x1="0" y1="362" x2="1200" y2="362" stroke="rgba(202, 82, 21, 0.3)" stroke-width="1" />
+</svg>

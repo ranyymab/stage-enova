@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       if ((this.selectedDate || this.maxDate) === this.maxDate) {
         this.loadAll();
       }
-    }, 1000);
+    }, 10000);
     this.updateClock();
     this.clockInterval = setInterval(() => this.updateClock(), 1000);
   }
@@ -224,7 +224,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   /** Garde la barre de rafraichissement visible au moins ~450ms pour qu'elle reste percue meme sur reseau rapide. */
   private endRefresh(): void {
     const elapsed = Date.now() - this.refreshingSince;
-    const remaining = Math.max(0, 450 - elapsed);
+    const remaining = Math.min(800, Math.max(0, 450 - elapsed));
     setTimeout(() => { this.isRefreshing = false; this.cdr.markForCheck(); }, remaining);
   }
 

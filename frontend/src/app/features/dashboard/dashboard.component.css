@@ -92,7 +92,7 @@
   gap: 24px;
   overflow: hidden;
   background: linear-gradient(135deg, rgba(8, 20, 18, 0.92) 0%, rgba(13, 31, 28, 0.82) 50%, rgba(0, 174, 160, 0.35) 100%),
-              url('/assets/enova-hero-bg.png') center/cover no-repeat;
+              url('/assets/enova-hero-bg.svg') center/cover no-repeat;
   border: 1px solid rgba(0, 174, 160, 0.25);
   box-shadow: 0 10px 30px -5px rgba(0, 174, 160, 0.18), 0 4px 12px rgba(0, 0, 0, 0.2);
   color: #FFFFFF;
@@ -100,7 +100,7 @@
 
 :root[data-theme='light'] .enova-hero-banner {
   background: linear-gradient(135deg, rgba(11, 30, 27, 0.92) 0%, rgba(15, 38, 34, 0.85) 60%, rgba(0, 174, 160, 0.4) 100%),
-              url('/assets/enova-hero-bg.png') center/cover no-repeat;
+              url('/assets/enova-hero-bg.svg') center/cover no-repeat;
 }
 
 .hero-content {

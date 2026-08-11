@@ -1,5 +1,4 @@
 package com.enovarobotics.pguard.service;
-
 import com.enovarobotics.pguard.model.entity.VerificationCode;
 import com.enovarobotics.pguard.repository.VerificationCodeRepository;
 import lombok.RequiredArgsConstructor;

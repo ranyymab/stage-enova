@@ -75,13 +75,14 @@ interface NavItem {
   `,
   styles: [`
     .sidebar {
-      width: 220px;
+      width: 240px;
       height: 100vh;
       background: var(--panel-base);
       border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
+      box-shadow: 1px 0 4px rgba(0, 0, 0, 0.02);
     }
 
     /* ---- responsive : sidebar devient un tiroir plein ecran sous 860px ---- */
@@ -145,23 +146,23 @@ interface NavItem {
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 20px 18px;
+      gap: 12px;
+      padding: 22px 20px;
       border-bottom: 1px solid var(--border-subtle);
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       object-fit: contain;
       flex-shrink: 0;
     }
 
     .brand-fallback {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: var(--accent-primary);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand-primary), #008C81);
       color: #fff;
       font-family: var(--font-mono);
       font-weight: 700;
@@ -179,31 +180,38 @@ interface NavItem {
     }
 
     .brand-name {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 15px;
       color: var(--text-primary);
+      letter-spacing: -0.01em;
     }
 
     .brand-sub {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      font-weight: 600;
     }
 
     .robot-id {
-      margin: 14px 18px 6px;
+      margin: 14px 16px 8px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: var(--panel-raised);
+      border: 1px solid var(--border-subtle);
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
+      font-weight: 600;
+      color: var(--brand-primary);
+      letter-spacing: 0.04em;
     }
 
     .nav {
       display: flex;
       flex-direction: column;
-      padding: 6px 10px;
-      gap: 2px;
+      padding: 8px 12px;
+      gap: 4px;
       flex: 1;
       overflow-y: auto;
     }
@@ -211,13 +219,13 @@ interface NavItem {
     .nav-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 9px 12px;
-
-      border-radius: 6px;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 13.5px;
+      font-weight: 500;
       position: relative;
       overflow: hidden;
       transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
@@ -226,12 +234,24 @@ interface NavItem {
     .nav-item:hover {
       background: var(--panel-raised);
       color: var(--text-primary);
+      transform: translateX(2px);
     }
 
     .nav-item.active {
       background: var(--accent-primary-soft);
       color: var(--accent-primary);
-      font-weight: 600;
+      font-weight: 700;
+    }
+
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: var(--accent-primary);
     }
 
     .nav-item.active .nav-icon {

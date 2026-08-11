@@ -7,13 +7,15 @@
     <app-sidebar [anomaliesOuvertes]="anomaliesOuvertes"></app-sidebar>
     <div class="app-main">
       <header class="topbar">
-        <div class="topbar-breadcrumb">
-          <span class="crumb-root">Accueil</span>
-          <span class="crumb-sep">/</span>
-          <span class="crumb-current">{{ pageLabel() }}</span>
+        <div class="topbar-left">
+          <div class="topbar-breadcrumb">
+            <span class="crumb-root">Enova Robotics</span>
+            <span class="crumb-sep">/</span>
+            <span class="crumb-current">{{ pageLabel() }}</span>
+          </div>
         </div>
         <div class="topbar-actions">
-          <button class="topbar-btn" (click)="themeService.toggle()" type="button" title="Changer de theme">
+          <button class="topbar-btn" (click)="themeService.toggle()" type="button" title="Changer de th&#232;me">
             <svg *ngIf="themeService.mode() === 'dark'" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg *ngIf="themeService.mode() !== 'dark'" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
           </button>
@@ -21,6 +23,13 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M9.5 20a2.5 2.5 0 0 0 5 0"/></svg>
             <span class="topbar-badge" *ngIf="anomaliesOuvertes > 0">{{ anomaliesOuvertes }}</span>
           </button>
+          <div class="user-pill">
+            <div class="user-avatar">RM</div>
+            <div class="user-details">
+              <span class="user-name-header">Robert Murdoch</span>
+              <span class="user-role-header">Ing&#233;nieur Enova</span>
+            </div>
+          </div>
         </div>
       </header>
       <main class="app-content" [class.route-enter]="routeTransitioning">

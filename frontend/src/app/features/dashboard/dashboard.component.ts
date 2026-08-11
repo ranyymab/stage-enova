@@ -183,7 +183,20 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isRefreshing = true;
     this.refreshingSince = Date.now();
 
-    this.mockData.getKpi(date).subscribe(data => { this.kpi = data; if (!this.selectedDate) { this.selectedDate = this.clampToMax(data.dateReference); } this.cdr.markForCheck(); this.endRefresh(); this.trySyncLiveSim(); });
+    this.mockData.getKpi(date).subscribe(data => {
+      if (!data.hasDataForDate && data.derniereDateAvecDonnees && this.selectedDate !== data.derniereDateAvecDonnees) {
+        this.selectedDate = data.derniereDateAvecDonnees;
+        this.loadAll();
+        return;
+      }
+      this.kpi = data;
+      if (!this.selectedDate) {
+        this.selectedDate = this.clampToMax(data.dateReference);
+      }
+      this.cdr.markForCheck();
+      this.endRefresh();
+      this.trySyncLiveSim();
+    });
     this.mockData.getRepartitionTemps(date).subscribe(data => { this.repartition = data; this.renderRepartitionChart(data); this.cdr.markForCheck(); });
     this.mockData.getMissionsDuJour(date).subscribe(m => { this.missions = m; this.cdr.markForCheck(); this.trySyncLiveSim(); });
     this.mockData.getInspectionPoints(date).subscribe(p => { this.inspectionPoints = p; this.cdr.markForCheck(); });

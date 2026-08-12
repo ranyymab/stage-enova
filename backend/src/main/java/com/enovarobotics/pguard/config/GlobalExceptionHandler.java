@@ -1,6 +1,5 @@
 package com.enovarobotics.pguard.config;
 
-import com.enovarobotics.pguard.service.EmailService;
 import com.enovarobotics.pguard.service.VerificationCodeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -16,40 +17,75 @@ import java.util.Map;
  * Gestion centralisée des erreurs — F5 sécurité.
  * Objectif : ne jamais renvoyer de stack trace ou de détail interne au
  * client (fuite d'information), tout en donnant un message exploitable.
+ * 
+ * Fournit des réponses structurées avec:
+ * - error: message d'erreur lisible
+ * - code: code d'erreur machine (pour traitement côté client)
+ * - fields: détails de validation (le cas échéant)
+ * - timestamp: quand l'erreur s'est produite
  */
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    private static final DateTimeFormatter TIMESTAMP_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidation(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new LinkedHashMap<>();
         ex.getBindingResult().getFieldErrors().forEach(err ->
                 errors.put(err.getField(), err.getDefaultMessage()));
-        return ResponseEntity.badRequest().body(Map.of("error", "Requête invalide", "fields", errors));
+        
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("error", "Requête invalide");
+        response.put("code", "VALIDATION_ERROR");
+        response.put("fields", errors);
+        response.put("timestamp", LocalDateTime.now().format(TIMESTAMP_FORMATTER));
+        
+        return ResponseEntity.badRequest().body(response);
     }
 
     @ExceptionHandler(VerificationCodeService.InvalidCodeException.class)
     public ResponseEntity<?> handleInvalidCode(VerificationCodeService.InvalidCodeException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", ex.getMessage()));
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("error", ex.getMessage());
+        response.put("code", "INVALID_CODE");
+        response.put("timestamp", LocalDateTime.now().format(TIMESTAMP_FORMATTER));
+        
+        log.warn("Invalid code attempt: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
     @ExceptionHandler(VerificationCodeService.TooManyRequestsException.class)
     public ResponseEntity<?> handleTooManyRequests(VerificationCodeService.TooManyRequestsException ex) {
-        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(Map.of("error", ex.getMessage()));
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("error", ex.getMessage());
+        response.put("code", "TOO_MANY_REQUESTS");
+        response.put("timestamp", LocalDateTime.now().format(TIMESTAMP_FORMATTER));
+        
+        log.warn("Too many requests: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(response);
     }
 
-    @ExceptionHandler(EmailService.EmailDeliveryException.class)
-    public ResponseEntity<?> handleEmailFailure(EmailService.EmailDeliveryException ex) {
-        log.error("Erreur d'envoi d'e-mail", ex);
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                .body(Map.of("error", "Impossible d'envoyer l'e-mail pour le moment. Réessayez plus tard."));
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> handleIllegalArgument(IllegalArgumentException ex) {
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("error", "Argument invalide");
+        response.put("code", "ILLEGAL_ARGUMENT");
+        response.put("timestamp", LocalDateTime.now().format(TIMESTAMP_FORMATTER));
+        
+        log.warn("Illegal argument: {}", ex.getMessage());
+        return ResponseEntity.badRequest().body(response);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleGeneric(Exception ex) {
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("error", "Une erreur inattendue est survenue");
+        response.put("code", "INTERNAL_SERVER_ERROR");
+        response.put("timestamp", LocalDateTime.now().format(TIMESTAMP_FORMATTER));
+        
         log.error("Erreur inattendue", ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(Map.of("error", "Une erreur inattendue est survenue."));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 }

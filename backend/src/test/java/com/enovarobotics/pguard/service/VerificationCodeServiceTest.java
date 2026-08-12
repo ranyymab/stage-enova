@@ -43,8 +43,9 @@ class VerificationCodeServiceTest {
     void generateAndSend_savesHashedCode_neverPlainText() {
         when(repository.findTopByEmailAndPurposeAndConsumedFalseOrderByCreatedAtDesc(any(), any()))
                 .thenReturn(Optional.empty());
+        when(emailService.sendVerificationCode(any(), any(), any())).thenReturn(true);
 
-        service.generateAndSend("user@example.com", "User", VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        String result = service.generateAndSend("user@example.com", "User", VerificationCode.Purpose.SIGNUP_VERIFICATION);
 
         ArgumentCaptor<VerificationCode> captor = ArgumentCaptor.forClass(VerificationCode.class);
         verify(repository).save(captor.capture());
@@ -59,6 +60,8 @@ class VerificationCodeServiceTest {
                 org.mockito.ArgumentMatchers.eq("user@example.com"),
                 org.mockito.ArgumentMatchers.eq("User"),
                 any());
+        assertNull(result);
+        verify(repository).invalidateActiveCodes("user@example.com", VerificationCode.Purpose.SIGNUP_VERIFICATION);
     }
 
     @Test
@@ -95,10 +98,11 @@ class VerificationCodeServiceTest {
         when(repository.findTopByEmailAndPurposeAndConsumedFalseOrderByCreatedAtDesc(any(), any()))
                 .thenReturn(Optional.of(entity));
 
-        boolean result = service.verify("user@example.com", rawCode, VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        assertDoesNotThrow(() ->
+                service.verify("user@example.com", rawCode, VerificationCode.Purpose.SIGNUP_VERIFICATION));
 
-        assertTrue(result);
         assertTrue(entity.isConsumed());
+        verify(repository).save(entity);
     }
 
     @Test

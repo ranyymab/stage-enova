@@ -44,7 +44,20 @@ export interface MessageResponse {
   devCode?: string | null;
 }
 
+export interface VerificationResponse {
+  message: string;
+  codeExpirySeconds: number;
+  maxAttempts: number;
+  attemptsRemaining: number;
+  resendCooldownSeconds: number;
+  devCode?: string | null;
+}
+
 export interface ApiErrorBody {
   error?: string;
+  code?: string;
   fields?: Record<string, string>;
+  attemptsRemaining?: number;
+  timestamp?: string;
 }
+

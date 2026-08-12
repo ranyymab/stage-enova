@@ -18,6 +18,7 @@ import {
   RegisterRequest,
   ResendCodeRequest,
   VerifyEmailRequest,
+  VerificationResponse,
 } from '../../shared/models/auth.models';
 import { AUTH_CONFIG } from '../config/app-config';
 
@@ -60,9 +61,9 @@ export class AuthService {
   // Inscription + vérification par code envoyé par e-mail
   // ---------------------------------------------------------------
 
-  register(request: RegisterRequest): Observable<MessageResponse> {
+  register(request: RegisterRequest): Observable<VerificationResponse> {
     return this.http
-      .post<MessageResponse>(`${this.API_URL}/register`, request)
+      .post<VerificationResponse>(`${this.API_URL}/register`, request)
       .pipe(
         tap((response) => {
           this.setPendingVerificationEmail(request.email);
@@ -83,9 +84,9 @@ export class AuthService {
       );
   }
 
-  resendCode(request: ResendCodeRequest): Observable<MessageResponse> {
+  resendCode(request: ResendCodeRequest): Observable<VerificationResponse> {
     return this.http
-      .post<MessageResponse>(`${this.API_URL}/resend-code`, request)
+      .post<VerificationResponse>(`${this.API_URL}/resend-code`, request)
       .pipe(tap((response) => this.setPendingDevCode(response.devCode ?? null)));
   }
 

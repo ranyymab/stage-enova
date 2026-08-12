@@ -262,14 +262,28 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       const lastLatLng = allLatLngs[lastIdx];
       if (!this.robotMarker) {
         const robotIcon = L.divIcon({
-          className: '',
-          html:
-            '<div style="width:16px;height:16px;background:#00AEA0;border-radius:50%;border:3px solid #fff;' +
-            'box-shadow:0 0 0 3px rgba(0,174,160,.35),0 2px 8px rgba(0,0,0,.5);animation:liveRobotPulse 1.2s infinite;"></div>' +
-            '<style>@keyframes liveRobotPulse{0%,100%{box-shadow:0 0 0 3px rgba(0,174,160,.35),0 2px 8px rgba(0,0,0,.5);}' +
-            '50%{box-shadow:0 0 0 8px rgba(0,174,160,.08),0 2px 8px rgba(0,0,0,.5);}}</style>',
-          iconSize: [16, 16],
-          iconAnchor: [8, 8],
+          className: 'robot-marker-wrapper',
+          html: `
+            <div style="position:relative;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+              <!-- Outer pulsing halo -->
+              <div style="position:absolute;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle,rgba(0,174,160,0.4) 0%,rgba(0,174,160,0) 70%);animation:robotHalo 2s ease-out infinite;"></div>
+              <!-- Status indicator background -->
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#1FC9BA 0%,#00AEA0 100%);border:3px solid #fff;box-shadow:0 0 0 2px #0D2622,0 4px 12px rgba(0,174,160,.4);display:flex;align-items:center;justify-content:center;position:relative;z-index:2;">
+                <!-- Robot icon inside -->
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="9" y1="7" x2="15" y2="7"></line><circle cx="12" cy="16" r="2"></circle></svg>
+              </div>
+              <!-- Status label -->
+              <div style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:rgba(13,38,34,0.9);border:1px solid rgba(31,201,186,0.4);border-radius:4px;padding:2px 8px;color:#1FC9BA;font-size:8px;font-weight:700;white-space:nowrap;letter-spacing:0.05em;z-index:1;backdrop-filter:blur(4px);" id="robot-status-label">PATROUILLE</div>
+            </div>
+            <style>
+              @keyframes robotHalo {
+                0% { transform:scale(1);opacity:1; }
+                100% { transform:scale(1.8);opacity:0; }
+              }
+            </style>
+          `,
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
         });
         this.robotMarker = L.marker(lastLatLng, { icon: robotIcon, zIndexOffset: 1000 }).addTo(this.map);
       } else {
@@ -344,6 +358,20 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       const phase = this.phaseOf(points[i + 1]);
       const color = this.phaseColor(points[i + 1]);
       const traveled = i < this.currentIndex;
+      
+      // Draw trail effect for traveled segments with enhanced visibility
+      if (traveled) {
+        // Add a glowing/shadow effect for traveled segments
+        const shadowLine = L.polyline(coords, {
+          color: color,
+          weight: 8,
+          opacity: 0.2,
+          dashArray: phase === 'dock' ? '2 8' : undefined,
+          lineCap: 'round',
+        }).addTo(this.map);
+        this.segmentLines.push(shadowLine);
+      }
+      
       const line = L.polyline(coords, {
         color,
         weight: traveled ? 5 : 2.5,
@@ -462,6 +490,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 
       const [lat, lng] = this.pointAlongPath(path, cumulative, totalDist * eased);
       this.robotMarker?.setLatLng([lat, lng]);
+      this.updateRobotStatusLabel(this.phaseOf(to));
       try {
         this.liveSim.reportProgress(fromIdx, eased, this.phaseOf(to));
       } catch {
@@ -522,6 +551,26 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.robotMarker.bindPopup(
       '<b>' + pt.source + '</b><br>' + pt.label + detail + '<br><small>' + pt.heure + '</small>',
     );
+  }
+
+  private updateRobotStatusLabel(phase: string): void {
+    if (!this.robotMarker) return;
+    const statusMap: { [key: string]: string } = {
+      'patrol': 'PATROUILLE',
+      'dock': 'STATION',
+      'home': 'BASE',
+      'inspect': 'INSPECTION',
+      'teleop': 'TÉLÉOP',
+      'charge': 'CHARGE',
+    };
+    const status = statusMap[phase] || phase.toUpperCase();
+    const container = this.robotMarker.getElement();
+    if (container) {
+      const label = container.querySelector('#robot-status-label');
+      if (label) {
+        label.textContent = status;
+      }
+    }
   }
 
   /**

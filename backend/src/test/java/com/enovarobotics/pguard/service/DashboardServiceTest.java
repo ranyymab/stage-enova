@@ -61,17 +61,6 @@ class DashboardServiceTest {
                 .statut(DetectionEvent.StatutAnomalie.NOUVELLE)
                 .build();
 
-        DetectionEvent oldDetection = DetectionEvent.builder()
-                .id(2L)
-                .robotId("ROBOT-001")
-                .eventDate(today.minusDays(1))
-                .rawHour("23:00:00")
-                .objectDetected("vehicle")
-                .criticite(DetectionEvent.Criticite.MOYENNE)
-                .statut(DetectionEvent.StatutAnomalie.EN_COURS)
-                .build();
-
-
         when(detectionEventRepository
                 .findByEventDateOrderByEventDatetimeDesc(today))
                 .thenReturn(List.of(todayDetection));

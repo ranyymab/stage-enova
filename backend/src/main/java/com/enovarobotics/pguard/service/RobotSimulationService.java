@@ -175,7 +175,6 @@ public class RobotSimulationService {
             }
             case RETURNING -> {
                 routeProgressM = Math.max(0.0, routeProgressM - kmPerTickM);
-                double[] pos = positionAt(routeProgressM);
                 batteryPercent = Math.max(batteryMin, batteryPercent - (batteryDrainPerTick * 0.5));
                 todayDynamicMinutes += 1.0 / 60.0;
                 updateKilometrage(kmPerTick * 0.6, now);

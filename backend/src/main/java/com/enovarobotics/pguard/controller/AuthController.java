@@ -7,6 +7,7 @@ import com.enovarobotics.pguard.repository.UserRepository;
 import com.enovarobotics.pguard.security.JwtService;
 import com.enovarobotics.pguard.service.GoogleTokenService;
 import com.enovarobotics.pguard.service.VerificationCodeService;
+import com.enovarobotics.pguard.service.VerificationCodeService.CodeMetadata;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -62,8 +64,6 @@ public class AuthController {
         Optional<User> existing = userRepository.findByEmail(email);
 
         if (existing.isPresent() && existing.get().isEmailVerified()) {
-            // Ne pas confirmer explicitement qu'un compte existe déjà pour cet
-            // e-mail (évite l'énumération de comptes) tout en restant utile.
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(Map.of("error", "Un compte existe déjà pour cet e-mail. Essayez de vous connecter."));
         }
@@ -80,17 +80,30 @@ public class AuthController {
         userRepository.save(user);
 
         String devCode = verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        CodeMetadata metadata = verificationCodeService.getCodeMetadata(email, VerificationCode.Purpose.SIGNUP_VERIFICATION);
 
+        log.info("Registration code generated for email: {} (expires in {} seconds)", email, metadata.expirySeconds);
+        
         if (devCode != null) {
-            log.warn("SMTP non configure ou en echec : code renvoye directement au client (mode developpement) pour {}", email);
+            log.warn("SMTP not configured: code returned to client (dev mode) for {}", email);
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(MessageResponse.of(
-                            "SMTP non configure sur ce serveur : voici votre code de test (ne s'affichera pas en production).",
+                    .body(VerificationResponse.success(
+                            "Serveur SMTP non configuré. Voici votre code de test (ne s'affichera pas en production).",
+                            metadata.expirySeconds,
+                            metadata.maxAttempts,
+                            metadata.attemptsRemaining,
+                            60,
                             devCode));
         }
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(MessageResponse.of("Un code de vérification a été envoyé à " + email));
+                .body(VerificationResponse.success(
+                        "Un code de vérification a été envoyé à " + email,
+                        metadata.expirySeconds,
+                        metadata.maxAttempts,
+                        metadata.attemptsRemaining,
+                        60,
+                        null));
     }
 
     @PostMapping("/verify-email")
@@ -98,14 +111,31 @@ public class AuthController {
     public ResponseEntity<?> verifyEmail(@Valid @RequestBody VerifyEmailRequest request) {
         String email = request.getEmail().toLowerCase().trim();
 
-        verificationCodeService.verify(email, request.getCode(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        try {
+            verificationCodeService.verify(email, request.getCode(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        } catch (VerificationCodeService.InvalidCodeException e) {
+            // Try to get remaining metadata even on failure for better UX
+            try {
+                CodeMetadata metadata = verificationCodeService.getCodeMetadata(email, VerificationCode.Purpose.SIGNUP_VERIFICATION);
+                Map<String, Object> errorResponse = new LinkedHashMap<>();
+                errorResponse.put("error", e.getMessage());
+                errorResponse.put("attemptsRemaining", metadata.attemptsRemaining);
+                errorResponse.put("code", "INVALID_CODE");
+                return ResponseEntity.badRequest().body(errorResponse);
+            } catch (Exception ignored) {
+                // If metadata fetch fails, return generic error
+                throw e;
+            }
+        }
 
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new VerificationCodeService.InvalidCodeException("Compte introuvable"));
 
         user.setEmailVerified(true);
+        user.setFailedLoginAttempts(0);
         userRepository.save(user);
 
+        log.info("Email verified successfully for: {}", email);
         return ResponseEntity.ok(buildLoginResponse(user));
     }
 
@@ -113,19 +143,31 @@ public class AuthController {
     public ResponseEntity<?> resendCode(@Valid @RequestBody ResendCodeRequest request) {
         String email = request.getEmail().toLowerCase().trim();
 
-        String devCode = userRepository.findByEmail(email)
-                .filter(user -> !user.isEmailVerified())
-                .map(user -> verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION))
-                .orElse(null);
+        User user = userRepository.findByEmail(email)
+                .filter(u -> !u.isEmailVerified())
+                .orElseThrow(() -> new IllegalArgumentException("Email not found or already verified"));
+        
+        String devCode = verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        CodeMetadata metadata = verificationCodeService.getCodeMetadata(email, VerificationCode.Purpose.SIGNUP_VERIFICATION);
 
         if (devCode != null) {
-            return ResponseEntity.ok(MessageResponse.of(
-                    "SMTP non configure sur ce serveur : voici votre code de test (ne s'affichera pas en production).",
+            log.warn("SMTP not configured: dev code returned for {}", email);
+            return ResponseEntity.ok(VerificationResponse.success(
+                    "Code de test (mode développement): " + devCode,
+                    metadata.expirySeconds,
+                    metadata.maxAttempts,
+                    metadata.attemptsRemaining,
+                    60,
                     devCode));
         }
 
-        // Réponse identique que l'e-mail existe ou non (anti-énumération).
-        return ResponseEntity.ok(MessageResponse.of("Si un compte en attente existe pour cet e-mail, un nouveau code a été envoyé."));
+        return ResponseEntity.ok(VerificationResponse.success(
+                "Un nouveau code a été envoyé à " + email,
+                metadata.expirySeconds,
+                metadata.maxAttempts,
+                metadata.attemptsRemaining,
+                60,
+                null));
     }
 
     // ---------------------------------------------------------------

@@ -12,6 +12,46 @@ import { ThemeService } from '../../core/services/theme.service';
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   template: `
     <div class="login-screen">
+      <!-- Animated background with gradient and geometric elements -->
+      <div class="background-container" aria-hidden="true">
+        <div class="gradient-bg"></div>
+        <svg class="geometric-shapes" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice">
+          <!-- Large circles with different opacities -->
+          <circle cx="150" cy="150" r="200" fill="url(#grad1)" opacity="0.15" />
+          <circle cx="850" cy="700" r="300" fill="url(#grad2)" opacity="0.1" />
+          <circle cx="900" cy="100" r="150" fill="url(#grad3)" opacity="0.08" />
+          
+          <!-- Animated grid pattern -->
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1FC9BA;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#00AEA0;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#3DDC97;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1FC9BA;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#E9BE87;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#CA5215;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          
+          <!-- Grid lines -->
+          <g stroke="#1FC9BA" stroke-width="1" opacity="0.06">
+            <line x1="0" y1="0" x2="1000" y2="800" />
+            <line x1="0" y1="800" x2="1000" y2="0" />
+            <line x1="500" y1="0" x2="500" y2="800" />
+            <line x1="0" y1="400" x2="1000" y2="400" />
+          </g>
+          
+          <!-- Floating nodes -->
+          <circle cx="200" cy="200" r="4" fill="#1FC9BA" opacity="0.3" class="float-node" style="animation: float 6s ease-in-out infinite;" />
+          <circle cx="800" cy="300" r="3" fill="#3DDC97" opacity="0.2" class="float-node" style="animation: float 8s ease-in-out infinite 2s;" />
+          <circle cx="400" cy="650" r="5" fill="#E9BE87" opacity="0.15" class="float-node" style="animation: float 7s ease-in-out infinite 4s;" />
+        </svg>
+      </div>
+
       <div class="login-card enter-scale">
         <div class="brand enter-fade-up" style="--stagger-index: 1">
           <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing"
@@ -95,16 +135,50 @@ import { ThemeService } from '../../core/services/theme.service';
       overflow: hidden;
     }
 
+    .background-container {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .gradient-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0D2622 0%, #1a2f2a 50%, #0a1f1c 100%);
+      z-index: 0;
+    }
+
+    .geometric-shapes {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .float-node {
+      filter: drop-shadow(0 0 8px rgba(31, 201, 186, 0.3));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(20px, -20px); }
+      50% { transform: translate(-10px, 30px); }
+      75% { transform: translate(-30px, -10px); }
+    }
+
     .login-card {
       position: relative;
-      z-index: 1;
+      z-index: 10;
       width: 100%;
       max-width: 380px;
-      background: var(--panel-base);
-      border: 1px solid var(--border-subtle);
+      background: rgba(20, 51, 48, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(31, 201, 186, 0.25);
       border-radius: 16px;
       padding: 34px 30px;
-      box-shadow: 0 20px 50px rgba(0, 60, 55, 0.08);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
       animation: cardEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -118,19 +192,22 @@ import { ThemeService } from '../../core/services/theme.service';
       align-items: center;
       gap: 12px;
       margin-bottom: 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(31, 201, 186, 0.15);
     }
 
     .brand-logo {
       width: 44px;
       height: 44px;
       object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(31, 201, 186, 0.2));
     }
 
     .brand-fallback {
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: var(--accent-primary);
+      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
       color: #fff;
       font-family: var(--font-mono);
       font-weight: 700;
@@ -139,6 +216,7 @@ import { ThemeService } from '../../core/services/theme.service';
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      box-shadow: 0 8px 16px rgba(31, 201, 186, 0.25);
     }
 
     .brand-text {
@@ -150,12 +228,13 @@ import { ThemeService } from '../../core/services/theme.service';
     .brand-name {
       font-weight: 700;
       font-size: 16.5px;
-      color: var(--text-primary);
+      color: #fff;
+      letter-spacing: -0.5px;
     }
 
     .brand-sub {
       font-size: 11px;
-      color: var(--accent-primary);
+      color: #1FC9BA;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 600;
@@ -164,13 +243,14 @@ import { ThemeService } from '../../core/services/theme.service';
     h1 {
       margin: 0 0 4px;
       font-size: 20px;
-      color: var(--text-primary);
+      color: #fff;
+      font-weight: 700;
     }
 
     .subtitle {
       margin: 0 0 26px;
       font-size: 12.5px;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.7);
     }
 
     form {
@@ -195,20 +275,22 @@ import { ThemeService } from '../../core/services/theme.service';
       position: relative;
       display: flex;
       align-items: center;
-      background: var(--panel-raised);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+      background: rgba(20, 35, 35, 0.8);
+      border: 1px solid rgba(31, 201, 186, 0.15);
+      border-radius: 10px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
     }
 
     .field-input-wrap:focus-within {
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 0 3px var(--accent-primary-soft);
-      transform: translateY(-1px);
+      border-color: rgba(31, 201, 186, 0.6);
+      box-shadow: 0 0 0 3px rgba(31, 201, 186, 0.1), inset 0 0 8px rgba(31, 201, 186, 0.05);
+      transform: translateY(-2px);
+      background: rgba(30, 45, 45, 0.9);
     }
 
     .field-input-wrap:hover {
-      border-color: color-mix(in srgb, var(--accent-primary) 35%, var(--border-subtle));
+      border-color: rgba(31, 201, 186, 0.3);
+      background: rgba(25, 40, 40, 0.85);
     }
 
     .field-icon {
@@ -229,10 +311,25 @@ import { ThemeService } from '../../core/services/theme.service';
       border: none;
       border-radius: 8px;
       padding: 11px 13px;
-      color: var(--text-primary);
+      color: #fff;
       font-size: 14px;
       font-family: var(--font-ui);
       outline: none;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .field-icon {
+      flex-shrink: 0;
+      margin-left: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      transition: color 0.2s ease;
+    }
+
+    .field-input-wrap:focus-within .field-icon {
+      color: #1FC9BA;
     }
 
     .field-toggle {
@@ -247,28 +344,72 @@ import { ThemeService } from '../../core/services/theme.service';
       background: transparent;
       border: none;
       border-radius: 6px;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.5);
       cursor: pointer;
-      transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+      transition: color 0.15s ease, background 0.15s ease;
     }
 
     .field-toggle:hover {
-      color: var(--accent-primary);
-      background: var(--accent-primary-soft);
+      color: #1FC9BA;
+      background: rgba(31, 201, 186, 0.1);
     }
 
     .field-toggle:active {
-      transform: scale(0.9);
+      transform: scale(0.92);
+    }
+
+    .error {
+      color: #ff6b6b;
+      font-size: 12px;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(31, 201, 186, 0.15);
+    }
+
+    .switch-link {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 16px;
+    }
+
+    .switch-link a {
+      color: #1FC9BA;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .switch-link a:hover {
+      color: #3DDC97;
     }
 
     button {
       position: relative;
       margin-top: 8px;
-      background: var(--accent-primary);
+      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
       color: #fff;
       border: none;
-      border-radius: 8px;
-      padding: 12px;
+      border-radius: 10px;
+      padding: 13px;
       font-weight: 700;
       font-size: 14px;
       cursor: pointer;
@@ -276,26 +417,31 @@ import { ThemeService } from '../../core/services/theme.service';
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: background 0.15s ease, opacity 0.15s ease;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 24px rgba(31, 201, 186, 0.25);
     }
 
     button:not(:disabled):hover {
-      background: color-mix(in srgb, var(--accent-primary) 88%, black);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(31, 201, 186, 0.35);
+      background: linear-gradient(135deg, #18b8aa 0%, #008f87 100%);
     }
 
     button:not(:disabled):active {
-      transform: scale(0.98);
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(31, 201, 186, 0.2);
     }
 
     button:disabled {
-      opacity: 0.6;
+      opacity: 0.5;
       cursor: not-allowed;
     }
 
     button.is-success:disabled {
       opacity: 1;
       cursor: default;
-      background: #1FA76B;
+      background: linear-gradient(135deg, #1FA76B 0%, #15885d 100%);
+      box-shadow: 0 8px 24px rgba(31, 167, 107, 0.25);
     }
 
     .btn-spinner {

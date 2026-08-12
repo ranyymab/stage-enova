@@ -85,7 +85,7 @@ public class VerificationCodeService {
     }
 
     @Transactional
-    public boolean verify(String email, String rawCode, VerificationCode.Purpose purpose) {
+    public void verify(String email, String rawCode, VerificationCode.Purpose purpose) {
         VerificationCode entity = repository
                 .findTopByEmailAndPurposeAndConsumedFalseOrderByCreatedAtDesc(email, purpose)
                 .orElseThrow(() -> new InvalidCodeException("Aucun code actif. Veuillez en redemander un."));
@@ -105,12 +105,41 @@ public class VerificationCodeService {
         if (!passwordEncoder.matches(rawCode, entity.getCodeHash())) {
             entity.setAttempts(entity.getAttempts() + 1);
             repository.save(entity);
-            throw new InvalidCodeException("Code incorrect.");
+            int remaining = MAX_ATTEMPTS - entity.getAttempts();
+            throw new InvalidCodeException("Code incorrect. " + remaining + " tentative" + (remaining > 1 ? "s" : "") + " restante" + (remaining > 1 ? "s" : "") + ".");
         }
 
         entity.setConsumed(true);
         repository.save(entity);
-        return true;
+    }
+    
+    /**
+     * Retourne des métadonnées utiles pour le frontend sur le code actuel.
+     */
+    public CodeMetadata getCodeMetadata(String email, VerificationCode.Purpose purpose) {
+        return repository
+                .findTopByEmailAndPurposeAndConsumedFalseOrderByCreatedAtDesc(email, purpose)
+                .map(entity -> {
+                    long expirySeconds = Duration.between(LocalDateTime.now(), entity.getExpiresAt()).getSeconds();
+                    int attemptsRemaining = Math.max(0, MAX_ATTEMPTS - entity.getAttempts());
+                    return new CodeMetadata((int) Math.max(0, expirySeconds), attemptsRemaining, MAX_ATTEMPTS);
+                })
+                .orElseThrow(() -> new InvalidCodeException("Aucun code actif."));
+    }
+    
+    /**
+     * Métadonnées sur le code de vérification pour affichage client.
+     */
+    public static class CodeMetadata {
+        public final int expirySeconds;
+        public final int attemptsRemaining;
+        public final int maxAttempts;
+        
+        public CodeMetadata(int expirySeconds, int attemptsRemaining, int maxAttempts) {
+            this.expirySeconds = expirySeconds;
+            this.attemptsRemaining = attemptsRemaining;
+            this.maxAttempts = maxAttempts;
+        }
     }
 
     private String generateSixDigitCode() {

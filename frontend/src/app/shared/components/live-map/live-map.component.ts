@@ -246,20 +246,27 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       // tableau de bord. L'historique complet reste trace (segmentGeometries
       // ci-dessous couvre tout le trajet), seule la position de depart de
       // l'animation change.
-      const lastIdx = points.length - 1;
-      this.currentIndex = lastIdx;
-      this.currentPoint = points[lastIdx];
+      // On demarre au DEBUT du trajet du jour (pas a la fin) : les donnees
+      // couvrent souvent la journee entiere d'un coup, et afficher tout de
+      // suite le trace complet + toutes les anomalies donnerait l'impression
+      // fausse que le robot "sait deja" ce qui va se passer plus tard dans la
+      // journee. La ligne et les marqueurs d'anomalies ne se revelent donc
+      // que progressivement, au rythme ou le robot les atteint reellement.
+      const startIdx = 0;
+      this.currentIndex = startIdx;
+      this.currentPoint = points[startIdx];
 
       this.segmentGeometries = points.slice(0, -1).map((p, i) => [
         [p.latitude, p.longitude],
         [points[i + 1].latitude, points[i + 1].longitude],
       ] as [number, number][]);
       this.drawSegmentLines(points);
+      this.renderAnomalyMarkers();
 
       this.map.stop();
       this.map.fitBounds(L.latLngBounds(allLatLngs), { padding: [30, 30] });
 
-      const lastLatLng = allLatLngs[lastIdx];
+      const lastLatLng = allLatLngs[startIdx];
       if (!this.robotMarker) {
         const robotIcon = L.divIcon({
           className: 'robot-marker-wrapper',
@@ -289,14 +296,15 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       } else {
         this.robotMarker.setLatLng(lastLatLng);
       }
-      this.updatePopup(points[lastIdx]);
-      this.liveSim.reportProgress(lastIdx, 0, this.phaseOf(points[lastIdx]));
+      this.updatePopup(points[startIdx]);
+      this.liveSim.reportProgress(startIdx, 0, this.phaseOf(points[startIdx]));
 
-      // Pas d'animation a lancer ici : il n'y a pas encore de "prochain point"
-      // a rejoindre (on vient tout juste de se placer sur le dernier connu).
-      // Des qu'un nouveau point reel arrivera (rafraichissement suivant), la
-      // branche "points.length > previousLength" plus bas demarrera
-      // l'animation vers ce nouveau point, naturellement.
+      // Le trajet a plus d'un point : on lance tout de suite l'animation vers
+      // le point suivant, pour que la ligne/les anomalies se revelent au fur
+      // et a mesure au lieu de rester figees sur le point de depart.
+      if (points.length > 1) {
+        this.animateToNextPoint();
+      }
 
       this.fetchRoadSnappedSegments(points).then((snapped) => {
         if (requestToken !== this.routeRequestToken) return;
@@ -358,24 +366,26 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       const phase = this.phaseOf(points[i + 1]);
       const color = this.phaseColor(points[i + 1]);
       const traveled = i < this.currentIndex;
-      
-      // Draw trail effect for traveled segments with enhanced visibility
-      if (traveled) {
-        // Add a glowing/shadow effect for traveled segments
-        const shadowLine = L.polyline(coords, {
-          color: color,
-          weight: 8,
-          opacity: 0.2,
-          dashArray: phase === 'dock' ? '2 8' : undefined,
-          lineCap: 'round',
-        }).addTo(this.map);
-        this.segmentLines.push(shadowLine);
-      }
-      
+
+      // Le tronqon pas encore atteint par le robot n'est pas trace du tout :
+      // on ne veut pas laisser deviner le chemin a venir, seulement montrer
+      // ce que le robot a reellement deja parcouru.
+      if (!traveled) return;
+
+      // Effet de trainee (halo) derriere le trace parcouru.
+      const shadowLine = L.polyline(coords, {
+        color: color,
+        weight: 8,
+        opacity: 0.2,
+        dashArray: phase === 'dock' ? '2 8' : undefined,
+        lineCap: 'round',
+      }).addTo(this.map);
+      this.segmentLines.push(shadowLine);
+
       const line = L.polyline(coords, {
         color,
-        weight: traveled ? 5 : 2.5,
-        opacity: traveled ? 1 : 0.28,
+        weight: 5,
+        opacity: 1,
         dashArray: phase === 'dock' ? '2 8' : undefined,
         lineCap: 'round',
       }).addTo(this.map);
@@ -503,11 +513,12 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
         this.currentIndex = toIdx;
         this.currentPoint = to;
 
-        // Le segment qu'on vient de parcourir passe en trace "vif" (parcouru) plutot qu'estompe.
-        const traveledLine = this.segmentLines[fromIdx];
-        if (traveledLine) {
-          traveledLine.setStyle({ opacity: 0.95, weight: 4 });
-        }
+        // Le segment vers ce nouveau point vient d'etre parcouru : on redessine
+        // pour le faire apparaitre (il n'existait pas encore tant qu'il n'etait
+        // pas atteint), et on revele les anomalies dont l'horodatage vient
+        // d'etre depasse.
+        this.drawSegmentLines(this.livePoints);
+        this.renderAnomalyMarkers();
 
         this.updatePopup(to);
         this.map?.panTo([to.latitude, to.longitude], { animate: true, duration: 0.6 });
@@ -587,8 +598,15 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.anomalyMarkers = [];
 
     const L = this.L;
+    const nowSec = this.toSeconds(this.currentPoint?.heure ?? undefined);
     (this.anomalies ?? []).forEach((a) => {
       if (a.latitude == null || a.longitude == null || !Number.isFinite(a.latitude) || !Number.isFinite(a.longitude)) {
+        return;
+      }
+      // Une anomalie ne s'affiche que lorsque le robot a reellement atteint
+      // (ou depasse) son horodatage - pas avant, pour rester realiste.
+      const anomalySec = this.toSeconds(a.heure);
+      if (nowSec != null && anomalySec != null && anomalySec > nowSec) {
         return;
       }
 

@@ -35,6 +35,8 @@ export class MockDataService {
   getKpi(date?: string): Observable<DashboardKpi> {
     const fallback: DashboardKpi = {
       dateReference: date || new Date().toISOString().split('T')[0],
+      derniereMiseAJour: new Date().toISOString(),
+      derniereDateAvecDonnees: date || new Date().toISOString().split('T')[0],
       hasDataForDate: true,
       distanceJourKm: 4.85,
       batteryPercent: 88,
@@ -43,6 +45,7 @@ export class MockDataService {
       rondesRealisees: 6,
       retoursBase: 4,
       statutMission: 'EN_MISSION',
+      missionEnCours: null,
       modeRobot: 'AUTONOME',
       teleportationEnCours: false,
       retourBaseEnCours: false,
@@ -105,8 +108,8 @@ export class MockDataService {
 
   getAnomaliesRecentes(date?: string): Observable<Anomalie[]> {
     const fallback: Anomalie[] = [
-      { id: 101, type: 'Intrusion Zone A', date: date || '2026-08-11', heure: '14:22:10', criticite: 'Faible', statut: 'RESOLUE', latitude: 36.8, longitude: 10.18, imageUrl: null },
-      { id: 102, type: 'Obstacle Détecté', date: date || '2026-08-11', heure: '16:05:44', criticite: 'Moyenne', statut: 'EN_COURS', latitude: 36.801, longitude: 10.182, imageUrl: null },
+      { id: 101, type: 'Intrusion Zone A', date: date || '2026-08-11', heure: '14:22:10', criticite: 'FAIBLE', statut: 'RESOLUE', latitude: 36.8, longitude: 10.18, imageUrl: null, robotId: 'ROBOT-001' },
+      { id: 102, type: 'Obstacle Détecté', date: date || '2026-08-11', heure: '16:05:44', criticite: 'MOYENNE', statut: 'EN_COURS', latitude: 36.801, longitude: 10.182, imageUrl: null, robotId: 'ROBOT-001' },
     ];
     return this.http.get<Anomalie[]>(`${this.API_URL}/anomalies-recentes`, {
       params: this.dateParams(date),
@@ -118,10 +121,10 @@ export class MockDataService {
 
   getActivityFeed(date?: string): Observable<ActivityFeedEntry[]> {
     const fallback: ActivityFeedEntry[] = [
-      { id: '1', title: 'Départ Ronde Périmètre Nord', subtitle: 'Patrouille de routine', heure: '08:00:00', kind: 'MISSION', tone: 'good', batteryLevel: 98 },
-      { id: '2', title: 'Inspection Zone Dépôt', subtitle: 'Vérification caméras thermiques', heure: '10:15:30', kind: 'INSPECTING', tone: 'good', batteryLevel: 84 },
-      { id: '3', title: 'Auto-Docking Station #1', subtitle: 'Recharge rapide effectuée', heure: '12:30:00', kind: 'DOCKING', tone: 'good', batteryLevel: 92 },
-      { id: '4', title: 'Reprise Patrouille Sud', subtitle: 'Mode autonome actif', heure: '14:00:00', kind: 'MISSION', tone: 'good', batteryLevel: 90 },
+      { id: '1', title: 'Départ Ronde Périmètre Nord', subtitle: 'Patrouille de routine', heure: '08:00:00', datetime: `${date || '2026-08-11'}T08:00:00`, kind: 'MISSION', tone: 'good', batteryLevel: 98 },
+      { id: '2', title: 'Inspection Zone Dépôt', subtitle: 'Vérification caméras thermiques', heure: '10:15:30', datetime: `${date || '2026-08-11'}T10:15:30`, kind: 'INSPECTING', tone: 'good', batteryLevel: 84 },
+      { id: '3', title: 'Auto-Docking Station #1', subtitle: 'Recharge rapide effectuée', heure: '12:30:00', datetime: `${date || '2026-08-11'}T12:30:00`, kind: 'DOCKING', tone: 'good', batteryLevel: 92 },
+      { id: '4', title: 'Reprise Patrouille Sud', subtitle: 'Mode autonome actif', heure: '14:00:00', datetime: `${date || '2026-08-11'}T14:00:00`, kind: 'MISSION', tone: 'good', batteryLevel: 90 },
     ];
     return this.http.get<ActivityFeedEntry[]>(`${this.API_URL}/activity-feed`, {
       params: this.dateParams(date),
@@ -133,18 +136,18 @@ export class MockDataService {
 
   getRobotLive(date?: string): Observable<RobotLive> {
     const fallback: RobotLive = {
-      robotId: 'ROBOT-001',
+      dateReference: date || new Date().toISOString().split('T')[0],
       batteryPercent: 88,
       modeRobot: 'AUTONOME',
       chargingStatus: 'EN_CHARGE',
       position: { latitude: 36.8002, longitude: 10.1805, heure: '21:50:00', source: 'GPS', label: 'Site Principal ENOVA' },
       trajectory: [
-        { latitude: 36.8000, longitude: 10.1800, heure: '08:00', mode: 'AUTONOME' },
-        { latitude: 36.8005, longitude: 10.1810, heure: '09:00', mode: 'AUTONOME' },
-        { latitude: 36.8002, longitude: 10.1805, heure: '10:00', mode: 'AUTONOME' },
+        { latitude: 36.8000, longitude: 10.1800, heure: '08:00:00', source: 'MISSION', label: 'Ronde autonome' },
+        { latitude: 36.8005, longitude: 10.1810, heure: '09:00:00', source: 'MISSION', label: 'Ronde autonome' },
+        { latitude: 36.8002, longitude: 10.1805, heure: '10:00:00', source: 'MISSION', label: 'Ronde autonome' },
       ],
       chargeCycles: [
-        { dockHeure: '12:30', undockHeure: '13:15', status: 'TERMINE', batteryBefore: 25, batteryAfter: 92, batteryGained: 67, durationMinutes: 45 },
+        { dockHeure: '12:30', undockHeure: '13:15', status: 'TERMINE', batteryBefore: 25, batteryAfter: 92, batteryGained: 67, durationMinutes: 45, stationLatitude: 36.8002, stationLongitude: 10.1805 },
       ],
     };
     return this.http.get<RobotLive>(`${this.API_URL}/robot-live`, { params: this.dateParams(date) }).pipe(

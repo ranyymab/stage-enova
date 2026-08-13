@@ -2,9 +2,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 24px 32px 48px;
-  max-width: 1400px;
+  gap: 28px;
+  padding: 28px 32px 56px;
+  max-width: 1440px;
   margin: 0 auto;
   background: linear-gradient(180deg, rgba(5, 15, 13, 0.5) 0%, rgba(10, 25, 22, 0.3) 100%);
   min-height: 100vh;
@@ -184,17 +184,19 @@
 
 .hero-title {
   margin: 0;
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: #FFFFFF;
 }
 
 .hero-subtitle {
   margin: 0;
-  font-size: 13.5px;
-  color: rgba(238, 248, 246, 0.8);
-  line-height: 1.4;
+  font-size: 14px;
+  color: rgba(238, 248, 246, 0.72);
+  line-height: 1.5;
+  max-width: 46ch;
 }
 
 .hero-chips {
@@ -313,13 +315,14 @@
 
 .section-title-wrap h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
 .section-title-wrap p {
-  margin: 2px 0 0;
+  margin: 3px 0 0;
   font-size: 13px;
   color: var(--text-muted);
 }
@@ -328,7 +331,7 @@
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 18px;
 }
 
 @media (max-width: 1100px) {
@@ -339,34 +342,52 @@
 
 /* PANELS */
 .panel {
+  position: relative;
   background: var(--panel-base);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  padding: 22px 24px;
+  border-radius: 18px;
+  padding: 24px 26px;
   box-shadow: var(--shadow-card);
   transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 26px;
+  right: 26px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-primary) 0%, transparent 45%);
+  opacity: 0.5;
+  border-radius: 1px;
 }
 
 .panel:hover {
   box-shadow: var(--shadow-card-hover);
   border-color: color-mix(in srgb, var(--accent-primary) 30%, var(--border-subtle));
+  transform: translateY(-1px);
 }
 
 .panel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  gap: 12px;
 }
 
 .panel-header h2 {
   margin: 0;
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
 .panel-sub {
+  display: block;
+  margin-top: 2px;
   font-size: 12px;
   color: var(--text-muted);
   font-weight: 500;
@@ -753,15 +774,16 @@
 
 .data-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 13px;
 }
 
 .data-table th {
   text-align: left;
-  font-size: 11px;
+  font-size: 10.5px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
   color: var(--text-muted);
   font-weight: 700;
   padding: 0 10px 12px;
@@ -769,13 +791,23 @@
 }
 
 .data-table td {
-  padding: 12px 10px;
+  padding: 13px 10px;
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-secondary);
+  transition: background 0.15s ease;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
 }
 
 .data-table tr:hover td {
   background: var(--panel-raised);
+}
+
+.data-table tr.is-pending td {
+  color: var(--text-muted);
+  opacity: 0.55;
 }
 
 .anomaly-cell {
@@ -792,13 +824,14 @@
 
 .crit-pill,
 .statut-pill {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  padding: 3px 9px;
+  padding: 4px 10px;
   border-radius: 20px;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   display: inline-block;
+  line-height: 1.3;
 }
 
 .crit-faible { background: rgba(33, 150, 199, 0.12); color: var(--accent-info); }

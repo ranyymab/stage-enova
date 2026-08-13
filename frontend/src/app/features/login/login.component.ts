@@ -12,173 +12,250 @@ import { ThemeService } from '../../core/services/theme.service';
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   template: `
     <div class="login-screen">
-      <!-- Animated background with gradient and geometric elements -->
-      <div class="background-container" aria-hidden="true">
-        <div class="gradient-bg"></div>
-        <svg class="geometric-shapes" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice">
-          <!-- Large circles with different opacities -->
-          <circle cx="150" cy="150" r="200" fill="url(#grad1)" opacity="0.15" />
-          <circle cx="850" cy="700" r="300" fill="url(#grad2)" opacity="0.1" />
-          <circle cx="900" cy="100" r="150" fill="url(#grad3)" opacity="0.08" />
-          
-          <!-- Animated grid pattern -->
-          <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#1FC9BA;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#00AEA0;stop-opacity:1" />
-            </linearGradient>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#3DDC97;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#1FC9BA;stop-opacity:1" />
-            </linearGradient>
-            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#E9BE87;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#CA5215;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          
-          <!-- Grid lines -->
-          <g stroke="#1FC9BA" stroke-width="1" opacity="0.06">
-            <line x1="0" y1="0" x2="1000" y2="800" />
-            <line x1="0" y1="800" x2="1000" y2="0" />
-            <line x1="500" y1="0" x2="500" y2="800" />
-            <line x1="0" y1="400" x2="1000" y2="400" />
-          </g>
-          
-          <!-- Floating nodes -->
-          <circle cx="200" cy="200" r="4" fill="#1FC9BA" opacity="0.3" class="float-node" style="animation: float 6s ease-in-out infinite;" />
-          <circle cx="800" cy="300" r="3" fill="#3DDC97" opacity="0.2" class="float-node" style="animation: float 8s ease-in-out infinite 2s;" />
-          <circle cx="400" cy="650" r="5" fill="#E9BE87" opacity="0.15" class="float-node" style="animation: float 7s ease-in-out infinite 4s;" />
-        </svg>
-      </div>
+      <!-- Left: signature visual panel. No stock photography — an original
+           line-art sentinel silhouette on a dark gradient, echoing the
+           patrol/surveillance identity instead of a generic hero image. -->
+      <aside class="visual-pane" aria-hidden="true">
+        <div class="scanlines"></div>
+        <div class="glow"></div>
 
-      <div class="login-card enter-scale">
-        <div class="brand enter-fade-up" style="--stagger-index: 1">
-          <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing"
-               (error)="onLogoError()" alt="Enova Robotics" />
+        <div class="visual-brand">
+          <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing" (error)="onLogoError()" alt="" />
           <span class="brand-fallback" *ngIf="logoMissing">EN</span>
-          <div class="brand-text">
-            <span class="brand-name">Enova Robotics</span>
-            <span class="brand-sub">Surveillance</span>
-          </div>
+          <span class="visual-brand-name">ENOVA<em>ROBOTICS</em></span>
         </div>
 
-        <h1 class="enter-fade-up" style="--stagger-index: 2">Connexion</h1>
-        <p class="subtitle enter-fade-up" style="--stagger-index: 2">Surveillance ROBOT-001 · accès opérateur / administrateur</p>
+        <svg class="sentinel" viewBox="0 0 520 620" fill="none">
+          <defs>
+            <linearGradient id="sentinelStroke" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3DDC97" />
+              <stop offset="100%" stop-color="#1FC9BA" stop-opacity="0.35" />
+            </linearGradient>
+            <radialGradient id="ringFade" cx="50%" cy="45%" r="55%">
+              <stop offset="0%" stop-color="#1FC9BA" stop-opacity="0.25" />
+              <stop offset="100%" stop-color="#1FC9BA" stop-opacity="0" />
+            </radialGradient>
+          </defs>
 
-        <div #googleButton class="google-btn-container enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"></div>
-        <div class="divider enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"><span>ou</span></div>
+          <circle cx="260" cy="280" r="230" fill="url(#ringFade)" />
+          <circle class="ring ring-a" cx="260" cy="280" r="215" stroke="#1FC9BA" stroke-opacity="0.18" />
+          <circle class="ring ring-b" cx="260" cy="280" r="165" stroke="#1FC9BA" stroke-opacity="0.12" stroke-dasharray="2 10" />
 
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <label class="field enter-fade-up" style="--stagger-index: 3">
-            <span class="field-label">Email</span>
-            <div class="field-input-wrap">
-              <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-              <input
-                type="email"
-                formControlName="email"
-                placeholder="vous&#64;enovarobotics.eu"
-                autocomplete="username"
-              />
+          <!-- sentinel body: reduced to essential geometry, not a literal robot render -->
+          <g stroke="url(#sentinelStroke)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M180 470 L165 300 Q160 220 260 205 Q360 220 355 300 L340 470 Z" />
+            <path d="M205 300 L200 470 M315 300 L320 470" opacity="0.55" />
+            <rect x="220" y="150" width="80" height="58" rx="10" />
+            <circle cx="260" cy="179" r="9" fill="#3DDC97" fill-opacity="0.9" stroke="none" class="eye" />
+            <path d="M180 320 L120 300 M340 320 L400 300" />
+            <path d="M195 470 L185 540 M325 470 L335 540" />
+          </g>
+
+          <g class="tick" stroke="#1FC9BA" stroke-opacity="0.4">
+            <line x1="60" y1="120" x2="90" y2="120" />
+            <line x1="440" y1="500" x2="470" y2="500" />
+            <line x1="80" y1="540" x2="80" y2="510" />
+          </g>
+        </svg>
+
+        <figure class="visual-quote">
+          <blockquote>&laquo;&nbsp;La technologie a le plus de valeur quand elle rapproche les &eacute;quipes du terrain.&nbsp;&raquo;</blockquote>
+          <figcaption>&Eacute;quipe Enova Robotics</figcaption>
+        </figure>
+      </aside>
+
+      <!-- Right: the actual form -->
+      <main class="form-pane">
+        <div class="form-shell enter-scale">
+          <div class="mobile-brand enter-fade-up" style="--stagger-index: 1">
+            <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing" (error)="onLogoError()" alt="Enova Robotics" />
+            <span class="brand-fallback" *ngIf="logoMissing">EN</span>
+          </div>
+
+          <span class="eyebrow enter-fade-up" style="--stagger-index: 1">Acc&egrave;s op&eacute;rateur</span>
+          <h1 class="enter-fade-up" style="--stagger-index: 2">Bon retour</h1>
+          <p class="subtitle enter-fade-up" style="--stagger-index: 2">Connectez-vous pour superviser votre flotte en temps r&eacute;el.</p>
+
+          <div #googleButton class="google-btn-container enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"></div>
+          <div class="divider enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"><span>ou</span></div>
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <label class="field enter-fade-up" style="--stagger-index: 3">
+              <span class="field-label">Email</span>
+              <div class="field-input-wrap">
+                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+                <input
+                  type="email"
+                  formControlName="email"
+                  placeholder="vous&#64;enovarobotics.eu"
+                  autocomplete="username"
+                />
+              </div>
+            </label>
+
+            <label class="field enter-fade-up" style="--stagger-index: 4">
+              <span class="field-label">Mot de passe</span>
+              <div class="field-input-wrap">
+                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                />
+                <button type="button" class="field-toggle" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'">
+                  <svg *ngIf="!showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg *ngIf="showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.2A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.1 4.1M6.5 6.6C3.9 8.3 2 12 2 12s3.5 7 10 7a9.9 9.9 0 0 0 3.4-.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+                </button>
+              </div>
+            </label>
+
+            <div class="row-between enter-fade-up" style="--stagger-index: 4">
+              <label class="remember">
+                <input type="checkbox" formControlName="remember" />
+                <span class="checkbox-visual" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg>
+                </span>
+                Se souvenir de moi
+              </label>
+              <a class="forgot-link" routerLink="/forgot-password">Mot de passe oubli&eacute; ?</a>
             </div>
-          </label>
 
-          <label class="field enter-fade-up" style="--stagger-index: 4">
-            <span class="field-label">Mot de passe</span>
-            <div class="field-input-wrap">
-              <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
-              <input
-                [type]="showPassword ? 'text' : 'password'"
-                formControlName="password"
-                placeholder="••••••••"
-                autocomplete="current-password"
-              />
-              <button type="button" class="field-toggle" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'">
-                <svg *ngIf="!showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-                <svg *ngIf="showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.2A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.1 4.1M6.5 6.6C3.9 8.3 2 12 2 12s3.5 7 10 7a9.9 9.9 0 0 0 3.4-.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
-              </button>
-            </div>
-          </label>
+            <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-          <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+            <button type="submit" [disabled]="form.invalid || loading || success" class="enter-fade-up" [class.is-success]="success" style="--stagger-index: 5">
+              <span class="btn-spinner" *ngIf="loading"></span>
+              <svg *ngIf="success" class="btn-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg>
+              {{ success ? 'Connect&eacute;' : (loading ? 'Connexion...' : 'Se connecter') }}
+            </button>
+          </form>
 
-          <button type="submit" [disabled]="form.invalid || loading || success" class="enter-fade-up" [class.is-success]="success" style="--stagger-index: 5">
-            <span class="btn-spinner" *ngIf="loading"></span>
-            <svg *ngIf="success" class="btn-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg>
-            {{ success ? 'Connecte' : (loading ? 'Connexion...' : 'Se connecter') }}
-          </button>
-        </form>
-
-        <p class="switch-link enter-fade-up" style="--stagger-index: 5">
-          Pas encore de compte ? <a routerLink="/signup">Créer un compte</a>
-        </p>
-      </div>
+          <p class="switch-link enter-fade-up" style="--stagger-index: 5">
+            Pas encore de compte ? <a routerLink="/signup">Cr&eacute;er un compte</a>
+          </p>
+        </div>
+      </main>
     </div>
   `,
   styles: [`
-    :host {
-      display: block;
-      width: 100%;
-      min-height: 100vh;
-    }
+    :host { display: block; width: 100%; min-height: 100vh; }
 
     .login-screen {
-      position: relative;
       min-height: 100vh;
       width: 100%;
-      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      background: #0a1210;
+    }
+
+    /* ---------- Visual pane ---------- */
+
+    .visual-pane {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 48px;
+      background:
+        radial-gradient(120% 90% at 18% 8%, rgba(31, 201, 186, 0.16) 0%, rgba(31, 201, 186, 0) 55%),
+        linear-gradient(165deg, #0c211d 0%, #071613 55%, #050d0c 100%);
+    }
+
+    .scanlines {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px);
+      pointer-events: none;
+    }
+
+    .glow {
+      position: absolute;
+      left: 50%;
+      top: 44%;
+      width: 640px;
+      height: 640px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(61, 220, 151, 0.10) 0%, rgba(61, 220, 151, 0) 65%);
+      pointer-events: none;
+    }
+
+    .visual-brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .visual-brand .brand-logo { width: 30px; height: 30px; object-fit: contain; }
+    .visual-brand .brand-fallback {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
+      color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .visual-brand-name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #EAF6F3;
+    }
+    .visual-brand-name em { font-style: normal; color: #1FC9BA; margin-left: 6px; }
+
+    .sentinel {
+      position: relative;
+      z-index: 1;
+      width: min(92%, 420px);
+      margin: 0 auto;
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45));
+    }
+
+    .sentinel .eye { animation: eyePulse 2.6s ease-in-out infinite; }
+    @keyframes eyePulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+    .sentinel .ring-a { animation: spin 60s linear infinite; transform-origin: 260px 280px; }
+    .sentinel .ring-b { animation: spin 90s linear infinite reverse; transform-origin: 260px 280px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .visual-quote {
+      position: relative;
+      z-index: 2;
+      max-width: 380px;
+      margin: 0;
+    }
+
+    .visual-quote blockquote {
+      margin: 0 0 10px;
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: #EAF6F3;
+    }
+
+    .visual-quote figcaption {
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1FC9BA;
+      font-family: var(--font-mono);
+    }
+
+    /* ---------- Form pane ---------- */
+
+    .form-pane {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg-app);
-      padding: 20px;
-      overflow: hidden;
+      background: var(--bg-app, #0d1512);
+      padding: 32px;
     }
 
-    .background-container {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .gradient-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #0D2622 0%, #1a2f2a 50%, #0a1f1c 100%);
-      z-index: 0;
-    }
-
-    .geometric-shapes {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .float-node {
-      filter: drop-shadow(0 0 8px rgba(31, 201, 186, 0.3));
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(20px, -20px); }
-      50% { transform: translate(-10px, 30px); }
-      75% { transform: translate(-30px, -10px); }
-    }
-
-    .login-card {
-      position: relative;
-      z-index: 10;
+    .form-shell {
       width: 100%;
       max-width: 380px;
-      background: rgba(20, 51, 48, 0.85);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(31, 201, 186, 0.25);
-      border-radius: 16px;
-      padding: 34px 30px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
       animation: cardEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -187,150 +264,94 @@ import { ThemeService } from '../../core/services/theme.service';
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 26px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(31, 201, 186, 0.15);
-    }
-
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(31, 201, 186, 0.2));
-    }
-
-    .brand-fallback {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
+    .mobile-brand { display: none; margin-bottom: 22px; }
+    .mobile-brand .brand-logo { width: 40px; height: 40px; object-fit: contain; }
+    .mobile-brand .brand-fallback {
+      width: 40px; height: 40px; border-radius: 10px;
       background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
-      color: #fff;
+      color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .eyebrow {
+      display: block;
       font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 8px 16px rgba(31, 201, 186, 0.25);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      font-size: 16.5px;
-      color: #fff;
-      letter-spacing: -0.5px;
-    }
-
-    .brand-sub {
       font-size: 11px;
-      color: #1FC9BA;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
+      color: #1FC9BA;
+      margin-bottom: 12px;
     }
 
     h1 {
-      margin: 0 0 4px;
-      font-size: 20px;
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: 1.1;
       color: #fff;
       font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .subtitle {
-      margin: 0 0 26px;
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, 0.7);
+      margin: 0 0 28px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.62);
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+    form { display: flex; flex-direction: column; gap: 16px; }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .field { display: flex; flex-direction: column; gap: 6px; }
 
     .field-label {
-      font-size: 12px;
-      color: var(--text-secondary);
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .field-input-wrap {
       position: relative;
       display: flex;
       align-items: center;
-      background: rgba(20, 35, 35, 0.8);
-      border: 1px solid rgba(31, 201, 186, 0.15);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 10px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
     .field-input-wrap:focus-within {
       border-color: rgba(31, 201, 186, 0.6);
-      box-shadow: 0 0 0 3px rgba(31, 201, 186, 0.1), inset 0 0 8px rgba(31, 201, 186, 0.05);
-      transform: translateY(-2px);
-      background: rgba(30, 45, 45, 0.9);
+      box-shadow: 0 0 0 3px rgba(31, 201, 186, 0.12);
+      background: rgba(31, 201, 186, 0.05);
     }
 
-    .field-input-wrap:hover {
-      border-color: rgba(31, 201, 186, 0.3);
-      background: rgba(25, 40, 40, 0.85);
-    }
+    .field-input-wrap:hover { border-color: rgba(255, 255, 255, 0.18); }
 
     .field-icon {
       flex-shrink: 0;
       margin-left: 13px;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.4);
       transition: color 0.2s ease;
     }
 
-    .field-input-wrap:focus-within .field-icon {
-      color: var(--accent-primary);
-    }
+    .field-input-wrap:focus-within .field-icon { color: #1FC9BA; }
 
-    input {
+    input[type='email'], input[type='password'], input[type='text'] {
       flex: 1;
       min-width: 0;
       background: transparent;
       border: none;
-      border-radius: 8px;
-      padding: 11px 13px;
+      padding: 12px 13px;
       color: #fff;
       font-size: 14px;
       font-family: var(--font-ui);
       outline: none;
     }
 
-    input::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .field-icon {
-      flex-shrink: 0;
-      margin-left: 13px;
-      color: rgba(255, 255, 255, 0.5);
-      transition: color 0.2s ease;
-    }
-
-    .field-input-wrap:focus-within .field-icon {
-      color: #1FC9BA;
-    }
+    input::placeholder { color: rgba(255, 255, 255, 0.35); }
 
     .field-toggle {
       flex-shrink: 0;
@@ -344,132 +365,63 @@ import { ThemeService } from '../../core/services/theme.service';
       background: transparent;
       border: none;
       border-radius: 6px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.45);
       cursor: pointer;
       transition: color 0.15s ease, background 0.15s ease;
     }
 
-    .field-toggle:hover {
-      color: #1FC9BA;
-      background: rgba(31, 201, 186, 0.1);
-    }
+    .field-toggle:hover { color: #1FC9BA; background: rgba(31, 201, 186, 0.1); }
+    .field-toggle:active { transform: scale(0.92); }
 
-    .field-toggle:active {
-      transform: scale(0.92);
-    }
-
-    .error {
-      color: #ff6b6b;
-      font-size: 12px;
-      margin-top: 4px;
+    .row-between {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-between;
+      margin-top: -2px;
     }
 
-    .divider {
+    .remember {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 20px 0;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 12px;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(31, 201, 186, 0.15);
-    }
-
-    .switch-link {
-      text-align: center;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-top: 16px;
-    }
-
-    .switch-link a {
-      color: #1FC9BA;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .switch-link a:hover {
-      color: #3DDC97;
-    }
-
-    button {
-      position: relative;
-      margin-top: 8px;
-      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 13px;
-      font-weight: 700;
-      font-size: 14px;
+      gap: 8px;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.65);
       cursor: pointer;
+      user-select: none;
+    }
+
+    .remember input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+    .checkbox-visual {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 24px rgba(31, 201, 186, 0.25);
+      color: transparent;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
     }
 
-    button:not(:disabled):hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(31, 201, 186, 0.35);
-      background: linear-gradient(135deg, #18b8aa 0%, #008f87 100%);
+    .remember input:checked + .checkbox-visual {
+      background: #1FC9BA;
+      border-color: #1FC9BA;
+      color: #05201c;
     }
 
-    button:not(:disabled):active {
-      transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(31, 201, 186, 0.2);
+    .forgot-link {
+      font-size: 12.5px;
+      color: #1FC9BA;
+      text-decoration: none;
+      font-weight: 600;
     }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    button.is-success:disabled {
-      opacity: 1;
-      cursor: default;
-      background: linear-gradient(135deg, #1FA76B 0%, #15885d 100%);
-      box-shadow: 0 8px 24px rgba(31, 167, 107, 0.25);
-    }
-
-    .btn-spinner {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-top-color: #fff;
-      animation: spin 0.7s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .btn-check {
-      animation: checkPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-
-    @keyframes checkPop {
-      from { transform: scale(0) rotate(-45deg); opacity: 0; }
-      to { transform: scale(1) rotate(0); opacity: 1; }
-    }
+    .forgot-link:hover { text-decoration: underline; }
 
     .error {
       margin: 0;
       font-size: 12.5px;
-      color: var(--accent-critical);
+      color: #ff6b6b;
       background: rgba(229, 72, 77, 0.1);
       padding: 8px 10px;
       border-radius: 6px;
@@ -481,44 +433,85 @@ import { ThemeService } from '../../core/services/theme.service';
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .google-btn-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 4px;
-      min-height: 40px;
-    }
+    .google-btn-container { display: flex; justify-content: center; margin-bottom: 4px; min-height: 40px; }
 
     .divider {
       display: flex;
       align-items: center;
       gap: 10px;
       margin: 12px 0 20px;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.4);
       font-size: 12px;
     }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.09); }
 
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border-subtle);
+    button[type='submit'] {
+      position: relative;
+      margin-top: 6px;
+      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
+      color: #05201c;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 10px 26px rgba(31, 201, 186, 0.25);
     }
+
+    button[type='submit']:not(:disabled):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(31, 201, 186, 0.35);
+    }
+
+    button[type='submit']:not(:disabled):active { transform: translateY(0); }
+    button[type='submit']:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    button.is-success:disabled {
+      opacity: 1;
+      cursor: default;
+      background: linear-gradient(135deg, #1FA76B 0%, #15885d 100%);
+      color: #fff;
+    }
+
+    .btn-spinner {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid rgba(5, 32, 28, 0.35);
+      border-top-color: #05201c;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .btn-check { animation: checkPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+    @keyframes checkPop { from { transform: scale(0) rotate(-45deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
 
     .switch-link {
       text-align: center;
-      margin: 20px 0 0;
+      margin: 22px 0 0;
       font-size: 13px;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.5);
     }
+    .switch-link a { color: #1FC9BA; font-weight: 600; text-decoration: none; }
+    .switch-link a:hover { text-decoration: underline; }
 
-    .switch-link a {
-      color: var(--accent-primary);
-      font-weight: 600;
-      text-decoration: none;
+    @media (max-width: 900px) {
+      .login-screen { grid-template-columns: 1fr; }
+      .visual-pane { display: none; }
+      .mobile-brand { display: flex; }
+      .form-pane { padding: 40px 24px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .login-card, .brand-logo, .btn-spinner, .error, .btn-check {
+      .form-shell, .btn-spinner, .error, .btn-check, .sentinel .eye, .sentinel .ring-a, .sentinel .ring-b {
         animation: none !important;
       }
     }
@@ -548,6 +541,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      remember: [true],
     });
 
     this.googleConfigured = this.googleIdentity.isConfigured();

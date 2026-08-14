@@ -15,15 +15,9 @@ import { ThemeService } from '../../core/services/theme.service';
       <!-- Left: real fleet photography instead of an illustrated stand-in,
            with a dark gradient scrim for text legibility. -->
       <aside class="visual-pane" aria-hidden="true">
-        <img class="visual-photo" src="/assets/robot-hero.jpg" alt="" />
+        <img class="visual-photo" src="/assets/1.png" alt="" />
         <div class="visual-scrim"></div>
         <div class="scanlines"></div>
-
-        <div class="visual-brand">
-          <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing" (error)="onLogoError()" alt="" />
-          <span class="brand-fallback" *ngIf="logoMissing">EN</span>
-          <span class="visual-brand-name">ENOVA<em>ROBOTICS</em></span>
-        </div>
 
         <figure class="visual-quote">
           <blockquote>&laquo;&nbsp;La technologie a le plus de valeur quand elle rapproche les &eacute;quipes du terrain.&nbsp;&raquo;</blockquote>
@@ -133,15 +127,15 @@ import { ThemeService } from '../../core/services/theme.service';
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 35%;
+      object-position: 20% 45%;
     }
 
     .visual-scrim {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(5, 12, 11, 0.75) 0%, rgba(5, 12, 11, 0.25) 38%, rgba(5, 12, 11, 0.35) 65%, rgba(5, 12, 11, 0.92) 100%),
-        linear-gradient(90deg, rgba(5, 12, 11, 0.45) 0%, rgba(5, 12, 11, 0) 40%);
+        linear-gradient(180deg, rgba(5, 12, 11, 0.32) 0%, rgba(5, 12, 11, 0.15) 30%, rgba(5, 12, 11, 0.4) 65%, rgba(5, 12, 11, 0.94) 100%),
+        linear-gradient(90deg, rgba(5, 12, 11, 0.35) 0%, rgba(5, 12, 11, 0) 40%);
     }
 
     .scanlines {

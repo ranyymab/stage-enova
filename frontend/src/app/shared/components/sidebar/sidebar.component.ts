@@ -75,6 +75,9 @@ interface NavItem {
   `,
   styles: [`
     .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 240px;
       height: 100vh;
       background: var(--panel-base);
@@ -83,6 +86,7 @@ interface NavItem {
       flex-direction: column;
       flex-shrink: 0;
       box-shadow: 1px 0 4px rgba(0, 0, 0, 0.02);
+      z-index: 150;
     }
 
     /* ---- responsive : sidebar devient un tiroir plein ecran sous 860px ---- */
@@ -123,9 +127,6 @@ interface NavItem {
       }
 
       .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
         z-index: 200;
         width: min(280px, 82vw);
         transform: translateX(-100%);

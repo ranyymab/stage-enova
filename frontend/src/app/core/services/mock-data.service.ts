@@ -5,6 +5,7 @@ import { catchError, timeout } from 'rxjs/operators';
 import {
   ActivityFeedEntry,
   Anomalie,
+  Criticite,
   DashboardKpi,
   DistancePoint,
   InspectionPoint,
@@ -38,9 +39,9 @@ export class MockDataService {
       derniereMiseAJour: new Date().toISOString(),
       derniereDateAvecDonnees: date || new Date().toISOString().split('T')[0],
       hasDataForDate: true,
-      distanceJourKm: 4.85,
-      batteryPercent: 88,
-      anomaliesOuvertes: 0,
+      distanceJourKm: 13.4,
+      batteryPercent: 78,
+      anomaliesOuvertes: 1,
       sessionsTeleoperation: 2,
       rondesRealisees: 6,
       retoursBase: 4,
@@ -107,10 +108,10 @@ export class MockDataService {
   }
 
   getAnomaliesRecentes(date?: string): Observable<Anomalie[]> {
-    const fallback: Anomalie[] = [
-      { id: 101, type: 'Intrusion Zone A', date: date || '2026-08-11', heure: '14:22:10', criticite: 'FAIBLE', statut: 'RESOLUE', latitude: 36.8, longitude: 10.18, imageUrl: null, robotId: 'ROBOT-001' },
-      { id: 102, type: 'Obstacle Détecté', date: date || '2026-08-11', heure: '16:05:44', criticite: 'MOYENNE', statut: 'EN_COURS', latitude: 36.801, longitude: 10.182, imageUrl: null, robotId: 'ROBOT-001' },
-    ];
+    const d = date || '2026-08-11';
+    const fallback = this.buildFallbackDay(d).anomalies;
+    // La derniere anomalie de la journee reste ouverte, pour que le badge/compteur ait du sens.
+    if (fallback.length > 0) fallback[fallback.length - 1].statut = 'EN_COURS';
     return this.http.get<Anomalie[]>(`${this.API_URL}/anomalies-recentes`, {
       params: this.dateParams(date),
     }).pipe(
@@ -120,12 +121,8 @@ export class MockDataService {
   }
 
   getActivityFeed(date?: string): Observable<ActivityFeedEntry[]> {
-    const fallback: ActivityFeedEntry[] = [
-      { id: '1', title: 'Départ Ronde Périmètre Nord', subtitle: 'Patrouille de routine', heure: '08:00:00', datetime: `${date || '2026-08-11'}T08:00:00`, kind: 'MISSION', tone: 'good', batteryLevel: 98 },
-      { id: '2', title: 'Inspection Zone Dépôt', subtitle: 'Vérification caméras thermiques', heure: '10:15:30', datetime: `${date || '2026-08-11'}T10:15:30`, kind: 'INSPECTING', tone: 'good', batteryLevel: 84 },
-      { id: '3', title: 'Auto-Docking Station #1', subtitle: 'Recharge rapide effectuée', heure: '12:30:00', datetime: `${date || '2026-08-11'}T12:30:00`, kind: 'DOCKING', tone: 'good', batteryLevel: 92 },
-      { id: '4', title: 'Reprise Patrouille Sud', subtitle: 'Mode autonome actif', heure: '14:00:00', datetime: `${date || '2026-08-11'}T14:00:00`, kind: 'MISSION', tone: 'good', batteryLevel: 90 },
-    ];
+    const d = date || '2026-08-11';
+    const fallback = this.buildFallbackDay(d).activity;
     return this.http.get<ActivityFeedEntry[]>(`${this.API_URL}/activity-feed`, {
       params: this.dateParams(date),
     }).pipe(
@@ -135,25 +132,183 @@ export class MockDataService {
   }
 
   getRobotLive(date?: string): Observable<RobotLive> {
+    const d = date || new Date().toISOString().split('T')[0];
+    const { trajectory } = this.buildFallbackDay(d);
+    const last = trajectory[trajectory.length - 1];
     const fallback: RobotLive = {
-      dateReference: date || new Date().toISOString().split('T')[0],
-      batteryPercent: 88,
+      dateReference: d,
+      batteryPercent: 78,
       modeRobot: 'AUTONOME',
       chargingStatus: 'EN_CHARGE',
-      position: { latitude: 36.8002, longitude: 10.1805, heure: '21:50:00', source: 'GPS', label: 'Site Principal ENOVA' },
-      trajectory: [
-        { latitude: 36.8000, longitude: 10.1800, heure: '08:00:00', source: 'MISSION', label: 'Ronde autonome' },
-        { latitude: 36.8005, longitude: 10.1810, heure: '09:00:00', source: 'MISSION', label: 'Ronde autonome' },
-        { latitude: 36.8002, longitude: 10.1805, heure: '10:00:00', source: 'MISSION', label: 'Ronde autonome' },
-      ],
+      position: { latitude: last.latitude, longitude: last.longitude, heure: '21:50:00', source: 'GPS', label: 'Site Principal ENOVA' },
+      trajectory,
       chargeCycles: [
-        { dockHeure: '12:30', undockHeure: '13:15', status: 'TERMINE', batteryBefore: 25, batteryAfter: 92, batteryGained: 67, durationMinutes: 45, stationLatitude: 36.8002, stationLongitude: 10.1805 },
+        { dockHeure: '10:57', undockHeure: '11:30', status: 'TERMINE', batteryBefore: 41, batteryAfter: 88, batteryGained: 47, durationMinutes: 33, stationLatitude: 36.8002, stationLongitude: 10.1805 },
+        { dockHeure: '17:00', undockHeure: '17:45', status: 'TERMINE', batteryBefore: 38, batteryAfter: 95, batteryGained: 57, durationMinutes: 45, stationLatitude: 36.8002, stationLongitude: 10.1805 },
       ],
     };
     return this.http.get<RobotLive>(`${this.API_URL}/robot-live`, { params: this.dateParams(date) }).pipe(
       timeout(this.REQ_TIMEOUT),
       catchError(() => of(fallback))
     );
+  }
+
+  /**
+   * Journee de repli riche (utilisee seulement si le backend Render est injoignable).
+   * Avant, le repli n'avait que 3 points GPS -> la carte affichait "Point 1/3" et la
+   * ronde bouclait presque instantanement. Ici on simule une vraie journee de
+   * patrouille : plusieurs rondes completes autour d'une boucle de 8 balises,
+   * deux passages en inspection, deux recharges rapides, un retour base en fin
+   * de journee, et des anomalies detectees a des moments/lieux qui collent au trajet.
+   */
+  private buildFallbackDay(date: string): {
+    trajectory: RobotLive['trajectory'];
+    anomalies: Anomalie[];
+    activity: ActivityFeedEntry[];
+  } {
+    // Boucle de 8 balises autour du site (Tunis) - la meme boucle est reparcourue a chaque ronde.
+    const loop: [number, number][] = [
+      [36.8002, 10.1805], // A - base / station de charge
+      [36.8009, 10.1807], // B
+      [36.8014, 10.1815], // C
+      [36.8011, 10.1823], // D
+      [36.8003, 10.1826], // E
+      [36.7996, 10.1820], // F
+      [36.7993, 10.1811], // G
+      [36.7997, 10.1803], // H
+    ];
+
+    const trajectory: RobotLive['trajectory'] = [];
+    let anomalyIdCounter = 200;
+    const anomalies: Anomalie[] = [];
+    const activity: ActivityFeedEntry[] = [];
+    let ronde = 0;
+
+    /** Ajoute des minutes a un couple (heure, minute), avec report d'heure correct. */
+    const addMin = (h: number, m: number, delta: number): [number, number] => {
+      const total = h * 60 + m + delta;
+      return [Math.floor(total / 60), total % 60];
+    };
+    const fmt = (h: number, m: number) => `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00`;
+
+    const addPoint = (h: number, m: number, [lat, lng]: [number, number], source: string, label: string) => {
+      const heure = fmt(h, m);
+      trajectory.push({ latitude: lat, longitude: lng, heure, source, label });
+      return heure;
+    };
+
+    const addAnomaly = (heure: string, [lat, lng]: [number, number], type: string, criticite: Criticite) => {
+      anomalies.push({
+        id: anomalyIdCounter++,
+        type,
+        date,
+        heure,
+        criticite,
+        statut: 'RESOLUE',
+        latitude: lat,
+        longitude: lng,
+        imageUrl: null,
+        robotId: 'ROBOT-001',
+      });
+    };
+
+    // Une ronde = un tour complet de la boucle de 8 balises, ~7 min entre chaque point.
+    const runRonde = (startH: number, startM: number): [number, number] => {
+      ronde++;
+      let h = startH;
+      let m = startM;
+      const startHeure = addPoint(h, m, loop[0], 'MISSION', `Ronde ${ronde} · Périmètre`);
+      activity.push({
+        id: `ronde-${ronde}-start`,
+        kind: 'MISSION',
+        heure: startHeure,
+        datetime: `${date}T${startHeure}`,
+        title: `Départ Ronde ${ronde}`,
+        subtitle: 'Patrouille autonome du périmètre',
+        tone: 'good',
+        batteryLevel: Math.max(35, 96 - ronde * 8),
+      });
+      for (let i = 1; i < loop.length; i++) {
+        [h, m] = addMin(h, m, 7);
+        addPoint(h, m, loop[i], 'MISSION', `Ronde ${ronde} · Périmètre`);
+      }
+      [h, m] = addMin(h, m, 7);
+      addPoint(h, m, loop[0], 'MISSION', `Ronde ${ronde} · Périmètre`);
+      return [h, m];
+    };
+
+    const runInspection = (h: number, m: number, point: [number, number], zone: string): [number, number] => {
+      const heure = addPoint(h, m, point, 'INSPECTION', `Inspection ${zone}`);
+      const [h2, m2] = addMin(h, m, 4);
+      addPoint(h2, m2, point, 'INSPECTION', `Inspection ${zone}`);
+      activity.push({
+        id: `inspection-${heure}`,
+        kind: 'INSPECTING',
+        heure,
+        datetime: `${date}T${heure}`,
+        title: `Inspection ${zone}`,
+        subtitle: 'Vérification caméras thermiques',
+        tone: 'good',
+        batteryLevel: 84,
+      });
+      return [h2, m2];
+    };
+
+    const runDock = (h: number, m: number): [number, number] => {
+      const heure = addPoint(h, m, loop[0], 'DOCKING', 'Vers la station · charge');
+      activity.push({
+        id: `dock-${heure}`,
+        kind: 'DOCKING',
+        heure,
+        datetime: `${date}T${heure}`,
+        title: 'Auto-Docking Station #1',
+        subtitle: 'Recharge rapide effectuée',
+        tone: 'good',
+        batteryLevel: 91,
+      });
+      return addMin(h, m, 45);
+    };
+
+    // --- Journee ---
+    let [eh, em] = runRonde(8, 0);
+    addAnomaly(fmt(...addMin(8, 21, 0)), loop[3], 'Mouvement suspect Zone D', 'MOYENNE');
+
+    let [ih, im] = addMin(eh, em, 10);
+    [eh, em] = runInspection(ih, im, loop[2], 'Zone Dépôt');
+    addAnomaly(fmt(eh, em), loop[2], 'Anomalie thermique détectée', 'FAIBLE');
+
+    [eh, em] = runRonde(9, 30);
+    [ih, im] = addMin(eh, em, 10);
+    [eh, em] = runDock(ih, im);
+
+    [eh, em] = runRonde(11, 45);
+    addAnomaly(fmt(...addMin(11, 59, 0)), loop[3], 'Obstacle détecté sur trajectoire', 'MOYENNE');
+
+    runInspection(13, 5, loop[5], 'Zone Sud');
+    addAnomaly('13:12:00', loop[5], 'Intrusion détectée Zone F', 'HAUTE');
+
+    [eh, em] = runRonde(13, 30);
+    [eh, em] = runRonde(15, 30);
+    addAnomaly(fmt(...addMin(eh, em, -20)), loop[1], 'Anomalie sonore détectée', 'FAIBLE');
+
+    [ih, im] = addMin(eh, em, 25);
+    [eh, em] = runDock(ih, im);
+    [eh, em] = runRonde(18, 0);
+
+    // Retour a la base en fin de journee.
+    const retourHeure = addPoint(20, 30, loop[0], 'RETOUR_BASE', 'Retour a la base');
+    activity.push({
+      id: 'retour-base',
+      kind: 'BACK_HOME',
+      heure: retourHeure,
+      datetime: `${date}T${retourHeure}`,
+      title: 'Retour à la base',
+      subtitle: 'Fin de patrouille · veille active',
+      tone: 'good',
+      batteryLevel: 78,
+    });
+
+    return { trajectory, anomalies, activity };
   }
 
   updateAnomalyStatus(id: number, statut: string): Observable<void> {

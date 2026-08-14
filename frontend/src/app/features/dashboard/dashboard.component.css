@@ -133,14 +133,23 @@
 
 .hero-bg-graphic {
   position: absolute;
-  right: 180px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 420px;
-  height: 240px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 46%;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.85;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 22%, rgba(0,0,0,0.95) 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.5) 22%, rgba(0,0,0,0.95) 100%);
+}
+
+.hero-bg-graphic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 40%;
+  opacity: 0.9;
 }
 
 .hero-content {

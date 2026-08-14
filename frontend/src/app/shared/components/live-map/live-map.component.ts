@@ -118,6 +118,11 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
   private robotMarker: any = null;
   private segmentLines: any[] = [];
   private phaseLabelLayers: any[] = [];
+  /** Segments et anomalies deja reveles au moins une fois. Persiste a travers les
+   * boucles de replay (une ronde qui recommence ne doit pas effacer ce qui a deja
+   * ete montre - c'est un cycle continu, pas une remise a zero). */
+  private revealedSegments = new Set<number>();
+  private revealedAnomalyIdx = new Set<number>();
   /** Coordonnees "collees aux rues" par segment (entre deux points reels consecutifs). Repli sur la ligne droite si le service de routage echoue. */
   private segmentGeometries: [number, number][][] = [];
   private chargeMarkers: any[] = [];
@@ -237,6 +242,8 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (isNewDataset) {
       this.cancelAnimation();
       this.clearSegmentLines();
+      this.revealedSegments.clear();
+      this.revealedAnomalyIdx.clear();
       // IMPORTANT : on se positionne directement sur le DERNIER point connu
       // (la position reelle actuelle du robot), pas sur le premier (minuit).
       // Avant ce correctif, chaque chargement de page repartait de l'index 0
@@ -365,7 +372,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.segmentGeometries.forEach((coords, i) => {
       const phase = this.phaseOf(points[i + 1]);
       const color = this.phaseColor(points[i + 1]);
-      const traveled = i < this.currentIndex;
+      const traveled = this.revealedSegments.has(i);
 
       // Le tronqon pas encore atteint par le robot n'est pas trace du tout :
       // on ne veut pas laisser deviner le chemin a venir, seulement montrer
@@ -482,6 +489,30 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     const from = points[fromIdx];
     const to = points[toIdx];
 
+    if (toIdx === 0 && fromIdx !== 0) {
+      // La ronde boucle : on ne fait pas glisser le robot en diagonale a
+      // travers toute la carte pour "revenir" au premier point. On marque une
+      // courte pause (comme un vrai robot qui termine son tour et repart),
+      // puis on reprend directement au debut - cycle continu, pas de reset.
+      this.updateRobotStatusLabel(this.phaseOf(to));
+      window.setTimeout(() => {
+        this.currentIndex = toIdx;
+        this.currentPoint = to;
+        this.robotMarker?.setLatLng([to.latitude, to.longitude]);
+        this.drawSegmentLines(this.livePoints);
+        this.renderAnomalyMarkers();
+        this.updatePopup(to);
+        this.map?.panTo([to.latitude, to.longitude], { animate: true, duration: 0.6 });
+        try {
+          this.liveSim.reportProgress(toIdx, 0, this.phaseOf(to));
+        } catch {
+          // idem : ne doit jamais casser l'animation.
+        }
+        this.animateToNextPoint();
+      }, 900);
+      return;
+    }
+
     const durationMs = this.stepDelayMs(from, to);
     const startTime = performance.now();
 
@@ -512,6 +543,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       } else {
         this.currentIndex = toIdx;
         this.currentPoint = to;
+        this.revealedSegments.add(fromIdx);
 
         // Le segment vers ce nouveau point vient d'etre parcouru : on redessine
         // pour le faire apparaitre (il n'existait pas encore tant qu'il n'etait
@@ -599,15 +631,21 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     const L = this.L;
     const nowSec = this.toSeconds(this.currentPoint?.heure ?? undefined);
-    (this.anomalies ?? []).forEach((a) => {
+    (this.anomalies ?? []).forEach((a, idx) => {
       if (a.latitude == null || a.longitude == null || !Number.isFinite(a.latitude) || !Number.isFinite(a.longitude)) {
         return;
       }
       // Une anomalie ne s'affiche que lorsque le robot a reellement atteint
-      // (ou depasse) son horodatage - pas avant, pour rester realiste.
+      // (ou depasse) son horodatage - pas avant, pour rester realiste. Une fois
+      // revelee, elle le reste meme si une nouvelle boucle de replay ramene le
+      // robot a un horodatage plus tot dans la journee (cycle continu, pas de
+      // remise a zero visuelle).
       const anomalySec = this.toSeconds(a.heure);
-      if (nowSec != null && anomalySec != null && anomalySec > nowSec) {
-        return;
+      if (!this.revealedAnomalyIdx.has(idx)) {
+        if (nowSec != null && anomalySec != null && anomalySec > nowSec) {
+          return;
+        }
+        this.revealedAnomalyIdx.add(idx);
       }
 
       const icon = L.divIcon({

@@ -12,51 +12,18 @@ import { ThemeService } from '../../core/services/theme.service';
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   template: `
     <div class="login-screen">
-      <!-- Left: signature visual panel. No stock photography — an original
-           line-art sentinel silhouette on a dark gradient, echoing the
-           patrol/surveillance identity instead of a generic hero image. -->
+      <!-- Left: real fleet photography instead of an illustrated stand-in,
+           with a dark gradient scrim for text legibility. -->
       <aside class="visual-pane" aria-hidden="true">
+        <img class="visual-photo" src="/assets/robot-hero.jpg" alt="" />
+        <div class="visual-scrim"></div>
         <div class="scanlines"></div>
-        <div class="glow"></div>
 
         <div class="visual-brand">
           <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing" (error)="onLogoError()" alt="" />
           <span class="brand-fallback" *ngIf="logoMissing">EN</span>
           <span class="visual-brand-name">ENOVA<em>ROBOTICS</em></span>
         </div>
-
-        <svg class="sentinel" viewBox="0 0 520 620" fill="none">
-          <defs>
-            <linearGradient id="sentinelStroke" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#3DDC97" />
-              <stop offset="100%" stop-color="#1FC9BA" stop-opacity="0.35" />
-            </linearGradient>
-            <radialGradient id="ringFade" cx="50%" cy="45%" r="55%">
-              <stop offset="0%" stop-color="#1FC9BA" stop-opacity="0.25" />
-              <stop offset="100%" stop-color="#1FC9BA" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-
-          <circle cx="260" cy="280" r="230" fill="url(#ringFade)" />
-          <circle class="ring ring-a" cx="260" cy="280" r="215" stroke="#1FC9BA" stroke-opacity="0.18" />
-          <circle class="ring ring-b" cx="260" cy="280" r="165" stroke="#1FC9BA" stroke-opacity="0.12" stroke-dasharray="2 10" />
-
-          <!-- sentinel body: reduced to essential geometry, not a literal robot render -->
-          <g stroke="url(#sentinelStroke)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M180 470 L165 300 Q160 220 260 205 Q360 220 355 300 L340 470 Z" />
-            <path d="M205 300 L200 470 M315 300 L320 470" opacity="0.55" />
-            <rect x="220" y="150" width="80" height="58" rx="10" />
-            <circle cx="260" cy="179" r="9" fill="#3DDC97" fill-opacity="0.9" stroke="none" class="eye" />
-            <path d="M180 320 L120 300 M340 320 L400 300" />
-            <path d="M195 470 L185 540 M325 470 L335 540" />
-          </g>
-
-          <g class="tick" stroke="#1FC9BA" stroke-opacity="0.4">
-            <line x1="60" y1="120" x2="90" y2="120" />
-            <line x1="440" y1="500" x2="470" y2="500" />
-            <line x1="80" y1="540" x2="80" y2="510" />
-          </g>
-        </svg>
 
         <figure class="visual-quote">
           <blockquote>&laquo;&nbsp;La technologie a le plus de valeur quand elle rapproche les &eacute;quipes du terrain.&nbsp;&raquo;</blockquote>
@@ -157,26 +124,30 @@ import { ThemeService } from '../../core/services/theme.service';
       flex-direction: column;
       justify-content: space-between;
       padding: 44px 48px;
+      background: #050d0c;
+    }
+
+    .visual-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+
+    .visual-scrim {
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(120% 90% at 18% 8%, rgba(31, 201, 186, 0.16) 0%, rgba(31, 201, 186, 0) 55%),
-        linear-gradient(165deg, #0c211d 0%, #071613 55%, #050d0c 100%);
+        linear-gradient(180deg, rgba(5, 12, 11, 0.75) 0%, rgba(5, 12, 11, 0.25) 38%, rgba(5, 12, 11, 0.35) 65%, rgba(5, 12, 11, 0.92) 100%),
+        linear-gradient(90deg, rgba(5, 12, 11, 0.45) 0%, rgba(5, 12, 11, 0) 40%);
     }
 
     .scanlines {
       position: absolute;
       inset: 0;
       background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px);
-      pointer-events: none;
-    }
-
-    .glow {
-      position: absolute;
-      left: 50%;
-      top: 44%;
-      width: 640px;
-      height: 640px;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(61, 220, 151, 0.10) 0%, rgba(61, 220, 151, 0) 65%);
       pointer-events: none;
     }
 
@@ -204,21 +175,6 @@ import { ThemeService } from '../../core/services/theme.service';
       color: #EAF6F3;
     }
     .visual-brand-name em { font-style: normal; color: #1FC9BA; margin-left: 6px; }
-
-    .sentinel {
-      position: relative;
-      z-index: 1;
-      width: min(92%, 420px);
-      margin: 0 auto;
-      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45));
-    }
-
-    .sentinel .eye { animation: eyePulse 2.6s ease-in-out infinite; }
-    @keyframes eyePulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-
-    .sentinel .ring-a { animation: spin 60s linear infinite; transform-origin: 260px 280px; }
-    .sentinel .ring-b { animation: spin 90s linear infinite reverse; transform-origin: 260px 280px; }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     .visual-quote {
       position: relative;
@@ -249,7 +205,7 @@ import { ThemeService } from '../../core/services/theme.service';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg-app, #0d1512);
+      background: #0d1512;
       padding: 32px;
     }
 
@@ -511,7 +467,7 @@ import { ThemeService } from '../../core/services/theme.service';
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .form-shell, .btn-spinner, .error, .btn-check, .sentinel .eye, .sentinel .ring-a, .sentinel .ring-b {
+      .form-shell, .btn-spinner, .error, .btn-check {
         animation: none !important;
       }
     }

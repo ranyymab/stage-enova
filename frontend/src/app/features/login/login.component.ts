@@ -1,564 +1,3456 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
+
 import { AuthService } from '../../core/services/auth.service';
 import { GoogleIdentityService } from '../../core/services/google-identity.service';
-import { ThemeService } from '../../core/services/theme.service';
+
 
 @Component({
   selector: 'app-login',
+
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink,
+  ],
+
   template: `
-    <div class="login-screen">
-      <!-- Left: real fleet photography instead of an illustrated stand-in,
-           with a dark gradient scrim for text legibility. -->
-      <aside class="visual-pane" aria-hidden="true">
-        <img class="visual-photo" src="/assets/robot-hero.jpg" alt="" />
+
+    <div
+      class="auth-screen"
+      [class.light-mode]="!darkMode"
+    >
+
+      <!-- =========================================================
+           LEFT ROBOT VISUAL
+           ========================================================= -->
+
+      <aside class="visual-pane">
+
+        <img
+          class="visual-photo"
+          src="/assets/robot-hero.png"
+          alt="Enova Robotics autonomous robot"
+        />
+
         <div class="visual-scrim"></div>
+
         <div class="scanlines"></div>
 
-        <figure class="visual-quote">
-          <blockquote>&laquo;&nbsp;La technologie a le plus de valeur quand elle rapproche les &eacute;quipes du terrain.&nbsp;&raquo;</blockquote>
-          <figcaption>&Eacute;quipe Enova Robotics</figcaption>
-        </figure>
-      </aside>
+        <div class="visual-glow"></div>
 
-      <!-- Right: the actual form -->
-      <main class="form-pane">
-        <div class="form-shell enter-scale">
-          <div class="mobile-brand enter-fade-up" style="--stagger-index: 1">
-            <img class="brand-logo" [src]="logoSrc()" *ngIf="!logoMissing" (error)="onLogoError()" alt="Enova Robotics" />
-            <span class="brand-fallback" *ngIf="logoMissing">EN</span>
+
+        <!-- =======================================================
+             ENOVA BRANDING
+             ======================================================= -->
+
+        <div class="visual-brand">
+
+          <div class="brand-category">
+
+            <span class="brand-line"></span>
+
+            <span>
+              AUTONOMOUS ROBOTICS
+            </span>
+
           </div>
 
-          <span class="eyebrow enter-fade-up" style="--stagger-index: 1">Acc&egrave;s op&eacute;rateur</span>
-          <h1 class="enter-fade-up" style="--stagger-index: 2">Bon retour</h1>
-          <p class="subtitle enter-fade-up" style="--stagger-index: 2">Connectez-vous pour superviser votre flotte en temps r&eacute;el.</p>
 
-          <div #googleButton class="google-btn-container enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"></div>
-          <div class="divider enter-fade-up" style="--stagger-index: 3" *ngIf="googleConfigured"><span>ou</span></div>
+          <div class="brand-name">
+            ENOVA
+          </div>
 
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <label class="field enter-fade-up" style="--stagger-index: 3">
-              <span class="field-label">Email</span>
-              <div class="field-input-wrap">
-                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-                <input
-                  type="email"
-                  formControlName="email"
-                  placeholder="vous&#64;enovarobotics.eu"
-                  autocomplete="username"
-                />
-              </div>
-            </label>
 
-            <label class="field enter-fade-up" style="--stagger-index: 4">
-              <span class="field-label">Mot de passe</span>
-              <div class="field-input-wrap">
-                <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
-                <input
-                  [type]="showPassword ? 'text' : 'password'"
-                  formControlName="password"
-                  placeholder="••••••••"
-                  autocomplete="current-password"
-                />
-                <button type="button" class="field-toggle" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'">
-                  <svg *ngIf="!showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <svg *ngIf="showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.2A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.1 4.1M6.5 6.6C3.9 8.3 2 12 2 12s3.5 7 10 7a9.9 9.9 0 0 0 3.4-.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
-                </button>
-              </div>
-            </label>
+          <div class="brand-name-sub">
+            ROBOTICS
+          </div>
 
-            <div class="row-between enter-fade-up" style="--stagger-index: 4">
-              <label class="remember">
-                <input type="checkbox" formControlName="remember" />
-                <span class="checkbox-visual" aria-hidden="true">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg>
-                </span>
-                Se souvenir de moi
-              </label>
-              <a class="forgot-link" routerLink="/forgot-password">Mot de passe oubli&eacute; ?</a>
+
+          <div class="brand-description">
+
+            <span class="description-line"></span>
+
+            <span>
+              INTELLIGENCE IN MOTION
+            </span>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+
+      <!-- =========================================================
+           RIGHT AUTH PANEL
+           ========================================================= -->
+
+      <main class="form-pane">
+
+        <div class="form-shell">
+
+
+          <!-- =====================================================
+               THEME BUTTON
+               ===================================================== -->
+
+          <button
+            type="button"
+            class="theme-toggle"
+            (click)="toggleTheme()"
+            [attr.aria-label]="
+              darkMode
+                ? 'Switch to light mode'
+                : 'Switch to dark mode'
+            "
+          >
+
+            <span
+              class="theme-icon"
+              aria-hidden="true"
+            >
+              {{ darkMode ? '☀' : '☾' }}
+            </span>
+
+            <span class="theme-label">
+              {{ darkMode ? 'LIGHT' : 'DARK' }}
+            </span>
+
+          </button>
+
+
+          <!-- =====================================================
+               MOBILE BRAND
+               ===================================================== -->
+
+          <div class="mobile-brand">
+
+            <div class="mobile-brand-name">
+              ENOVA
             </div>
 
-            <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+            <div class="mobile-brand-sub">
+              ROBOTICS
+            </div>
 
-            <button type="submit" [disabled]="form.invalid || loading || success" class="enter-fade-up" [class.is-success]="success" style="--stagger-index: 5">
-              <span class="btn-spinner" *ngIf="loading"></span>
-              <svg *ngIf="success" class="btn-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l6 6L20 6"/></svg>
-              {{ success ? 'Connect&eacute;' : (loading ? 'Connexion...' : 'Se connecter') }}
+          </div>
+
+
+          <!-- =====================================================
+               LOGIN
+               ===================================================== -->
+
+          <section
+            *ngIf="!showSignup"
+            class="auth-view"
+          >
+
+            <div class="eyebrow">
+
+              <span></span>
+
+              SECURE COMMAND ACCESS
+
+            </div>
+
+
+            <h1>
+              Welcome <strong>back!</strong>
+            </h1>
+
+
+            <p class="subtitle">
+              Sign in to access your robotics command center.
+            </p>
+
+
+            <!-- =================================================
+                 GOOGLE
+                 ================================================= -->
+
+            <div
+              #googleButton
+              class="google-btn-container"
+              *ngIf="googleConfigured"
+            ></div>
+
+
+            <div
+              class="divider"
+              *ngIf="googleConfigured"
+            >
+
+              <span>
+                OR
+              </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 LOGIN FORM
+                 ================================================= -->
+
+            <form
+              [formGroup]="loginForm"
+              (ngSubmit)="onLogin()"
+              novalidate
+            >
+
+
+              <!-- EMAIL -->
+
+              <label class="field">
+
+                <span class="field-label">
+                  OPERATOR EMAIL
+                </span>
+
+
+                <div class="field-input-wrap">
+
+                  <svg
+                    class="field-icon"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+
+                    <rect
+                      x="2.5"
+                      y="4.5"
+                      width="19"
+                      height="15"
+                      rx="2.2"
+                    />
+
+                    <path
+                      d="M3 6.5l9 6.5 9-6.5"
+                    />
+
+                  </svg>
+
+
+                  <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="operator@enovarobotics.eu"
+                    autocomplete="username"
+                    spellcheck="false"
+                  />
+
+                </div>
+
+              </label>
+
+
+              <!-- PASSWORD -->
+
+              <label class="field">
+
+                <span class="field-label">
+                  ACCESS KEY
+                </span>
+
+
+                <div class="field-input-wrap">
+
+                  <svg
+                    class="field-icon"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+
+                    <rect
+                      x="4.5"
+                      y="10.5"
+                      width="15"
+                      height="10"
+                      rx="2"
+                    />
+
+                    <path
+                      d="M8 10.5V7a4 4 0 0 1 8 0v3.5"
+                    />
+
+                  </svg>
+
+
+                  <input
+                    [type]="
+                      showLoginPassword
+                        ? 'text'
+                        : 'password'
+                    "
+                    formControlName="password"
+                    placeholder="••••••••"
+                    autocomplete="current-password"
+                  />
+
+
+                  <button
+                    type="button"
+                    class="field-toggle"
+                    (click)="
+                      showLoginPassword =
+                      !showLoginPassword
+                    "
+                    [attr.aria-label]="
+                      showLoginPassword
+                        ? 'Hide password'
+                        : 'Show password'
+                    "
+                  >
+
+                    <svg
+                      *ngIf="!showLoginPassword"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+
+                      <path
+                        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+                      />
+
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="3"
+                      />
+
+                    </svg>
+
+
+                    <svg
+                      *ngIf="showLoginPassword"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+
+                      <path
+                        d="M3 3l18 18"
+                      />
+
+                      <path
+                        d="M10.6 5.2A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7"
+                      />
+
+                      <path
+                        d="M6.5 6.6C3.9 8.3 2 12 2 12s3.5 7 10 7a9.9 9.9 0 0 0 3.4-.6"
+                      />
+
+                    </svg>
+
+                  </button>
+
+                </div>
+
+              </label>
+
+
+              <!-- OPTIONS -->
+
+              <div class="row-between">
+
+                <label class="remember">
+
+                  <input
+                    type="checkbox"
+                    formControlName="remember"
+                  />
+
+                  <span class="checkbox-visual">
+
+                    <svg
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+
+                      <path
+                        d="M4 12l6 6L20 6"
+                      />
+
+                    </svg>
+
+                  </span>
+
+                  Remember this device
+
+                </label>
+
+
+                <a
+                  class="forgot-link"
+                  routerLink="/forgot-password"
+                >
+                  Forgot access?
+                </a>
+
+              </div>
+
+
+              <!-- ERROR -->
+
+              <p
+                class="error"
+                *ngIf="errorMessage"
+              >
+                {{ errorMessage }}
+              </p>
+
+
+              <!-- LOGIN BUTTON -->
+
+              <button
+                type="submit"
+                class="primary-button"
+                [class.success]="loginSuccess"
+                [disabled]="
+                  loginForm.invalid ||
+                  loading ||
+                  loginSuccess
+                "
+              >
+
+                <span
+                  class="btn-spinner"
+                  *ngIf="loading"
+                ></span>
+
+
+                <svg
+                  *ngIf="loginSuccess"
+                  class="btn-check"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+
+                  <path
+                    d="M4 12l6 6L20 6"
+                  />
+
+                </svg>
+
+
+                <span>
+
+                  {{
+                    loginSuccess
+                      ? 'ACCESS GRANTED'
+                      : loading
+                        ? 'AUTHENTICATING...'
+                        : 'ENTER COMMAND CENTER'
+                  }}
+
+                </span>
+
+
+                <span
+                  *ngIf="
+                    !loading &&
+                    !loginSuccess
+                  "
+                  class="button-arrow"
+                >
+                  →
+                </span>
+
+              </button>
+
+            </form>
+
+
+            <!-- SWITCH -->
+
+            <p class="switch-link">
+
+              New operator?
+
+              <button
+                type="button"
+                (click)="openSignup()"
+              >
+                Create account
+              </button>
+
+            </p>
+
+          </section>
+
+
+          <!-- =====================================================
+               SIGNUP
+               ===================================================== -->
+
+          <section
+            *ngIf="showSignup"
+            class="auth-view signup-view"
+          >
+
+            <button
+              type="button"
+              class="back-button"
+              (click)="openLogin()"
+            >
+
+              <span>
+                ←
+              </span>
+
+              Back to login
+
             </button>
-          </form>
 
-          <p class="switch-link enter-fade-up" style="--stagger-index: 5">
-            Pas encore de compte ? <a routerLink="/signup">Cr&eacute;er un compte</a>
-          </p>
+
+            <div class="eyebrow">
+
+              <span></span>
+
+              OPERATOR REGISTRATION
+
+            </div>
+
+
+            <h1>
+              Create <strong>account</strong>
+            </h1>
+
+
+            <p class="subtitle">
+              Set up your operator credentials.
+            </p>
+
+
+            <!-- SIGNUP FORM -->
+
+            <form
+              [formGroup]="signupForm"
+              (ngSubmit)="onSignup()"
+              novalidate
+            >
+
+
+              <!-- NAME -->
+
+              <label class="field">
+
+                <span class="field-label">
+                  OPERATOR NAME
+                </span>
+
+
+                <div class="field-input-wrap">
+
+                  <svg
+                    class="field-icon"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+
+                    <circle
+                      cx="12"
+                      cy="8"
+                      r="3.5"
+                    />
+
+                    <path
+                      d="M4.5 20c.8-4 3.3-6 7.5-6s6.7 2 7.5 6"
+                    />
+
+                  </svg>
+
+
+                  <input
+                    type="text"
+                    formControlName="name"
+                    placeholder="Operator name"
+                    autocomplete="name"
+                  />
+
+                </div>
+
+              </label>
+
+
+              <!-- EMAIL -->
+
+              <label class="field">
+
+                <span class="field-label">
+                  OPERATOR EMAIL
+                </span>
+
+
+                <div class="field-input-wrap">
+
+                  <svg
+                    class="field-icon"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+
+                    <rect
+                      x="2.5"
+                      y="4.5"
+                      width="19"
+                      height="15"
+                      rx="2.2"
+                    />
+
+                    <path
+                      d="M3 6.5l9 6.5 9-6.5"
+                    />
+
+                  </svg>
+
+
+                  <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="operator@enovarobotics.eu"
+                    autocomplete="email"
+                  />
+
+                </div>
+
+              </label>
+
+
+              <!-- PASSWORD -->
+
+              <label class="field">
+
+                <span class="field-label">
+                  ACCESS KEY
+                </span>
+
+
+                <div class="field-input-wrap">
+
+                  <svg
+                    class="field-icon"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+
+                    <rect
+                      x="4.5"
+                      y="10.5"
+                      width="15"
+                      height="10"
+                      rx="2"
+                    />
+
+                    <path
+                      d="M8 10.5V7a4 4 0 0 1 8 0v3.5"
+                    />
+
+                  </svg>
+
+
+                  <input
+                    [type]="
+                      showSignupPassword
+                        ? 'text'
+                        : 'password'
+                    "
+                    formControlName="password"
+                    placeholder="Create a secure key"
+                    autocomplete="new-password"
+                  />
+
+
+                  <button
+                    type="button"
+                    class="field-toggle"
+                    (click)="
+                      showSignupPassword =
+                      !showSignupPassword
+                    "
+                  >
+
+                    <svg
+                      *ngIf="!showSignupPassword"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+
+                      <path
+                        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+                      />
+
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="3"
+                      />
+
+                    </svg>
+
+
+                    <svg
+                      *ngIf="showSignupPassword"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+
+                      <path
+                        d="M3 3l18 18"
+                      />
+
+                      <path
+                        d="M2 12s3.5-7 10-7 10 7 10 7"
+                      />
+
+                    </svg>
+
+                  </button>
+
+                </div>
+
+              </label>
+
+
+              <!-- CONFIRM PASSWORD -->
+
+              <label class="field">
+
+                <span class="field-label">
+                  CONFIRM ACCESS KEY
+                </span>
+
+
+                <div
+                  class="field-input-wrap"
+                  [class.field-invalid]="
+                    signupForm.controls[
+                      'confirmPassword'
+                    ].touched &&
+                    signupForm.controls[
+                      'password'
+                    ].value !==
+                    signupForm.controls[
+                      'confirmPassword'
+                    ].value
+                  "
+                >
+
+                  <svg
+                    class="field-icon"
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+
+                    <rect
+                      x="4.5"
+                      y="10.5"
+                      width="15"
+                      height="10"
+                      rx="2"
+                    />
+
+                    <path
+                      d="M8 10.5V7a4 4 0 0 1 8 0v3.5"
+                    />
+
+                  </svg>
+
+
+                  <input
+                    [type]="
+                      showSignupConfirm
+                        ? 'text'
+                        : 'password'
+                    "
+                    formControlName="confirmPassword"
+                    placeholder="Repeat access key"
+                    autocomplete="new-password"
+                  />
+
+
+                  <button
+                    type="button"
+                    class="field-toggle"
+                    (click)="
+                      showSignupConfirm =
+                      !showSignupConfirm
+                    "
+                  >
+
+                    <svg
+                      *ngIf="!showSignupConfirm"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+
+                      <path
+                        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
+                      />
+
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="3"
+                      />
+
+                    </svg>
+
+
+                    <svg
+                      *ngIf="showSignupConfirm"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+
+                      <path
+                        d="M3 3l18 18"
+                      />
+
+                      <path
+                        d="M2 12s3.5-7 10-7 10 7 10 7"
+                      />
+
+                    </svg>
+
+                  </button>
+
+                </div>
+
+              </label>
+
+
+              <!-- PASSWORD RULES -->
+
+              <div class="password-hint">
+
+                <span
+                  [class.valid]="
+                    (
+                      signupForm.controls[
+                        'password'
+                      ].value || ''
+                    ).length >= 8
+                  "
+                >
+                  <b>✓</b>
+                  8+ characters
+                </span>
+
+
+                <span
+                  [class.valid]="
+                    /[A-Z]/.test(
+                      signupForm.controls[
+                        'password'
+                      ].value || ''
+                    )
+                  "
+                >
+                  <b>✓</b>
+                  Uppercase
+                </span>
+
+
+                <span
+                  [class.valid]="
+                    /\d/.test(
+                      signupForm.controls[
+                        'password'
+                      ].value || ''
+                    )
+                  "
+                >
+                  <b>✓</b>
+                  Number
+                </span>
+
+              </div>
+
+
+              <!-- ERROR -->
+
+              <p
+                class="error"
+                *ngIf="signupError"
+              >
+                {{ signupError }}
+              </p>
+
+
+              <!-- SIGNUP BUTTON -->
+
+              <button
+                type="submit"
+                class="primary-button"
+                [disabled]="
+                  signupForm.invalid ||
+                  loading ||
+                  !passwordsMatch
+                "
+              >
+
+                <span
+                  class="btn-spinner"
+                  *ngIf="loading"
+                ></span>
+
+
+                <span>
+                  {{
+                    loading
+                      ? 'CREATING ACCESS...'
+                      : 'CREATE OPERATOR ACCESS'
+                  }}
+                </span>
+
+
+                <span
+                  *ngIf="!loading"
+                  class="button-arrow"
+                >
+                  →
+                </span>
+
+              </button>
+
+            </form>
+
+
+            <!-- SWITCH -->
+
+            <p class="switch-link">
+
+              Already an operator?
+
+              <button
+                type="button"
+                (click)="openLogin()"
+              >
+                Sign in
+              </button>
+
+            </p>
+
+          </section>
+
         </div>
+
       </main>
+
     </div>
   `,
-  styles: [`
-    :host { display: block; width: 100%; min-height: 100vh; }
 
-    .login-screen {
-      min-height: 100vh;
+
+  styles: [`
+
+    /* =============================================================
+       BASE
+       ============================================================= */
+
+    :host {
+
+      display: block;
+
       width: 100%;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-      background: #0a1210;
+
+      min-height: 100vh;
+
+      --blue: #1764A3;
+
+      --blue-dark: #0B3155;
+
+      --bg: #030912;
+
+      --panel: #071321;
+
+      --text: #EAF2FA;
+
+      --muted: rgba(220,232,245,.58);
+
+      --line: rgba(120,165,205,.14);
+
     }
 
-    /* ---------- Visual pane ---------- */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    /* =============================================================
+       SCREEN
+       ============================================================= */
+
+    .auth-screen {
+
+      width: 100%;
+
+      min-height: 100vh;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(520px, 1fr);
+
+      background: var(--bg);
+
+      overflow: hidden;
+
+      transition:
+        background .35s ease;
+
+    }
+
+
+    /* =============================================================
+       LEFT IMAGE
+       ============================================================= */
 
     .visual-pane {
+
       position: relative;
+
+      min-height: 100vh;
+
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 44px 48px;
-      background: #050d0c;
+
+      background: #02060c;
+
     }
+
 
     .visual-photo {
+
       position: absolute;
+
       inset: 0;
+
       width: 100%;
+
       height: 100%;
+
       object-fit: cover;
-      object-position: 20% 45%;
+
+      object-position: 38% center;
+
+      /*
+       * IMPORTANT:
+       * The old brightness(.62) was making the robot way too dark.
+       */
+
+      filter:
+        saturate(.90)
+        contrast(1.04)
+        brightness(.96);
+
+      transform: scale(1.015);
+
+      transition:
+        filter .35s ease;
+
     }
+
+
+    /* =============================================================
+       IMAGE SCRIM
+       ============================================================= */
 
     .visual-scrim {
+
       position: absolute;
+
       inset: 0;
+
+      pointer-events: none;
+
+      /*
+       * Much lighter than before.
+       * The robot and city stay visible.
+       */
+
       background:
-        linear-gradient(180deg, rgba(5, 12, 11, 0.32) 0%, rgba(5, 12, 11, 0.15) 30%, rgba(5, 12, 11, 0.4) 65%, rgba(5, 12, 11, 0.94) 100%),
-        linear-gradient(90deg, rgba(5, 12, 11, 0.35) 0%, rgba(5, 12, 11, 0) 40%);
+
+        linear-gradient(
+          180deg,
+          rgba(2,7,18,.04) 0%,
+          rgba(2,7,18,.03) 45%,
+          rgba(2,7,18,.12) 75%,
+          rgba(2,7,18,.38) 100%
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(2,7,18,.18) 0%,
+          rgba(2,7,18,.02) 55%,
+          rgba(2,7,18,.12) 100%
+        );
+
     }
+
+
+    /* =============================================================
+       LIGHT MODE IMAGE
+       ============================================================= */
+
+    .auth-screen.light-mode
+    .visual-photo {
+
+      filter:
+        saturate(.92)
+        contrast(1.02)
+        brightness(1.08);
+
+    }
+
+
+    .auth-screen.light-mode
+    .visual-scrim {
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.02) 0%,
+          rgba(255,255,255,.00) 50%,
+          rgba(3,15,30,.20) 100%
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.04) 0%,
+          rgba(255,255,255,0) 70%
+        );
+
+    }
+
+
+    /* =============================================================
+       BLUE GLOW
+       ============================================================= */
+
+    .visual-glow {
+
+      position: absolute;
+
+      width: 420px;
+
+      height: 420px;
+
+      left: -180px;
+
+      bottom: -230px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(31,120,201,.12);
+
+      filter:
+        blur(80px);
+
+      pointer-events: none;
+
+    }
+
+
+    /* =============================================================
+       SCANLINES
+       ============================================================= */
 
     .scanlines {
+
       position: absolute;
+
       inset: 0;
-      background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 3px);
+
       pointer-events: none;
+
+      opacity: .08;
+
+      background-image:
+
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,.025) 0,
+          rgba(255,255,255,.025) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+
     }
+
+
+    /* =============================================================
+       BRAND
+       ============================================================= */
 
     .visual-brand {
-      position: relative;
-      z-index: 2;
+
+      position: absolute;
+
+      left: 58px;
+
+      top: 135px;
+
+      z-index: 5;
+
+      width:
+        min(
+          520px,
+          calc(100% - 100px)
+        );
+
+    }
+
+
+    .brand-category {
+
       display: flex;
+
       align-items: center;
-      gap: 10px;
+
+      gap: 12px;
+
+      margin-bottom: 13px;
+
+      color: #1764A3;
+
+      font-family: monospace;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing: .20em;
+
+      text-shadow:
+        0 0 16px
+        rgba(23,100,163,.35);
+
     }
 
-    .visual-brand .brand-logo { width: 30px; height: 30px; object-fit: contain; }
-    .visual-brand .brand-fallback {
-      width: 30px; height: 30px; border-radius: 8px;
-      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
-      color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 12px;
-      display: flex; align-items: center; justify-content: center;
+
+    .brand-line {
+
+      width: 40px;
+
+      height: 1px;
+
+      background: #1764A3;
+
+      box-shadow:
+        0 0 12px
+        rgba(23,100,163,.55);
+
     }
 
-    .visual-brand-name {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: #EAF6F3;
-    }
-    .visual-brand-name em { font-style: normal; color: #1FC9BA; margin-left: 6px; }
 
-    .visual-quote {
-      position: relative;
-      z-index: 2;
-      max-width: 380px;
+    .brand-name {
+
       margin: 0;
+
+      color: #ffffff;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size:
+        clamp(
+          52px,
+          5.6vw,
+          82px
+        );
+
+      line-height: .82;
+
+      font-weight: 900;
+
+      letter-spacing: -.065em;
+
+      text-shadow:
+        0 5px 30px
+        rgba(0,0,0,.45);
+
     }
 
-    .visual-quote blockquote {
-      margin: 0 0 10px;
-      font-size: 17px;
-      line-height: 1.5;
-      font-weight: 500;
-      color: #EAF6F3;
+
+    .brand-name-sub {
+
+      margin-top: 9px;
+
+      color: #1764A3;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size:
+        clamp(
+          32px,
+          3.4vw,
+          50px
+        );
+
+      line-height: .90;
+
+      font-weight: 850;
+
+      letter-spacing: .075em;
+
+      text-shadow:
+        0 0 24px
+        rgba(23,100,163,.22);
+
     }
 
-    .visual-quote figcaption {
-      font-size: 11.5px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #1FC9BA;
-      font-family: var(--font-mono);
+
+    .brand-description {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 22px;
+
+      color:
+        rgba(255,255,255,.58);
+
+      font-family: monospace;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: .18em;
+
     }
 
-    /* ---------- Form pane ---------- */
+
+    .description-line {
+
+      width: 52px;
+
+      height: 1px;
+
+      background:
+        rgba(255,255,255,.32);
+
+    }
+
+
+    /* =============================================================
+       RIGHT PANEL
+       ============================================================= */
 
     .form-pane {
+
+      min-height: 100vh;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      background: #0d1512;
-      padding: 32px;
+
+      padding: 34px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #06101D,
+          #020813
+        );
+
+      transition:
+        background .35s ease;
+
     }
+
 
     .form-shell {
+
+      position: relative;
+
       width: 100%;
-      max-width: 380px;
-      animation: cardEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+      max-width: 810px;
+
+      min-height: 700px;
+
+      padding:
+        68px
+        74px
+        58px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,19,33,.97),
+          rgba(3,11,21,.98)
+        );
+
+      border:
+        1px solid
+        rgba(120,165,205,.16);
+
+      border-radius: 24px;
+
+      box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.34),
+
+        inset 0 1px 0
+        rgba(255,255,255,.04);
+
+      transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
     }
 
-    @keyframes cardEnter {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    /* =============================================================
+       LIGHT MODE RIGHT PANEL
+       ============================================================= */
+
+    .auth-screen.light-mode
+    .form-pane {
+
+      background:
+        radial-gradient(
+          circle at 90% 0%,
+          rgba(45,116,201,.12),
+          transparent 40%
+        ),
+
+        linear-gradient(
+          145deg,
+          #F7FAFD,
+          #EAF1F8
+        );
+
     }
 
-    .mobile-brand { display: none; margin-bottom: 22px; }
-    .mobile-brand .brand-logo { width: 40px; height: 40px; object-fit: contain; }
-    .mobile-brand .brand-fallback {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
-      color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 14px;
-      display: flex; align-items: center; justify-content: center;
+
+    .auth-screen.light-mode
+    .form-shell {
+
+      background:
+        linear-gradient(
+          145deg,
+          #FFFFFF,
+          #F7FAFE
+        );
+
+      border-color:
+        rgba(30,65,100,.12);
+
+      box-shadow:
+        0 30px 80px
+        rgba(30,55,80,.14),
+
+        inset 0 1px 0
+        rgba(255,255,255,1);
+
     }
+
+
+    /* =============================================================
+       THEME BUTTON
+       ============================================================= */
+
+    .theme-toggle {
+
+      position: absolute;
+
+      top: 26px;
+
+      right: 28px;
+
+      z-index: 20;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      height: 40px;
+
+      padding:
+        5px 12px 5px 6px;
+
+      color:
+        rgba(235,242,250,.82);
+
+      background:
+        rgba(255,255,255,.055);
+
+      border:
+        1px solid
+        rgba(255,255,255,.14);
+
+      border-radius: 999px;
+
+      font-family: monospace;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      letter-spacing: .14em;
+
+      cursor: pointer;
+
+      backdrop-filter:
+        blur(14px);
+
+      box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.20);
+
+      transition:
+        all .2s ease;
+
+    }
+
+
+    .theme-toggle:hover {
+
+      transform:
+        translateY(-1px);
+
+      background:
+        rgba(255,255,255,.10);
+
+      border-color:
+        rgba(255,255,255,.25);
+
+    }
+
+
+    .theme-icon {
+
+      width: 28px;
+
+      height: 28px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 50%;
+
+      color: #0B3155;
+
+      background: #F0F6FC;
+
+      font-size: 14px;
+
+    }
+
+
+    .auth-screen.light-mode
+    .theme-toggle {
+
+      color: #173653;
+
+      background:
+        #FFFFFF;
+
+      border-color:
+        rgba(23,54,83,.14);
+
+      box-shadow:
+        0 8px 25px
+        rgba(30,55,80,.10);
+
+    }
+
+
+    .auth-screen.light-mode
+    .theme-icon {
+
+      color: #FFFFFF;
+
+      background:
+        #173653;
+
+    }
+
+
+    /* =============================================================
+       AUTH CONTENT
+       ============================================================= */
+
+    .auth-view {
+
+      width: 100%;
+
+      max-width: 660px;
+
+    }
+
 
     .eyebrow {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #1FC9BA;
-      margin-bottom: 12px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 20px;
+
+      color:
+        #2D74C9;
+
+      font-family: monospace;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing: .18em;
+
     }
+
+
+    .eyebrow span {
+
+      width: 34px;
+
+      height: 1px;
+
+      background:
+        #2D74C9;
+
+      box-shadow:
+        0 0 10px
+        rgba(45,116,201,.45);
+
+    }
+
 
     h1 {
-      margin: 0 0 6px;
-      font-size: 30px;
-      line-height: 1.1;
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+
+      margin: 0;
+
+      color:
+        #F5F9FD;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size:
+        clamp(
+          42px,
+          4vw,
+          60px
+        );
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: -.045em;
+
     }
+
+
+    h1 strong {
+
+      color:
+        #2D74C9;
+
+      font-weight: 800;
+
+    }
+
 
     .subtitle {
-      margin: 0 0 28px;
-      font-size: 13.5px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.62);
+
+      margin:
+        18px 0 42px;
+
+      color:
+        rgba(220,232,245,.60);
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
     }
 
-    form { display: flex; flex-direction: column; gap: 16px; }
 
-    .field { display: flex; flex-direction: column; gap: 6px; }
+    /* =============================================================
+       LIGHT TEXT
+       ============================================================= */
 
-    .field-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
+    .auth-screen.light-mode h1 {
+
+      color: #102A43;
+
     }
 
-    .field-input-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 10px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+    .auth-screen.light-mode
+    .subtitle {
+
+      color:
+        rgba(24,48,73,.62);
+
     }
 
-    .field-input-wrap:focus-within {
-      border-color: rgba(31, 201, 186, 0.6);
-      box-shadow: 0 0 0 3px rgba(31, 201, 186, 0.12);
-      background: rgba(31, 201, 186, 0.05);
+
+    /* =============================================================
+       GOOGLE
+       ============================================================= */
+
+    .google-btn-container {
+
+      width: 100%;
+
+      margin-bottom: 18px;
+
     }
 
-    .field-input-wrap:hover { border-color: rgba(255, 255, 255, 0.18); }
-
-    .field-icon {
-      flex-shrink: 0;
-      margin-left: 13px;
-      color: rgba(255, 255, 255, 0.4);
-      transition: color 0.2s ease;
-    }
-
-    .field-input-wrap:focus-within .field-icon { color: #1FC9BA; }
-
-    input[type='email'], input[type='password'], input[type='text'] {
-      flex: 1;
-      min-width: 0;
-      background: transparent;
-      border: none;
-      padding: 12px 13px;
-      color: #fff;
-      font-size: 14px;
-      font-family: var(--font-ui);
-      outline: none;
-    }
-
-    input::placeholder { color: rgba(255, 255, 255, 0.35); }
-
-    .field-toggle {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      margin: 0 4px 0 0;
-      padding: 0;
-      background: transparent;
-      border: none;
-      border-radius: 6px;
-      color: rgba(255, 255, 255, 0.45);
-      cursor: pointer;
-      transition: color 0.15s ease, background 0.15s ease;
-    }
-
-    .field-toggle:hover { color: #1FC9BA; background: rgba(31, 201, 186, 0.1); }
-    .field-toggle:active { transform: scale(0.92); }
-
-    .row-between {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: -2px;
-    }
-
-    .remember {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, 0.65);
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .remember input { position: absolute; opacity: 0; width: 0; height: 0; }
-
-    .checkbox-visual {
-      width: 16px;
-      height: 16px;
-      border-radius: 4px;
-      border: 1.5px solid rgba(255, 255, 255, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: transparent;
-      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-    }
-
-    .remember input:checked + .checkbox-visual {
-      background: #1FC9BA;
-      border-color: #1FC9BA;
-      color: #05201c;
-    }
-
-    .forgot-link {
-      font-size: 12.5px;
-      color: #1FC9BA;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .forgot-link:hover { text-decoration: underline; }
-
-    .error {
-      margin: 0;
-      font-size: 12.5px;
-      color: #ff6b6b;
-      background: rgba(229, 72, 77, 0.1);
-      padding: 8px 10px;
-      border-radius: 6px;
-      animation: fadeInUp 0.3s ease both;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .google-btn-container { display: flex; justify-content: center; margin-bottom: 4px; min-height: 40px; }
 
     .divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 12px 0 20px;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 12px;
-    }
-    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.09); }
 
-    button[type='submit'] {
-      position: relative;
-      margin-top: 6px;
-      background: linear-gradient(135deg, #1FC9BA 0%, #00AEA0 100%);
-      color: #05201c;
-      border: none;
-      border-radius: 10px;
-      padding: 14px;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
       display: flex;
+
       align-items: center;
-      justify-content: center;
+
+      gap: 12px;
+
+      margin:
+        8px 0 22px;
+
+      color:
+        rgba(220,232,245,.30);
+
+      font-family: monospace;
+
+      font-size: 9px;
+
+      letter-spacing: .12em;
+
+    }
+
+
+    .divider::before,
+    .divider::after {
+
+      content: '';
+
+      flex: 1;
+
+      height: 1px;
+
+      background:
+        rgba(120,165,205,.12);
+
+    }
+
+
+    /* =============================================================
+       FORM
+       ============================================================= */
+
+    form {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 18px;
+
+    }
+
+
+    .field {
+
+      display: flex;
+
+      flex-direction: column;
+
       gap: 8px;
-      transition: all 0.2s ease;
-      box-shadow: 0 10px 26px rgba(31, 201, 186, 0.25);
+
     }
 
-    button[type='submit']:not(:disabled):hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(31, 201, 186, 0.35);
+
+    .field-label {
+
+      color:
+        rgba(220,232,245,.48);
+
+      font-family: monospace;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: .13em;
+
     }
 
-    button[type='submit']:not(:disabled):active { transform: translateY(0); }
-    button[type='submit']:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    button.is-success:disabled {
+    .field-input-wrap {
+
+      display: flex;
+
+      align-items: center;
+
+      min-height: 58px;
+
+      background:
+        rgba(255,255,255,.035);
+
+      border:
+        1px solid
+        rgba(150,170,195,.15);
+
+      border-radius: 12px;
+
+      transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .field-input-wrap:hover {
+
+      border-color:
+        rgba(255,255,255,.25);
+
+    }
+
+
+    .field-input-wrap:focus-within {
+
+      background:
+        rgba(25,78,138,.055);
+
+      border-color:
+        rgba(45,116,201,.72);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(32,102,183,.10);
+
+    }
+
+
+    .field-icon {
+
+      flex:
+        0 0 auto;
+
+      margin-left: 15px;
+
+      color:
+        rgba(220,232,245,.42);
+
+      transition:
+        color .2s ease;
+
+    }
+
+
+    .field-input-wrap:focus-within
+    .field-icon {
+
+      color:
+        #2D74C9;
+
+    }
+
+
+    /* =============================================================
+       INPUTS - DARK MODE
+       ============================================================= */
+
+    input[type='email'],
+    input[type='password'],
+    input[type='text'] {
+
+      flex: 1;
+
+      min-width: 0;
+
+      width: 100%;
+
+      padding:
+        15px 13px;
+
+      border: none;
+
+      outline: none;
+
+      background:
+        transparent !important;
+
+      color:
+        #F5F9FD !important;
+
+      caret-color:
+        #F5F9FD;
+
+      font-family: inherit;
+
+      font-size: 14px;
+
+      appearance: none;
+
+    }
+
+
+    input::placeholder {
+
+      color:
+        rgba(245,249,253,.58) !important;
+
       opacity: 1;
-      cursor: default;
-      background: linear-gradient(135deg, #1FA76B 0%, #15885d 100%);
-      color: #fff;
+
     }
+
+
+    /* =============================================================
+       LIGHT MODE INPUTS
+       ============================================================= */
+
+    .auth-screen.light-mode
+    input[type='email'],
+
+    .auth-screen.light-mode
+    input[type='password'],
+
+    .auth-screen.light-mode
+    input[type='text'] {
+
+      color:
+        #102A43 !important;
+
+      caret-color:
+        #102A43;
+
+    }
+
+
+    .auth-screen.light-mode
+    input::placeholder {
+
+      /*
+       * DARK placeholder on the white panel.
+       */
+
+      color:
+        rgba(16,42,67,.58) !important;
+
+      opacity: 1;
+
+    }
+
+
+    .auth-screen.light-mode
+    .field-label {
+
+      color:
+        rgba(24,48,73,.55);
+
+    }
+
+
+    .auth-screen.light-mode
+    .field-input-wrap {
+
+      background:
+        rgba(255,255,255,.86);
+
+      border-color:
+        rgba(35,71,108,.16);
+
+    }
+
+
+    .auth-screen.light-mode
+    .field-input-wrap:hover {
+
+      border-color:
+        rgba(35,71,108,.28);
+
+    }
+
+
+    .auth-screen.light-mode
+    .field-input-wrap:focus-within {
+
+      background:
+        #FFFFFF;
+
+      border-color:
+        rgba(45,116,201,.65);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(45,116,201,.10);
+
+    }
+
+
+    .auth-screen.light-mode
+    .field-icon {
+
+      color:
+        rgba(24,48,73,.45);
+
+    }
+
+
+    .auth-screen.light-mode
+    .field-input-wrap:focus-within
+    .field-icon {
+
+      color:
+        #2D74C9;
+
+    }
+
+
+    /* =============================================================
+       AUTOFILL - DARK
+       ============================================================= */
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+
+      -webkit-text-fill-color:
+        #F5F9FD !important;
+
+      caret-color:
+        #F5F9FD !important;
+
+      -webkit-box-shadow:
+        0 0 0 1000px
+        #06101D inset !important;
+
+      box-shadow:
+        0 0 0 1000px
+        #06101D inset !important;
+
+      transition:
+        background-color
+        9999s
+        ease-out
+        0s;
+
+    }
+
+
+    /* =============================================================
+       AUTOFILL - LIGHT
+       ============================================================= */
+
+    .auth-screen.light-mode
+    input:-webkit-autofill,
+
+    .auth-screen.light-mode
+    input:-webkit-autofill:hover,
+
+    .auth-screen.light-mode
+    input:-webkit-autofill:focus,
+
+    .auth-screen.light-mode
+    input:-webkit-autofill:active {
+
+      -webkit-text-fill-color:
+        #102A43 !important;
+
+      caret-color:
+        #102A43 !important;
+
+      -webkit-box-shadow:
+        0 0 0 1000px
+        #FFFFFF inset !important;
+
+      box-shadow:
+        0 0 0 1000px
+        #FFFFFF inset !important;
+
+    }
+
+
+    /* =============================================================
+       PASSWORD TOGGLE
+       ============================================================= */
+
+    .field-toggle {
+
+      flex:
+        0 0 auto;
+
+      width: 38px;
+
+      height: 38px;
+
+      margin-right: 5px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color:
+        rgba(220,232,245,.42);
+
+      background:
+        transparent;
+
+      border: none;
+
+      border-radius: 7px;
+
+      cursor: pointer;
+
+      transition:
+        color .15s ease,
+        background .15s ease;
+
+    }
+
+
+    .field-toggle:hover {
+
+      color:
+        #2D74C9;
+
+      background:
+        rgba(22,74,120,.08);
+
+    }
+
+
+    .auth-screen.light-mode
+    .field-toggle {
+
+      color:
+        rgba(24,48,73,.42);
+
+    }
+
+
+    /* =============================================================
+       REMEMBER
+       ============================================================= */
+
+    .row-between {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+    }
+
+
+    .remember {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      color:
+        rgba(220,232,245,.55);
+
+      font-size: 12px;
+
+      cursor: pointer;
+
+      user-select: none;
+
+    }
+
+
+    .auth-screen.light-mode
+    .remember {
+
+      color:
+        rgba(24,48,73,.62);
+
+    }
+
+
+    .remember input {
+
+      position: absolute;
+
+      width: 1px;
+
+      height: 1px;
+
+      opacity: 0;
+
+    }
+
+
+    .checkbox-visual {
+
+      width: 17px;
+
+      height: 17px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: transparent;
+
+      border:
+        1px solid
+        rgba(255,255,255,.22);
+
+      border-radius: 4px;
+
+      transition: .15s ease;
+
+    }
+
+
+    .remember input:checked
+    + .checkbox-visual {
+
+      color: #FFFFFF;
+
+      background:
+        #1764A3;
+
+      border-color:
+        #1764A3;
+
+    }
+
+
+    .auth-screen.light-mode
+    .checkbox-visual {
+
+      border-color:
+        rgba(24,48,73,.22);
+
+    }
+
+
+    .forgot-link {
+
+      color:
+        #2D74C9;
+
+      font-size: 11.5px;
+
+      font-weight: 700;
+
+      text-decoration: none;
+
+    }
+
+
+    .forgot-link:hover {
+
+      text-decoration: underline;
+
+    }
+
+
+    /* =============================================================
+       PASSWORD RULES
+       ============================================================= */
+
+    .password-hint {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-top: -4px;
+
+    }
+
+
+    .password-hint span {
+
+      padding:
+        6px 8px;
+
+      color:
+        rgba(220,232,245,.38);
+
+      background:
+        rgba(255,255,255,.025);
+
+      border:
+        1px solid
+        rgba(255,255,255,.055);
+
+      border-radius: 6px;
+
+      font-size: 9.5px;
+
+    }
+
+
+    .auth-screen.light-mode
+    .password-hint span {
+
+      color:
+        rgba(24,48,73,.50);
+
+      background:
+        rgba(25,62,98,.035);
+
+      border-color:
+        rgba(25,62,98,.09);
+
+    }
+
+
+    .password-hint b {
+
+      margin-right: 4px;
+
+      color:
+        rgba(220,232,245,.22);
+
+    }
+
+
+    .password-hint span.valid {
+
+      color:
+        rgba(23,100,163,.90);
+
+      border-color:
+        rgba(23,100,163,.20);
+
+    }
+
+
+    .password-hint span.valid b {
+
+      color:
+        #1764A3;
+
+    }
+
+
+    /* =============================================================
+       ERROR
+       ============================================================= */
+
+    .error {
+
+      margin:
+        -2px 0 0;
+
+      padding:
+        10px 12px;
+
+      color:
+        #A9C5E2;
+
+      background:
+        rgba(22,74,120,.16);
+
+      border:
+        1px solid
+        rgba(22,74,120,.28);
+
+      border-radius: 8px;
+
+      font-size: 11.5px;
+
+    }
+
+
+    .auth-screen.light-mode
+    .error {
+
+      color:
+        #28547C;
+
+      background:
+        rgba(45,116,201,.07);
+
+      border-color:
+        rgba(45,116,201,.18);
+
+    }
+
+
+    /* =============================================================
+       PRIMARY BUTTON
+       ============================================================= */
+
+    .primary-button {
+
+      position: relative;
+
+      width: 100%;
+
+      min-height: 58px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 9px;
+
+      margin-top: 4px;
+
+      color: #FFFFFF;
+
+      background:
+        linear-gradient(
+          135deg,
+          #2D74C9,
+          #15559A
+        );
+
+      border: none;
+
+      border-radius: 13px;
+
+      font-family: monospace;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: .08em;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 15px 35px
+        rgba(22,74,120,.25);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        filter .2s ease;
+
+    }
+
+
+    .primary-button:hover:not(:disabled) {
+
+      transform:
+        translateY(-2px);
+
+      filter:
+        brightness(1.07);
+
+      box-shadow:
+        0 20px 42px
+        rgba(22,74,120,.34);
+
+    }
+
+
+    .primary-button:active:not(:disabled) {
+
+      transform:
+        translateY(0);
+
+    }
+
+
+    .primary-button:disabled {
+
+      opacity: .45;
+
+      cursor: not-allowed;
+
+      box-shadow: none;
+
+    }
+
+
+    .primary-button.success {
+
+      background:
+        linear-gradient(
+          135deg,
+          #0A1726,
+          #020813
+        );
+
+      opacity: 1;
+
+    }
+
+
+    .button-arrow {
+
+      font-size: 19px;
+
+      line-height: 0;
+
+    }
+
 
     .btn-spinner {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2px solid rgba(5, 32, 28, 0.35);
-      border-top-color: #05201c;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
-    .btn-check { animation: checkPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
-    @keyframes checkPop { from { transform: scale(0) rotate(-45deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+      width: 15px;
+
+      height: 15px;
+
+      border:
+        2px solid
+        rgba(255,255,255,.28);
+
+      border-top-color:
+        #FFFFFF;
+
+      border-radius: 50%;
+
+      animation:
+        spin .65s
+        linear infinite;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform:
+          rotate(360deg);
+      }
+
+    }
+
+
+    .btn-check {
+
+      animation:
+        checkPop .35s
+        ease both;
+
+    }
+
+
+    @keyframes checkPop {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          scale(.6);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          scale(1);
+
+      }
+
+    }
+
+
+    /* =============================================================
+       SWITCH
+       ============================================================= */
 
     .switch-link {
+
+      margin:
+        23px 0 0;
+
       text-align: center;
-      margin: 22px 0 0;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+
+      color:
+        rgba(220,232,245,.42);
+
+      font-size: 12px;
+
     }
-    .switch-link a { color: #1FC9BA; font-weight: 600; text-decoration: none; }
-    .switch-link a:hover { text-decoration: underline; }
+
+
+    .auth-screen.light-mode
+    .switch-link {
+
+      color:
+        rgba(24,48,73,.52);
+
+    }
+
+
+    .switch-link button {
+
+      padding: 0;
+
+      color:
+        #2D74C9;
+
+      background:
+        transparent;
+
+      border: none;
+
+      font: inherit;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+    }
+
+
+    .switch-link button:hover {
+
+      text-decoration:
+        underline;
+
+    }
+
+
+    /* =============================================================
+       BACK BUTTON
+       ============================================================= */
+
+    .back-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      margin-bottom: 25px;
+
+      padding: 0;
+
+      color:
+        rgba(220,232,245,.45);
+
+      background:
+        transparent;
+
+      border: none;
+
+      font-size: 11px;
+
+      cursor: pointer;
+
+      transition:
+        color .15s ease;
+
+    }
+
+
+    .back-button:hover {
+
+      color:
+        #2D74C9;
+
+    }
+
+
+    .auth-screen.light-mode
+    .back-button {
+
+      color:
+        rgba(24,48,73,.55);
+
+    }
+
+
+    .back-button span {
+
+      font-size: 16px;
+
+    }
+
+
+    /* =============================================================
+       MOBILE BRAND
+       ============================================================= */
+
+    .mobile-brand {
+
+      display: none;
+
+      margin-bottom: 35px;
+
+    }
+
+
+    .mobile-brand-name {
+
+      color:
+        #FFFFFF;
+
+      font-size: 40px;
+
+      font-weight: 900;
+
+      letter-spacing:
+        -.06em;
+
+    }
+
+
+    .mobile-brand-sub {
+
+      color:
+        #1764A3;
+
+      font-size: 22px;
+
+      font-weight: 800;
+
+      letter-spacing: .08em;
+
+    }
+
+
+    .auth-screen.light-mode
+    .mobile-brand-name {
+
+      color:
+        #102A43;
+
+    }
+
+
+    /* =============================================================
+       MOBILE
+       ============================================================= */
+
+    @media (max-width: 1100px) {
+
+      .form-shell {
+
+        padding:
+          58px 48px 48px;
+
+      }
+
+      .visual-brand {
+
+        left: 42px;
+
+      }
+
+    }
+
 
     @media (max-width: 900px) {
-      .login-screen { grid-template-columns: 1fr; }
-      .visual-pane { display: none; }
-      .mobile-brand { display: flex; }
-      .form-pane { padding: 40px 24px; }
+
+      .auth-screen {
+
+        grid-template-columns: 1fr;
+
+        overflow: auto;
+
+      }
+
+
+      .visual-pane {
+
+        display: none;
+
+      }
+
+
+      .form-pane {
+
+        min-height: 100vh;
+
+        padding:
+          35px
+          max(24px, 6vw);
+
+      }
+
+
+      .form-shell {
+
+        max-width: 660px;
+
+        min-height: auto;
+
+        padding:
+          60px 0 20px;
+
+        background:
+          transparent;
+
+        border: none;
+
+        box-shadow: none;
+
+      }
+
+
+      .mobile-brand {
+
+        display: block;
+
+      }
+
     }
+
+
+    @media (max-width: 520px) {
+
+      .form-pane {
+
+        padding:
+          24px 20px;
+
+      }
+
+
+      .form-shell {
+
+        padding-top: 55px;
+
+      }
+
+
+      .theme-toggle {
+
+        top: 10px;
+
+        right: 0;
+
+      }
+
+
+      h1 {
+
+        font-size: 40px;
+
+      }
+
+
+      .subtitle {
+
+        margin-bottom: 32px;
+
+      }
+
+
+      .row-between {
+
+        align-items:
+          flex-start;
+
+      }
+
+
+      .forgot-link {
+
+        white-space:
+          nowrap;
+
+      }
+
+    }
+
+
+    /* =============================================================
+       REDUCED MOTION
+       ============================================================= */
 
     @media (prefers-reduced-motion: reduce) {
-      .form-shell, .btn-spinner, .error, .btn-check {
-        animation: none !important;
+
+      *,
+      *::before,
+      *::after {
+
+        animation-duration:
+          .01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          .01ms !important;
+
       }
+
     }
+
   `],
 })
-export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild('googleButton') googleButtonRef?: ElementRef<HTMLDivElement>;
+
+
+export class LoginComponent
+  implements
+    OnInit,
+    OnDestroy,
+    AfterViewInit {
+
+
+  @ViewChild('googleButton')
+  googleButtonRef?: ElementRef<HTMLDivElement>;
+
+
+  /* ===============================================================
+     STATE
+     =============================================================== */
 
   loading = false;
-  success = false;
-  showPassword = false;
-  errorMessage = '';
-  googleConfigured = false;
-  form;
 
-  /** Vrai seulement si AUCUNE version du logo (claire ou sombre) n'est disponible. */
-  logoMissing = false;
-  private darkLogoFailed = false;
+  loginSuccess = false;
+
+  showSignup = false;
+
+  showLoginPassword = false;
+
+  showSignupPassword = false;
+
+  showSignupConfirm = false;
+
+  errorMessage = '';
+
+  signupError = '';
+
+  googleConfigured = false;
+
+  darkMode = true;
+
+
+  /* ===============================================================
+     FORMS
+     =============================================================== */
+
+  loginForm!: ReturnType<FormBuilder['group']>;
+
+  signupForm!: ReturnType<FormBuilder['group']>;
+
+
+  /* ===============================================================
+     CONSTRUCTOR
+     =============================================================== */
 
   constructor(
-    private readonly fb: FormBuilder,
-    private readonly authService: AuthService,
-    private readonly googleIdentity: GoogleIdentityService,
-    private readonly router: Router,
-    public readonly themeService: ThemeService
-  ) {
-    this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      remember: [true],
-    });
 
-    this.googleConfigured = this.googleIdentity.isConfigured();
+    private readonly fb: FormBuilder,
+
+    private readonly authService: AuthService,
+
+    private readonly googleIdentity:
+      GoogleIdentityService,
+
+    private readonly router: Router,
+
+  ) {
+
+
+    this.loginForm =
+      this.fb.group({
+
+        email: [
+
+          '',
+
+          [
+            Validators.required,
+            Validators.email,
+          ],
+
+        ],
+
+        password: [
+
+          '',
+
+          Validators.required,
+
+        ],
+
+        remember: [
+
+          true,
+
+        ],
+
+      });
+
+
+    this.signupForm =
+      this.fb.group({
+
+        name: [
+
+          '',
+
+          [
+            Validators.required,
+            Validators.minLength(2),
+          ],
+
+        ],
+
+        email: [
+
+          '',
+
+          [
+            Validators.required,
+            Validators.email,
+          ],
+
+        ],
+
+        password: [
+
+          '',
+
+          [
+            Validators.required,
+
+            Validators.minLength(8),
+
+            Validators.pattern(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/
+            ),
+
+          ],
+
+        ],
+
+        confirmPassword: [
+
+          '',
+
+          Validators.required,
+
+        ],
+
+      });
+
+
+    this.googleConfigured =
+      this.googleIdentity.isConfigured();
+
   }
+
+
+  /* ===============================================================
+     LIFECYCLE
+     =============================================================== */
 
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void {
-    if (this.googleConfigured && this.googleButtonRef) {
-      this.googleIdentity.renderButton(this.googleButtonRef.nativeElement, (idToken) =>
-        this.handleGoogleCredential(idToken)
-      );
-    }
-  }
 
   ngOnDestroy(): void {}
 
-  logoSrc(): string {
-    if (this.themeService.mode() === 'dark' && !this.darkLogoFailed) {
-      return '/assets/enova-logo-dark.png';
+
+  ngAfterViewInit(): void {
+
+    if (
+      this.googleConfigured &&
+      this.googleButtonRef
+    ) {
+
+      this.googleIdentity.renderButton(
+
+        this.googleButtonRef.nativeElement,
+
+        (idToken: string) => {
+
+          this.handleGoogleCredential(
+            idToken
+          );
+
+        }
+
+      );
+
     }
-    return '/assets/enova-logo.png';
+
   }
 
-  onLogoError(): void {
-    if (this.themeService.mode() === 'dark' && !this.darkLogoFailed) {
-      this.darkLogoFailed = true;
+
+  /* ===============================================================
+     THEME
+     =============================================================== */
+
+  toggleTheme(): void {
+
+    this.darkMode =
+      !this.darkMode;
+
+  }
+
+
+  /* ===============================================================
+     PASSWORD MATCH
+     =============================================================== */
+
+  get passwordsMatch(): boolean {
+
+    const password =
+      this.signupForm.controls[
+        'password'
+      ].value;
+
+    const confirmPassword =
+      this.signupForm.controls[
+        'confirmPassword'
+      ].value;
+
+    return (
+
+      !!password &&
+
+      !!confirmPassword &&
+
+      password === confirmPassword
+
+    );
+
+  }
+
+
+  /* ===============================================================
+     SWITCH LOGIN / SIGNUP
+     =============================================================== */
+
+  openSignup(): void {
+
+    this.errorMessage = '';
+
+    this.signupError = '';
+
+    this.loading = false;
+
+    this.loginSuccess = false;
+
+    this.showSignup = true;
+
+    this.showLoginPassword = false;
+
+    this.showSignupPassword = false;
+
+    this.showSignupConfirm = false;
+
+  }
+
+
+  openLogin(): void {
+
+    this.errorMessage = '';
+
+    this.signupError = '';
+
+    this.loading = false;
+
+    this.showSignup = false;
+
+    this.showLoginPassword = false;
+
+    this.showSignupPassword = false;
+
+    this.showSignupConfirm = false;
+
+  }
+
+
+  /* ===============================================================
+     LOGIN
+     =============================================================== */
+
+  onLogin(): void {
+
+    if (
+      this.loginForm.invalid ||
+      this.loading ||
+      this.loginSuccess
+    ) {
+
+      this.loginForm.markAllAsTouched();
+
       return;
+
     }
-    this.logoMissing = true;
-  }
 
-  onSubmit(): void {
-    if (this.form.invalid) return;
 
     this.loading = true;
+
     this.errorMessage = '';
 
-    const { email, password } = this.form.value;
 
-    this.authService.login({ email: email!, password: password! }).subscribe({
-      next: () => {
-        this.loading = false;
-        this.success = true;
-        setTimeout(() => this.router.navigate(['/dashboard']), 550);
-      },
-      error: (err) => {
-        this.loading = false;
-        this.errorMessage = err?.error?.error || 'Email ou mot de passe incorrect.';
-      },
-    });
+    const email =
+      this.loginForm.controls[
+        'email'
+      ].value;
+
+    const password =
+      this.loginForm.controls[
+        'password'
+      ].value;
+
+
+    this.authService
+
+      .login({
+
+        email: email!,
+
+        password: password!,
+
+      })
+
+      .subscribe({
+
+        next: () => {
+
+          this.loading = false;
+
+          this.loginSuccess = true;
+
+
+          setTimeout(() => {
+
+            this.router.navigate([
+              '/dashboard',
+            ]);
+
+          }, 550);
+
+        },
+
+
+        error: (err) => {
+
+          this.loading = false;
+
+          this.errorMessage =
+            err?.error?.error ||
+            'Email or access key incorrect.';
+
+        },
+
+      });
+
   }
 
-  private handleGoogleCredential(idToken: string): void {
+
+  /* ===============================================================
+     GOOGLE LOGIN
+     =============================================================== */
+
+  private handleGoogleCredential(
+    idToken: string
+  ): void {
+
     this.loading = true;
+
     this.errorMessage = '';
 
-    this.authService.loginWithGoogle(idToken).subscribe({
-      next: () => {
-        this.loading = false;
-        this.success = true;
-        setTimeout(() => this.router.navigate(['/dashboard']), 550);
-      },
-      error: (err) => {
-        this.loading = false;
-        this.errorMessage = err?.error?.error || 'Connexion Google impossible.';
-      },
-    });
+
+    this.authService
+
+      .loginWithGoogle(idToken)
+
+      .subscribe({
+
+        next: () => {
+
+          this.loading = false;
+
+          this.loginSuccess = true;
+
+
+          setTimeout(() => {
+
+            this.router.navigate([
+              '/dashboard',
+            ]);
+
+          }, 550);
+
+        },
+
+
+        error: (err) => {
+
+          this.loading = false;
+
+          this.errorMessage =
+            err?.error?.error ||
+            'Google authentication failed.';
+
+        },
+
+      });
+
   }
+
+
+  /* ===============================================================
+     SIGNUP
+     =============================================================== */
+
+  onSignup(): void {
+
+    this.signupForm.markAllAsTouched();
+
+    this.signupError = '';
+
+
+    if (
+      this.signupForm.invalid
+    ) {
+
+      return;
+
+    }
+
+
+    if (
+      !this.passwordsMatch
+    ) {
+
+      this.signupError =
+        'Access keys do not match.';
+
+      return;
+
+    }
+
+
+    this.signupError =
+      'Registration endpoint is not connected yet. Connect this action to your backend registration API.';
+
+  }
+
 }

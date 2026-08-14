@@ -75,18 +75,77 @@ interface NavItem {
   `,
   styles: [`
     .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 240px;
       height: 100vh;
-      background: var(--panel-base);
+      position: relative;
+      background-image:
+        linear-gradient(180deg, rgba(5, 15, 13, 0.9) 0%, rgba(10, 25, 22, 0.88) 100%),
+        url('/assets/1.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
       border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
       box-shadow: 1px 0 4px rgba(0, 0, 0, 0.02);
-      z-index: 150;
+    }
+
+    /* Le fond est desormais une photo sombre en permanence: on fige les
+       couleurs de texte sur des tons clairs pour garder un bon contraste,
+       meme si le theme clair est actif ailleurs dans l'app. */
+    .sidebar,
+    .sidebar .brand-name,
+    .sidebar .nav-item,
+    .sidebar .nav-label,
+    .sidebar .user-name,
+    .sidebar .theme-toggle,
+    .sidebar .logout-btn {
+      color: #EEF8F6;
+    }
+
+    .sidebar .brand-sub,
+    .sidebar .user-role,
+    .sidebar .footer-hours,
+    .sidebar .nav-icon {
+      color: rgba(238, 248, 246, 0.65);
+    }
+
+    .sidebar .nav-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+    }
+
+    .sidebar .nav-item.active {
+      background: rgba(31, 201, 186, 0.22);
+      color: #1FC9BA;
+    }
+
+    .sidebar .nav-item.active .nav-icon {
+      color: #1FC9BA;
+    }
+
+    .sidebar .robot-id {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .sidebar .theme-toggle,
+    .sidebar .logout-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .sidebar .theme-toggle:hover {
+      background: rgba(31, 201, 186, 0.25);
+      color: #1FC9BA;
+    }
+
+    .sidebar .logout-btn:hover {
+      background: rgba(229, 72, 77, 0.18);
+      color: #E5484D;
+      border-color: #E5484D;
     }
 
     /* ---- responsive : sidebar devient un tiroir plein ecran sous 860px ---- */
@@ -127,6 +186,9 @@ interface NavItem {
       }
 
       .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
         z-index: 200;
         width: min(280px, 82vw);
         transform: translateX(-100%);

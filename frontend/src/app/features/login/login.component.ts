@@ -15,7 +15,7 @@ import { ThemeService } from '../../core/services/theme.service';
       <!-- Left: real fleet photography instead of an illustrated stand-in,
            with a dark gradient scrim for text legibility. -->
       <aside class="visual-pane" aria-hidden="true">
-        <img class="visual-photo" src="/assets/1.png" alt="" />
+        <img class="visual-photo" src="/assets/robot-hero.jpg" alt="" />
         <div class="visual-scrim"></div>
         <div class="scanlines"></div>
 

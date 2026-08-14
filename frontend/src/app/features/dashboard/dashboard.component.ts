@@ -40,6 +40,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   robotLive: RobotLive | null = null;
   selectedDate = '';
   isRefreshing = false;
+  /** Vrai des que le premier chargement (KPI) de la page est arrive : sert a
+   * masquer l'ecran de chargement initial, distinct des rafraichissements
+   * automatiques (isRefreshing) qui eux ne doivent pas re-afficher ce voile. */
+  firstLoadComplete = false;
   private refreshingSince = 0;
 
   /** Aucune date posterieure a aujourd'hui n'est selectionnable : il n'existe pas de donnees pour le futur. */
@@ -193,6 +197,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       if (!this.selectedDate) {
         this.selectedDate = this.clampToMax(data.dateReference);
       }
+      this.firstLoadComplete = true;
       this.cdr.markForCheck();
       this.endRefresh();
       this.trySyncLiveSim();

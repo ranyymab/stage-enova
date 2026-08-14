@@ -20,13 +20,16 @@
 }
 
 .topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 240px;
+  right: 0;
+  z-index: 450;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 28px;
+  height: 64px;
+  padding: 0 28px;
   border-bottom: 1px solid var(--border-subtle);
   background: var(--panel-base);
   flex-shrink: 0;
@@ -165,6 +168,7 @@
   }
 
   .topbar {
+    left: 0;
     padding-left: 60px; /* laisse la place au bouton hamburger flottant */
   }
 }
@@ -173,6 +177,7 @@
   flex: 1;
   overflow-x: hidden;
   min-width: 0;
+  margin-top: 64px;
 }
 
 .app-content.route-enter {

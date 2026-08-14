@@ -1,4 +1,13 @@
 <div class="dashboard">
+  <!-- Initial loading veil: shown only until the first KPI response arrives,
+       so the page never flashes an empty/broken-looking layout while data
+       is still in flight. Automatic background refreshes use the thin
+       refresh-bar below instead and never bring this back. -->
+  <div class="dashboard-loading-veil" *ngIf="!firstLoadComplete">
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <span>Chargement du tableau de bord&#8230;</span>
+  </div>
+
   <!-- Toast Notification for anomalies -->
   <div class="anomaly-toast" *ngIf="anomalyToast" (click)="dismissAnomalyToast()">
     <span class="toast-pulse"></span>

@@ -181,8 +181,11 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     const L = this.L;
     const container = this.mapEl.nativeElement;
 
+    // Vue initiale centree sur le site Enova (meme point que la station de
+    // charge / base de la boucle de patrouille), avant que la trajectoire
+    // reelle du jour ne soit chargee et ne recentre la carte automatiquement.
     this.map = L.map(container, { zoomControl: true, attributionControl: false }).setView(
-      [35.817338, 10.591738],
+      [36.8002, 10.1805],
       16,
     );
 
@@ -490,26 +493,12 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     const to = points[toIdx];
 
     if (toIdx === 0 && fromIdx !== 0) {
-      // La ronde boucle : on ne fait pas glisser le robot en diagonale a
-      // travers toute la carte pour "revenir" au premier point. On marque une
-      // courte pause (comme un vrai robot qui termine son tour et repart),
-      // puis on reprend directement au debut - cycle continu, pas de reset.
-      this.updateRobotStatusLabel(this.phaseOf(to));
-      window.setTimeout(() => {
-        this.currentIndex = toIdx;
-        this.currentPoint = to;
-        this.robotMarker?.setLatLng([to.latitude, to.longitude]);
-        this.drawSegmentLines(this.livePoints);
-        this.renderAnomalyMarkers();
-        this.updatePopup(to);
-        this.map?.panTo([to.latitude, to.longitude], { animate: true, duration: 0.6 });
-        try {
-          this.liveSim.reportProgress(toIdx, 0, this.phaseOf(to));
-        } catch {
-          // idem : ne doit jamais casser l'animation.
-        }
-        this.animateToNextPoint();
-      }, 900);
+      // Fin de la journee : la trajectoire enregistree s'arrete au dernier point
+      // reel connu. On ne fait pas revenir le robot au premier point (pas de
+      // saut en diagonale a travers la carte) et on n'entame pas non plus une
+      // nouvelle ronde inventee : l'animation s'arrete proprement sur la
+      // derniere position reelle, avec un statut "journee terminee".
+      this.updateRobotStatusLabel('done');
       return;
     }
 
@@ -605,6 +594,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       'inspect': 'INSPECTION',
       'teleop': 'TÉLÉOP',
       'charge': 'CHARGE',
+      'done': 'JOURNÉE TERMINÉE',
     };
     const status = statusMap[phase] || phase.toUpperCase();
     const container = this.robotMarker.getElement();

@@ -1665,7 +1665,7 @@ interface NavItem {
 
         position: fixed;
 
-        z-index: 400;
+        z-index: 460;
 
         left: 0;
 

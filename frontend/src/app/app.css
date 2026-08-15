@@ -168,7 +168,7 @@
 
   .topbar {
     left: 0;
-    padding-left: 60px; /* laisse la place au bouton hamburger flottant */
+    padding-left: 60px;
   }
 }
 

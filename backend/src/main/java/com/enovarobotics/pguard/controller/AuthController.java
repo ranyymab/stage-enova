@@ -25,15 +25,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
-/**
- * F5 — Authentification.
- * POST /api/auth/register       : inscription (email + mot de passe) -> envoi d'un code de vérification par e-mail
- * POST /api/auth/verify-email   : validation du code -> compte activé + connexion automatique (JWT)
- * POST /api/auth/resend-code    : renvoi du code (débit limité)
- * POST /api/auth/login          : email + mot de passe -> JWT (24h), avec verrouillage anti brute-force
- * POST /api/auth/google         : connexion/inscription via Google Sign-In (ID token vérifié côté serveur)
- * GET  /api/auth/me             : profil de l'utilisateur courant (déduit du JWT)
- */
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -51,10 +42,6 @@ public class AuthController {
 
     @Value("${app.registration.default-role:OPERATEUR}")
     private String defaultRegistrationRole;
-
-    // ---------------------------------------------------------------
-    // Inscription classique + vérification e-mail
-    // ---------------------------------------------------------------
 
     @PostMapping("/register")
     @Transactional
@@ -83,7 +70,7 @@ public class AuthController {
         CodeMetadata metadata = verificationCodeService.getCodeMetadata(email, VerificationCode.Purpose.SIGNUP_VERIFICATION);
 
         log.info("Registration code generated for email: {} (expires in {} seconds)", email, metadata.expirySeconds);
-        
+
         if (devCode != null) {
             log.warn("SMTP not configured: code returned to client (dev mode) for {}", email);
             return ResponseEntity.status(HttpStatus.CREATED)
@@ -114,7 +101,7 @@ public class AuthController {
         try {
             verificationCodeService.verify(email, request.getCode(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
         } catch (VerificationCodeService.InvalidCodeException e) {
-            // Try to get remaining metadata even on failure for better UX
+
             try {
                 CodeMetadata metadata = verificationCodeService.getCodeMetadata(email, VerificationCode.Purpose.SIGNUP_VERIFICATION);
                 Map<String, Object> errorResponse = new LinkedHashMap<>();
@@ -123,7 +110,7 @@ public class AuthController {
                 errorResponse.put("code", "INVALID_CODE");
                 return ResponseEntity.badRequest().body(errorResponse);
             } catch (Exception ignored) {
-                // If metadata fetch fails, return generic error
+
                 throw e;
             }
         }
@@ -146,7 +133,7 @@ public class AuthController {
         User user = userRepository.findByEmail(email)
                 .filter(u -> !u.isEmailVerified())
                 .orElseThrow(() -> new IllegalArgumentException("Email not found or already verified"));
-        
+
         String devCode = verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
         CodeMetadata metadata = verificationCodeService.getCodeMetadata(email, VerificationCode.Purpose.SIGNUP_VERIFICATION);
 
@@ -170,19 +157,12 @@ public class AuthController {
                 null));
     }
 
-    // ---------------------------------------------------------------
-    // Connexion classique (avec verrouillage anti brute-force)
-    // ---------------------------------------------------------------
-
     @PostMapping("/login")
     @Transactional
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
         String email = request.getEmail().toLowerCase().trim();
         var userOpt = userRepository.findByEmail(email);
 
-        // Message d'erreur volontairement générique dans tous les cas
-        // (mauvais e-mail, mauvais mot de passe, ou compte Google) pour ne
-        // pas révéler quelles adresses sont enregistrées.
         Map<String, String> genericError = Map.of("error", "Email ou mot de passe incorrect");
 
         if (userOpt.isEmpty()) {
@@ -229,10 +209,6 @@ public class AuthController {
         userRepository.save(user);
     }
 
-    // ---------------------------------------------------------------
-    // Connexion / inscription via Google Sign-In
-    // ---------------------------------------------------------------
-
     @PostMapping("/google")
     @Transactional
     public ResponseEntity<?> google(@Valid @RequestBody GoogleLoginRequest request) {
@@ -271,11 +247,10 @@ public class AuthController {
             user.setFullName(name != null ? name : email);
         }
         user.setAuthProvider(User.AuthProvider.GOOGLE);
-        user.setEmailVerified(true); // Google a déjà vérifié l'adresse
+        user.setEmailVerified(true);
         if (isNew) {
             user.setRole(parseRole(defaultRegistrationRole));
-            // Compte Google : pas de mot de passe local exploitable, on stocke
-            // un hash aléatoire inutilisable pour satisfaire la contrainte NOT NULL.
+
             user.setPasswordHash(passwordEncoder.encode(java.util.UUID.randomUUID().toString()));
         }
         user.setFailedLoginAttempts(0);
@@ -286,8 +261,6 @@ public class AuthController {
 
         return ResponseEntity.ok(buildLoginResponse(user));
     }
-
-    // ---------------------------------------------------------------
 
     @GetMapping("/me")
     public ResponseEntity<?> me(Authentication authentication) {

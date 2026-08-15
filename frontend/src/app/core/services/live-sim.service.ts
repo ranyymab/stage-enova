@@ -4,19 +4,19 @@ import { TrajectoryPoint, ChargeCycle, MissionEvent, Anomalie } from '../../shar
 export type LiveSimPhase = 'patrol' | 'dock' | 'home' | 'teleop';
 
 export interface LiveSimState {
-  /** false tant qu'aucune trajectoire exploitable n'a ete chargee pour la date affichee. */
+
   ready: boolean;
   pointIndex: number;
-  /** Distance reellement parcourue (km), calculee a partir des coordonnees GPS reelles, revelee au fil de l'animation. */
+
   distanceKm: number;
-  /** Niveau de batterie interpole entre les vrais releves connus (cycles de charge + niveau actuel). */
+
   batteryPercent: number;
   phase: LiveSimPhase;
-  /** Nombre d'evenements de la timeline (missions/rondes) dont l'horodatage reel est deja atteint par l'animation. */
+
   roundsCount: number;
-  /** Nombre d'anomalies dont l'horodatage reel est deja atteint par l'animation. */
+
   anomaliesCount: number;
-  /** Instant "virtuel" courant (secondes depuis minuit), pour comparer directement au champ heure de n'importe quelle ligne. */
+
   nowSeconds: number;
 }
 
@@ -36,17 +36,6 @@ const EMPTY_STATE: LiveSimState = {
   nowSeconds: 0,
 };
 
-/**
- * Relie l'animation reelle du robot sur la carte (position/segment courant, fournie
- * en continu par <app-live-map>) au reste du tableau de bord : kilometrage, batterie,
- * rondes et anomalies "en cours de decouverte" avancent tous ensemble, en time avec le
- * meme mouvement, plutot que de rester figes sur le total final de la journee.
- *
- * Rien n'est invente : la distance vient des vraies coordonnees GPS, la batterie est
- * interpolee entre de vrais releves (cycles de charge + niveau actuel), et les compteurs
- * de rondes/anomalies ne font que reveler progressivement des evenements reels au fur et
- * a mesure que leur horodatage reel est atteint par la position animee.
- */
 @Injectable({ providedIn: 'root' })
 export class LiveSimService {
   readonly state = signal<LiveSimState>(EMPTY_STATE);
@@ -60,14 +49,6 @@ export class LiveSimService {
 
   private lastFingerprint: string | null = null;
 
-  /** A appeler par le dashboard des que les donnees de la date affichee sont chargees (trajectoire, cycles de charge, missions, anomalies).
-   *
-   * Si la trajectoire est la meme qu'au dernier appel (rafraichissement automatique des
-   * 30s qui recharge la meme date), on se contente de rafraichir les ancrages (au cas ou
-   * les missions/anomalies viennent d'arriver apres coup) SANS toucher a la progression
-   * en cours, pour ne pas faire "sauter" les valeurs deja affichees. Un vrai changement de
-   * jour (trajectoire differente) redemarre la simulation a zero.
-   */
   initDay(opts: {
     trajectory: TrajectoryPoint[];
     chargeCycles: ChargeCycle[];
@@ -93,11 +74,7 @@ export class LiveSimService {
         this.cumDistKm.push(this.cumDistKm[i - 1] + d);
       }
     } else if (points.length > this.points.length) {
-      // Meme jour, mais la trajectoire a grandi depuis le dernier appel (le
-      // robot simule en direct cote backend ajoute reellement un point par
-      // seconde) : on etend les tableaux avec les nouveaux points seulement,
-      // sans toucher a this.points existants ni a la progression/animation
-      // en cours (pointIndex, distanceKm affiches ne doivent pas sauter).
+
       const previousLength = this.points.length;
       this.points = points;
       for (let i = previousLength; i < this.points.length; i++) {
@@ -117,7 +94,7 @@ export class LiveSimService {
       .filter((s): s is number => s != null)
       .sort((a, b) => a - b);
 
-    if (isSameDay) return; // progression en cours preservee, seuls les ancrages ont ete rafraichis
+    if (isSameDay) return;
 
     if (this.points.length < 2) {
       this.state.set({ ...EMPTY_STATE, batteryPercent: opts.finalBatteryPercent });
@@ -138,17 +115,11 @@ export class LiveSimService {
 
   private fingerprintOf(trajectory: TrajectoryPoint[]): string | null {
     if (!trajectory || trajectory.length === 0) return null;
-    // Volontairement base sur le PREMIER point uniquement (stable tant que
-    // c'est le meme jour), pas sur la longueur ni le dernier point : depuis
-    // que le robot est simule en direct cote backend, la trajectoire grandit
-    // reellement d'un point par seconde. Inclure la longueur/dernier point
-    // ferait detecter un "nouveau jour" a chaque rafraichissement et
-    // reinitialiserait la progression affichee (retour a zero) en continu.
+
     const first = trajectory[0];
     return `${first?.heure}|${first?.latitude}|${first?.longitude}`;
   }
 
-  /** A appeler par la carte a chaque etape de son animation (index du point de depart du segment courant, avancement 0..1 dans ce segment). */
   reportProgress(pointIndex: number, segmentFraction: number, phase: LiveSimPhase): void {
     if (this.points.length < 2) return;
 
@@ -184,11 +155,6 @@ export class LiveSimService {
     this.state.set(EMPTY_STATE);
   }
 
-  /**
-   * Construit la liste chronologique des vrais releves de batterie connus pour la journee
-   * (arrivee/depart de chaque cycle de charge), etendue par un point de depart et un point
-   * de fin couvrant toute la trajectoire, pour pouvoir interpoler a tout instant.
-   */
   private buildBatteryAnchors(chargeCycles: ChargeCycle[], finalBatteryPercent: number): BatteryAnchor[] {
     const CEILING = 92;
     const anchors: BatteryAnchor[] = [];
@@ -204,10 +170,7 @@ export class LiveSimService {
     const lastSec = this.toSeconds(this.points[this.points.length - 1]?.heure) ?? firstSec;
 
     if (anchors.length === 0) {
-      // Aucun cycle de charge ce jour-la : plutot que d'afficher un niveau fixe toute
-      // la journee, on suppose un depart a pleine charge (le robot est generalement
-      // recharge la nuit) qui se decharge progressivement jusqu'au dernier releve reel
-      // connu — la batterie reste ainsi visiblement vivante meme sans evenement de charge.
+
       return [
         { seconds: firstSec, battery: CEILING },
         { seconds: lastSec, battery: finalBatteryPercent },

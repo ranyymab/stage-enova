@@ -9,12 +9,6 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-/**
- * Entité pour la catégorie "Teleoperation" (sessions de pilotage manuel).
- * Format conforme au cahier des charges et aux fichiers réels :
- * start/stop, Mode (ex: "Xbox"), GPS (Latitude/Longitude pouvant être NaN
- * -> converti en NULL par le service de parsing).
- */
 @Entity
 @Table(name = "teleoperation_event", indexes = {
         @Index(name = "idx_teleop_date", columnList = "eventDate"),
@@ -34,7 +28,6 @@ public class TeleoperationEvent {
     @Column(nullable = false, length = 10)
     private String robotId;
 
-    /** "0-Info" : start | stop */
     @Column(nullable = false, length = 10)
     private String info;
 
@@ -50,7 +43,6 @@ public class TeleoperationEvent {
     @Column(name = "event_datetime")
     private LocalDateTime eventDatetime;
 
-    /** Mode de pilotage, ex: "Xbox" */
     @Column(length = 50)
     private String mode;
 

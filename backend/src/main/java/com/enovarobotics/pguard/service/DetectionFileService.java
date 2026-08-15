@@ -14,15 +14,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-/**
- * Service de parsing pour "Detection" (anomalies) — F1 + F4.
- *
- * Écart avec le cahier des charges : le fichier réel ne contient ni date
- * (déduite du nom de fichier / paramètre d'upload) ni champ de criticité.
- * Une règle de classification simple est appliquée ici à titre de
- * démarrage ; à ajuster une fois des critères réels définis avec le
- * maître de stage.
- */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -66,11 +57,6 @@ public class DetectionFileService {
         return saved;
     }
 
-    /**
-     * Règle de classification provisoire (le robot ne fournit pas de
-     * criticité) : "person" est considéré comme plus sensible qu'un
-     * animal ou un objet indéterminé. À affiner selon les besoins réels.
-     */
     private DetectionEvent.Criticite classify(String objectDetected) {
         if (objectDetected == null) return DetectionEvent.Criticite.MOYENNE;
         return switch (objectDetected.toLowerCase()) {

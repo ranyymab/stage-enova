@@ -42,7 +42,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   isRefreshing = false;
   private refreshingSince = 0;
 
-  /** Aucune date posterieure a aujourd'hui n'est selectionnable : il n'existe pas de donnees pour le futur. */
   readonly maxDate = DashboardComponent.todayIso();
 
   private distanceChart?: Chart;
@@ -55,9 +54,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private readonly mockData: MockDataService) {
     effect(() => {
-      // Se relance a chaque changement de theme (clair/sombre) pour redessiner
-      // les graphiques Chart.js avec les bonnes couleurs : ceux-ci ne sont pas
-      // pilotes par les variables CSS (canvas), contrairement au reste du DOM.
+
       this.themeService.mode();
       if (this.distanceLabels.length || this.distanceValues.length) {
         this.renderDistanceChart(this.distanceLabels, this.distanceValues);
@@ -67,9 +64,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
 
-    // Fait "vivre" la courbe de kilometrage : des que le robot animé avance sur la
-    // carte, on remplace le dernier point (aujourd'hui) par la distance reelle deja
-    // parcourue jusque-la, au lieu d'attendre le total fige de fin de journee.
     effect(() => {
       const sim = this.liveSim.state();
       this.cdr.markForCheck();
@@ -110,14 +104,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.liveClock = new Date().toLocaleTimeString('fr-FR');
   }
 
-  /**
-   * Compare la liste d'anomalies fraichement recue a celles deja vues, et
-   * declenche un toast "Nouvelle anomalie detectee" pour toute nouvelle
-   * entree - rend visible, en direct, le moment exact ou le robot simule
-   * detecte quelque chose (au lieu de ne le voir qu'en scrollant le tableau).
-   * Au tout premier chargement, on memorise juste les ids existants sans
-   * notifier (ce ne sont pas de "nouvelles" detections a cet instant-la).
-   */
   private detectNewAnomalies(latest: Anomalie[]): void {
     const isFirstLoad = this.seenAnomalyIds.size === 0 && this.anomalies.length === 0;
     const freshOnes = latest.filter(a => !this.seenAnomalyIds.has(a.id));
@@ -215,14 +201,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mockData.getActivityFeed(date).subscribe(feed => { this.activityFeed = feed; this.cdr.markForCheck(); });
   }
 
-  /**
-   * Alimente le service de simulation en direct des que les 3 morceaux de donnees dont
-   * il a besoin (trajectoire+cycles de charge, missions, anomalies) sont arrives pour la
-   * date affichee — l'ordre d'arrivee des requetes HTTP n'est pas garanti, donc on retente
-   * a chaque reponse plutot que de dependre d'un ordre precis. Le service lui-meme evite
-   * de redemarrer la simulation a zero si la trajectoire n'a pas change (rafraichissement
-   * automatique des 30s sur la meme date).
-   */
   private trySyncLiveSim(): void {
     if (!this.robotLive) return;
     this.liveSim.initDay({
@@ -234,7 +212,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  /** Garde la barre de rafraichissement visible au moins ~450ms pour qu'elle reste percue meme sur reseau rapide. */
   private endRefresh(): void {
     const elapsed = Date.now() - this.refreshingSince;
     const remaining = Math.min(800, Math.max(0, 450 - elapsed));
@@ -281,13 +258,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return 'neutral';
   }
 
-  /** Bornes reelles observees sur le robot : il ne descend jamais sous ~20% (retour au dock avant)
-   *  et ne depasse jamais ~92% (le chargeur s'arrete la). On affiche donc cette plage comme
-   *  "vide -> pleine" plutot que de montrer des pourcentages bruts qui ne semblent jamais complets. */
   private static readonly BATTERY_FLOOR = 21;
   private static readonly BATTERY_CEILING = 92;
 
-  /** Batterie "live" (suit le mouvement anime du robot sur la carte) des qu'une simulation est prete pour cette date, sinon repli sur le dernier releve statique connu. */
   private rawBatteryPercent(): number {
     const sim = this.liveSim.state();
     if (sim.ready) return sim.batteryPercent;
@@ -301,7 +274,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return String(Math.round(this.batteryPercentNumber()));
   }
 
-  /** Pourcentage affiche (anneau, barre), remis a l'echelle entre le plancher et le plafond reels du robot. */
   batteryPercentNumber(): number {
     const raw = this.rawBatteryPercent();
     const { BATTERY_FLOOR: floor, BATTERY_CEILING: ceiling } = DashboardComponent;
@@ -309,7 +281,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return Math.round(((clamped - floor) / (ceiling - floor)) * 100);
   }
 
-  /** Libelle clair a afficher a la place du pourcentage brut quand le robot est proche des bornes reelles. */
   batteryStateLabel(): string | null {
     const raw = this.rawBatteryPercent();
     if (raw >= DashboardComponent.BATTERY_CEILING) return 'Charge complete';
@@ -322,16 +293,12 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return String(this.kpi?.rondesRealisees ?? 0);
   }
 
-  /** Distance "live" (suit le mouvement anime du robot) des qu'une simulation est prete, sinon repli sur le total statique du jour.
-   * 3 decimales pendant la simulation (resolution metrique) pour que la valeur bouge visiblement a chaque instant,
-   * au lieu d'attendre plusieurs minutes qu'elle franchisse un seuil de 10 m avec seulement 2 decimales. */
   distanceKmDisplay(): string {
     const sim = this.liveSim.state();
     if (sim.ready) return sim.distanceKm.toFixed(3);
     return (this.kpi?.distanceJourKm ?? 0).toFixed(2);
   }
 
-  /** Une ligne (mission/anomalie) est jugee "pas encore atteinte" si son horodatage reel est posterieur a l'instant courant de la simulation. */
   isPending(heure: string | null | undefined): boolean {
     const sim = this.liveSim.state();
     if (!sim.ready || !heure) return false;
@@ -355,7 +322,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return getAnomalyIcon(type);
   }
 
-  /** Icone par type d'operation, pour l'avatar de chaque ligne du fil d'activite. */
   activityIcon(kind: string): string {
     const icons: Record<string, string> = {
       MISSION: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4l5 2 6-2 5 2v13l-5-2-6 2z"/><path d="M9 6v13M15 4v13"/></svg>',
@@ -368,17 +334,11 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return icons[kind] ?? icons['MISSION'];
   }
 
-  // trackBy : sans ca, chaque rafraichissement (toutes les 1s) recree
-  // entierement chaque ligne de liste (nouvelle reference de tableau a
-  // chaque poll), ce qui redeclenche l'animation d'entree "enter-fade-up"
-  // sur CHAQUE ligne en continu - un scintillement constant plutot qu'une
-  // entree unique suivie de mises a jour fluides.
   trackByIndex(index: number): number { return index; }
   trackByMission(_index: number, m: MissionEvent): number { return m.id; }
   trackByAnomaly(_index: number, a: Anomalie): number { return a.id; }
   trackByActivity(_index: number, a: ActivityFeedEntry): string { return a.id; }
 
-  /** Anomalies du jour projetees pour la carte, avec URL d'image absolue (le backend renvoie un chemin relatif). */
   anomaliesForMap(): AnomalyMapPoint[] {
     return this.anomalies.map(a => ({
       type: a.type,
@@ -410,7 +370,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   categoryClass(m: MissionEvent): string { return 'cat-' + (m.category ?? 'MISSION').toLowerCase(); }
   cycleStatusLabel(c: ChargeCycle): string { return c.status === 'EN_COURS' ? 'En charge' : 'Termine'; }
 
-  /** Meme logique d'affichage que la batterie principale, appliquee a l'historique des cycles de charge. */
   batteryLabel(value: number | null | undefined): string {
     if (value == null) return '?';
     if (value >= DashboardComponent.BATTERY_CEILING) return 'Pleine';
@@ -418,7 +377,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return value + '%';
   }
 
-  /** Lit une variable CSS calculee sur <html>, pour garder les couleurs des graphiques Chart.js synchronisees avec le theme courant. */
   private cssVar(name: string): string {
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }

@@ -15,7 +15,6 @@ import { ChargeCycle, TrajectoryPoint } from '../../models/dashboard.models';
 import { getAnomalyIcon } from '../../utils/anomaly-icons';
 import { LiveSimService } from '../../../core/services/live-sim.service';
 
-/** Sous-ensemble d'Anomalie utile a la carte (evite un couplage complet au modele dashboard). */
 export interface AnomalyMapPoint {
   type: string;
   heure: string;
@@ -25,20 +24,6 @@ export interface AnomalyMapPoint {
   imageUrl: string | null;
 }
 
-/**
- * Carte "en direct" du robot.
- *
- * Ne contient AUCUNE coordonnee inventee : elle se contente de rejouer,
- * point par point, la trajectoire reelle renvoyee par le backend pour la
- * date selectionnee (GET /api/dashboard/robot-live -> trajectory[]), qui
- * vient elle-meme des fichiers JSON du robot (mission/docking/inspecting/
- * back_home/teleoperation/detection).
- *
- * Le rythme de lecture suit le temps reel ecoule entre deux points
- * consecutifs (champ "heure", format HH:mm:ss), accelere par PLAYBACK_SPEED
- * pour rester regardable, avec un minimum/maximum par etape pour eviter
- * les sauts instantanes ou les pauses de plusieurs minutes.
- */
 @Component({
   selector: 'app-live-map',
   standalone: true,
@@ -95,7 +80,7 @@ export interface AnomalyMapPoint {
 export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() trajectory: TrajectoryPoint[] = [];
   @Input() chargeCycles: ChargeCycle[] = [];
-  /** Anomalies/obstacles detectes ce jour (avec image si disponible) - affiches en points rouges sur la carte. */
+
   @Input() anomalies: AnomalyMapPoint[] = [];
 
   @ViewChild('mapEl') mapEl?: ElementRef<HTMLDivElement>;
@@ -108,7 +93,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
   currentPoint: TrajectoryPoint | null = null;
   hasData = false;
 
-  /** Multiplicateur de vitesse : 1 seconde reelle d'attente <-> ce nombre de secondes du robot. */
   private readonly PLAYBACK_SPEED = 8;
   private readonly MIN_STEP_MS = 1800;
   private readonly MAX_STEP_MS = 10000;
@@ -118,29 +102,21 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
   private robotMarker: any = null;
   private segmentLines: any[] = [];
   private phaseLabelLayers: any[] = [];
-  /** Segments et anomalies deja reveles au moins une fois. Persiste a travers les
-   * boucles de replay (une ronde qui recommence ne doit pas effacer ce qui a deja
-   * ete montre - c'est un cycle continu, pas une remise a zero). */
+
   private revealedSegments = new Set<number>();
   private revealedAnomalyIdx = new Set<number>();
-  /** Coordonnees "collees aux rues" par segment (entre deux points reels consecutifs). Repli sur la ligne droite si le service de routage echoue. */
+
   private segmentGeometries: [number, number][][] = [];
   private chargeMarkers: any[] = [];
   private anomalyMarkers: any[] = [];
   private mapReady = false;
   private viewInitialized = false;
-  /** Incremente a chaque nouvelle trajectoire chargee : permet d'ignorer la reponse d'un appel de routage devenu obsolete (changement rapide de date). */
+
   private routeRequestToken = 0;
 
-  /** Points reellement utilises par la boucle d'animation en cours - mis a jour en
-   *  place (extension) plutot que remplaces a chaque rafraichissement, pour que
-   *  l'animation deja lancee continue naturellement au lieu de repartir de zero
-   *  chaque fois qu'un nouveau point est ajoute (le robot etant desormais simule
-   *  en direct cote backend, un point reel arrive toutes les secondes). */
   private livePoints: TrajectoryPoint[] = [];
   private lastFirstPointKey = '';
 
-  /** Animation continue (interpolation) entre deux points GPS reels consecutifs, plutot qu'un saut instantane. */
   private animationFrameId: number | null = null;
 
   ngAfterViewInit(): void {
@@ -173,23 +149,11 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
   private async initMap(): Promise<void> {
     if (!this.mapEl) return;
     const leafletModule = (await import('leaflet')) as any;
-    // Leaflet ships as a UMD bundle: under a dynamic ESM import, esbuild puts
-    // its whole API (map, tileLayer, marker, ...) behind a "default" key
-    // instead of exposing it directly on the module namespace. Unwrap it so
-    // this works the same regardless of how the bundler wraps it.
+
     this.L = leafletModule.default ?? leafletModule;
     const L = this.L;
     const container = this.mapEl.nativeElement;
 
-    // Vue initiale centree sur le site reel Enova : meme point de depart que
-    // la boucle de patrouille simulee cote backend (RobotSimulationService,
-    //35.8176 / 10.5913), avant que la trajectoire reelle du jour ne soit
-    // chargee et ne recentre la carte automatiquement.
-    //
-    // (Ce point ne doit PAS etre confondu avec le jeu de donnees de secours
-    // local utilise uniquement quand l'API est injoignable, qui lui utilise
-    // par erreur un tout autre couple de coordonnees - voir le correctif
-    // apporte a mock-data.service.ts pour harmoniser les deux.)
     this.map = L.map(container, { zoomControl: true, attributionControl: false }).setView(
       [35.8176, 10.5913],
       16,
@@ -233,12 +197,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       return;
     }
 
-    // Un vrai changement de jeu de donnees (changement de date, ou premier
-    // chargement) reinitialise tout : position, zoom, animation. Un simple
-    // "la trajectoire a grandi" (le robot simule en direct ecrit un point
-    // reel par seconde cote backend) ne fait qu'etendre les tableaux en
-    // place, sans jamais interrompre l'animation deja en cours ni reculer
-    // le zoom/la position affichee.
     const firstPointKey = `${points[0].latitude},${points[0].longitude},${points[0].heure}`;
     const isNewDataset = firstPointKey !== this.lastFirstPointKey || points.length < this.livePoints.length;
     this.lastFirstPointKey = firstPointKey;
@@ -253,21 +211,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       this.clearSegmentLines();
       this.revealedSegments.clear();
       this.revealedAnomalyIdx.clear();
-      // IMPORTANT : on se positionne directement sur le DERNIER point connu
-      // (la position reelle actuelle du robot), pas sur le premier (minuit).
-      // Avant ce correctif, chaque chargement de page repartait de l'index 0
-      // et rejouait toute la journee deja ecoulee en animation avant
-      // d'atteindre "maintenant" - donnant l'impression, a tort, que le
-      // robot "recommengait sa ronde" a chaque fois qu'on revenait sur le
-      // tableau de bord. L'historique complet reste trace (segmentGeometries
-      // ci-dessous couvre tout le trajet), seule la position de depart de
-      // l'animation change.
-      // On demarre au DEBUT du trajet du jour (pas a la fin) : les donnees
-      // couvrent souvent la journee entiere d'un coup, et afficher tout de
-      // suite le trace complet + toutes les anomalies donnerait l'impression
-      // fausse que le robot "sait deja" ce qui va se passer plus tard dans la
-      // journee. La ligne et les marqueurs d'anomalies ne se revelent donc
-      // que progressivement, au rythme ou le robot les atteint reellement.
+
       const startIdx = 0;
       this.currentIndex = startIdx;
       this.currentPoint = points[startIdx];
@@ -288,14 +232,14 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
           className: 'robot-marker-wrapper',
           html: `
             <div style="position:relative;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-              <!-- Outer pulsing halo -->
+
               <div style="position:absolute;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle,rgba(45,116,201,0.4) 0%,rgba(45,116,201,0) 70%);animation:robotHalo 2s ease-out infinite;"></div>
-              <!-- Status indicator background -->
+
               <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#3B82D6 0%,#2468B5 100%);border:3px solid #fff;box-shadow:0 0 0 2px #0B1B2D,0 4px 12px rgba(36,104,181,.4);display:flex;align-items:center;justify-content:center;position:relative;z-index:2;">
-                <!-- Robot icon inside -->
+
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="9" y1="7" x2="15" y2="7"></line><circle cx="12" cy="16" r="2"></circle></svg>
               </div>
-              <!-- Status label -->
+
               <div style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:rgba(6,16,29,0.9);border:1px solid rgba(45,116,201,0.4);border-radius:4px;padding:2px 8px;color:#3B82D6;font-size:8px;font-weight:700;white-space:nowrap;letter-spacing:0.05em;z-index:1;backdrop-filter:blur(4px);" id="robot-status-label">PATROUILLE</div>
             </div>
             <style>
@@ -315,9 +259,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       this.updatePopup(points[startIdx]);
       this.liveSim.reportProgress(startIdx, 0, this.phaseOf(points[startIdx]));
 
-      // Le trajet a plus d'un point : on lance tout de suite l'animation vers
-      // le point suivant, pour que la ligne/les anomalies se revelent au fur
-      // et a mesure au lieu de rester figees sur le point de depart.
       if (points.length > 1) {
         this.animateToNextPoint();
       }
@@ -328,10 +269,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
         this.drawSegmentLines(this.livePoints);
       });
     } else if (points.length > previousLength) {
-      // Meme trajet, juste quelques nouveaux points reels arrives depuis le
-      // dernier rafraichissement : on ajoute uniquement les segments
-      // manquants (ligne droite immediate, puis collage aux rues en tache
-      // de fond), sans toucher a l'animation ni au zoom en cours.
+
       for (let i = previousLength - 1; i < points.length - 1; i++) {
         if (i < 0) continue;
         this.segmentGeometries[i] = [
@@ -352,9 +290,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       });
 
       if (this.animationFrameId === null) {
-        // L'ancienne animation s'etait deja terminee (boucle sur le dernier
-        // point) avant que ces nouveaux points n'arrivent : on la relance
-        // pour continuer vers la suite reelle du trajet.
+
         this.animateToNextPoint();
       }
     }
@@ -369,26 +305,18 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.phaseLabelLayers = [];
   }
 
-  /** (Re)dessine une polyligne par segment, coloree selon la phase (patrouille / docking / retour base / teleoperation), estompee tant que non parcourue. */
   private drawSegmentLines(points: TrajectoryPoint[]): void {
     if (!this.map || !this.L) return;
     const L = this.L;
     this.clearSegmentLines();
 
-    // Un seul label par "groupe" consecutif de meme phase (pas un par segment), pour ne
-    // pas saturer la carte de textes repetes quand plusieurs segments d'affilee menent
-    // au dock ou a la base.
     this.segmentGeometries.forEach((coords, i) => {
       const phase = this.phaseOf(points[i + 1]);
       const color = this.phaseColor(points[i + 1]);
       const traveled = this.revealedSegments.has(i);
 
-      // Le tronqon pas encore atteint par le robot n'est pas trace du tout :
-      // on ne veut pas laisser deviner le chemin a venir, seulement montrer
-      // ce que le robot a reellement deja parcouru.
       if (!traveled) return;
 
-      // Effet de trainee (halo) derriere le trace parcouru.
       const shadowLine = L.polyline(coords, {
         color: color,
         weight: 8,
@@ -425,14 +353,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     });
   }
 
-  /**
-   * Demande au service de routage public OSRM (profil pieton) de "coller" chaque
-   * segment reel du trajet aux rues existantes, pour un rendu credible plutot que
-   * des lignes droites traversant les batiments. Aucune position n'est inventee :
-   * seul le chemin ENTRE deux points reels consecutifs est ajuste au reseau
-   * routier ; en cas d'echec du service (reseau, timeout, hors zone couverte),
-   * on garde la ligne droite d'origine pour ce segment.
-   */
   private async fetchRoadSnappedSegments(points: TrajectoryPoint[]): Promise<[number, number][][]> {
     const straight = points.slice(0, -1).map((p, i) => [
       [p.latitude, p.longitude],
@@ -441,7 +361,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     if (points.length < 2) return straight;
 
-    const CHUNK = 24; // legs par requete (25 waypoints), reste sous les limites du serveur demo public
+    const CHUNK = 24;
     const result = [...straight];
 
     for (let start = 0; start < points.length - 1; start += CHUNK) {
@@ -472,23 +392,13 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
           }
         });
       } catch {
-        // Pas de reseau / service indisponible : on garde les lignes droites pour ce morceau.
+
       }
     }
 
     return result;
   }
 
-  /**
-   * Anime en continu le deplacement du marqueur entre le point GPS reel
-   * "currentIndex" et le suivant, sur la duree calculee a partir de
-   * l'ecart de temps reel entre les deux (accelere par PLAYBACK_SPEED).
-   * Le marqueur progresse image par image le long de la ligne droite
-   * entre les deux points, au lieu de sauter instantanement -> rendu
-   * visuellement fluide tout en restant fidele aux seules positions
-   * reellement enregistrees par le robot (aucune position intermediaire
-   * inventee, seule l'interpolation visuelle entre deux points reels).
-   */
   private animateToNextPoint(): void {
     const points = this.livePoints;
     if (points.length < 2) return;
@@ -499,11 +409,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     const to = points[toIdx];
 
     if (toIdx === 0 && fromIdx !== 0) {
-      // Fin de la journee : la trajectoire enregistree s'arrete au dernier point
-      // reel connu. On ne fait pas revenir le robot au premier point (pas de
-      // saut en diagonale a travers la carte) et on n'entame pas non plus une
-      // nouvelle ronde inventee : l'animation s'arrete proprement sur la
-      // derniere position reelle, avec un statut "journee terminee".
+
       this.updateRobotStatusLabel('done');
       return;
     }
@@ -511,7 +417,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     const durationMs = this.stepDelayMs(from, to);
     const startTime = performance.now();
 
-    // Chemin reel a suivre visuellement pour ce segment (collé aux rues si disponible, sinon ligne droite).
     const path: [number, number][] = (fromIdx < toIdx && this.segmentGeometries[fromIdx]?.length >= 2)
       ? this.segmentGeometries[fromIdx]
       : [[from.latitude, from.longitude], [to.latitude, to.longitude]];
@@ -521,7 +426,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     const step = (now: number) => {
       const elapsed = now - startTime;
       const t = Math.min(1, elapsed / durationMs);
-      // easeInOutQuad : accelere puis decelere, plus naturel qu'une vitesse constante.
+
       const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
       const [lat, lng] = this.pointAlongPath(path, cumulative, totalDist * eased);
@@ -530,7 +435,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       try {
         this.liveSim.reportProgress(fromIdx, eased, this.phaseOf(to));
       } catch {
-        // Ne doit jamais interrompre l'animation de la carte, meme si le service de simulation echoue.
+
       }
 
       if (t < 1) {
@@ -540,10 +445,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
         this.currentPoint = to;
         this.revealedSegments.add(fromIdx);
 
-        // Le segment vers ce nouveau point vient d'etre parcouru : on redessine
-        // pour le faire apparaitre (il n'existait pas encore tant qu'il n'etait
-        // pas atteint), et on revele les anomalies dont l'horodatage vient
-        // d'etre depasse.
         this.drawSegmentLines(this.livePoints);
         this.renderAnomalyMarkers();
 
@@ -557,7 +458,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     this.animationFrameId = requestAnimationFrame(step);
   }
 
-  /** Distances cumulees (en degres, suffisant pour une interpolation proportionnelle locale) le long d'un chemin. */
   private cumulativeDistances(path: [number, number][]): number[] {
     const cumulative = [0];
     for (let i = 1; i < path.length; i++) {
@@ -569,7 +469,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     return cumulative;
   }
 
-  /** Position interpolee le long d'un chemin multi-segments, a la distance parcourue donnee. */
   private pointAlongPath(path: [number, number][], cumulative: number[], targetDist: number): [number, number] {
     if (path.length === 1) return path[0];
     let i = 1;
@@ -612,14 +511,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
-  /**
-   * Affiche un point rouge pour chaque anomalie/obstacle detecte ce jour
-   * (issu de GET /api/dashboard/anomalies-recentes). Au clic, une popup
-   * s'ouvre avec l'image capturee par le robot si disponible.
-   * Distinct visuellement du marqueur de position (losange vs rond, halo
-   * plus large) pour ne pas confondre "ou est le robot" et "ou y a-t-il eu
-   * une detection".
-   */
   private renderAnomalyMarkers(): void {
     if (!this.map || !this.L) return;
     this.anomalyMarkers.forEach((m) => this.map.removeLayer(m));
@@ -631,19 +522,10 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       if (a.latitude == null || a.longitude == null || !Number.isFinite(a.latitude) || !Number.isFinite(a.longitude)) {
         return;
       }
-      // Une anomalie ne s'affiche que lorsque le robot a reellement atteint
-      // (ou depasse) son horodatage - pas avant, pour rester realiste. Une fois
-      // revelee, elle le reste meme si une nouvelle boucle de replay ramene le
-      // robot a un horodatage plus tot dans la journee (cycle continu, pas de
-      // remise a zero visuelle).
+
       const anomalySec = this.toSeconds(a.heure);
       if (!this.revealedAnomalyIdx.has(idx)) {
-        // Tant que la position courante du robot n'est pas encore connue
-        // (nowSec === null, ex. tout premier rendu avant que currentPoint
-        // ne soit initialise), on NE revele PAS l'anomalie : le defaut
-        // precedent revelait tout par erreur des ce cas, avant meme que le
-        // robot n'ait bouge. On attend une vraie position + un horodatage
-        // d'anomalie atteint ou depasse avant de l'afficher.
+
         if (nowSec == null || (anomalySec != null && anomalySec > nowSec)) {
           return;
         }
@@ -718,7 +600,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     return result;
   }
 
-  /** Calcule le delai d'attente (ms) entre deux points, a partir de l'ecart de temps reel entre eux. */
   private stepDelayMs(from: TrajectoryPoint, to: TrajectoryPoint): number {
     const fromSec = this.toSeconds(from?.heure);
     const toSec = this.toSeconds(to?.heure);
@@ -729,7 +610,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     let diffSeconds = toSec - fromSec;
     if (diffSeconds < 0) {
-      diffSeconds += 24 * 3600; // passage a minuit ou bouclage sur le premier point
+      diffSeconds += 24 * 3600;
     }
 
     const delay = (diffSeconds * 1000) / this.PLAYBACK_SPEED;
@@ -751,7 +632,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
-  /** Categorie de haut niveau du point courant, pour un badge clair (dock/home/patrol/teleop) plutot que le libelle technique brut. */
   phaseOf(pt: TrajectoryPoint): 'dock' | 'home' | 'teleop' | 'patrol' {
     const s = (pt.source || '').toLowerCase();
     if (s.includes('docking')) return 'dock';
@@ -769,7 +649,6 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
-  /** Couleur de trace utilisee pour le segment menant a ce point (vert patrouille / or docking / orange retour base). */
   private phaseColor(pt: TrajectoryPoint): string {
     switch (this.phaseOf(pt)) {
       case 'dock': return '#E9BE87';

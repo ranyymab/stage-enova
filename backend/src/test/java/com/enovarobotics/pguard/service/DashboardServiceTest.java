@@ -43,7 +43,6 @@ class DashboardServiceTest {
     @InjectMocks
     private DashboardService dashboardService;
 
-
     @Test
     void buildAnomaliesRecentesShouldFilterToReferenceDate() {
 
@@ -65,16 +64,13 @@ class DashboardServiceTest {
                 .findByEventDateOrderByEventDatetimeDesc(today))
                 .thenReturn(List.of(todayDetection));
 
-
         List<Map<String, Object>> anomalies =
                 dashboardService.buildAnomaliesRecentes(today);
-
 
         assertEquals(1, anomalies.size());
         assertEquals(1L, anomalies.get(0).get("id"));
         assertEquals("PERSON", anomalies.get(0).get("type"));
     }
-
 
     @Test
     void buildKpiShouldReportEmergencyTeleportationModeForUrgentSituation() {
@@ -82,7 +78,6 @@ class DashboardServiceTest {
         ReflectionTestUtils.setField(dashboardService, "robotId", "ROBOT-001");
 
         LocalDate today = LocalDate.of(2026, 7, 1);
-
 
         when(kilometrageSummaryRepository
                 .findByRobotIdAndSummaryDate("ROBOT-001", today))
@@ -92,13 +87,11 @@ class DashboardServiceTest {
                 .findFirstByRobotIdOrderBySummaryDateDesc("ROBOT-001"))
                 .thenReturn(Optional.empty());
 
-
         when(detectionEventRepository
                 .countByEventDateAndStatutNot(
                         today,
                         DetectionEvent.StatutAnomalie.RESOLUE))
                 .thenReturn(4L);
-
 
         when(missionEventRepository
                 .findByEventDateOrderByEventDatetimeAsc(today))
@@ -117,16 +110,13 @@ class DashboardServiceTest {
                                 .build()
                 ));
 
-
         when(teleoperationEventRepository
                 .findByEventDateOrderByEventDatetimeAsc(today))
                 .thenReturn(List.of());
 
-
         when(obstacleProgressRepository
                 .findByEventDateOrderByEventDatetimeAsc(today))
                 .thenReturn(List.of());
-
 
         when(missionEventRepository
                 .findByCategoryAndEventDateOrderByEventDatetimeAsc(
@@ -134,20 +124,14 @@ class DashboardServiceTest {
                         today))
                 .thenReturn(List.of());
 
-
         when(missionEventRepository.findAll())
                 .thenReturn(List.of());
-
 
         Map<String, Object> kpi =
                 dashboardService.buildKpi(today);
 
-
-        // Add the expected values according to your DashboardService logic
         assertEquals(4L, kpi.get("anomalies"));
     }
-
-
 
     @Test
     void buildKpiShouldReportRetourBaseWhenBackHomeSessionIsOpen() {
@@ -156,24 +140,19 @@ class DashboardServiceTest {
 
         LocalDate today = LocalDate.of(2026, 7, 1);
 
-
         when(kilometrageSummaryRepository
                 .findByRobotIdAndSummaryDate("ROBOT-001", today))
                 .thenReturn(Optional.empty());
 
-
         when(kilometrageSummaryRepository
                 .findFirstByRobotIdOrderBySummaryDateDesc("ROBOT-001"))
                 .thenReturn(Optional.empty());
-
 
         when(detectionEventRepository
                 .countByEventDateAndStatutNot(
                         today,
                         DetectionEvent.StatutAnomalie.RESOLUE))
                 .thenReturn(0L);
-
-
 
         when(missionEventRepository
                 .findByEventDateOrderByEventDatetimeAsc(today))
@@ -187,17 +166,13 @@ class DashboardServiceTest {
                                 .build()
                 ));
 
-
-
         when(teleoperationEventRepository
                 .findByEventDateOrderByEventDatetimeAsc(today))
                 .thenReturn(List.of());
 
-
         when(obstacleProgressRepository
                 .findByEventDateOrderByEventDatetimeAsc(today))
                 .thenReturn(List.of());
-
 
         when(missionEventRepository
                 .findByCategoryAndEventDateOrderByEventDatetimeAsc(
@@ -205,16 +180,11 @@ class DashboardServiceTest {
                         today))
                 .thenReturn(List.of());
 
-
         when(missionEventRepository.findAll())
                 .thenReturn(List.of());
 
-
-
         Map<String, Object> kpi =
                 dashboardService.buildKpi(today);
-
-
 
         assertEquals("RETOUR_BASE", kpi.get("modeRobot"));
         assertEquals("RETOUR_BASE", kpi.get("statutMission"));

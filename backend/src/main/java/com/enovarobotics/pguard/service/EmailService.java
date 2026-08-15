@@ -8,16 +8,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-/**
- * Service d'envoi d'e-mails avec support Gmail SMTP et modèles HTML professionnels.
- * 
- * Configuration Gmail requise (voir application.properties):
- * 1. Aller sur https://myaccount.google.com/apppasswords
- * 2. Créer un "mot de passe d'application" (16 caractères)
- * 3. Configurer les variables d'environnement:
- *    - SMTP_USERNAME: votre email Gmail
- *    - SMTP_PASSWORD: le mot de passe d'application généré
- */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -34,24 +24,14 @@ public class EmailService {
     @Value("${app.mail.log-code-fallback:false}")
     private boolean logCodeFallback;
 
-    /**
-     * Vérifie si SMTP est correctement configuré.
-     */
     public boolean isEmailConfigured() {
         return fromAddress != null && !fromAddress.isBlank();
     }
 
-    /**
-     * Vérifie si le fallback de développement (afficher le code dans les logs) est activé.
-     */
     public boolean isLogCodeFallbackEnabled() {
         return logCodeFallback;
     }
 
-    /**
-     * Envoie un code de vérification par email. En cas d'échec d'envoi, retourne
-     * false mais ne bloque pas l'inscription (elle continue normalement).
-     */
     public boolean sendVerificationCode(String toEmail, String fullName, String code) {
 
         if (toEmail == null || toEmail.isBlank()) {
@@ -86,9 +66,6 @@ public class EmailService {
         }
     }
 
-    /**
-     * Construit le contenu HTML du email de vérification avec design professionnel.
-     */
     private String buildVerificationEmailHtml(String fullName, String code) {
         if (fullName == null || fullName.isBlank()) {
             fullName = "Utilisateur";
@@ -132,7 +109,7 @@ public class EmailService {
                                 <p class="greeting">Bonjour %s,</p>
 
                                 <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                                    Vous avez demandé la création d'un compte PGuard Monitor. Veuillez utiliser le code ci-dessous 
+                                    Vous avez demandé la création d'un compte PGuard Monitor. Veuillez utiliser le code ci-dessous
                                     pour vérifier votre adresse email et activer votre compte.
                                 </p>
 
@@ -143,7 +120,7 @@ public class EmailService {
                                 </div>
 
                                 <div class="security-note">
-                                    <strong>🔒 Sécurité:</strong> Cet email a été envoyé suite à une demande d'inscription. 
+                                    <strong>🔒 Sécurité:</strong> Cet email a été envoyé suite à une demande d'inscription.
                                     Si vous n'êtes pas à l'origine de cette demande, ignorez cet email.
                                 </div>
 

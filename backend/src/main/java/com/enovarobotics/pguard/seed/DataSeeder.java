@@ -18,20 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Générateur de données factices, basé sur la structure RÉELLE des fichiers
- * JSON du robot PGuard (analysée depuis un export réel), et non sur le
- * format provisoire du cahier des charges pour les catégories où les deux
- * diffèrent (Inspecting/Back_home/Docking sont au format "mission" ;
- * Obstacle contient les données de progression Last_point/Delay ; Detection
- * est plus simple, sans champ Criticite/Statut fournis par le robot).
- *
- * Contrainte respectée : les événements sont générés uniquement entre 20h
- * et 06h (fonctionnement nocturne du robot), sur les N derniers jours.
- *
- * Ne s'exécute que si la base est vide, pour ne pas dupliquer les données
- * à chaque redémarrage en développement.
- */
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -80,15 +66,6 @@ public class DataSeeder {
 
         log.info("Génération de {} jours de données factices pour {}...", seedDays, robotId);
 
-        // IMPORTANT : on ne genere JAMAIS de donnees factices pour AUJOURD'HUI.
-        // RobotSimulationService ecrit desormais reellement, seconde par seconde,
-        // des points sequentiels et coherents pour la journee en cours. Si ce
-        // seeder ajoutait EN PLUS des points aleatoires (jitterGps(), sans aucune
-        // relation de voisinage) pour ce meme jour, la trajectoire du jour
-        // melangerait des segments reels coherents et des points scatter
-        // sans lien - exactement ce qui rendait le trajet affiche incoherent
-        // ("ne ressemble a rien"). Les jours precedents restent generes
-        // normalement, pour peupler l'historique/les graphiques.
         List<LocalDate> days = new ArrayList<>();
         for (int i = seedDays - 1; i >= 1; i--) {
             days.add(LocalDate.now().minusDays(i));
@@ -105,11 +82,6 @@ public class DataSeeder {
             seedDetections(day);
         }
 
-        // NOTE: on ne génère plus de données pour "demain" (seedFutureLikeData) :
-        // un robot ne peut pas avoir déjà enregistré de kilométrage pour un jour
-        // qui n'est pas encore arrivé. C'est ce qui causait un point "futur" dans
-        // le graphique de distance cumulée.
-
         log.info("Génération terminée : {} mission_event, {} obstacle_progress, {} teleoperation_event, " +
                         "{} kilometrage_summary, {} detection_event",
                 missionEventRepository.count(),
@@ -119,9 +91,6 @@ public class DataSeeder {
                 detectionEventRepository.count());
     }
 
-    // ------------------------------------------------------------------
-    // Mission / Inspecting / Back_home / Docking — format partagé start/end/pause
-    // ------------------------------------------------------------------
     private void seedMissionLikeEvents(LocalDate day, MissionEvent.EventCategory category,
                                         int sessionsPerNight, boolean includeDistance) {
         for (int s = 0; s < sessionsPerNight; s++) {
@@ -167,9 +136,6 @@ public class DataSeeder {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Obstacle — contient en réalité Last_point/Delay (progression d'inspection)
-    // ------------------------------------------------------------------
     private void seedObstacleProgress(LocalDate day) {
         int points = 3 + random.nextInt(5);
         LocalDateTime current = randomNightTime(day);
@@ -192,9 +158,6 @@ public class DataSeeder {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Teleoperation — sessions de pilotage manuel
-    // ------------------------------------------------------------------
     private void seedTeleoperation(LocalDate day) {
         int sessions = random.nextInt(3);
         for (int s = 0; s < sessions; s++) {
@@ -228,9 +191,6 @@ public class DataSeeder {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Kilometrage — un seul résumé par jour (upsert dans le vrai service de parsing)
-    // ------------------------------------------------------------------
     private void seedKilometrage(LocalDate day) {
         double distance = round(random.nextDouble() * 5);
         double dynamicMinutes = round(5 + random.nextDouble() * 40);
@@ -250,9 +210,6 @@ public class DataSeeder {
                 .build());
     }
 
-    // ------------------------------------------------------------------
-    // Detection — anomalies, structure réelle simple (hour, objectDetected, gps, image)
-    // ------------------------------------------------------------------
     private void seedDetections(LocalDate day) {
         int detections = random.nextInt(3);
         for (int d = 0; d < detections; d++) {
@@ -260,9 +217,7 @@ public class DataSeeder {
             double[] gps = jitterGps();
             DetectionEvent.Criticite criticite = randomCriticite();
             String objectDetected = OBJECTS_DETECTED[random.nextInt(OBJECTS_DETECTED.length)];
-            // Aucune photo réelle n'existe pour les détections synthétiques : on laisse
-            // imageFileName/imageFilePath à null plutôt que d'inventer un nom de fichier
-            // qui n'existe nulle part sur le disque (404 systématique côté frontend).
+
             detectionEventRepository.save(DetectionEvent.builder()
                     .robotId(robotId)
                     .eventDate(day)
@@ -279,18 +234,13 @@ public class DataSeeder {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Helpers
-    // ------------------------------------------------------------------
-
-    /** Génère une heure aléatoire dans la plage de fonctionnement nocturne 20h-06h */
     private LocalDateTime randomNightTime(LocalDate day) {
         int hour;
         if (random.nextBoolean()) {
-            hour = 20 + random.nextInt(4); // 20h-23h, soir du jour J
+            hour = 20 + random.nextInt(4);
             return LocalDateTime.of(day, LocalTime.of(hour, random.nextInt(60), random.nextInt(60)));
         } else {
-            hour = random.nextInt(6); // 00h-05h, matin du jour J+1
+            hour = random.nextInt(6);
             return LocalDateTime.of(day.plusDays(1), LocalTime.of(hour, random.nextInt(60), random.nextInt(60)));
         }
     }

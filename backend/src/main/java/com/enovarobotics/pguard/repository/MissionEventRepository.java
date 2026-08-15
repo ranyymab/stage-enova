@@ -19,12 +19,7 @@ public interface MissionEventRepository extends JpaRepository<MissionEvent, Long
 
     long countByCategoryAndEventDate(MissionEvent.EventCategory category, LocalDate eventDate);
 
-    /** Toutes catégories confondues pour une date donnée (utilisé par DashboardService
-     * pour construire la trajectoire et la timeline tous événements). */
     List<MissionEvent> findByEventDateOrderByEventDatetimeAsc(LocalDate eventDate);
 
-    /** Le jour le plus recent, a la date donnee ou avant, qui contient au moins
-     * un evenement — utilise pour retomber sur "le dernier etat connu" quand la
-     * date demandee n'a aucune activite (voir DashboardService.resolveEffectiveDataDate). */
     Optional<MissionEvent> findFirstByEventDateLessThanEqualOrderByEventDateDescEventDatetimeDesc(LocalDate date);
 }

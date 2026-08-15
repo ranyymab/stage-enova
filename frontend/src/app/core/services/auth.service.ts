@@ -47,19 +47,11 @@ export class AuthService {
     return isPlatformBrowser(this.platformId);
   }
 
-  // ---------------------------------------------------------------
-  // Connexion classique
-  // ---------------------------------------------------------------
-
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.http
       .post<LoginResponse>(`${this.API_URL}/login`, credentials)
       .pipe(tap((response) => this.persistSession(response)));
   }
-
-  // ---------------------------------------------------------------
-  // Inscription + vérification par code envoyé par e-mail
-  // ---------------------------------------------------------------
 
   register(request: RegisterRequest): Observable<VerificationResponse> {
     return this.http
@@ -95,8 +87,6 @@ export class AuthService {
     return sessionStorage.getItem(PENDING_EMAIL_KEY);
   }
 
-  /** Code affiché uniquement quand le serveur n'a pas pu envoyer un vrai
-   *  e-mail (SMTP non configuré) et l'a renvoyé directement à la place. */
   getPendingDevCode(): string | null {
     if (!this.isBrowser) return null;
     return sessionStorage.getItem(PENDING_DEV_CODE_KEY);
@@ -123,18 +113,12 @@ export class AuthService {
     }
   }
 
-  // ---------------------------------------------------------------
-  // Connexion via Google Sign-In
-  // ---------------------------------------------------------------
-
   loginWithGoogle(idToken: string): Observable<LoginResponse> {
     const request: GoogleLoginRequest = { idToken };
     return this.http
       .post<LoginResponse>(`${this.API_URL}/google`, request)
       .pipe(tap((response) => this.persistSession(response)));
   }
-
-  // ---------------------------------------------------------------
 
   logout(): void {
     if (this.isBrowser) {

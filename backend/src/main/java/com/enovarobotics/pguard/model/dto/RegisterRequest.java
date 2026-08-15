@@ -24,10 +24,6 @@ public class RegisterRequest {
     @Size(min = 2, max = 150)
     private String fullName;
 
-    /**
-     * Politique de mot de passe (OWASP ASVS 2.1) : au moins 8 caractères,
-     * une majuscule, une minuscule, un chiffre et un caractère spécial.
-     */
     @NotBlank
     @Size(min = 8, max = 72, message = "Le mot de passe doit contenir au moins 8 caractères")
     @Pattern(

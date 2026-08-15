@@ -5,13 +5,11 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { ThemeService } from '../../../core/services/theme.service';
 
-
 interface NavItem {
   path: string;
   label: string;
   short: string;
 }
-
 
 @Component({
   selector: 'app-sidebar',
@@ -24,8 +22,6 @@ interface NavItem {
   ],
 
   template: `
-
-    <!-- MOBILE BUTTON -->
 
     <button
       type="button"
@@ -50,7 +46,6 @@ interface NavItem {
         <path d="M3 18h18"/>
       </svg>
 
-
       <svg
         *ngIf="mobileOpen"
         width="20"
@@ -67,29 +62,16 @@ interface NavItem {
 
     </button>
 
-
-    <!-- MOBILE BACKDROP -->
-
     <div
       *ngIf="mobileOpen"
       class="mobile-backdrop"
       (click)="closeMobile()"
     ></div>
 
-
-    <!-- =========================================================
-         SIDEBAR
-         ========================================================= -->
-
     <aside
       class="sidebar"
       [class.mobile-open]="mobileOpen"
     >
-
-
-      <!-- =======================================================
-           BRAND
-           ======================================================= -->
 
       <div class="brand">
 
@@ -112,7 +94,6 @@ interface NavItem {
 
         </div>
 
-
         <div class="brand-text">
 
           <span class="brand-name">
@@ -131,11 +112,6 @@ interface NavItem {
 
       </div>
 
-
-      <!-- =======================================================
-           ROBOT STATUS
-           ======================================================= -->
-
       <div class="robot-status">
 
         <span class="status-dot"></span>
@@ -150,15 +126,9 @@ interface NavItem {
 
       </div>
 
-
-      <!-- =======================================================
-           NAVIGATION
-           ======================================================= -->
-
       <div class="nav-heading">
         COMMAND CENTER
       </div>
-
 
       <nav class="nav">
 
@@ -172,9 +142,6 @@ interface NavItem {
           }"
           (click)="closeMobile()"
         >
-
-
-          <!-- DASHBOARD -->
 
           <span
             *ngIf="item.path === '/dashboard'"
@@ -228,9 +195,6 @@ interface NavItem {
 
           </span>
 
-
-          <!-- MISSIONS -->
-
           <span
             *ngIf="item.path === '/mission'"
             class="nav-icon"
@@ -257,9 +221,6 @@ interface NavItem {
             </svg>
 
           </span>
-
-
-          <!-- INSPECTION -->
 
           <span
             *ngIf="item.path === '/inspection'"
@@ -290,9 +251,6 @@ interface NavItem {
             </svg>
 
           </span>
-
-
-          <!-- TELEOPERATION -->
 
           <span
             *ngIf="item.path === '/teleportation'"
@@ -333,9 +291,6 @@ interface NavItem {
 
           </span>
 
-
-          <!-- DOCKING -->
-
           <span
             *ngIf="item.path === '/docking'"
             class="nav-icon"
@@ -372,9 +327,6 @@ interface NavItem {
 
           </span>
 
-
-          <!-- KILOMETRAGE -->
-
           <span
             *ngIf="item.path === '/kilometrage'"
             class="nav-icon"
@@ -400,9 +352,6 @@ interface NavItem {
             </svg>
 
           </span>
-
-
-          <!-- ANOMALIES -->
 
           <span
             *ngIf="item.path === '/anomalies'"
@@ -440,13 +389,9 @@ interface NavItem {
 
           </span>
 
-
           <span class="nav-label">
             {{ item.label }}
           </span>
-
-
-          <!-- ANOMALY BADGE -->
 
           <span
             *ngIf="
@@ -458,7 +403,6 @@ interface NavItem {
             {{ anomaliesOuvertes }}
           </span>
 
-
           <span class="nav-arrow">
             →
           </span>
@@ -467,15 +411,7 @@ interface NavItem {
 
       </nav>
 
-
-      <!-- =======================================================
-           FOOTER
-           ======================================================= -->
-
       <div class="sidebar-footer">
-
-
-        <!-- USER -->
 
         <div
           class="operator"
@@ -491,7 +427,6 @@ interface NavItem {
               ).charAt(0).toUpperCase()
             }}
           </div>
-
 
           <div class="operator-info">
 
@@ -509,9 +444,6 @@ interface NavItem {
           </div>
 
         </div>
-
-
-        <!-- THEME -->
 
         <button
           type="button"
@@ -537,7 +469,6 @@ interface NavItem {
               />
 
             </svg>
-
 
             <svg
               *ngIf="themeService.mode() !== 'dark'"
@@ -568,7 +499,6 @@ interface NavItem {
 
           </span>
 
-
           <span>
 
             {{
@@ -580,9 +510,6 @@ interface NavItem {
           </span>
 
         </button>
-
-
-        <!-- LOGOUT -->
 
         <button
           type="button"
@@ -617,7 +544,6 @@ interface NavItem {
 
         </button>
 
-
         <div class="footer-system">
 
           <span class="footer-system-dot"></span>
@@ -631,7 +557,6 @@ interface NavItem {
     </aside>
 
   `,
-
 
   styles: [`
 
@@ -668,7 +593,6 @@ interface NavItem {
       flex: 0 0 var(--sidebar-width);
 
     }
-
 
     /* =============================================================
        SIDEBAR
@@ -718,7 +642,6 @@ interface NavItem {
 
     }
 
-
     /* subtle technical grid */
 
     .sidebar::before {
@@ -751,7 +674,6 @@ interface NavItem {
 
     }
 
-
     /* =============================================================
        BRAND
        ============================================================= */
@@ -776,7 +698,6 @@ interface NavItem {
         var(--line);
 
     }
-
 
     .brand-mark {
 
@@ -814,7 +735,6 @@ interface NavItem {
 
     }
 
-
     .brand-logo {
 
       width: 34px;
@@ -824,7 +744,6 @@ interface NavItem {
       object-fit: contain;
 
     }
-
 
     .brand-fallback {
 
@@ -840,7 +759,6 @@ interface NavItem {
 
     }
 
-
     .brand-text {
 
       min-width: 0;
@@ -852,7 +770,6 @@ interface NavItem {
       line-height: 1;
 
     }
-
 
     .brand-name {
 
@@ -870,7 +787,6 @@ interface NavItem {
       letter-spacing: -.035em;
 
     }
-
 
     .brand-name-sub {
 
@@ -891,7 +807,6 @@ interface NavItem {
 
     }
 
-
     .brand-caption {
 
       margin-top: 7px;
@@ -910,7 +825,6 @@ interface NavItem {
       white-space: nowrap;
 
     }
-
 
     /* =============================================================
        ROBOT STATUS
@@ -945,7 +859,6 @@ interface NavItem {
 
     }
 
-
     .status-dot {
 
       width: 7px;
@@ -972,7 +885,6 @@ interface NavItem {
 
     }
 
-
     @keyframes statusPulse {
 
       0%,
@@ -985,7 +897,6 @@ interface NavItem {
       }
 
     }
-
 
     .status-text {
 
@@ -1002,7 +913,6 @@ interface NavItem {
 
     }
 
-
     .status-online {
 
       margin-left: auto;
@@ -1018,7 +928,6 @@ interface NavItem {
       letter-spacing: .12em;
 
     }
-
 
     /* =============================================================
        NAV HEADING
@@ -1045,7 +954,6 @@ interface NavItem {
       letter-spacing: .19em;
 
     }
-
 
     /* =============================================================
        NAV
@@ -1077,7 +985,6 @@ interface NavItem {
         transparent;
 
     }
-
 
     .nav-item {
 
@@ -1117,7 +1024,6 @@ interface NavItem {
 
     }
 
-
     .nav-item:hover {
 
       color: #F4F8FC;
@@ -1132,7 +1038,6 @@ interface NavItem {
         translateX(2px);
 
     }
-
 
     .nav-item.active {
 
@@ -1153,7 +1058,6 @@ interface NavItem {
         rgba(255,255,255,.025);
 
     }
-
 
     .nav-item.active::before {
 
@@ -1181,7 +1085,6 @@ interface NavItem {
 
     }
 
-
     .nav-icon {
 
       width: 20px;
@@ -1204,14 +1107,12 @@ interface NavItem {
 
     }
 
-
     .nav-item:hover .nav-icon {
 
       color:
         rgba(220,232,245,.82);
 
     }
-
 
     .nav-item.active .nav-icon {
 
@@ -1220,7 +1121,6 @@ interface NavItem {
 
     }
 
-
     .nav-label {
 
       flex: 1;
@@ -1228,7 +1128,6 @@ interface NavItem {
       white-space: nowrap;
 
     }
-
 
     .nav-arrow {
 
@@ -1248,7 +1147,6 @@ interface NavItem {
 
     }
 
-
     .nav-item:hover .nav-arrow,
     .nav-item.active .nav-arrow {
 
@@ -1258,7 +1156,6 @@ interface NavItem {
         translateX(0);
 
     }
-
 
     .nav-badge {
 
@@ -1297,7 +1194,6 @@ interface NavItem {
 
     }
 
-
     /* =============================================================
        FOOTER
        ============================================================= */
@@ -1326,7 +1222,6 @@ interface NavItem {
 
     }
 
-
     .operator {
 
       display: flex;
@@ -1345,7 +1240,6 @@ interface NavItem {
         rgba(255,255,255,.055);
 
     }
-
 
     .operator-avatar {
 
@@ -1384,7 +1278,6 @@ interface NavItem {
 
     }
 
-
     .operator-info {
 
       min-width: 0;
@@ -1396,7 +1289,6 @@ interface NavItem {
       gap: 3px;
 
     }
-
 
     .operator-name {
 
@@ -1415,7 +1307,6 @@ interface NavItem {
 
     }
 
-
     .operator-role {
 
       color:
@@ -1430,7 +1321,6 @@ interface NavItem {
       letter-spacing: .12em;
 
     }
-
 
     .footer-button,
     .logout-button {
@@ -1473,7 +1363,6 @@ interface NavItem {
 
     }
 
-
     .footer-button:hover {
 
       color: #FFFFFF;
@@ -1485,7 +1374,6 @@ interface NavItem {
         rgba(45,116,201,.25);
 
     }
-
 
     .footer-button-icon {
 
@@ -1504,7 +1392,6 @@ interface NavItem {
 
     }
 
-
     .logout-button {
 
       justify-content: center;
@@ -1516,7 +1403,6 @@ interface NavItem {
         transparent;
 
     }
-
 
     .logout-button:hover {
 
@@ -1530,7 +1416,6 @@ interface NavItem {
         rgba(184,60,70,.20);
 
     }
-
 
     .footer-system {
 
@@ -1557,7 +1442,6 @@ interface NavItem {
 
     }
 
-
     .footer-system-dot {
 
       width: 5px;
@@ -1574,7 +1458,6 @@ interface NavItem {
 
     }
 
-
     /* =============================================================
        MOBILE
        ============================================================= */
@@ -1585,13 +1468,11 @@ interface NavItem {
 
     }
 
-
     .mobile-backdrop {
 
       display: none;
 
     }
-
 
     @media (max-width: 860px) {
 
@@ -1602,7 +1483,6 @@ interface NavItem {
         height: 0;
 
       }
-
 
       .mobile-toggle {
 
@@ -1643,7 +1523,6 @@ interface NavItem {
 
       }
 
-
       .mobile-backdrop {
 
         position: fixed;
@@ -1661,7 +1540,6 @@ interface NavItem {
           blur(3px);
 
       }
-
 
       .sidebar {
 
@@ -1688,7 +1566,6 @@ interface NavItem {
 
       }
 
-
       .sidebar.mobile-open {
 
         transform:
@@ -1697,7 +1574,6 @@ interface NavItem {
       }
 
     }
-
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -1717,19 +1593,16 @@ interface NavItem {
   `],
 })
 
-
 export class SidebarComponent {
 
   @Input()
   anomaliesOuvertes = 0;
-
 
   logoMissing = false;
 
   private darkLogoFailed = false;
 
   mobileOpen = false;
-
 
   constructor(
 
@@ -1738,11 +1611,6 @@ export class SidebarComponent {
     public readonly themeService: ThemeService,
 
   ) {}
-
-
-  /* ===============================================================
-     LOGO
-     =============================================================== */
 
   logoSrc(): string {
 
@@ -1759,7 +1627,6 @@ export class SidebarComponent {
 
   }
 
-
   onLogoError(): void {
 
     if (
@@ -1773,15 +1640,9 @@ export class SidebarComponent {
 
     }
 
-
     this.logoMissing = true;
 
   }
-
-
-  /* ===============================================================
-     MOBILE
-     =============================================================== */
 
   toggleMobile(): void {
 
@@ -1790,17 +1651,11 @@ export class SidebarComponent {
 
   }
 
-
   closeMobile(): void {
 
     this.mobileOpen = false;
 
   }
-
-
-  /* ===============================================================
-     NAVIGATION
-     =============================================================== */
 
   navItems: NavItem[] = [
 

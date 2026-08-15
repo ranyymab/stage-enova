@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { API_ORIGIN } from '../../core/config/api.config';
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
 
 interface InspectionPoint {
@@ -70,7 +71,7 @@ export class InspectionComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<InspectionPoint[]>('https://stage-enova-3.onrender.com/api/inspection?date=' + this.selectedDate)
+    this.http.get<InspectionPoint[]>(API_ORIGIN + '/api/inspection?date=' + this.selectedDate)
       .subscribe({ next: d => { this.points = d; this.loading = false; }, error: () => { this.loading = false; } });
   }
 

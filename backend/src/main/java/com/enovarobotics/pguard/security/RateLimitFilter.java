@@ -15,19 +15,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Limiteur de débit "maison", en mémoire, sans dépendance externe.
- * Protège les routes sensibles (/api/auth/**) contre le brute-force
- * (deviner un mot de passe ou un code OTP) et l'abus d'envoi d'e-mails.
- *
- * Fenêtre glissante simplifiée : par clé (IP + route), on compte les
- * requêtes dans la fenêtre courante ; au-delà de la limite, on renvoie
- * HTTP 429 Too Many Requests jusqu'à la fenêtre suivante.
- *
- * Limite : ceci suffit pour une seule instance de l'application. Pour un
- * déploiement multi-instance derrière un load-balancer, remplacer ce
- * composant par un compteur partagé (Redis) — voir tests/security/README.md.
- */
 @Component
 @Order(1)
 public class RateLimitFilter extends OncePerRequestFilter {
@@ -36,7 +23,6 @@ public class RateLimitFilter extends OncePerRequestFilter {
 
     private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
 
-    // route -> [limite de requêtes, durée de fenêtre en ms]
     private static final Map<String, int[]> LIMITS = Map.of(
             "/api/auth/login", new int[]{10, 60_000},
             "/api/auth/register", new int[]{5, 60_000},

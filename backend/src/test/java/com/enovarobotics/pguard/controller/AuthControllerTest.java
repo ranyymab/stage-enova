@@ -73,7 +73,7 @@ class AuthControllerTest {
     @Test
     void login_locksAccountAfterFiveFailedAttempts() {
         User user = localUser("user@example.com", "Password1!", true);
-        user.setFailedLoginAttempts(4); // one more failure should trigger lockout
+        user.setFailedLoginAttempts(4);
         when(userRepository.findByEmail("user@example.com")).thenReturn(Optional.of(user));
 
         ResponseEntity<?> response = controller.login(new LoginRequest("user@example.com", "WrongPassword!"));

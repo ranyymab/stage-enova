@@ -26,28 +26,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Importe au demarrage les VRAIS fichiers JSON du robot, places sur disque
- * sous app.data-dir (par defaut ./data, voir application.properties), en
- * reutilisant exactement les memes services de parsing que
- * UploadController (aucune logique de parsing dupliquee/divergente).
- *
- * Sans cet import, seules les donnees factices de DataSeeder existent en
- * base (DataSeeder ne s'execute que si la base est vide, mais il ne sait
- * rien des fichiers reels sur disque) : kilometrage, missions, etc.
- * affiches dans le dashboard ne correspondaient alors a aucun fichier JSON
- * reel, d'ou l'ecart constate.
- *
- * Idempotent : chaque fichier mission-like n'est reimporte que si aucun
- * enregistrement de cette categorie n'existe deja pour sa date (le
- * kilometrage est un upsert par nature, donc toujours rejouable sans
- * duplication).
- *
- * @Order(1) : s'execute avant DataSeeder (@Order par defaut / non annote =
- * dernier), pour que la base ne soit plus "vide" quand DataSeeder verifie
- * sa condition de garde, evitant l'ajout de donnees factices en plus des
- * donnees reelles.
- */
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -109,7 +87,7 @@ public class RealDataImporter {
             LocalDate fileDate = dateFromFileName(file);
             try {
                 if (fileDate != null && missionEventRepository.countByCategoryAndEventDate(category, fileDate) > 0) {
-                    continue; // deja importe lors d'un demarrage precedent
+                    continue;
                 }
                 try (InputStream in = Files.newInputStream(file)) {
                     count += missionLikeFileService.parseAndSave(in, category, robotId);
@@ -126,7 +104,7 @@ public class RealDataImporter {
         for (Path file : listJsonFiles(dir)) {
             LocalDate fileDate = dateFromFileName(file);
             if (fileDate != null && obstacleProgressRepository.countByEventDate(fileDate) > 0) {
-                continue; // deja importe lors d'un demarrage precedent
+                continue;
             }
             try (InputStream in = Files.newInputStream(file)) {
                 count += obstacleFileService.parseAndSave(in, robotId);
@@ -142,7 +120,7 @@ public class RealDataImporter {
         for (Path file : listJsonFiles(dir)) {
             LocalDate fileDate = dateFromFileName(file);
             if (fileDate != null && teleoperationEventRepository.countByEventDate(fileDate) > 0) {
-                continue; // deja importe lors d'un demarrage precedent
+                continue;
             }
             try (InputStream in = Files.newInputStream(file)) {
                 count += teleoperationFileService.parseAndSave(in, robotId);
@@ -153,7 +131,6 @@ public class RealDataImporter {
         return count;
     }
 
-    /** Kilometrage : upsert par nature (rejouable sans creer de doublons), date deduite du nom de fichier. */
     private int importKilometrage(Path dir) {
         int count = 0;
         for (Path file : listJsonFiles(dir)) {
@@ -172,13 +149,6 @@ public class RealDataImporter {
         return count;
     }
 
-    /**
-     * Detection : seul le dossier detection/AAAA-MM-JJ.json (format hour/objectDetected/gps/image)
-     * est importe. Le fichier detections.json a la racine de data/ suit un schema different
-     * (deja au format entite, probablement un echantillon hors robot) et n'est pas compatible
-     * avec DetectionEventDto : il est volontairement ignore pour eviter d'inserer des donnees
-     * incorrectes/nulles.
-     */
     private int importDetections(Path dir) {
         int count = 0;
         for (Path file : listJsonFiles(dir)) {
@@ -188,7 +158,7 @@ public class RealDataImporter {
                 continue;
             }
             if (detectionEventRepository.countByEventDate(fileDate) > 0) {
-                continue; // deja importe lors d'un demarrage precedent
+                continue;
             }
             try (InputStream in = Files.newInputStream(file)) {
                 count += detectionFileService.parseAndSave(in, robotId, fileDate);
@@ -214,7 +184,6 @@ public class RealDataImporter {
         }
     }
 
-    /** Les fichiers kilometrage/detection portent leur date dans le nom (AAAA-MM-JJ.json), seule source de date pour ces categories. */
     private LocalDate dateFromFileName(Path file) {
         String name = file.getFileName().toString();
         String withoutExt = name.endsWith(".json") ? name.substring(0, name.length() - 5) : name;

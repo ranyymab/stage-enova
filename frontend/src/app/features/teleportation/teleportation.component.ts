@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { API_ORIGIN } from '../../core/config/api.config';
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
 
 interface TeleoperationEvent {
@@ -96,7 +97,7 @@ export class TeleoperationComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<TeleoperationEvent[]>('https://stage-enova-3.onrender.com/api/teleportation?date=' + this.selectedDate)
+    this.http.get<TeleoperationEvent[]>(API_ORIGIN + '/api/teleportation?date=' + this.selectedDate)
       .subscribe({ next: d => { this.events = d; this.loading = false; }, error: () => { this.loading = false; } });
   }
 

@@ -9,10 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-/**
- * Vérifie que le limiteur de débit maison bloque bien un client qui dépasse
- * le seuil autorisé sur une route sensible (ici /api/auth/login, 10/min).
- */
 class RateLimitFilterTest {
 
     @Test
@@ -55,14 +51,12 @@ class RateLimitFilterTest {
         RateLimitFilter filter = new RateLimitFilter();
         FilterChain chain = mock(FilterChain.class);
 
-        // Client A épuise son quota
         for (int i = 0; i < 10; i++) {
             MockHttpServletRequest request = new MockHttpServletRequest("POST", "/api/auth/login");
             request.setRemoteAddr("10.0.0.3");
             filter.doFilterInternal(request, new MockHttpServletResponse(), chain);
         }
 
-        // Client B, IP différente, doit toujours pouvoir passer
         MockHttpServletRequest requestB = new MockHttpServletRequest("POST", "/api/auth/login");
         requestB.setRemoteAddr("10.0.0.4");
         MockHttpServletResponse responseB = new MockHttpServletResponse();

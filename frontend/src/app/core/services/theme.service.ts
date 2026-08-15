@@ -5,11 +5,6 @@ export type ThemeMode = 'light' | 'dark';
 
 const THEME_KEY = 'enova_theme';
 
-/**
- * Gere le mode clair/sombre de l'application.
- * Le choix est persiste dans localStorage et applique via un attribut
- * data-theme sur <html>, lu par les variables CSS dans styles.css.
- */
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly platformId = inject(PLATFORM_ID);

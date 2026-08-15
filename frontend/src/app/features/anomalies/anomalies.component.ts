@@ -5,6 +5,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
 import { getSafeAnomalyIcon } from '../../shared/utils/anomaly-icons';
+import { API_ORIGIN } from '../../core/config/api.config';
 
 interface Anomalie {
   id: number;
@@ -29,28 +30,7 @@ interface Anomalie {
   longitude: number | null;
 }
 
-
-/*
- * Generic images available on the backend.
- *
- * IMPORTANT:
- *
- * These correspond to:
- *
- * backend/data/images/
- *
- * They are exposed publicly through:
- *
- * /data/images/<filename>
- *
- * There is intentionally NO unknown.png here.
- *
- * If there is no matching generic image,
- * the component falls back to the SVG icon.
- */
 const TYPE_IMAGE_FILE: Record<string, string> = {
-
-  /* English */
 
   person: 'person.png',
   people: 'person.png',
@@ -65,9 +45,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
   debris: 'debris.jpg',
   rubbish: 'debris.jpg',
   waste: 'debris.jpg',
-
-
-  /* French */
 
   personne: 'person.png',
   personnes: 'person.png',
@@ -84,7 +61,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
   débris: 'debris.jpg'
 };
 
-
 @Component({
   selector: 'app-anomalies',
 
@@ -97,11 +73,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
   template: `
 
     <div class="page">
-
-
-      <!-- =========================================================
-           HEADER
-           ========================================================= -->
 
       <header class="page-header">
 
@@ -116,7 +87,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           </span>
 
         </div>
-
 
         <div class="filters">
 
@@ -142,7 +112,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
             </option>
 
           </select>
-
 
           <select
             [value]="criticiteFilter"
@@ -175,11 +144,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       </header>
 
-
-      <!-- =========================================================
-           LOADING
-           ========================================================= -->
-
       <div
         class="loading"
         *ngIf="loading"
@@ -191,11 +155,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
         ></div>
 
       </div>
-
-
-      <!-- =========================================================
-           ANOMALIES
-           ========================================================= -->
 
       <div
         class="anomalies-grid"
@@ -215,20 +174,10 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           [attr.data-anomaly-id]="a.id"
         >
 
-
-          <!-- =====================================================
-               IMAGE
-               ===================================================== -->
-
           <div
             class="card-image"
             [attr.data-obj]="getObjectType(a.objectDetected)"
           >
-
-
-            <!-- ===================================================
-                 1. REAL ANOMALY PHOTO
-                 =================================================== -->
 
             <img
               *ngIf="imageUrl(a) as src"
@@ -255,11 +204,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
                 )
               "
             />
-
-
-            <!-- ===================================================
-                 2. GENERIC TYPE IMAGE
-                 =================================================== -->
 
             <img
               *ngIf="
@@ -290,11 +234,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
               "
             />
 
-
-            <!-- ===================================================
-                 3. SVG FALLBACK
-                 =================================================== -->
-
             <span
               class="card-image-icon"
 
@@ -310,11 +249,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
               "
             ></span>
 
-
-            <!-- ===================================================
-                 TECHNICAL LABEL
-                 =================================================== -->
-
             <span
               class="image-type-label"
               *ngIf="
@@ -327,11 +261,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
           </div>
 
-
-          <!-- =====================================================
-               TOP
-               ===================================================== -->
-
           <div class="card-top">
 
             <span class="type-badge">
@@ -342,7 +271,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
               | uppercase }}
 
             </span>
-
 
             <span
               class="criticite-badge"
@@ -362,11 +290,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
           </div>
 
-
-          <!-- =====================================================
-               META
-               ===================================================== -->
-
           <div class="card-meta">
 
             <span class="mono">
@@ -378,7 +301,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
               {{ a.rawHour || '—' }}
 
             </span>
-
 
             <span
               *ngIf="
@@ -394,11 +316,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
             </span>
 
           </div>
-
-
-          <!-- =====================================================
-               FOOTER
-               ===================================================== -->
 
           <div class="card-footer">
 
@@ -423,11 +340,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       </div>
 
-
-      <!-- =========================================================
-           EMPTY
-           ========================================================= -->
-
       <div
         class="empty"
 
@@ -441,11 +353,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
         No anomalies found.
 
       </div>
-
-
-      <!-- =========================================================
-           ERROR
-           ========================================================= -->
 
       <div
         class="empty"
@@ -479,7 +386,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
     </div>
   `,
 
-
   styles: [
 
     FEATURE_PAGE_STYLES,
@@ -506,7 +412,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
         gap: 16px;
 
       }
-
 
       /* ==========================================================
          CARD
@@ -549,7 +454,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .anomalie-card:hover {
 
         box-shadow:
@@ -566,7 +470,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           translateY(-3px);
 
       }
-
 
       /* ==========================================================
          IMAGE
@@ -603,7 +506,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       /* ==========================================================
          TYPE BACKGROUNDS
          ========================================================== */
@@ -628,7 +530,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .card-image[data-obj='vehicle'],
       .card-image[data-obj='car'],
       .card-image[data-obj='automobile'],
@@ -649,7 +550,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .card-image[data-obj='animal'],
       .card-image[data-obj='animaux'] {
 
@@ -666,7 +566,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .card-image[data-obj='debris'] {
 
         background:
@@ -681,7 +580,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           );
 
       }
-
 
       /* ==========================================================
          IMAGE PHOTO
@@ -719,7 +617,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .anomalie-card:hover
       .card-image-photo {
 
@@ -727,7 +624,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           scale(1.035);
 
       }
-
 
       /* ==========================================================
          SVG FALLBACK
@@ -767,7 +663,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .card-image-icon svg {
 
         width:
@@ -778,7 +673,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .anomalie-card:hover
       .card-image-icon {
 
@@ -786,7 +680,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           scale(1.08);
 
       }
-
 
       .image-type-label {
 
@@ -816,7 +709,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       /* ==========================================================
          TOP
          ========================================================== */
@@ -841,7 +733,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           4px;
 
       }
-
 
       .type-badge {
 
@@ -871,7 +762,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       /* ==========================================================
          CRITICALITY
          ========================================================== */
@@ -882,7 +772,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           0 0 auto;
 
       }
-
 
       .criticite-badge[data-level='FAIBLE'] {
 
@@ -898,7 +787,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .criticite-badge[data-level='MOYENNE'] {
 
         background:
@@ -912,7 +800,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           var(--accent-warning);
 
       }
-
 
       .criticite-badge[data-level='HAUTE'] {
 
@@ -928,7 +815,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .criticite-badge[data-level='CRITIQUE'] {
 
         background:
@@ -942,7 +828,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           var(--accent-critical);
 
       }
-
 
       /* ==========================================================
          META
@@ -971,7 +856,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .coords {
 
         font-size:
@@ -981,7 +865,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           .8;
 
       }
-
 
       /* ==========================================================
          FOOTER
@@ -1011,7 +894,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       /* ==========================================================
          STATUS
          ========================================================== */
@@ -1030,7 +912,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .statut-badge[data-statut='EN_COURS'] {
 
         background:
@@ -1045,7 +926,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .statut-badge[data-statut='RESOLUE'] {
 
         background:
@@ -1059,7 +939,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           var(--accent-active);
 
       }
-
 
       /* ==========================================================
          RETRY
@@ -1103,7 +982,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
-
       .retry-btn:hover {
 
         background:
@@ -1116,7 +994,6 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           var(--accent-primary);
 
       }
-
 
       /* ==========================================================
          MOBILE
@@ -1146,68 +1023,40 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 export class AnomaliesComponent
   implements OnInit {
 
-
   private http =
     inject(HttpClient);
-
 
   private sanitizer =
     inject(DomSanitizer);
 
-
-  /*
-   * Backend origin.
-   */
-
   private readonly API_ORIGIN =
-    'https://stage-enova-3.onrender.com';
-
+    API_ORIGIN;
 
   anomalies: Anomalie[] = [];
-
 
   loading =
     true;
 
-
   loadError =
     false;
-
 
   statutFilter =
     '';
 
-
   criticiteFilter =
     '';
-
-
-  /*
-   * REAL image failures.
-   */
 
   private brokenImages =
     new Set<number>();
 
-
-  /*
-   * GENERIC image failures.
-   */
-
   private brokenTypeImages =
     new Set<number>();
-
 
   ngOnInit(): void {
 
     this.load();
 
   }
-
-
-  /* ==============================================================
-     LOAD
-     ============================================================== */
 
   load(): void {
 
@@ -1221,14 +1070,11 @@ export class AnomaliesComponent
 
     this.brokenTypeImages.clear();
 
-
     let url =
       `${this.API_ORIGIN}/api/anomalies`;
 
-
     const params: string[] =
       [];
-
 
     if (this.statutFilter) {
 
@@ -1240,7 +1086,6 @@ export class AnomaliesComponent
 
     }
 
-
     if (this.criticiteFilter) {
 
       params.push(
@@ -1251,7 +1096,6 @@ export class AnomaliesComponent
 
     }
 
-
     if (params.length > 0) {
 
       url +=
@@ -1259,12 +1103,10 @@ export class AnomaliesComponent
 
     }
 
-
     console.log(
       '[ANOMALIES] Loading:',
       url
     );
-
 
     this.http
       .get<Anomalie[]>(url)
@@ -1276,7 +1118,6 @@ export class AnomaliesComponent
             '[ANOMALIES] API response:',
             data
           );
-
 
           data.forEach((a) => {
 
@@ -1308,7 +1149,6 @@ export class AnomaliesComponent
 
           });
 
-
           this.anomalies =
             data;
 
@@ -1316,7 +1156,6 @@ export class AnomaliesComponent
             false;
 
         },
-
 
         error: (error) => {
 
@@ -1337,11 +1176,6 @@ export class AnomaliesComponent
 
   }
 
-
-  /* ==============================================================
-     FILTERS
-     ============================================================== */
-
   filterStatut(
     event: Event
   ): void {
@@ -1356,7 +1190,6 @@ export class AnomaliesComponent
 
   }
 
-
   filterCriticite(
     event: Event
   ): void {
@@ -1370,11 +1203,6 @@ export class AnomaliesComponent
     this.load();
 
   }
-
-
-  /* ==============================================================
-     STATUS LABEL
-     ============================================================== */
 
   statutLabel(
     status: string
@@ -1398,11 +1226,6 @@ export class AnomaliesComponent
     }
 
   }
-
-
-  /* ==============================================================
-     CRITICALITY LABEL
-     ============================================================== */
 
   criticiteLabel(
     criticite: string
@@ -1430,11 +1253,6 @@ export class AnomaliesComponent
 
   }
 
-
-  /* ==============================================================
-     NORMALIZE OBJECT TYPE
-     ============================================================== */
-
   getObjectType(
     type:
       string |
@@ -1451,25 +1269,14 @@ export class AnomaliesComponent
 
   }
 
-
-  /* ==============================================================
-     REAL IMAGE URL
-     ============================================================== */
-
   private buildImageUrl(
     a: Anomalie
   ): string | null {
-
 
     let path:
       string |
       null =
       null;
-
-
-    /*
-     * Direct image URL.
-     */
 
     if (
       a.imageUrl &&
@@ -1481,11 +1288,6 @@ export class AnomaliesComponent
 
     }
 
-
-    /*
-     * Direct photo URL.
-     */
-
     else if (
       a.photoUrl &&
       a.photoUrl.trim()
@@ -1495,11 +1297,6 @@ export class AnomaliesComponent
         a.photoUrl.trim();
 
     }
-
-
-    /*
-     * Backend path.
-     */
 
     else if (
       a.imageFilePath &&
@@ -1511,32 +1308,21 @@ export class AnomaliesComponent
 
     }
 
-
-    /*
-     * Filename.
-     */
-
     else if (
       a.imageFileName &&
       a.imageFileName.trim()
     ) {
 
       path =
-        `/data/images/${a.imageFileName.trim()}`;
+        `/images/detections/${a.imageFileName.trim()}`;
 
     }
-
 
     if (!path) {
 
       return null;
 
     }
-
-
-    /*
-     * Absolute URL.
-     */
 
     if (
       path.startsWith('http://') ||
@@ -1547,11 +1333,6 @@ export class AnomaliesComponent
 
     }
 
-
-    /*
-     * Normalize path.
-     */
-
     if (
       !path.startsWith('/')
     ) {
@@ -1561,17 +1342,11 @@ export class AnomaliesComponent
 
     }
 
-
     return (
       `${this.API_ORIGIN}${path}`
     );
 
   }
-
-
-  /* ==============================================================
-     REAL IMAGE
-     ============================================================== */
 
   imageUrl(
     a: Anomalie
@@ -1587,15 +1362,9 @@ export class AnomaliesComponent
 
     }
 
-
     return this.buildImageUrl(a);
 
   }
-
-
-  /* ==============================================================
-     GENERIC IMAGE
-     ============================================================== */
 
   typeImageUrl(
     a: Anomalie
@@ -1611,26 +1380,13 @@ export class AnomaliesComponent
 
     }
 
-
     const key =
       this.getObjectType(
         a.objectDetected
       );
 
-
     const file =
       TYPE_IMAGE_FILE[key];
-
-
-    /*
-     * IMPORTANT:
-     *
-     * If there is no generic image
-     * for this object type, return null.
-     *
-     * This causes Angular to use
-     * the SVG fallback.
-     */
 
     if (!file) {
 
@@ -1638,19 +1394,13 @@ export class AnomaliesComponent
 
     }
 
-
     return (
       `${this.API_ORIGIN}` +
-      `/data/images/` +
+      `/images/detections/` +
       `${file}`
     );
 
   }
-
-
-  /* ==============================================================
-     IMAGE LOADED
-     ============================================================== */
 
   onImageLoad(
     id: number,
@@ -1665,11 +1415,6 @@ export class AnomaliesComponent
 
   }
 
-
-  /* ==============================================================
-     IMAGE ERROR
-     ============================================================== */
-
   onImageError(
     event: Event,
     id: number,
@@ -1682,21 +1427,10 @@ export class AnomaliesComponent
       event.target as
       HTMLImageElement;
 
-
     console.error(
       `[ANOMALIES] ${level} image FAILED for anomaly ${id}:`,
       img?.src
     );
-
-
-    /*
-     * REAL PHOTO FAILED.
-     *
-     * Hide it.
-     *
-     * Angular will then attempt
-     * the generic image.
-     */
 
     if (
       level === 'photo'
@@ -1708,24 +1442,9 @@ export class AnomaliesComponent
 
     }
 
-
-    /*
-     * GENERIC IMAGE FAILED.
-     *
-     * Hide it.
-     *
-     * Angular will then use
-     * the SVG icon.
-     */
-
     this.brokenTypeImages.add(id);
 
   }
-
-
-  /* ==============================================================
-     SVG FALLBACK
-     ============================================================== */
 
   objectIcon(
     type:

@@ -10,11 +10,6 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
-/**
- * Service JWT — F5 Authentification.
- * Génère et valide les tokens signés (HS256), durée de vie configurée
- * via jwt.expiration (24h par défaut, cf. cahier des charges).
- */
 @Service
 public class JwtService {
 

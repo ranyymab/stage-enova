@@ -17,37 +17,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Random;
 
-/**
- * Fait "vivre" le robot en continu, au lieu de se contenter de donnees
- * statiques importees/generees une seule fois. Toutes les secondes
- * ({@link #tick()}), ce service avance reellement le robot le long d'une
- * boucle de patrouille SEQUENTIELLE (des points regulierement espaces sur un
- * vrai trajet, pas des positions aleatoires eparpillees comme le fait
- * DataSeeder pour les autres categories) et ecrit de vraies lignes dans les
- * memes tables que celles deja utilisees par les imports/le seeding
- * (kilometrage_summary, mission_event, detection_event).
- *
- * Pourquoi ceci corrige "la trajectoire ne ressemble a rien" : le frontend
- * (LiveMapComponent) colle chaque segment aux vraies rues via OSRM, mais un
- * service de routage ne peut relier intelligemment que des points DEJA
- * proches et sequentiels. Des points aleatoires eparpilles (l'ancien
- * comportement, herite de DataSeeder.jitterGps()) n'ont aucune relation de
- * voisinage entre eux : OSRM est alors force de tracer le chemin le plus
- * direct possible entre deux points parfois tres eloignes, ce qui traverse
- * des parcs/batiments et ne ressemble a rien de credible. Ce service ecrit
- * au contraire un point toutes les secondes, en avancant pas a pas le long
- * d'une meme boucle - donc chaque segment consecutif est court et proche,
- * exactement ce dont un service de routage a besoin pour produire un rendu
- * credible.
- *
- * Cycle de vie simule : PATROLLING (consomme la batterie, avance sur la
- * boucle) -> batterie <= seuil bas -> RETURNING (revient vers le poste de
- * charge) -> arrivee -> CHARGING (immobile, batterie remonte) -> batterie
- * >= seuil haut -> repart en PATROLLING. Chaque transition ecrit les
- * evenements MissionEvent correspondants (BACK_HOME start/end, DOCKING
- * docking/undocking) exactement dans le format que DashboardService sait
- * deja lire (voir buildChargeCycles/resolveBatteryLevel/resolveChargingStatus).
- */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -81,20 +50,9 @@ public class RobotSimulationService {
     @Value("${app.simulation.anomaly-chance:0.006}")
     private double anomalyChancePerTick;
 
-    /** Nombre maximum d'anomalies que la simulation peut générer par jour
-     *  (au-delà, plus aucune nouvelle anomalie n'est créée jusqu'au lendemain).
-     *  Évite qu'une longue journée de patrouille (plusieurs cycles) ne fasse
-     *  exploser le nombre d'anomalies "du jour" affichées sur le tableau de
-     *  bord et la page Anomalies. */
     @Value("${app.simulation.max-anomalies-per-day:5}")
     private int maxAnomaliesPerDay;
 
-    // Boucle de patrouille reelle (quartier universitaire de Sousse, autour de
-    // la base du projet - meme zone que la carte deja utilisee par le
-    // frontend). Index 0 = poste de charge du robot ; la boucle revient sur
-    // ce meme point a la fin. Points volontairement rapproches (~100-250m)
-    // pour que le collage aux rues (OSRM, cote frontend) ait toujours deux
-    // points voisins et coherents a relier.
     private static final double[][] ROUTE = {
             {35.8176, 10.5913},
             {35.8176, 10.592962},
@@ -204,7 +162,6 @@ public class RobotSimulationService {
         }
     }
 
-    /** Position interpolee le long de la boucle, a la distance donnee (en metres) depuis le depart. */
     private double[] positionAt(double distanceAlongRouteM) {
         double d = ((distanceAlongRouteM % routeTotalLength) + routeTotalLength) % routeTotalLength;
         double acc = 0.0;

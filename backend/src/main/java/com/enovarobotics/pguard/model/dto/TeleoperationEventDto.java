@@ -11,7 +11,7 @@ import lombok.Setter;
 public class TeleoperationEventDto {
 
     @JsonProperty("0-Info")
-    private String info; // start | stop
+    private String info;
 
     @JsonProperty("1-Date")
     private String date;

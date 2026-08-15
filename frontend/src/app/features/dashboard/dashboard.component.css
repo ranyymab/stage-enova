@@ -1,31 +1,3 @@
-/* ================================================================
-   ENOVA ROBOTICS — DASHBOARD
-   Complete responsive stylesheet
-   ================================================================ */
-
-
-/* ================================================================
-   ROOT / DASHBOARD
-   ================================================================ */
-/* ================================================================
-   MOBILE — KPI CARDS SIDE BY SIDE
-   ================================================================ */
-
-@media (max-width: 768px) {
-  .kpi-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-}
-
-
-@media (max-width: 380px) {
-  .kpi-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 7px;
-  }
-}
-
 :host {
   --sidebar-width: 285px;
 
@@ -71,9 +43,6 @@
   overflow-x: hidden;
 }
 
-
-/* Decorative dashboard overlay */
-
 .dashboard::before {
   content: '';
 
@@ -97,24 +66,12 @@
   z-index: 0;
 }
 
-
 .dashboard > * {
   position: relative;
   z-index: 1;
 }
 
-
-/* ================================================================
-   LIGHT MODE
-   ================================================================ */
-
-/*
-   IMPORTANT:
-   In light mode the dashboard keeps the ENOVA image visible.
-   Text becomes dark where appropriate instead of white-on-white.
-*/
-
-:root[data-theme='light'] .dashboard {
+:host-context([data-theme='light']) .dashboard {
   color: #111827;
 
   background:
@@ -131,12 +88,7 @@
   background-repeat: no-repeat;
 }
 
-
-/*
-   Hero image is intentionally kept visible in light mode.
-*/
-
-:root[data-theme='light'] .dashboard .enova-hero-banner {
+:host-context([data-theme='light']) .dashboard .enova-hero-banner {
   background:
     linear-gradient(
       90deg,
@@ -152,36 +104,45 @@
   color: #111827;
 
   border-color: rgba(45, 116, 201, 0.45);
+
+  box-shadow:
+    0 20px 50px rgba(45, 116, 201, 0.10),
+    0 10px 25px rgba(15, 23, 42, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-
-/* Light mode hero text */
-
-:root[data-theme='light'] .dashboard .hero-title {
+:host-context([data-theme='light']) .dashboard .hero-title {
   color: #111827;
 }
 
-:root[data-theme='light'] .dashboard .hero-subtitle {
+:host-context([data-theme='light']) .dashboard .hero-subtitle {
   color: #374151;
 }
 
-:root[data-theme='light'] .dashboard .chip {
+:host-context([data-theme='light']) .dashboard .hero-badge {
+  background: rgba(45, 116, 201, 0.10);
+  border-color: rgba(45, 116, 201, 0.25);
+  color: #2563eb;
+}
+
+:host-context([data-theme='light']) .dashboard .chip {
   background: rgba(255, 255, 255, 0.78);
   border-color: rgba(17, 24, 39, 0.12);
 }
 
-:root[data-theme='light'] .dashboard .chip-label {
+:host-context([data-theme='light']) .dashboard .chip-label {
   color: #4b5563;
 }
 
-:root[data-theme='light'] .dashboard .chip-val {
+:host-context([data-theme='light']) .dashboard .chip-val {
   color: #111827;
 }
 
+:host-context([data-theme='light']) .dashboard .chip-val.highlight {
+  color: #2563eb;
+}
 
-/* Light mode date card */
-
-:root[data-theme='light'] .dashboard .date-navigator-card {
+:host-context([data-theme='light']) .dashboard .date-navigator-card {
   background: rgba(255, 255, 255, 0.88);
 
   border-color: rgba(17, 24, 39, 0.14);
@@ -192,30 +153,25 @@
   backdrop-filter: blur(12px);
 }
 
-:root[data-theme='light'] .dashboard .date-label {
+:host-context([data-theme='light']) .dashboard .date-label {
   color: #4b5563;
 }
 
-:root[data-theme='light'] .dashboard .date-nav-btn {
+:host-context([data-theme='light']) .dashboard .date-nav-btn {
   background: rgba(17, 24, 39, 0.06);
   color: #111827;
   border-color: rgba(17, 24, 39, 0.14);
 }
 
-:root[data-theme='light'] .dashboard .date-input {
+:host-context([data-theme='light']) .dashboard .date-input {
   background: rgba(255, 255, 255, 0.9);
   color: #111827;
   border-color: rgba(17, 24, 39, 0.18);
 }
 
-:root[data-theme='light'] .dashboard .date-display {
+:host-context([data-theme='light']) .dashboard .date-display {
   color: #2563eb;
 }
-
-
-/* ================================================================
-   REFRESH BAR
-   ================================================================ */
 
 .refresh-bar {
   position: absolute;
@@ -264,11 +220,6 @@
     left: 100%;
   }
 }
-
-
-/* ================================================================
-   ANOMALY TOAST
-   ================================================================ */
 
 .anomaly-toast {
   position: fixed;
@@ -345,11 +296,6 @@
   color: var(--text-secondary);
 }
 
-
-/* ================================================================
-   ENOVA HERO
-   ================================================================ */
-
 .enova-hero-banner {
   position: relative;
 
@@ -422,6 +368,15 @@
   z-index: 1;
 
   opacity: 0.85;
+}
+
+.hero-bg-graphic img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 16px;
 }
 
 .hero-content {
@@ -569,11 +524,6 @@
   color: #3b82d6;
 }
 
-
-/* ================================================================
-   DATE NAVIGATOR
-   ================================================================ */
-
 .hero-actions {
   z-index: 2;
 }
@@ -682,11 +632,6 @@
   text-transform: capitalize;
 }
 
-
-/* ================================================================
-   SECTION HEADER
-   ================================================================ */
-
 .section-header {
   display: flex;
   align-items: center;
@@ -717,38 +662,35 @@
   color: var(--text-muted);
 }
 
-
-/* ================================================================
-   KPI GRID — DESKTOP
-   ================================================================ */
-
 .kpi-grid {
   display: grid;
 
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 18px;
+  gap: 24px;
 
   width: 100%;
 
   min-width: 0;
+
+  box-sizing: border-box;
 }
-
-
-/*
-   Make Angular KPI components shrink correctly.
-*/
 
 .kpi-grid > * {
   min-width: 0;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
+:host-context([data-theme='light']) .kpi-grid {
+  gap: 24px;
+}
 
-/* ================================================================
-   PANELS
-   ================================================================ */
+:host-context([data-theme='light']) .kpi-grid > app-kpi-card {
+  color: #111827;
+}
 
 .panel {
   position: relative;
@@ -844,10 +786,35 @@
   font-weight: 500;
 }
 
+:host-context([data-theme='light']) .dashboard .panel,
+:host-context([data-theme='light']) .dashboard .summary-card,
+:host-context([data-theme='light']) .dashboard .target-section,
+:host-context([data-theme='light']) .dashboard .chart-panel {
+  background: rgba(255, 255, 255, 0.88);
 
-/* ================================================================
-   FLEET MAP / TELEMETRY
-   ================================================================ */
+  border-color: rgba(17, 24, 39, 0.12);
+
+  color: #111827;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+:host-context([data-theme='light']) .dashboard .panel-header h2 {
+  color: #111827;
+}
+
+:host-context([data-theme='light']) .dashboard .panel-sub {
+  color: #4b5563;
+}
+
+:host-context([data-theme='light']) .dashboard .section-title-wrap h2 {
+  color: #111827;
+}
+
+:host-context([data-theme='light']) .dashboard .section-title-wrap p {
+  color: #6b7280;
+}
 
 .robot-row {
   display: grid;
@@ -998,11 +965,6 @@
   height: 14px;
 }
 
-
-/* ================================================================
-   CHARGE LIST
-   ================================================================ */
-
 .charge-list {
   list-style: none;
 
@@ -1152,11 +1114,6 @@
   color: var(--text-muted);
 }
 
-
-/* ================================================================
-   CHARTS
-   ================================================================ */
-
 .charts-row {
   display: grid;
 
@@ -1255,11 +1212,6 @@
     width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
-/* ================================================================
-   LOWER ROW
-   ================================================================ */
-
 .lower-row {
   display: grid;
 
@@ -1271,11 +1223,6 @@
 
   min-width: 0;
 }
-
-
-/* ================================================================
-   ACTIVITY FEED
-   ================================================================ */
 
 .activity-feed {
   list-style: none;
@@ -1412,11 +1359,6 @@
 
   color: var(--text-secondary);
 }
-
-
-/* ================================================================
-   ANOMALIES TABLE
-   ================================================================ */
 
 .table-scroll {
   width: 100%;
@@ -1559,11 +1501,6 @@
   color: var(--brand-primary);
 }
 
-
-/* ================================================================
-   ANOMALY IMAGE BUTTON
-   ================================================================ */
-
 .image-link-btn {
   display: inline-flex;
 
@@ -1596,11 +1533,6 @@
 .no-img-text {
   color: var(--text-muted);
 }
-
-
-/* ================================================================
-   EMPTY STATES
-   ================================================================ */
 
 .timeline-empty,
 .empty-cell {
@@ -1657,11 +1589,6 @@
   cursor: pointer;
 }
 
-
-/* ================================================================
-   THEME OVERRIDES
-   ================================================================ */
-
 .dashboard .panel,
 .dashboard .summary-card,
 .dashboard .target-section,
@@ -1692,10 +1619,38 @@
   background: var(--accent-active, #3b82d6) !important;
 }
 
+:host-context([data-theme='light']) .dashboard .position-card,
+:host-context([data-theme='light']) .dashboard .charge-item,
+:host-context([data-theme='light']) .dashboard .activity-item {
+  background: rgba(248, 250, 252, 0.90);
 
-/* ================================================================
-   LOADING VEIL
-   ================================================================ */
+  border-color: rgba(17, 24, 39, 0.10);
+}
+
+:host-context([data-theme='light']) .dashboard .position-label,
+:host-context([data-theme='light']) .dashboard .activity-title,
+:host-context([data-theme='light']) .dashboard .target-pct {
+  color: #111827;
+}
+
+:host-context([data-theme='light']) .dashboard .position-meta,
+:host-context([data-theme='light']) .dashboard .activity-subtitle,
+:host-context([data-theme='light']) .dashboard .activity-time,
+:host-context([data-theme='light']) .dashboard .badge-time {
+  color: #6b7280;
+}
+
+:host-context([data-theme='light']) .dashboard .data-table td {
+  color: #374151;
+}
+
+:host-context([data-theme='light']) .dashboard .data-table th {
+  color: #6b7280;
+}
+
+:host-context([data-theme='light']) .dashboard .data-table tr:hover td {
+  background: #f8fafc;
+}
 
 .dashboard-loading-veil {
   left: var(--sidebar-width, 285px) !important;
@@ -1706,11 +1661,6 @@
     left: 0 !important;
   }
 }
-
-
-/* ================================================================
-   TABLET
-   ================================================================ */
 
 @media (max-width: 1100px) {
 
@@ -1727,11 +1677,6 @@
   }
 }
 
-
-/* ================================================================
-   MOBILE
-   ================================================================ */
-
 @media (max-width: 768px) {
 
   .dashboard {
@@ -1746,11 +1691,6 @@
 
     background-attachment: scroll;
   }
-
-
-  /* --------------------------------------------------------------
-     HERO
-     -------------------------------------------------------------- */
 
   .enova-hero-banner {
     flex-direction: column;
@@ -1821,29 +1761,19 @@
     padding: 13px 14px;
   }
 
-
-  /* --------------------------------------------------------------
-     KPI GRID — KEEP 3 NEXT TO EACH OTHER
-     -------------------------------------------------------------- */
-
   .kpi-grid {
     display: grid !important;
-
-    /*
-      THIS IS THE IMPORTANT PART.
-
-      Never change this to 1fr on mobile.
-      The three KPI cards remain side-by-side.
-    */
 
     grid-template-columns:
       repeat(3, minmax(0, 1fr)) !important;
 
-    gap: 7px !important;
+    gap: 10px !important;
 
     width: 100%;
 
     min-width: 0;
+
+    box-sizing: border-box;
   }
 
   .kpi-grid > * {
@@ -1852,12 +1782,19 @@
     width: 100% !important;
 
     max-width: 100% !important;
+
+    box-sizing: border-box;
   }
 
+  .kpi-grid app-kpi-card {
+    min-width: 0 !important;
 
-  /*
-     Compact KPI cards so they fit a phone screen.
-  */
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box;
+  }
 
   .kpi-grid .panel,
   .kpi-grid .summary-card {
@@ -1880,11 +1817,6 @@
 
     right: 8px;
   }
-
-
-  /*
-     Prevent long KPI text from expanding the grid.
-  */
 
   .kpi-grid * {
     min-width: 0;
@@ -1920,11 +1852,6 @@
     line-height: 1.2;
   }
 
-
-  /* --------------------------------------------------------------
-     OTHER DASHBOARD ROWS
-     -------------------------------------------------------------- */
-
   .robot-row {
     grid-template-columns: 1fr;
 
@@ -1943,11 +1870,6 @@
     gap: 14px;
   }
 
-
-  /* --------------------------------------------------------------
-     PANELS
-     -------------------------------------------------------------- */
-
   .panel {
     padding: 18px 16px;
 
@@ -1957,11 +1879,6 @@
   .panel-header {
     margin-bottom: 15px;
   }
-
-
-  /* --------------------------------------------------------------
-     TABLE
-     -------------------------------------------------------------- */
 
   .table-scroll {
     width: 100%;
@@ -1975,11 +1892,6 @@
     min-width: 650px;
   }
 
-
-  /* --------------------------------------------------------------
-     ANOMALY TOAST
-     -------------------------------------------------------------- */
-
   .anomaly-toast {
     left: 10px;
 
@@ -1991,11 +1903,6 @@
 
     box-sizing: border-box;
   }
-
-
-  /* --------------------------------------------------------------
-     SECTION HEADER
-     -------------------------------------------------------------- */
 
   .section-header {
     align-items: flex-start;
@@ -2011,11 +1918,6 @@
     font-size: 11px;
   }
 
-
-  /* --------------------------------------------------------------
-     MAP
-     -------------------------------------------------------------- */
-
   .chart-wrap {
     height: 210px;
   }
@@ -2023,12 +1925,49 @@
   .chart-wrap-donut {
     height: 160px;
   }
+
+  :host-context([data-theme='light']) .dashboard {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.76),
+        rgba(248, 250, 252, 0.84)
+      ),
+      url('/assets/1.png');
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: scroll;
+  }
+
+  :host-context([data-theme='light']) .dashboard .enova-hero-banner {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.93) 0%,
+        rgba(255, 255, 255, 0.72) 48%,
+        rgba(255, 255, 255, 0.22) 100%
+      ),
+      url('/assets/1.png');
+
+    background-size: cover;
+
+    background-position: center;
+  }
+
+  :host-context([data-theme='light']) .dashboard .hero-title,
+  :host-context([data-theme='light']) .dashboard .section-title-wrap h2,
+  :host-context([data-theme='light']) .dashboard .panel-header h2 {
+    color: #111827;
+  }
+
+  :host-context([data-theme='light']) .dashboard .hero-subtitle,
+  :host-context([data-theme='light']) .dashboard .panel-sub {
+    color: #374151;
+  }
 }
-
-
-/* ================================================================
-   SMALL PHONE
-   ================================================================ */
 
 @media (max-width: 480px) {
 
@@ -2040,16 +1979,11 @@
     gap: 13px;
   }
 
-
-  /* --------------------------------------------------------------
-     KPI — STILL 3 COLUMNS
-     -------------------------------------------------------------- */
-
   .kpi-grid {
     grid-template-columns:
       repeat(3, minmax(0, 1fr)) !important;
 
-    gap: 5px !important;
+    gap: 7px !important;
   }
 
   .kpi-grid .panel,
@@ -2084,11 +2018,6 @@
     font-size: 7px !important;
   }
 
-
-  /* --------------------------------------------------------------
-     HERO
-     -------------------------------------------------------------- */
-
   .enova-hero-banner {
     padding: 16px 13px;
 
@@ -2119,11 +2048,6 @@
     padding: 11px 10px;
   }
 
-
-  /* --------------------------------------------------------------
-     PANELS
-     -------------------------------------------------------------- */
-
   .panel {
     padding: 15px 12px;
 
@@ -2133,11 +2057,6 @@
   .panel-header h2 {
     font-size: 14px;
   }
-
-
-  /* --------------------------------------------------------------
-     ACTIVITY
-     -------------------------------------------------------------- */
 
   .activity-item {
     padding: 9px;
@@ -2165,11 +2084,6 @@
   }
 }
 
-
-/* ================================================================
-   VERY SMALL PHONES — 360px
-   ================================================================ */
-
 @media (max-width: 380px) {
 
   .dashboard {
@@ -2177,11 +2091,6 @@
 
     padding-right: 5px;
   }
-
-
-  /*
-     STILL KEEP 3 KPIs BESIDE EACH OTHER.
-  */
 
   .kpi-grid {
     grid-template-columns:
@@ -2232,67 +2141,6 @@
     box-sizing: border-box;
   }
 }
-
-
-/* ================================================================
-   LIGHT MODE — MOBILE
-   ================================================================ */
-
-@media (max-width: 768px) {
-
-  :root[data-theme='light'] .dashboard {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.76),
-        rgba(248, 250, 252, 0.84)
-      ),
-      url('/assets/1.png');
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-attachment: scroll;
-  }
-
-
-  /*
-     Keep the hero image visible instead of turning
-     the entire hero into a flat white block.
-  */
-
-  :root[data-theme='light'] .dashboard .enova-hero-banner {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.93) 0%,
-        rgba(255, 255, 255, 0.72) 48%,
-        rgba(255, 255, 255, 0.22) 100%
-      ),
-      url('/assets/1.png');
-
-    background-size: cover;
-
-    background-position: center;
-  }
-
-  :root[data-theme='light'] .dashboard .hero-title,
-  :root[data-theme='light'] .dashboard .section-title-wrap h2,
-  :root[data-theme='light'] .dashboard .panel-header h2 {
-    color: #111827;
-  }
-
-  :root[data-theme='light'] .dashboard .hero-subtitle,
-  :root[data-theme='light'] .dashboard .panel-sub {
-    color: #374151;
-  }
-}
-
-
-/* ================================================================
-   ACCESSIBILITY / TOUCH
-   ================================================================ */
 
 @media (hover: none) and (pointer: coarse) {
 

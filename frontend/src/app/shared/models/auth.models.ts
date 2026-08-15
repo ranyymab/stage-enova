@@ -38,9 +38,7 @@ export interface GoogleLoginRequest {
 
 export interface MessageResponse {
   message: string;
-  /** Present only when SMTP isn't configured on the server and the backend
-   *  fell back to returning the code directly instead of silently claiming
-   *  the e-mail was sent. Never present in a real production deployment. */
+
   devCode?: string | null;
 }
 
@@ -60,4 +58,3 @@ export interface ApiErrorBody {
   attemptsRemaining?: number;
   timestamp?: string;
 }
-

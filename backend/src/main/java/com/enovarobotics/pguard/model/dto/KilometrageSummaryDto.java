@@ -5,10 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * DTO pour la catégorie "Kilometrage" — objet plat unique (pas une liste),
- * clés snake_case sans préfixe numérique, écrasé/upserté par jour.
- */
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)

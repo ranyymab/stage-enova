@@ -4,14 +4,6 @@ import { AUTH_CONFIG } from '../config/app-config';
 
 declare const google: any;
 
-/**
- * Intègre le bouton "Se connecter avec Google" (Google Identity Services).
- * Le SDK est chargé via <script src="https://accounts.google.com/gsi/client">
- * dans index.html. Ce service se contente d'initialiser le SDK avec notre
- * Client ID et de dessiner le bouton ; la vérification réelle du jeton se
- * fait côté backend (GoogleTokenService) — on ne fait JAMAIS confiance à ce
- * jeton côté client.
- */
 @Injectable({ providedIn: 'root' })
 export class GoogleIdentityService {
   private readonly platformId = inject(PLATFORM_ID);
@@ -25,11 +17,6 @@ export class GoogleIdentityService {
     return !AUTH_CONFIG.GOOGLE_CLIENT_ID.startsWith('REPLACE_WITH_');
   }
 
-  /**
-   * Dessine le bouton officiel Google dans l'élément fourni.
-   * `onCredential` reçoit le ID token JWT signé par Google à transmettre
-   * tel quel au backend (POST /api/auth/google).
-   */
   renderButton(container: HTMLElement, onCredential: (idToken: string) => void): void {
     if (!this.isBrowser || !this.isConfigured()) {
       return;

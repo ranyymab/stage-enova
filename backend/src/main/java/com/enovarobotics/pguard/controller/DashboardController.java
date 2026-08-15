@@ -93,10 +93,6 @@ public class DashboardController {
         return dashboardService.buildTimeline(reference);
     }
 
-    /** Toutes les operations du robot ce jour-la, tous types confondus
-     * (missions, docking, retour base, inspection, teleoperation, detections),
-     * fusionnees et triees chronologiquement - une vue "journal complet de
-     * la journee" plutot que des listes separees par categorie. */
     @GetMapping("/activity-feed")
     public List<Map<String, Object>> getActivityFeed(
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date

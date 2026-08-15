@@ -12,15 +12,6 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-/**
- * Génère, envoie et vérifie les codes à usage unique (OTP) pour la
- * confirmation d'adresse e-mail à l'inscription.
- * - Code à 6 chiffres généré avec SecureRandom (jamais Math.random).
- * - Stocké uniquement sous forme de hash BCrypt (jamais en clair, comme un mot de passe).
- * - Expire après 10 minutes.
- * - Maximum 5 tentatives de saisie avant invalidation (anti brute-force).
- * - Renvoi limité à 1 fois par 60 secondes (anti spam / anti abus e-mail).
- */
 @Service
 @RequiredArgsConstructor
 public class VerificationCodeService {
@@ -38,14 +29,6 @@ public class VerificationCodeService {
     @Value("${app.verification.resend-cooldown-seconds:60}")
     private long resendCooldownSeconds;
 
-    /**
-     * Genere et envoie un nouveau code. Retourne {@code null} si l'e-mail a
-     * reellement ete envoye par SMTP (cas normal), ou renvoie le code
-     * lui-meme si l'envoi a echoue et que le repli developpement
-     * (app.mail.log-code-fallback) est actif, pour que l'appelant puisse
-     * l'exposer directement dans la reponse API plutot que de laisser
-     * croire a un envoi reussi.
-     */
     @Transactional
     public String generateAndSend(String email, String fullName, VerificationCode.Purpose purpose) {
         repository.findTopByEmailAndPurposeAndConsumedFalseOrderByCreatedAtDesc(email, purpose)
@@ -76,11 +59,7 @@ public class VerificationCodeService {
         if (actuallySent) {
             return null;
         }
-        // Envoi réel échoué (SMTP non configuré ou en erreur) : on n'expose le
-        // code au client que si le mode démo/dev est explicitement actif
-        // (app.mail.log-code-fallback). Sinon, l'inscription réussit quand
-        // même (jamais bloquée par un souci SMTP) mais le code ne part que
-        // dans les logs serveur, comme en production réelle.
+
         return emailService.isLogCodeFallbackEnabled() ? code : null;
     }
 
@@ -112,10 +91,7 @@ public class VerificationCodeService {
         entity.setConsumed(true);
         repository.save(entity);
     }
-    
-    /**
-     * Retourne des métadonnées utiles pour le frontend sur le code actuel.
-     */
+
     public CodeMetadata getCodeMetadata(String email, VerificationCode.Purpose purpose) {
         return repository
                 .findTopByEmailAndPurposeAndConsumedFalseOrderByCreatedAtDesc(email, purpose)
@@ -126,15 +102,12 @@ public class VerificationCodeService {
                 })
                 .orElseThrow(() -> new InvalidCodeException("Aucun code actif."));
     }
-    
-    /**
-     * Métadonnées sur le code de vérification pour affichage client.
-     */
+
     public static class CodeMetadata {
         public final int expirySeconds;
         public final int attemptsRemaining;
         public final int maxAttempts;
-        
+
         public CodeMetadata(int expirySeconds, int attemptsRemaining, int maxAttempts) {
             this.expirySeconds = expirySeconds;
             this.attemptsRemaining = attemptsRemaining;
@@ -143,7 +116,7 @@ public class VerificationCodeService {
     }
 
     private String generateSixDigitCode() {
-        int value = RANDOM.nextInt(900_000) + 100_000; // 100000-999999
+        int value = RANDOM.nextInt(900_000) + 100_000;
         return String.valueOf(value);
     }
 

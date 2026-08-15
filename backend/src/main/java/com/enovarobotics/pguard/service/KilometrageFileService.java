@@ -12,14 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 
-/**
- * Service de parsing pour "Kilometrage" — SEULE catégorie nécessitant un
- * UPSERT plutôt qu'une insertion simple, car le robot écrase le fichier du
- * jour à chaque mise à jour (cf. cahier des charges, section 2.2.4 et
- * 3.2.2). La date du résumé est déduite de la date d'upload (le nom de
- * fichier est la seule source de date pour cette catégorie, le contenu
- * JSON n'en contenant pas).
- */
 @Service
 @RequiredArgsConstructor
 @Slf4j

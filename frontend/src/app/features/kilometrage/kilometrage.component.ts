@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { API_ORIGIN } from '../../core/config/api.config';
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
 
 interface KmSummaryApi {
@@ -9,7 +10,6 @@ interface KmSummaryApi {
 
   summaryDate?: string | null;
 
-  // Possible backend names
   distanceKm?: number | null;
   distance_km?: number | null;
 
@@ -296,14 +296,12 @@ export class KilometrageComponent implements OnInit {
 
     this.http
       .get<KmSummaryApi[]>(
-        'https://stage-enova-3.onrender.com/api/kilometrage'
+        API_ORIGIN + '/api/kilometrage'
       )
       .subscribe({
 
         next: (data) => {
 
-          // IMPORTANT:
-          // See exactly what the backend sends.
           console.log('KILOMETRAGE API RESPONSE:', data);
 
           this.summaries = [...data]
@@ -335,16 +333,6 @@ export class KilometrageComponent implements OnInit {
   private normalizeSummary(
     item: KmSummaryApi
   ): KmSummary {
-
-    /*
-     * DISTANCE
-     *
-     * Prefer distanceKm.
-     *
-     * If the backend gives meters, convert:
-     *
-     * 1000 meters = 1 km
-     */
 
     let distanceKm = 0;
 
@@ -382,15 +370,6 @@ export class KilometrageComponent implements OnInit {
 
     } else if (item.distance != null) {
 
-      /*
-       * IMPORTANT:
-       *
-       * This assumes `distance` is already kilometers.
-       * If your backend defines it as meters,
-       * change this to:
-       *
-       * Number(item.distance) / 1000
-       */
       distanceKm = Number(item.distance);
 
     }

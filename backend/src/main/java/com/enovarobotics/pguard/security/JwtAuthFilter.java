@@ -16,12 +16,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Filtre JWT — extrait et valide le token "Authorization: Bearer <token>"
- * sur chaque requête, et alimente le SecurityContext si valide.
- * Côté Angular, le rôle équivalent est joué par JwtInterceptor (qui AJOUTE
- * l'en-tête) — ce filtre, lui, LIT l'en-tête côté serveur.
- */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {

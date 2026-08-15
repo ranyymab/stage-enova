@@ -1,5 +1,3 @@
-
-
 export type MissionStatut = 'EN_MISSION' | 'EN_REPOS' | 'EN_TELEPORTATION' | 'RETOUR_BASE';
 export type RobotMode = 'AUTONOME' | 'TELEPORTATION' | 'TELEPORTATION_URGENCE' | 'RETOUR_BASE';
 
@@ -25,7 +23,7 @@ export interface DashboardKpi {
 export type ChargingStatus = 'EN_CHARGE' | 'EN_DEPLACEMENT' | 'A_LA_STATION' | 'EN_TELEPORTATION';
 
 export interface DistancePoint {
-  date: string; // AAAA-MM-JJ
+  date: string;
   distanceKm: number;
   cumulativeKm?: number;
 }

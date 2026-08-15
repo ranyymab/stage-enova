@@ -21,7 +21,7 @@ interface VerificationState {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="verify-screen" [attr.data-theme]="themeService.mode()">
-      <!-- Background animation -->
+
       <div class="animated-bg" aria-hidden="true">
         <div class="floating-orb orb-1"></div>
         <div class="floating-orb orb-2"></div>
@@ -29,18 +29,18 @@ interface VerificationState {
       </div>
 
       <div class="verify-container">
-        <!-- Illustration Section -->
+
         <div class="illustration-section">
           <div class="illustration-wrapper">
             <svg class="envelope-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <g transform="translate(50, 40)">
-                <!-- Envelope body -->
+
                 <rect x="0" y="0" width="100" height="80" fill="none" stroke="currentColor" stroke-width="2" rx="4"/>
-                <!-- Flap -->
+
                 <path d="M 0 0 L 50 40 L 100 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <!-- Letter inside -->
+
                 <rect x="10" y="20" width="80" height="50" fill="none" stroke="currentColor" stroke-width="1.5" rx="2" opacity="0.6"/>
-                <!-- Checkmark (appears on success) -->
+
                 <g *ngIf="verificationSuccess" class="checkmark-animate">
                   <circle cx="120" cy="20" r="18" fill="currentColor" opacity="0.2"/>
                   <path d="M 115 20 L 120 26 L 128 15" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -52,7 +52,6 @@ interface VerificationState {
           </div>
         </div>
 
-        <!-- Form Section -->
         <div class="form-section">
           <div class="header">
             <h1>Verify your email</h1>
@@ -64,7 +63,6 @@ interface VerificationState {
             </p>
           </div>
 
-          <!-- Dev Mode Banner -->
           <div class="dev-banner" *ngIf="devCode" [@slideDown]>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
@@ -77,7 +75,6 @@ interface VerificationState {
             </div>
           </div>
 
-          <!-- Verification State Info -->
           <div class="verification-info" *ngIf="verificationState$ | async as state">
             <div class="info-row">
               <span class="info-label">Code expires in:</span>
@@ -93,14 +90,13 @@ interface VerificationState {
             </div>
           </div>
 
-          <!-- Form -->
           <form [formGroup]="form" (ngSubmit)="onSubmit()" class="verification-form">
             <label class="field" *ngIf="!email">
               <span class="field-label">Adresse e-mail</span>
-              <input 
-                type="email" 
-                formControlName="email" 
-                placeholder="vous@enovarobotics.eu" 
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="vous@enovarobotics.eu"
                 autocomplete="username"
                 [disabled]="loading"
               />
@@ -125,7 +121,7 @@ interface VerificationState {
                     (input)="onCodeInput($event)"
                   />
                   <div class="code-length-indicator">
-                    <span class="dot" *ngFor="let i of [1,2,3,4,5,6]" 
+                    <span class="dot" *ngFor="let i of [1,2,3,4,5,6]"
                           [class.filled]="form.get('code')?.value?.length! >= i"></span>
                   </div>
                 </div>
@@ -148,8 +144,8 @@ interface VerificationState {
               </p>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               class="btn-verify"
               [disabled]="form.invalid || loading"
               [class.loading]="loading"
@@ -167,7 +163,6 @@ interface VerificationState {
             </button>
           </form>
 
-          <!-- Resend Code Section -->
           <div class="resend-section">
             <button
               type="button"
@@ -186,7 +181,6 @@ interface VerificationState {
             </button>
           </div>
 
-          <!-- Back Link -->
           <p class="back-link">
             <a routerLink="/login" [queryParams]="{}">&#8592; Back to sign in</a>
           </p>
@@ -687,7 +681,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
   email = '';
   devCode: string | null = null;
   resendCooldown = 0;
-  
+
   private readonly destroy$ = new Subject<void>();
   private cooldownTimer?: ReturnType<typeof setInterval>;
   verificationState$ = new Subject<VerificationState>();
@@ -733,7 +727,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
   onCodeInput(event: Event): void {
     const input = event.target as HTMLInputElement;
-    // Auto-submit if 6 digits entered
+
     if (input.value.length === 6 && this.form.valid) {
       setTimeout(() => this.onSubmit(), 100);
     }
@@ -813,13 +807,13 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
   }
 
   private startExpiryTimer(initialSeconds?: number): void {
-    const startSeconds = initialSeconds || 600; // 10 minutes default
+    const startSeconds = initialSeconds || 600;
     const startTime = Date.now();
-    
+
     const updateState = () => {
       const elapsed = Math.floor((Date.now() - startTime) / 1000);
       const remaining = Math.max(0, startSeconds - elapsed);
-      
+
       this.verificationState$.next({
         codeExpirySeconds: remaining,
         maxAttempts: 5,
@@ -833,7 +827,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
         this.errorMessage = 'The code has expired. Please request a new one.';
       }
     };
-    
+
     updateState();
   }
 
@@ -848,4 +842,3 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 }
-

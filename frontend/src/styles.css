@@ -1,15 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Largeur de la sidebar : SEULE source de verite, reutilisee par
-     app.css (offset du contenu + topbar) et par sidebar.component.ts
-     (largeur reelle du panneau) pour eviter tout desalignement entre
-     les deux si l'un des deux est modifie sans l'autre. */
+
   --sidebar-width: 285px;
 
-  /* Palette — Enova Robotics (light theme, default)
-     Navy / electric blue command-center theme, matching the sidebar
-     and login screen exactly. */
   --bg-app: #f3f6fa;
   --panel-base: #ffffff;
   --panel-raised: #edf2f7;
@@ -39,9 +33,7 @@
 }
 
 :root[data-theme='dark'] {
-  /* Palette — Enova Robotics (dark / night-ops variant)
-     Same navy / electric blue family, matching the sidebar's own
-     navy-950 / navy-900 tones so panels don't clash with it. */
+
   --bg-app: #070b12;
   --panel-base: #0c121c;
   --panel-raised: #111a27;
@@ -105,12 +97,6 @@ a {
   outline-offset: 2px;
 }
 
-/* ===== Motion system ==================================================
-   Shared entrance / feedback animations used across the dashboard.
-   Everything here is opt-in via utility classes so it stays easy to
-   apply consistently, and everything is disabled under
-   prefers-reduced-motion so the app stays comfortable for everyone. */
-
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -136,7 +122,6 @@ a {
   50% { opacity: 0.55; }
 }
 
-/* Entrance: fade + rise, staggered by --stagger-index (set inline per item) */
 .enter-fade-up {
   animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: calc(var(--stagger-index, 0) * 60ms);
@@ -152,7 +137,6 @@ a {
   animation-delay: calc(var(--stagger-index, 0) * 60ms);
 }
 
-/* Skeleton shimmer, for content still loading */
 .skeleton {
   background: linear-gradient(90deg, var(--panel-raised) 25%, var(--border-subtle) 50%, var(--panel-raised) 75%);
   background-size: 200% 100%;
@@ -173,7 +157,6 @@ a {
   }
 }
 
-/* Etiquettes permanentes sur la carte en direct (segments "vers le dock" / "retour base") */
 .route-phase-label {
   background: rgba(10, 20, 18, 0.82);
   color: #fff;

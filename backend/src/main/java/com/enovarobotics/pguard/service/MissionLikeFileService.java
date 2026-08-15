@@ -12,15 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-/**
- * Service de parsing partagé pour les 4 catégories qui suivent le format
- * "mission-like" (start/end/pause) observé dans les fichiers réels :
- * Mission, Inspecting, Back_home, Docking.
- *
- * Écart avec le cahier des charges : Inspecting et Back_home utilisent ce
- * même format (et non Last_point/Delay ou BatteryLevel comme supposé
- * initialement) — voir MissionEvent.java pour le détail.
- */
 @Service
 @RequiredArgsConstructor
 @Slf4j

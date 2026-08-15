@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * F2 — GET /api/kilometrage : statistiques de distance/temps.
- */
 @RestController
 @RequestMapping("/api/kilometrage")
 @RequiredArgsConstructor
@@ -27,9 +24,7 @@ public class KilometrageController {
     @GetMapping
     public List<KilometrageSummary> getHistorique() {
         LocalDate today = LocalDate.now();
-        // Garde-fou : ne jamais renvoyer un jour posterieur a aujourd'hui,
-        // meme si des donnees reelles importees couvrent des dates futures
-        // (cf. bug "les jours futurs apparaissent avant d'avoir eu lieu").
+
         return repository.findByRobotIdOrderBySummaryDateAsc(robotId).stream()
                 .filter(km -> !km.getSummaryDate().isAfter(today))
                 .toList();

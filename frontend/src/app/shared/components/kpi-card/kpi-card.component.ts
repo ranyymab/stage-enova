@@ -4,19 +4,6 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export type KpiTone = 'neutral' | 'good' | 'warning' | 'critical';
 
-/**
- * Tuile KPI, style epure : carte plane (fond panel, bordure fine), une
- * icone dans une pastille de couleur douce en haut, puis la valeur en
- * grand. Le ton (good/warning/critical/neutral) ne colore que la pastille
- * et la valeur, jamais toute la carte - le fond reste neutre pour rester
- * lisible et calme visuellement, y compris quand plusieurs cartes
- * "warning"/"critical" sont affichees en meme temps.
- *
- * La valeur numerique s'anime (count-up) a chaque changement au lieu de
- * sauter directement au nouveau chiffre, pour que les rafraichissements
- * automatiques du dashboard restent lisibles et vivants plutot que de
- * faire "clignoter" les chiffres.
- */
 @Component({
   selector: 'app-kpi-card',
   standalone: true,
@@ -184,15 +171,12 @@ export class KpiCardComponent implements OnChanges {
   @Input() icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="12" width="7" height="9" rx="1.2"/><rect x="3" y="16" width="7" height="5" rx="1.2"/></svg>';
   @Input() hideIcon = false;
 
-  /** `icon` ne recoit jamais de contenu venant de l'utilisateur (toujours un SVG fixe defini dans le code) :
-   * on peut donc le rendre en confiance sans risque d'injection. */
   get iconHtml(): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(this.icon);
   }
 
   constructor(private sanitizer: DomSanitizer) {}
 
-  /** Ce qui est reellement affiche : anime progressivement vers `value` quand celui-ci est numerique. */
   displayValue: string | number = '';
 
   private animationFrame?: number;
@@ -206,7 +190,7 @@ export class KpiCardComponent implements OnChanges {
     const to = this.parseNumeric(this.value);
 
     if (from === null || to === null || this.reduceMotion) {
-      // Valeur non numerique (ou mouvement reduit demande) : pas d'animation, affichage direct.
+
       this.displayValue = this.value;
       return;
     }
@@ -235,7 +219,7 @@ export class KpiCardComponent implements OnChanges {
     const step = (now: number) => {
       const elapsed = now - start;
       const t = Math.min(1, elapsed / duration);
-      // easeOutCubic — vif au depart, se pose en douceur
+
       const eased = 1 - Math.pow(1 - t, 3);
       const current = from + (to - from) * eased;
       this.displayValue = decimals > 0 ? current.toFixed(decimals) : Math.round(current);

@@ -30,16 +30,6 @@ public class DashboardService {
         return requested != null ? requested : LocalDate.now();
     }
 
-    /**
-     * Si la date demandee n'a strictement aucune activite enregistree (aucun
-     * MissionEvent ce jour-la), on retombe sur le jour le plus recent, a
-     * cette date ou avant, qui en a une — au lieu de laisser chaque champ du
-     * dashboard (statut, anomalies, teleoperation, trajectoire...) retomber
-     * independamment sur des zeros. Avant ce correctif, seul le kilometrage
-     * avait ce comportement (voir dayKm plus bas) ; tout le reste affichait
-     * un tableau de bord vide des qu'on naviguait vers un jour sans donnees,
-     * meme si un etat recent existait quelques jours plus tot.
-     */
     private LocalDate resolveEffectiveDataDate(LocalDate referenceDate) {
         boolean hasActivity = !missionEventRepository.findByEventDateOrderByEventDatetimeAsc(referenceDate).isEmpty();
         if (hasActivity) {
@@ -73,7 +63,6 @@ public class DashboardService {
         List<MissionEvent> dayMissions = missionEventRepository
                 .findByEventDateOrderByEventDatetimeAsc(effectiveDate);
 
-        // Teleoperation du jour — l'operateur prend le controle manuel
         List<TeleoperationEvent> teleops = teleoperationEventRepository
                 .findByEventDateOrderByEventDatetimeAsc(effectiveDate);
         long sessionsTeleoperation = teleops.stream()
@@ -93,7 +82,6 @@ public class DashboardService {
                 .count();
         kpi.put("retoursBase", retoursBase);
 
-        // Le robot est-il actuellement en teleoperation (derniere session pas encore terminee) ?
         boolean teleportationEnCours = false;
         if (!teleops.isEmpty()) {
             TeleoperationEvent last = teleops.get(teleops.size() - 1);
@@ -127,11 +115,7 @@ public class DashboardService {
                             && !m.getEventDatetime().isBefore(start.getEventDatetime()));
 
             if (!hasEndAfter) {
-                // On garde une trace de la mission sous-jacente meme si la
-                // teleoperation est active, mais on ne laisse PAS ce bloc
-                // ecraser le statut / mode "teleoperation" deja determine
-                // ci-dessus : le controle manuel de l'operateur est
-                // toujours prioritaire sur une mission autonome en cours.
+
                 missionEnCours = start.getMissionName();
                 if (!teleportationEnCours) {
                     statutMission = "EN_MISSION";
@@ -140,12 +124,6 @@ public class DashboardService {
             }
         }
 
-        // Retour a la base : le robot a quitte sa mission pour rentrer se
-        // charger, mais n'est pas encore arrive (pas de "end" apres le
-        // dernier "start" Back_home). Prioritaire sur un simple "en mission"
-        // puisque rentrer a la base est plus specifique, mais reste
-        // subordonne a la teleoperation (controle humain) et pourra encore
-        // etre ecrase par le cas d'urgence ci-dessous.
         Optional<MissionEvent> latestBackHomeStart = dayMissions.stream()
                 .filter(m -> m.getCategory() == MissionEvent.EventCategory.BACK_HOME)
                 .filter(m -> "start".equalsIgnoreCase(m.getInfo()))
@@ -193,10 +171,7 @@ public class DashboardService {
     }
 
     public Map<String, Object> buildRobotLive(LocalDate referenceDate) {
-        // Meme correctif que buildKpi : si la date demandee n'a aucune activite,
-        // on montre la carte/batterie du dernier jour reellement enregistre
-        // plutot qu'une carte vide et une batterie a 0%. Applique ici aussi
-        // car ce endpoint est aussi appele independamment (GET /robot-live).
+
         LocalDate effectiveDate = resolveEffectiveDataDate(referenceDate);
 
         Map<String, Object> live = new HashMap<>();
@@ -215,11 +190,7 @@ public class DashboardService {
         live.put("position", position);
 
         Integer battery = resolveBatteryLevel(effectiveDate, chargeCycles, position);
-        // Le robot ne descend jamais reellement sous ~21% (il rentre se
-        // charger automatiquement avant) - voir RobotSimulationService et les
-        // vraies donnees dans backend/data/info/docking/*.json. Si aucune
-        // lecture n'est trouvee du tout pour ce jour, 0% serait physiquement
-        // impossible a afficher ; on retombe sur ce seuil reel plutot.
+
         live.put("batteryPercent", battery != null ? battery : 21);
 
         String chargingStatus = resolveChargingStatus(effectiveDate, chargeCycles);
@@ -301,21 +272,6 @@ public class DashboardService {
         }).collect(Collectors.toList());
     }
 
-    /**
-     * Construit les cycles de charge à partir des événements DOCKING réels.
-     *
-     * Sémantique réelle observée dans les fichiers ("0-Info"/"1-State") :
-     *   undocking/start  -> le robot quitte la station (fin de charge)
-     *   docking/start    -> début d'une tentative d'accostage
-     *   docking/failed   -> tentative échouée (peut se répéter)
-     *   docking/success  -> accostage réussi, la charge commence
-     *
-     * Un cycle de charge va donc d'un "docking"+success (succès =
-     * batterie au début de charge) jusqu'au "undocking"+start suivant
-     * (batterie en fin de charge). Les enregistrements "start" au format
-     * mission-like (mélangés dans le même fichier, voir MissionLikeEventDto)
-     * sont ignorés ici : ils n'ont pas de niveau de batterie.
-     */
     public List<Map<String, Object>> buildChargeCycles(LocalDate referenceDate) {
         List<MissionEvent> dockingEvents = missionEventRepository
                 .findByCategoryAndEventDateOrderByEventDatetimeAsc(MissionEvent.EventCategory.DOCKING, referenceDate);
@@ -424,7 +380,7 @@ public class DashboardService {
     }
 
     private String resolveChargingStatus(LocalDate referenceDate, List<Map<String, Object>> chargeCycles) {
-        // Priorite 1 : teleoperation en cours (controle manuel urgent par operateur)
+
         List<TeleoperationEvent> teleops = teleoperationEventRepository
                 .findByEventDateOrderByEventDatetimeAsc(referenceDate);
         if (!teleops.isEmpty()) {
@@ -443,7 +399,6 @@ public class DashboardService {
             return "EN_TELEPORTATION";
         }
 
-        // Priorite 2 : en charge
         if (!chargeCycles.isEmpty()) {
             Map<String, Object> lastCycle = chargeCycles.get(chargeCycles.size() - 1);
             if ("EN_COURS".equals(lastCycle.get("status"))) {
@@ -556,8 +511,7 @@ public class DashboardService {
         List<KilometrageSummary> summaries = kilometrageSummaryRepository
                 .findByRobotIdOrderBySummaryDateAsc(robotId)
                 .stream()
-                // Garde-fou : on n'affiche jamais un jour postérieur à aujourd'hui,
-                // même si une donnée mal datée existe en base (cf. bug "jour futur").
+
                 .filter(km -> !km.getSummaryDate().isAfter(today))
                 .collect(Collectors.toList());
 
@@ -608,15 +562,6 @@ public class DashboardService {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * "Tout ce que le robot a fait ce jour-la", en une seule liste
-     * chronologique — fusionne les 3 sources d'evenements qui, jusque-la,
-     * n'existaient que dans des endpoints separes (missions/docking/retour
-     * base/inspection via buildTimeline, teleoperation, detections). Chaque
-     * entree porte un "tone" (bon/attention/critique/neutre) pour le badge
-     * couleur cote frontend, et un "kind" que le frontend utilise pour
-     * choisir l'icone a afficher.
-     */
     public List<Map<String, Object>> buildActivityFeed(LocalDate referenceDate) {
         List<Map<String, Object>> feed = new ArrayList<>();
 
@@ -665,7 +610,7 @@ public class DashboardService {
             String da = (String) a.get("datetime");
             String db = (String) b.get("datetime");
             if (da == null || db == null) return 0;
-            return db.compareTo(da); // plus recent en premier
+            return db.compareTo(da);
         });
 
         return feed;
@@ -699,7 +644,7 @@ public class DashboardService {
     private String activityTone(String category, String info, String dockingState) {
         if ("DOCKING".equals(category)) {
             if ("docking".equalsIgnoreCase(info) && !"success".equalsIgnoreCase(dockingState)) {
-                return "critical"; // tentative echouee/en cours
+                return "critical";
             }
             return "good";
         }

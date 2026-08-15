@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { API_ORIGIN } from '../../core/config/api.config';
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
 
 interface DockingEvent {
@@ -79,7 +80,7 @@ export class DockingComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<DockingEvent[]>('https://stage-enova-3.onrender.com/api/mission?date=' + this.selectedDate + '&category=DOCKING')
+    this.http.get<DockingEvent[]>(API_ORIGIN + '/api/mission?date=' + this.selectedDate + '&category=DOCKING')
       .subscribe({ next: d => { this.events = d; this.loading = false; }, error: () => { this.loading = false; } });
   }
 

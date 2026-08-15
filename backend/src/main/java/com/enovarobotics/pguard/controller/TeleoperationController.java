@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * F2 — GET /api/teleportation : historique des sessions de téléopération.
- * (nom d'URL conservé tel que spécifié dans le cahier des charges, malgré
- * la coquille "teleportation" pour "téléopération")
- */
 @RestController
 @RequestMapping("/api/teleportation")
 @RequiredArgsConstructor

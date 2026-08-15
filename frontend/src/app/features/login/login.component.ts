@@ -24,7 +24,6 @@ import { AuthService } from '../../core/services/auth.service';
 import { GoogleIdentityService } from '../../core/services/google-identity.service';
 import { ThemeService } from '../../core/services/theme.service';
 
-
 @Component({
   selector: 'app-login',
 
@@ -43,10 +42,6 @@ import { ThemeService } from '../../core/services/theme.service';
       [class.light-mode]="!darkMode"
     >
 
-      <!-- =========================================================
-           LEFT ROBOT VISUAL
-           ========================================================= -->
-
       <aside class="visual-pane">
 
         <img
@@ -61,11 +56,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
         <div class="visual-glow"></div>
 
-
-        <!-- =======================================================
-             ENOVA BRANDING
-             ======================================================= -->
-
         <div class="visual-brand">
 
           <div class="brand-category">
@@ -78,16 +68,13 @@ import { ThemeService } from '../../core/services/theme.service';
 
           </div>
 
-
           <div class="brand-name">
             ENOVA
           </div>
 
-
           <div class="brand-name-sub">
             ROBOTICS
           </div>
-
 
           <div class="brand-description">
 
@@ -103,19 +90,9 @@ import { ThemeService } from '../../core/services/theme.service';
 
       </aside>
 
-
-      <!-- =========================================================
-           RIGHT AUTH PANEL
-           ========================================================= -->
-
       <main class="form-pane">
 
         <div class="form-shell">
-
-
-          <!-- =====================================================
-               THEME BUTTON
-               ===================================================== -->
 
           <button
             type="button"
@@ -141,11 +118,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
           </button>
 
-
-          <!-- =====================================================
-               MOBILE BRAND
-               ===================================================== -->
-
           <div class="mobile-brand">
 
             <div class="mobile-brand-name">
@@ -158,13 +130,7 @@ import { ThemeService } from '../../core/services/theme.service';
 
           </div>
 
-
-          <!-- =====================================================
-               LOGIN
-               ===================================================== -->
-
           <section
-            *ngIf="!showSignup"
             class="auth-view"
           >
 
@@ -176,27 +142,19 @@ import { ThemeService } from '../../core/services/theme.service';
 
             </div>
 
-
             <h1>
               Welcome <strong>back!</strong>
             </h1>
 
-
             <p class="subtitle">
               Sign in to access your robotics command center.
             </p>
-
-
-            <!-- =================================================
-                 GOOGLE
-                 ================================================= -->
 
             <div
               #googleButton
               class="google-btn-container"
               *ngIf="googleConfigured"
             ></div>
-
 
             <div
               class="divider"
@@ -209,26 +167,17 @@ import { ThemeService } from '../../core/services/theme.service';
 
             </div>
 
-
-            <!-- =================================================
-                 LOGIN FORM
-                 ================================================= -->
-
             <form
               [formGroup]="loginForm"
               (ngSubmit)="onLogin()"
               novalidate
             >
 
-
-              <!-- EMAIL -->
-
               <label class="field">
 
                 <span class="field-label">
                   OPERATOR EMAIL
                 </span>
-
 
                 <div class="field-input-wrap">
 
@@ -258,7 +207,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
                   </svg>
 
-
                   <input
                     type="email"
                     formControlName="email"
@@ -271,15 +219,11 @@ import { ThemeService } from '../../core/services/theme.service';
 
               </label>
 
-
-              <!-- PASSWORD -->
-
               <label class="field">
 
                 <span class="field-label">
                   ACCESS KEY
                 </span>
-
 
                 <div class="field-input-wrap">
 
@@ -309,7 +253,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
                   </svg>
 
-
                   <input
                     [type]="
                       showLoginPassword
@@ -320,7 +263,6 @@ import { ThemeService } from '../../core/services/theme.service';
                     placeholder="••••••••"
                     autocomplete="current-password"
                   />
-
 
                   <button
                     type="button"
@@ -358,7 +300,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
                     </svg>
 
-
                     <svg
                       *ngIf="showLoginPassword"
                       width="17"
@@ -388,9 +329,6 @@ import { ThemeService } from '../../core/services/theme.service';
                 </div>
 
               </label>
-
-
-              <!-- OPTIONS -->
 
               <div class="row-between">
 
@@ -426,7 +364,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
                 </label>
 
-
                 <a
                   class="forgot-link"
                   routerLink="/forgot-password"
@@ -436,18 +373,12 @@ import { ThemeService } from '../../core/services/theme.service';
 
               </div>
 
-
-              <!-- ERROR -->
-
               <p
                 class="error"
                 *ngIf="errorMessage"
               >
                 {{ errorMessage }}
               </p>
-
-
-              <!-- LOGIN BUTTON -->
 
               <button
                 type="submit"
@@ -464,7 +395,6 @@ import { ThemeService } from '../../core/services/theme.service';
                   class="btn-spinner"
                   *ngIf="loading"
                 ></span>
-
 
                 <svg
                   *ngIf="loginSuccess"
@@ -485,7 +415,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
                 </svg>
 
-
                 <span>
 
                   {{
@@ -497,7 +426,6 @@ import { ThemeService } from '../../core/services/theme.service';
                   }}
 
                 </span>
-
 
                 <span
                   *ngIf="
@@ -513,506 +441,15 @@ import { ThemeService } from '../../core/services/theme.service';
 
             </form>
 
-
-            <!-- SWITCH -->
-
             <p class="switch-link">
 
               New operator?
 
               <button
                 type="button"
-                (click)="openSignup()"
+                routerLink="/signup"
               >
                 Create account
-              </button>
-
-            </p>
-
-          </section>
-
-
-          <!-- =====================================================
-               SIGNUP
-               ===================================================== -->
-
-          <section
-            *ngIf="showSignup"
-            class="auth-view signup-view"
-          >
-
-            <button
-              type="button"
-              class="back-button"
-              (click)="openLogin()"
-            >
-
-              <span>
-                ←
-              </span>
-
-              Back to login
-
-            </button>
-
-
-            <div class="eyebrow">
-
-              <span></span>
-
-              OPERATOR REGISTRATION
-
-            </div>
-
-
-            <h1>
-              Create <strong>account</strong>
-            </h1>
-
-
-            <p class="subtitle">
-              Set up your operator credentials.
-            </p>
-
-
-            <!-- SIGNUP FORM -->
-
-            <form
-              [formGroup]="signupForm"
-              (ngSubmit)="onSignup()"
-              novalidate
-            >
-
-
-              <!-- NAME -->
-
-              <label class="field">
-
-                <span class="field-label">
-                  OPERATOR NAME
-                </span>
-
-
-                <div class="field-input-wrap">
-
-                  <svg
-                    class="field-icon"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-
-                    <circle
-                      cx="12"
-                      cy="8"
-                      r="3.5"
-                    />
-
-                    <path
-                      d="M4.5 20c.8-4 3.3-6 7.5-6s6.7 2 7.5 6"
-                    />
-
-                  </svg>
-
-
-                  <input
-                    type="text"
-                    formControlName="name"
-                    placeholder="Operator name"
-                    autocomplete="name"
-                  />
-
-                </div>
-
-              </label>
-
-
-              <!-- EMAIL -->
-
-              <label class="field">
-
-                <span class="field-label">
-                  OPERATOR EMAIL
-                </span>
-
-
-                <div class="field-input-wrap">
-
-                  <svg
-                    class="field-icon"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-
-                    <rect
-                      x="2.5"
-                      y="4.5"
-                      width="19"
-                      height="15"
-                      rx="2.2"
-                    />
-
-                    <path
-                      d="M3 6.5l9 6.5 9-6.5"
-                    />
-
-                  </svg>
-
-
-                  <input
-                    type="email"
-                    formControlName="email"
-                    placeholder="operator@enovarobotics.eu"
-                    autocomplete="email"
-                  />
-
-                </div>
-
-              </label>
-
-
-              <!-- PASSWORD -->
-
-              <label class="field">
-
-                <span class="field-label">
-                  ACCESS KEY
-                </span>
-
-
-                <div class="field-input-wrap">
-
-                  <svg
-                    class="field-icon"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-
-                    <rect
-                      x="4.5"
-                      y="10.5"
-                      width="15"
-                      height="10"
-                      rx="2"
-                    />
-
-                    <path
-                      d="M8 10.5V7a4 4 0 0 1 8 0v3.5"
-                    />
-
-                  </svg>
-
-
-                  <input
-                    [type]="
-                      showSignupPassword
-                        ? 'text'
-                        : 'password'
-                    "
-                    formControlName="password"
-                    placeholder="Create a secure key"
-                    autocomplete="new-password"
-                  />
-
-
-                  <button
-                    type="button"
-                    class="field-toggle"
-                    (click)="
-                      showSignupPassword =
-                      !showSignupPassword
-                    "
-                  >
-
-                    <svg
-                      *ngIf="!showSignupPassword"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                    >
-
-                      <path
-                        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
-                      />
-
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="3"
-                      />
-
-                    </svg>
-
-
-                    <svg
-                      *ngIf="showSignupPassword"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                    >
-
-                      <path
-                        d="M3 3l18 18"
-                      />
-
-                      <path
-                        d="M2 12s3.5-7 10-7 10 7 10 7"
-                      />
-
-                    </svg>
-
-                  </button>
-
-                </div>
-
-              </label>
-
-
-              <!-- CONFIRM PASSWORD -->
-
-              <label class="field">
-
-                <span class="field-label">
-                  CONFIRM ACCESS KEY
-                </span>
-
-
-                <div
-                  class="field-input-wrap"
-                  [class.field-invalid]="
-                    signupForm.controls[
-                      'confirmPassword'
-                    ].touched &&
-                    signupForm.controls[
-                      'password'
-                    ].value !==
-                    signupForm.controls[
-                      'confirmPassword'
-                    ].value
-                  "
-                >
-
-                  <svg
-                    class="field-icon"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-
-                    <rect
-                      x="4.5"
-                      y="10.5"
-                      width="15"
-                      height="10"
-                      rx="2"
-                    />
-
-                    <path
-                      d="M8 10.5V7a4 4 0 0 1 8 0v3.5"
-                    />
-
-                  </svg>
-
-
-                  <input
-                    [type]="
-                      showSignupConfirm
-                        ? 'text'
-                        : 'password'
-                    "
-                    formControlName="confirmPassword"
-                    placeholder="Repeat access key"
-                    autocomplete="new-password"
-                  />
-
-
-                  <button
-                    type="button"
-                    class="field-toggle"
-                    (click)="
-                      showSignupConfirm =
-                      !showSignupConfirm
-                    "
-                  >
-
-                    <svg
-                      *ngIf="!showSignupConfirm"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                    >
-
-                      <path
-                        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"
-                      />
-
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="3"
-                      />
-
-                    </svg>
-
-
-                    <svg
-                      *ngIf="showSignupConfirm"
-                      width="17"
-                      height="17"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                    >
-
-                      <path
-                        d="M3 3l18 18"
-                      />
-
-                      <path
-                        d="M2 12s3.5-7 10-7 10 7 10 7"
-                      />
-
-                    </svg>
-
-                  </button>
-
-                </div>
-
-              </label>
-
-
-              <!-- PASSWORD RULES -->
-
-              <div class="password-hint">
-
-                <span
-                  [class.valid]="
-                    (
-                      signupForm.controls[
-                        'password'
-                      ].value || ''
-                    ).length >= 8
-                  "
-                >
-                  <b>✓</b>
-                  8+ characters
-                </span>
-
-
-                <span
-                  [class.valid]="
-                    /[A-Z]/.test(
-                      signupForm.controls[
-                        'password'
-                      ].value || ''
-                    )
-                  "
-                >
-                  <b>✓</b>
-                  Uppercase
-                </span>
-
-
-                <span
-                  [class.valid]="
-                    /\d/.test(
-                      signupForm.controls[
-                        'password'
-                      ].value || ''
-                    )
-                  "
-                >
-                  <b>✓</b>
-                  Number
-                </span>
-
-              </div>
-
-
-              <!-- ERROR -->
-
-              <p
-                class="error"
-                *ngIf="signupError"
-              >
-                {{ signupError }}
-              </p>
-
-
-              <!-- SIGNUP BUTTON -->
-
-              <button
-                type="submit"
-                class="primary-button"
-                [disabled]="
-                  signupForm.invalid ||
-                  loading ||
-                  !passwordsMatch
-                "
-              >
-
-                <span
-                  class="btn-spinner"
-                  *ngIf="loading"
-                ></span>
-
-
-                <span>
-                  {{
-                    loading
-                      ? 'CREATING ACCESS...'
-                      : 'CREATE OPERATOR ACCESS'
-                  }}
-                </span>
-
-
-                <span
-                  *ngIf="!loading"
-                  class="button-arrow"
-                >
-                  →
-                </span>
-
-              </button>
-
-            </form>
-
-
-            <!-- SWITCH -->
-
-            <p class="switch-link">
-
-              Already an operator?
-
-              <button
-                type="button"
-                (click)="openLogin()"
-              >
-                Sign in
               </button>
 
             </p>
@@ -1025,7 +462,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     </div>
   `,
-
 
   styles: [`
 
@@ -1057,11 +493,9 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     * {
       box-sizing: border-box;
     }
-
 
     /* =============================================================
        SCREEN
@@ -1088,7 +522,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        LEFT IMAGE
        ============================================================= */
@@ -1104,7 +537,6 @@ import { ThemeService } from '../../core/services/theme.service';
       background: #02060c;
 
     }
-
 
     .visual-photo {
 
@@ -1136,7 +568,6 @@ import { ThemeService } from '../../core/services/theme.service';
         filter .35s ease;
 
     }
-
 
     /* =============================================================
        IMAGE SCRIM
@@ -1174,7 +605,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        LIGHT MODE IMAGE
        ============================================================= */
@@ -1188,7 +618,6 @@ import { ThemeService } from '../../core/services/theme.service';
         brightness(1.08);
 
     }
-
 
     .auth-screen.light-mode
     .visual-scrim {
@@ -1209,7 +638,6 @@ import { ThemeService } from '../../core/services/theme.service';
         );
 
     }
-
 
     /* =============================================================
        BLUE GLOW
@@ -1239,7 +667,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        SCANLINES
        ============================================================= */
@@ -1266,7 +693,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        BRAND
        ============================================================= */
@@ -1288,7 +714,6 @@ import { ThemeService } from '../../core/services/theme.service';
         );
 
     }
-
 
     .brand-category {
 
@@ -1316,7 +741,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .brand-line {
 
       width: 40px;
@@ -1330,7 +754,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(23,100,163,.55);
 
     }
-
 
     .brand-name {
 
@@ -1362,7 +785,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .brand-name-sub {
 
       margin-top: 9px;
@@ -1393,7 +815,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .brand-description {
 
       display: flex;
@@ -1417,7 +838,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .description-line {
 
       width: 52px;
@@ -1428,7 +848,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(255,255,255,.32);
 
     }
-
 
     /* =============================================================
        RIGHT PANEL
@@ -1457,7 +876,6 @@ import { ThemeService } from '../../core/services/theme.service';
         background .35s ease;
 
     }
-
 
     .form-shell {
 
@@ -1507,7 +925,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        LIGHT MODE RIGHT PANEL
        ============================================================= */
@@ -1530,7 +947,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .form-shell {
 
@@ -1552,7 +968,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(255,255,255,1);
 
     }
-
 
     /* =============================================================
        THEME BUTTON
@@ -1613,7 +1028,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .theme-toggle:hover {
 
       transform:
@@ -1626,7 +1040,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(255,255,255,.25);
 
     }
-
 
     .theme-icon {
 
@@ -1650,7 +1063,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .theme-toggle {
 
@@ -1668,7 +1080,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .theme-icon {
 
@@ -1678,7 +1089,6 @@ import { ThemeService } from '../../core/services/theme.service';
         #173653;
 
     }
-
 
     /* =============================================================
        AUTH CONTENT
@@ -1691,7 +1101,6 @@ import { ThemeService } from '../../core/services/theme.service';
       max-width: 660px;
 
     }
-
 
     .eyebrow {
 
@@ -1716,7 +1125,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .eyebrow span {
 
       width: 34px;
@@ -1731,7 +1139,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(45,116,201,.45);
 
     }
-
 
     h1 {
 
@@ -1760,7 +1167,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     h1 strong {
 
       color:
@@ -1769,7 +1175,6 @@ import { ThemeService } from '../../core/services/theme.service';
       font-weight: 800;
 
     }
-
 
     .subtitle {
 
@@ -1785,7 +1190,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        LIGHT TEXT
        ============================================================= */
@@ -1796,7 +1200,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .subtitle {
 
@@ -1804,7 +1207,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(24,48,73,.62);
 
     }
-
 
     /* =============================================================
        GOOGLE
@@ -1817,7 +1219,6 @@ import { ThemeService } from '../../core/services/theme.service';
       margin-bottom: 18px;
 
     }
-
 
     .divider {
 
@@ -1841,7 +1242,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .divider::before,
     .divider::after {
 
@@ -1855,7 +1255,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(120,165,205,.12);
 
     }
-
 
     /* =============================================================
        FORM
@@ -1871,7 +1270,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .field {
 
       display: flex;
@@ -1881,7 +1279,6 @@ import { ThemeService } from '../../core/services/theme.service';
       gap: 8px;
 
     }
-
 
     .field-label {
 
@@ -1897,7 +1294,6 @@ import { ThemeService } from '../../core/services/theme.service';
       letter-spacing: .13em;
 
     }
-
 
     .field-input-wrap {
 
@@ -1923,14 +1319,12 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .field-input-wrap:hover {
 
       border-color:
         rgba(255,255,255,.25);
 
     }
-
 
     .field-input-wrap:focus-within {
 
@@ -1945,7 +1339,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(32,102,183,.10);
 
     }
-
 
     .field-icon {
 
@@ -1962,7 +1355,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .field-input-wrap:focus-within
     .field-icon {
 
@@ -1970,7 +1362,6 @@ import { ThemeService } from '../../core/services/theme.service';
         #2D74C9;
 
     }
-
 
     /* =============================================================
        INPUTS - DARK MODE
@@ -2010,7 +1401,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     input::placeholder {
 
       color:
@@ -2019,7 +1409,6 @@ import { ThemeService } from '../../core/services/theme.service';
       opacity: 1;
 
     }
-
 
     /* =============================================================
        LIGHT MODE INPUTS
@@ -2042,7 +1431,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     input::placeholder {
 
@@ -2057,7 +1445,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .field-label {
 
@@ -2065,7 +1452,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(24,48,73,.55);
 
     }
-
 
     .auth-screen.light-mode
     .field-input-wrap {
@@ -2078,7 +1464,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .field-input-wrap:hover {
 
@@ -2086,7 +1471,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(35,71,108,.28);
 
     }
-
 
     .auth-screen.light-mode
     .field-input-wrap:focus-within {
@@ -2103,7 +1487,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .field-icon {
 
@@ -2111,7 +1494,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(24,48,73,.45);
 
     }
-
 
     .auth-screen.light-mode
     .field-input-wrap:focus-within
@@ -2121,7 +1503,6 @@ import { ThemeService } from '../../core/services/theme.service';
         #2D74C9;
 
     }
-
 
     /* =============================================================
        AUTOFILL - DARK
@@ -2154,7 +1535,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        AUTOFILL - LIGHT
        ============================================================= */
@@ -2186,7 +1566,6 @@ import { ThemeService } from '../../core/services/theme.service';
         #FFFFFF inset !important;
 
     }
-
 
     /* =============================================================
        PASSWORD TOGGLE
@@ -2227,7 +1606,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .field-toggle:hover {
 
       color:
@@ -2238,7 +1616,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .field-toggle {
 
@@ -2246,7 +1623,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(24,48,73,.42);
 
     }
-
 
     /* =============================================================
        REMEMBER
@@ -2263,7 +1639,6 @@ import { ThemeService } from '../../core/services/theme.service';
       gap: 15px;
 
     }
-
 
     .remember {
 
@@ -2284,7 +1659,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .remember {
 
@@ -2292,7 +1666,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(24,48,73,.62);
 
     }
-
 
     .remember input {
 
@@ -2305,7 +1678,6 @@ import { ThemeService } from '../../core/services/theme.service';
       opacity: 0;
 
     }
-
 
     .checkbox-visual {
 
@@ -2331,7 +1703,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .remember input:checked
     + .checkbox-visual {
 
@@ -2345,7 +1716,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .checkbox-visual {
 
@@ -2353,7 +1723,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(24,48,73,.22);
 
     }
-
 
     .forgot-link {
 
@@ -2368,13 +1737,11 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .forgot-link:hover {
 
       text-decoration: underline;
 
     }
-
 
     /* =============================================================
        PASSWORD RULES
@@ -2391,7 +1758,6 @@ import { ThemeService } from '../../core/services/theme.service';
       margin-top: -4px;
 
     }
-
 
     .password-hint span {
 
@@ -2414,7 +1780,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .password-hint span {
 
@@ -2429,7 +1794,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .password-hint b {
 
       margin-right: 4px;
@@ -2438,7 +1802,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(220,232,245,.22);
 
     }
-
 
     .password-hint span.valid {
 
@@ -2450,14 +1813,12 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .password-hint span.valid b {
 
       color:
         #1764A3;
 
     }
-
 
     /* =============================================================
        ERROR
@@ -2487,7 +1848,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .error {
 
@@ -2501,7 +1861,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(45,116,201,.18);
 
     }
-
 
     /* =============================================================
        PRIMARY BUTTON
@@ -2559,7 +1918,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .primary-button:hover:not(:disabled) {
 
       transform:
@@ -2574,14 +1932,12 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .primary-button:active:not(:disabled) {
 
       transform:
         translateY(0);
 
     }
-
 
     .primary-button:disabled {
 
@@ -2592,7 +1948,6 @@ import { ThemeService } from '../../core/services/theme.service';
       box-shadow: none;
 
     }
-
 
     .primary-button.success {
 
@@ -2607,7 +1962,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .button-arrow {
 
       font-size: 19px;
@@ -2615,7 +1969,6 @@ import { ThemeService } from '../../core/services/theme.service';
       line-height: 0;
 
     }
-
 
     .btn-spinner {
 
@@ -2638,7 +1991,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     @keyframes spin {
 
       to {
@@ -2648,7 +2000,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .btn-check {
 
       animation:
@@ -2656,7 +2007,6 @@ import { ThemeService } from '../../core/services/theme.service';
         ease both;
 
     }
-
 
     @keyframes checkPop {
 
@@ -2680,7 +2030,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     /* =============================================================
        SWITCH
        ============================================================= */
@@ -2699,7 +2048,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .switch-link {
 
@@ -2707,7 +2055,6 @@ import { ThemeService } from '../../core/services/theme.service';
         rgba(24,48,73,.52);
 
     }
-
 
     .switch-link button {
 
@@ -2729,14 +2076,12 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .switch-link button:hover {
 
       text-decoration:
         underline;
 
     }
-
 
     /* =============================================================
        BACK BUTTON
@@ -2771,14 +2116,12 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .back-button:hover {
 
       color:
         #2D74C9;
 
     }
-
 
     .auth-screen.light-mode
     .back-button {
@@ -2788,13 +2131,11 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .back-button span {
 
       font-size: 16px;
 
     }
-
 
     /* =============================================================
        MOBILE BRAND
@@ -2807,7 +2148,6 @@ import { ThemeService } from '../../core/services/theme.service';
       margin-bottom: 35px;
 
     }
-
 
     .mobile-brand-name {
 
@@ -2823,7 +2163,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .mobile-brand-sub {
 
       color:
@@ -2837,7 +2176,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     .auth-screen.light-mode
     .mobile-brand-name {
 
@@ -2845,7 +2183,6 @@ import { ThemeService } from '../../core/services/theme.service';
         #102A43;
 
     }
-
 
     /* =============================================================
        MOBILE
@@ -2868,7 +2205,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
     }
 
-
     @media (max-width: 900px) {
 
       .auth-screen {
@@ -2879,13 +2215,11 @@ import { ThemeService } from '../../core/services/theme.service';
 
       }
 
-
       .visual-pane {
 
         display: none;
 
       }
-
 
       .form-pane {
 
@@ -2896,7 +2230,6 @@ import { ThemeService } from '../../core/services/theme.service';
           max(24px, 6vw);
 
       }
-
 
       .form-shell {
 
@@ -2916,7 +2249,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
       }
 
-
       .mobile-brand {
 
         display: block;
@@ -2924,7 +2256,6 @@ import { ThemeService } from '../../core/services/theme.service';
       }
 
     }
-
 
     @media (max-width: 520px) {
 
@@ -2935,13 +2266,11 @@ import { ThemeService } from '../../core/services/theme.service';
 
       }
 
-
       .form-shell {
 
         padding-top: 55px;
 
       }
-
 
       .theme-toggle {
 
@@ -2951,13 +2280,11 @@ import { ThemeService } from '../../core/services/theme.service';
 
       }
 
-
       h1 {
 
         font-size: 40px;
 
       }
-
 
       .subtitle {
 
@@ -2965,14 +2292,12 @@ import { ThemeService } from '../../core/services/theme.service';
 
       }
 
-
       .row-between {
 
         align-items:
           flex-start;
 
       }
-
 
       .forgot-link {
 
@@ -2982,7 +2307,6 @@ import { ThemeService } from '../../core/services/theme.service';
       }
 
     }
-
 
     /* =============================================================
        REDUCED MOTION
@@ -3010,61 +2334,30 @@ import { ThemeService } from '../../core/services/theme.service';
   `],
 })
 
-
 export class LoginComponent
   implements
     OnInit,
     OnDestroy,
     AfterViewInit {
 
-
   @ViewChild('googleButton')
   googleButtonRef?: ElementRef<HTMLDivElement>;
-
-
-  /* ===============================================================
-     STATE
-     =============================================================== */
 
   loading = false;
 
   loginSuccess = false;
 
-  showSignup = false;
-
   showLoginPassword = false;
-
-  showSignupPassword = false;
-
-  showSignupConfirm = false;
 
   errorMessage = '';
 
-  signupError = '';
-
   googleConfigured = false;
 
-  /** Delegue au ThemeService partage (meme cle localStorage / meme etat que
-   * le reste de l'app) au lieu d'un booleen local isole : sans ca, le choix
-   * clair/sombre fait sur la page de login ne survivait pas au passage au
-   * dashboard, et inversement. */
   get darkMode(): boolean {
     return this.themeService.mode() === 'dark';
   }
 
-
-  /* ===============================================================
-     FORMS
-     =============================================================== */
-
   loginForm!: ReturnType<FormBuilder['group']>;
-
-  signupForm!: ReturnType<FormBuilder['group']>;
-
-
-  /* ===============================================================
-     CONSTRUCTOR
-     =============================================================== */
 
   constructor(
 
@@ -3080,7 +2373,6 @@ export class LoginComponent
     public readonly themeService: ThemeService,
 
   ) {
-
 
     this.loginForm =
       this.fb.group({
@@ -3112,75 +2404,14 @@ export class LoginComponent
 
       });
 
-
-    this.signupForm =
-      this.fb.group({
-
-        name: [
-
-          '',
-
-          [
-            Validators.required,
-            Validators.minLength(2),
-          ],
-
-        ],
-
-        email: [
-
-          '',
-
-          [
-            Validators.required,
-            Validators.email,
-          ],
-
-        ],
-
-        password: [
-
-          '',
-
-          [
-            Validators.required,
-
-            Validators.minLength(8),
-
-            Validators.pattern(
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/
-            ),
-
-          ],
-
-        ],
-
-        confirmPassword: [
-
-          '',
-
-          Validators.required,
-
-        ],
-
-      });
-
-
     this.googleConfigured =
       this.googleIdentity.isConfigured();
 
   }
 
-
-  /* ===============================================================
-     LIFECYCLE
-     =============================================================== */
-
   ngOnInit(): void {}
 
-
   ngOnDestroy(): void {}
-
 
   ngAfterViewInit(): void {
 
@@ -3207,94 +2438,11 @@ export class LoginComponent
 
   }
 
-
-  /* ===============================================================
-     THEME
-     =============================================================== */
-
   toggleTheme(): void {
 
     this.themeService.toggle();
 
   }
-
-
-  /* ===============================================================
-     PASSWORD MATCH
-     =============================================================== */
-
-  get passwordsMatch(): boolean {
-
-    const password =
-      this.signupForm.controls[
-        'password'
-      ].value;
-
-    const confirmPassword =
-      this.signupForm.controls[
-        'confirmPassword'
-      ].value;
-
-    return (
-
-      !!password &&
-
-      !!confirmPassword &&
-
-      password === confirmPassword
-
-    );
-
-  }
-
-
-  /* ===============================================================
-     SWITCH LOGIN / SIGNUP
-     =============================================================== */
-
-  openSignup(): void {
-
-    this.errorMessage = '';
-
-    this.signupError = '';
-
-    this.loading = false;
-
-    this.loginSuccess = false;
-
-    this.showSignup = true;
-
-    this.showLoginPassword = false;
-
-    this.showSignupPassword = false;
-
-    this.showSignupConfirm = false;
-
-  }
-
-
-  openLogin(): void {
-
-    this.errorMessage = '';
-
-    this.signupError = '';
-
-    this.loading = false;
-
-    this.showSignup = false;
-
-    this.showLoginPassword = false;
-
-    this.showSignupPassword = false;
-
-    this.showSignupConfirm = false;
-
-  }
-
-
-  /* ===============================================================
-     LOGIN
-     =============================================================== */
 
   onLogin(): void {
 
@@ -3310,11 +2458,9 @@ export class LoginComponent
 
     }
 
-
     this.loading = true;
 
     this.errorMessage = '';
-
 
     const email =
       this.loginForm.controls[
@@ -3325,7 +2471,6 @@ export class LoginComponent
       this.loginForm.controls[
         'password'
       ].value;
-
 
     this.authService
 
@@ -3345,7 +2490,6 @@ export class LoginComponent
 
           this.loginSuccess = true;
 
-
           setTimeout(() => {
 
             this.router.navigate([
@@ -3355,7 +2499,6 @@ export class LoginComponent
           }, 550);
 
         },
-
 
         error: (err) => {
 
@@ -3371,11 +2514,6 @@ export class LoginComponent
 
   }
 
-
-  /* ===============================================================
-     GOOGLE LOGIN
-     =============================================================== */
-
   private handleGoogleCredential(
     idToken: string
   ): void {
@@ -3383,7 +2521,6 @@ export class LoginComponent
     this.loading = true;
 
     this.errorMessage = '';
-
 
     this.authService
 
@@ -3397,7 +2534,6 @@ export class LoginComponent
 
           this.loginSuccess = true;
 
-
           setTimeout(() => {
 
             this.router.navigate([
@@ -3407,7 +2543,6 @@ export class LoginComponent
           }, 550);
 
         },
-
 
         error: (err) => {
 
@@ -3420,44 +2555,6 @@ export class LoginComponent
         },
 
       });
-
-  }
-
-
-  /* ===============================================================
-     SIGNUP
-     =============================================================== */
-
-  onSignup(): void {
-
-    this.signupForm.markAllAsTouched();
-
-    this.signupError = '';
-
-
-    if (
-      this.signupForm.invalid
-    ) {
-
-      return;
-
-    }
-
-
-    if (
-      !this.passwordsMatch
-    ) {
-
-      this.signupError =
-        'Access keys do not match.';
-
-      return;
-
-    }
-
-
-    this.signupError =
-      'Registration endpoint is not connected yet. Connect this action to your backend registration API.';
 
   }
 

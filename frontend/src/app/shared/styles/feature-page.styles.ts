@@ -1,4 +1,3 @@
-
 export const FEATURE_PAGE_STYLES = `
 
   /* ================================================================
@@ -22,7 +21,6 @@ export const FEATURE_PAGE_STYLES = `
     animation: pageFadeIn .35s ease both;
   }
 
-
   @keyframes pageFadeIn {
     from {
       opacity: 0;
@@ -34,7 +32,6 @@ export const FEATURE_PAGE_STYLES = `
       transform: translateY(0);
     }
   }
-
 
   /* ================================================================
      PAGE HEADER
@@ -48,7 +45,6 @@ export const FEATURE_PAGE_STYLES = `
     gap: 16px;
     padding-bottom: 2px;
   }
-
 
   .page-header h1 {
     margin: 0;
@@ -66,7 +62,6 @@ export const FEATURE_PAGE_STYLES = `
     font-weight: 800;
     letter-spacing: -.035em;
   }
-
 
   .page-header h1::before {
     content: '';
@@ -93,7 +88,6 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   .page-sub {
     display: block;
 
@@ -106,7 +100,6 @@ export const FEATURE_PAGE_STYLES = `
     font-weight: 450;
   }
 
-
   /* ================================================================
      HEADER ACTIONS
      ================================================================ */
@@ -117,7 +110,6 @@ export const FEATURE_PAGE_STYLES = `
     gap: 8px;
     flex-wrap: wrap;
   }
-
 
   /* ================================================================
      DATE NAVIGATION / FILTERS
@@ -130,7 +122,6 @@ export const FEATURE_PAGE_STYLES = `
     gap: 7px;
     flex-wrap: wrap;
   }
-
 
   .date-nav button,
   .nav-btn {
@@ -162,7 +153,6 @@ export const FEATURE_PAGE_STYLES = `
       box-shadow .16s ease;
   }
 
-
   .date-nav button:hover,
   .nav-btn:hover {
     color: var(--accent-primary);
@@ -181,12 +171,10 @@ export const FEATURE_PAGE_STYLES = `
       rgba(30, 90, 160, .08);
   }
 
-
   .date-nav button:active,
   .nav-btn:active {
     transform: scale(.95);
   }
-
 
   .date-nav input[type='date'],
   .date-input {
@@ -209,7 +197,6 @@ export const FEATURE_PAGE_STYLES = `
       box-shadow .16s ease;
   }
 
-
   .date-nav input[type='date']:hover,
   .date-input:hover {
     border-color:
@@ -219,7 +206,6 @@ export const FEATURE_PAGE_STYLES = `
         var(--border-subtle)
       );
   }
-
 
   .date-nav input[type='date']:focus,
   .date-input:focus {
@@ -235,7 +221,6 @@ export const FEATURE_PAGE_STYLES = `
         transparent
       );
   }
-
 
   /* ================================================================
      SELECTS
@@ -269,14 +254,12 @@ export const FEATURE_PAGE_STYLES = `
       box-shadow .16s ease;
   }
 
-
   select:hover,
   select:focus {
     border-color: var(--accent-primary);
     color: var(--accent-primary);
     outline: none;
   }
-
 
   select:focus {
     box-shadow:
@@ -287,7 +270,6 @@ export const FEATURE_PAGE_STYLES = `
         transparent
       );
   }
-
 
   /* ================================================================
      SUMMARY / KPI CARDS
@@ -301,7 +283,6 @@ export const FEATURE_PAGE_STYLES = `
 
     gap: 13px;
   }
-
 
   .summary-card {
     position: relative;
@@ -334,7 +315,6 @@ export const FEATURE_PAGE_STYLES = `
       both;
   }
 
-
   .summary-card::before {
     content: '';
 
@@ -355,7 +335,6 @@ export const FEATURE_PAGE_STYLES = `
         transparent 80%
       );
   }
-
 
   .summary-card::after {
     content: '';
@@ -380,7 +359,6 @@ export const FEATURE_PAGE_STYLES = `
     pointer-events: none;
   }
 
-
   .summary-card:hover {
     border-color:
       color-mix(
@@ -394,24 +372,20 @@ export const FEATURE_PAGE_STYLES = `
     transform: translateY(-2px);
   }
 
-
   .summary-cards
   .summary-card:nth-child(2) {
     animation-delay: .04s;
   }
-
 
   .summary-cards
   .summary-card:nth-child(3) {
     animation-delay: .08s;
   }
 
-
   .summary-cards
   .summary-card:nth-child(4) {
     animation-delay: .12s;
   }
-
 
   @keyframes cardRise {
     from {
@@ -424,7 +398,6 @@ export const FEATURE_PAGE_STYLES = `
       transform: translateY(0);
     }
   }
-
 
   .card-label {
     color: var(--text-muted);
@@ -439,7 +412,6 @@ export const FEATURE_PAGE_STYLES = `
 
     font-weight: 700;
   }
-
 
   .card-value {
     color: var(--accent-active);
@@ -456,11 +428,9 @@ export const FEATURE_PAGE_STYLES = `
     letter-spacing: -.025em;
   }
 
-
   .card-value.late {
     color: var(--accent-critical);
   }
-
 
   .unit {
     margin-left: 3px;
@@ -475,7 +445,6 @@ export const FEATURE_PAGE_STYLES = `
     font-size: 12px;
     font-weight: 500;
   }
-
 
   /* ================================================================
      GENERIC PANELS
@@ -509,7 +478,6 @@ export const FEATURE_PAGE_STYLES = `
     animation-delay: .1s;
   }
 
-
   .panel:hover {
     border-color:
       color-mix(
@@ -520,7 +488,6 @@ export const FEATURE_PAGE_STYLES = `
 
     box-shadow: var(--shadow-card-hover);
   }
-
 
   .panel::before {
     content: '';
@@ -538,7 +505,6 @@ export const FEATURE_PAGE_STYLES = `
     opacity: .65;
   }
 
-
   .panel-header {
     display: flex;
     align-items: center;
@@ -548,7 +514,6 @@ export const FEATURE_PAGE_STYLES = `
 
     margin-bottom: 15px;
   }
-
 
   .panel-header h2 {
     margin: 0;
@@ -562,7 +527,6 @@ export const FEATURE_PAGE_STYLES = `
 
     letter-spacing: -.01em;
   }
-
 
   .panel-header h2::before {
     content: '';
@@ -588,7 +552,6 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   /* ================================================================
      PANEL ACTIONS
      ================================================================ */
@@ -598,7 +561,6 @@ export const FEATURE_PAGE_STYLES = `
     align-items: center;
     gap: 6px;
   }
-
 
   /* ================================================================
      TABLES
@@ -613,7 +575,6 @@ export const FEATURE_PAGE_STYLES = `
 
     font-size: 12px;
   }
-
 
   .km-table th,
   .data-table th {
@@ -644,7 +605,6 @@ export const FEATURE_PAGE_STYLES = `
     white-space: nowrap;
   }
 
-
   .km-table td,
   .data-table td {
     padding:
@@ -662,7 +622,6 @@ export const FEATURE_PAGE_STYLES = `
     vertical-align: middle;
   }
 
-
   .km-table tr,
   .data-table tr {
     transition: background .12s ease;
@@ -674,7 +633,6 @@ export const FEATURE_PAGE_STYLES = `
       both;
   }
 
-
   .km-table tbody tr:hover,
   .data-table tbody tr:hover {
     background:
@@ -685,12 +643,10 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   .km-table tr:last-child td,
   .data-table tr:last-child td {
     border-bottom: none;
   }
-
 
   @keyframes rowFadeIn {
     from {
@@ -704,7 +660,6 @@ export const FEATURE_PAGE_STYLES = `
     }
   }
 
-
   .row-late {
     background:
       color-mix(
@@ -714,7 +669,6 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   .row-late:hover {
     background:
       color-mix(
@@ -723,7 +677,6 @@ export const FEATURE_PAGE_STYLES = `
         transparent
       ) !important;
   }
-
 
   /* ================================================================
      TYPOGRAPHY HELPERS
@@ -736,22 +689,18 @@ export const FEATURE_PAGE_STYLES = `
       tabular-nums;
   }
 
-
   .bold {
     color: var(--text-primary) !important;
     font-weight: 700;
   }
 
-
   .small {
     font-size: 10px;
   }
 
-
   .muted {
     color: var(--text-muted);
   }
-
 
   /* ================================================================
      STATUS / TYPE PILLS
@@ -789,7 +738,6 @@ export const FEATURE_PAGE_STYLES = `
     white-space: nowrap;
   }
 
-
   .delay-pill {
     color: var(--accent-active);
 
@@ -808,7 +756,6 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   .delay-pill.is-late {
     color: var(--accent-critical);
 
@@ -826,7 +773,6 @@ export const FEATURE_PAGE_STYLES = `
         transparent
       );
   }
-
 
   /* ================================================================
      COMMON BUTTONS
@@ -864,7 +810,6 @@ export const FEATURE_PAGE_STYLES = `
       filter .18s ease;
   }
 
-
   .btn-primary:hover {
     filter: brightness(1.08);
 
@@ -877,11 +822,9 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   .btn-primary:active {
     transform: scale(.97);
   }
-
 
   .btn-secondary {
     min-height: 34px;
@@ -915,7 +858,6 @@ export const FEATURE_PAGE_STYLES = `
       background .16s ease;
   }
 
-
   .btn-secondary:hover {
     color: var(--accent-primary);
 
@@ -926,7 +868,6 @@ export const FEATURE_PAGE_STYLES = `
         var(--border-subtle)
       );
   }
-
 
   /* ================================================================
      EMPTY STATE
@@ -966,12 +907,10 @@ export const FEATURE_PAGE_STYLES = `
     font-size: 12px;
   }
 
-
   .empty strong {
     color: var(--text-secondary);
     font-size: 12.5px;
   }
-
 
   /* ================================================================
      LOADING
@@ -984,7 +923,6 @@ export const FEATURE_PAGE_STYLES = `
 
     padding: 5px 0;
   }
-
 
   .skeleton-row {
     height: 38px;
@@ -1018,7 +956,6 @@ export const FEATURE_PAGE_STYLES = `
       infinite;
   }
 
-
   @keyframes skeletonShimmer {
     0% {
       background-position:
@@ -1032,7 +969,6 @@ export const FEATURE_PAGE_STYLES = `
         0;
     }
   }
-
 
   /* ================================================================
      SMALL TECHNICAL LABEL
@@ -1050,7 +986,6 @@ export const FEATURE_PAGE_STYLES = `
 
     text-transform: uppercase;
   }
-
 
   /* ================================================================
      STATUS DOT
@@ -1076,7 +1011,6 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   .status-dot.warning {
     background: var(--accent-warning);
 
@@ -1089,7 +1023,6 @@ export const FEATURE_PAGE_STYLES = `
       );
   }
 
-
   .status-dot.critical {
     background: var(--accent-critical);
 
@@ -1101,7 +1034,6 @@ export const FEATURE_PAGE_STYLES = `
         transparent
       );
   }
-
 
   /* ================================================================
      RESPONSIVE — TABLET
@@ -1116,14 +1048,12 @@ export const FEATURE_PAGE_STYLES = `
         40px;
     }
 
-
     .summary-cards {
       grid-template-columns:
         repeat(2, minmax(0, 1fr));
     }
 
   }
-
 
   /* ================================================================
      RESPONSIVE — MOBILE / TABLET
@@ -1138,24 +1068,15 @@ export const FEATURE_PAGE_STYLES = `
         36px;
     }
 
-
     .page-header {
       align-items: flex-start;
 
       flex-direction: column;
     }
 
-
     .page-header-actions {
       width: 100%;
     }
-
-
-    /*
-     * IMPORTANT:
-     * Keep summary/KPI cards in two columns on mobile.
-     * Previously this became one column at smaller widths.
-     */
 
     .summary-cards {
       grid-template-columns:
@@ -1164,24 +1085,20 @@ export const FEATURE_PAGE_STYLES = `
       gap: 10px;
     }
 
-
     .summary-card {
       padding:
         15px
         14px;
     }
 
-
     .panel {
       padding: 17px;
     }
-
 
     .data-table,
     .km-table {
       min-width: 620px;
     }
-
 
     .panel:has(
       .data-table,
@@ -1191,7 +1108,6 @@ export const FEATURE_PAGE_STYLES = `
     }
 
   }
-
 
   /* ================================================================
      RESPONSIVE — PHONE
@@ -1208,31 +1124,14 @@ export const FEATURE_PAGE_STYLES = `
       gap: 16px;
     }
 
-
     .page-header h1 {
       font-size: 21px;
     }
-
 
     .page-header h1::before {
       width: 18px;
       margin-right: 8px;
     }
-
-
-    /*
-     * KEEP KPIs SIDE-BY-SIDE ON PHONE
-     *
-     * 4 cards become:
-     *
-     * ┌──────────┐ ┌──────────┐
-     * │   KPI 1  │ │   KPI 2  │
-     * └──────────┘ └──────────┘
-     *
-     * ┌──────────┐ ┌──────────┐
-     * │   KPI 3  │ │   KPI 4  │
-     * └──────────┘ └──────────┘
-     */
 
     .summary-cards {
       grid-template-columns:
@@ -1242,7 +1141,6 @@ export const FEATURE_PAGE_STYLES = `
 
       width: 100%;
     }
-
 
     .summary-card {
       width: 100%;
@@ -1257,60 +1155,44 @@ export const FEATURE_PAGE_STYLES = `
       gap: 6px;
     }
 
-
     .card-label {
       font-size: 7.5px;
       letter-spacing: .09em;
 
-      /*
-       * Prevent long labels from making
-       * one card wider than the other.
-       */
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-
     .card-value {
       font-size: 21px;
       line-height: 1.05;
 
-      /*
-       * Prevent large values from breaking
-       * the two-column mobile layout.
-       */
       white-space: nowrap;
     }
-
 
     .unit {
       font-size: 10px;
       margin-left: 2px;
     }
 
-
     .panel {
       border-radius: 11px;
       padding: 15px;
     }
 
-
     .panel-header {
       gap: 8px;
     }
-
 
     .panel-header h2 {
       font-size: 13px;
     }
 
-
     .date-nav,
     .filters {
       width: 100%;
     }
-
 
     .date-nav input[type='date'],
     .date-input {
@@ -1318,18 +1200,15 @@ export const FEATURE_PAGE_STYLES = `
       min-width: 0;
     }
 
-
     .page-header-actions {
       gap: 7px;
     }
-
 
     .page-header-actions > * {
       max-width: 100%;
     }
 
   }
-
 
   /* ================================================================
      VERY SMALL PHONES
@@ -1346,11 +1225,9 @@ export const FEATURE_PAGE_STYLES = `
       gap: 14px;
     }
 
-
     .summary-cards {
       gap: 7px;
     }
-
 
     .summary-card {
       padding:
@@ -1360,23 +1237,19 @@ export const FEATURE_PAGE_STYLES = `
       border-radius: 9px;
     }
 
-
     .card-label {
       font-size: 7px;
     }
 
-
     .card-value {
       font-size: 18px;
     }
-
 
     .unit {
       font-size: 9px;
     }
 
   }
-
 
   /* ================================================================
      REDUCED MOTION
@@ -1389,18 +1262,12 @@ export const FEATURE_PAGE_STYLES = `
     .panel,
     .km-table tr,
     .data-table tr {
-
       animation: none;
-
     }
 
-
     .skeleton-row {
-
       animation: none;
-
       opacity: .6;
-
     }
 
   }
@@ -1441,7 +1308,6 @@ export const FEATURE_PAGE_STYLES = `
       0 8px 24px rgba(24, 55, 92, .10);
   }
 
-
   /* ================================================================
      LIGHT MODE — PAGE
      ================================================================ */
@@ -1450,7 +1316,6 @@ export const FEATURE_PAGE_STYLES = `
     background: #f7f9fc;
     color: #17263d;
   }
-
 
   /* ================================================================
      LIGHT MODE — HEADERS
@@ -1472,21 +1337,24 @@ export const FEATURE_PAGE_STYLES = `
     color: #8291a6;
   }
 
-
   /* ================================================================
      LIGHT MODE — KPI / SUMMARY GRID
+
+     IMPORTANT:
+     Keep the same grid structure as the shared style.
+     Desktop = 4 columns
+     Tablet = 2 columns
+     Phone = 2 columns
      ================================================================ */
 
   body.light .summary-cards {
     display: grid;
 
     grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+      repeat(4, minmax(0, 1fr));
 
-    column-gap: 22px;
-    row-gap: 18px;
+    gap: 13px;
   }
-
 
   /* ================================================================
      LIGHT MODE — KPI CARD
@@ -1535,7 +1403,6 @@ export const FEATURE_PAGE_STYLES = `
     color: #8291a6;
   }
 
-
   /* ================================================================
      LIGHT MODE — PANELS
      ================================================================ */
@@ -1578,7 +1445,6 @@ export const FEATURE_PAGE_STYLES = `
       rgba(47, 120, 212, .30);
   }
 
-
   /* ================================================================
      LIGHT MODE — TABLES
      ================================================================ */
@@ -1620,7 +1486,6 @@ export const FEATURE_PAGE_STYLES = `
   body.light .bold {
     color: #17263d !important;
   }
-
 
   /* ================================================================
      LIGHT MODE — DATE / FILTER CONTROLS
@@ -1673,7 +1538,6 @@ export const FEATURE_PAGE_STYLES = `
       rgba(47, 120, 212, .10);
   }
 
-
   /* ================================================================
      LIGHT MODE — BUTTONS
      ================================================================ */
@@ -1714,7 +1578,6 @@ export const FEATURE_PAGE_STYLES = `
       rgba(47, 120, 212, .22);
   }
 
-
   /* ================================================================
      LIGHT MODE — STATUS / TYPE PILLS
      ================================================================ */
@@ -1750,7 +1613,6 @@ export const FEATURE_PAGE_STYLES = `
       rgba(229, 72, 77, .15);
   }
 
-
   /* ================================================================
      LIGHT MODE — STATUS DOTS
      ================================================================ */
@@ -1779,7 +1641,6 @@ export const FEATURE_PAGE_STYLES = `
       rgba(229, 72, 77, .30);
   }
 
-
   /* ================================================================
      LIGHT MODE — EMPTY STATES
      ================================================================ */
@@ -1798,7 +1659,6 @@ export const FEATURE_PAGE_STYLES = `
   body.light .empty strong {
     color: #52647c;
   }
-
 
   /* ================================================================
      LIGHT MODE — LOADING
@@ -1820,7 +1680,6 @@ export const FEATURE_PAGE_STYLES = `
       100%;
   }
 
-
   /* ================================================================
      LIGHT MODE — TECHNICAL TEXT
      ================================================================ */
@@ -1837,7 +1696,6 @@ export const FEATURE_PAGE_STYLES = `
     color: #8291a6;
   }
 
-
   /* ================================================================
      LIGHT MODE — ROW STATES
      ================================================================ */
@@ -1852,23 +1710,22 @@ export const FEATURE_PAGE_STYLES = `
       rgba(229, 72, 77, .075) !important;
   }
 
-
   /* ================================================================
-     RESPONSIVE — LIGHT MODE KPI GRID
+     LIGHT MODE — RESPONSIVE
+
+     These match the main responsive rules above.
      ================================================================ */
 
   @media (max-width: 1200px) {
 
     body.light .summary-cards {
       grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(2, minmax(0, 1fr));
 
-      column-gap: 18px;
-      row-gap: 16px;
+      gap: 13px;
     }
 
   }
-
 
   @media (max-width: 860px) {
 
@@ -1876,12 +1733,10 @@ export const FEATURE_PAGE_STYLES = `
       grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-      column-gap: 16px;
-      row-gap: 16px;
+      gap: 10px;
     }
 
   }
-
 
   @media (max-width: 560px) {
 
@@ -1889,8 +1744,7 @@ export const FEATURE_PAGE_STYLES = `
       grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-      column-gap: 10px;
-      row-gap: 10px;
+      gap: 9px;
     }
 
     body.light .summary-card {
@@ -1902,11 +1756,37 @@ export const FEATURE_PAGE_STYLES = `
     }
 
     body.light .card-label {
-      font-size: 9.5px;
+      font-size: 7.5px;
     }
 
     body.light .card-value {
       font-size: 21px;
     }
 
-  }`;
+  }
+
+  @media (max-width: 380px) {
+
+    body.light .summary-cards {
+      gap: 7px;
+    }
+
+    body.light .summary-card {
+      padding:
+        12px
+        9px;
+
+      border-radius: 9px;
+    }
+
+    body.light .card-label {
+      font-size: 7px;
+    }
+
+    body.light .card-value {
+      font-size: 18px;
+    }
+
+  }
+
+`;

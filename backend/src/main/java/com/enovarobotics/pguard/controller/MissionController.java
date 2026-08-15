@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * F2 — GET /api/mission : historique des missions, filtrable par date et
- * par categorie (MISSION par defaut, pour compatibilite avec les appels
- * existants qui ne precisent pas de categorie).
- */
 @RestController
 @RequestMapping("/api/mission")
 @RequiredArgsConstructor
@@ -33,8 +28,7 @@ public class MissionController {
             return repository.findByCategoryAndEventDateOrderByEventDatetimeAsc(category, date);
         }
         LocalDate today = LocalDate.now();
-        // Garde-fou : ne jamais renvoyer un evenement date dans le futur,
-        // meme si des donnees reelles importees en contiennent.
+
         return repository.findByCategoryOrderByEventDatetimeDesc(category).stream()
                 .filter(m -> m.getEventDate() == null || !m.getEventDate().isAfter(today))
                 .toList();

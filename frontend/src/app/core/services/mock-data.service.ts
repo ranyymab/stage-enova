@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
+import { API_ORIGIN } from '../config/api.config';
 import {
   ActivityFeedEntry,
   Anomalie,
@@ -14,20 +15,14 @@ import {
   RobotLive,
 } from '../../shared/models/dashboard.models';
 
-/**
- * Service de données du backend Spring Boot.
- * Récupère les données réelles du robot lues depuis les fichiers JSON du backend.
- * Inclut un mécanisme de fallback instantané si le serveur distant met du temps à se réveiller.
- */
 @Injectable({ providedIn: 'root' })
 export class MockDataService {
-  readonly API_ORIGIN = 'https://stage-enova-3.onrender.com';
+  readonly API_ORIGIN = API_ORIGIN;
   private readonly API_URL = `${this.API_ORIGIN}/api/dashboard`;
   private readonly REQ_TIMEOUT = 3500;
 
   constructor(private readonly http: HttpClient) {}
 
-  /** Prefixe une URL relative renvoyee par le backend avec l'origine de l'API. */
   resolveImageUrl(path: string | null | undefined): string | null {
     if (!path) return null;
     return path.startsWith('http') ? path : `${this.API_ORIGIN}${path}`;
@@ -110,7 +105,7 @@ export class MockDataService {
   getAnomaliesRecentes(date?: string): Observable<Anomalie[]> {
     const d = date || '2026-08-11';
     const fallback = this.buildFallbackDay(d).anomalies;
-    // La derniere anomalie de la journee reste ouverte, pour que le badge/compteur ait du sens.
+
     if (fallback.length > 0) fallback[fallback.length - 1].statut = 'EN_COURS';
     return this.http.get<Anomalie[]>(`${this.API_URL}/anomalies-recentes`, {
       params: this.dateParams(date),
@@ -153,34 +148,21 @@ export class MockDataService {
     );
   }
 
-  /**
-   * Journee de repli riche (utilisee seulement si le backend Render est injoignable).
-   * Avant, le repli n'avait que 3 points GPS -> la carte affichait "Point 1/3" et la
-   * ronde bouclait presque instantanement. Ici on simule une vraie journee de
-   * patrouille : plusieurs rondes completes autour d'une boucle de 8 balises,
-   * deux passages en inspection, deux recharges rapides, un retour base en fin
-   * de journee, et des anomalies detectees a des moments/lieux qui collent au trajet.
-   */
   private buildFallbackDay(date: string): {
     trajectory: RobotLive['trajectory'];
     anomalies: Anomalie[];
     activity: ActivityFeedEntry[];
   } {
-    // Boucle de 8 balises autour du site reel Enova (35.8176 / 10.5913 -
-    // meme point de depart que la simulation backend RobotSimulationService),
-    // reparcourue a chaque ronde. Historiquement ces coordonnees pointaient
-    // par erreur vers un tout autre site (36.80 / 10.18, a ~120km) : en cas
-    // de secours (API injoignable), la carte affichait alors une boucle
-    // geographiquement incoherente avec les donnees reelles.
+
     const loop: [number, number][] = [
-      [35.8176, 10.5913], // A - base / station de charge
-      [35.8183, 10.5915], // B
-      [35.8188, 10.5923], // C
-      [35.8185, 10.5931], // D
-      [35.8177, 10.5934], // E
-      [35.8170, 10.5928], // F
-      [35.8167, 10.5919], // G
-      [35.8171, 10.5911], // H
+      [35.8176, 10.5913],
+      [35.8183, 10.5915],
+      [35.8188, 10.5923],
+      [35.8185, 10.5931],
+      [35.8177, 10.5934],
+      [35.8170, 10.5928],
+      [35.8167, 10.5919],
+      [35.8171, 10.5911],
     ];
 
     const trajectory: RobotLive['trajectory'] = [];
@@ -189,7 +171,6 @@ export class MockDataService {
     const activity: ActivityFeedEntry[] = [];
     let ronde = 0;
 
-    /** Ajoute des minutes a un couple (heure, minute), avec report d'heure correct. */
     const addMin = (h: number, m: number, delta: number): [number, number] => {
       const total = h * 60 + m + delta;
       return [Math.floor(total / 60), total % 60];
@@ -217,7 +198,6 @@ export class MockDataService {
       });
     };
 
-    // Une ronde = un tour complet de la boucle de 8 balises, ~7 min entre chaque point.
     const runRonde = (startH: number, startM: number): [number, number] => {
       ronde++;
       let h = startH;
@@ -274,7 +254,6 @@ export class MockDataService {
       return addMin(h, m, 45);
     };
 
-    // --- Journee ---
     let [eh, em] = runRonde(8, 0);
     addAnomaly(fmt(...addMin(8, 21, 0)), loop[3], 'Mouvement suspect Zone D', 'MOYENNE');
 
@@ -300,7 +279,6 @@ export class MockDataService {
     [eh, em] = runDock(ih, im);
     [eh, em] = runRonde(18, 0);
 
-    // Retour a la base en fin de journee.
     const retourHeure = addPoint(20, 30, loop[0], 'RETOUR_BASE', 'Retour a la base');
     activity.push({
       id: 'retour-base',
@@ -324,4 +302,3 @@ export class MockDataService {
     return date ? new HttpParams().set('date', date) : undefined;
   }
 }
-

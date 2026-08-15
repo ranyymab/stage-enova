@@ -10,12 +10,6 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- * Entité pour la catégorie "Kilometrage".
- * Contrairement aux autres catégories, un seul enregistrement par date,
- * mis à jour (UPSERT) à chaque réception au lieu d'être inséré en liste.
- * Contrainte d'unicité sur (robotId, date) pour permettre l'upsert.
- */
 @Entity
 @Table(
         name = "kilometrage_summary",

@@ -21,14 +21,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Configuration Spring Security — F5 Authentification JWT.
- * - Mots de passe : BCrypt (jamais en clair)
- * - Sessions : stateless (JWT uniquement, pas de session serveur)
- * - Routes publiques : /api/auth/login, Swagger UI
- * - Toutes les autres routes /api/** nécessitent un JWT valide
- * - CORS ouvert pour l'app Angular en développement (localhost:4200)
- */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -37,26 +29,19 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final RateLimitFilter rateLimitFilter;
 
-    /**
-     * Origines autorisées en CORS, configurables via app.cors.allowed-origins
-     * (liste séparée par des virgules) plutôt que codées en dur — nécessaire
-     * pour pointer vers le vrai domaine de production sans recompiler.
-     */
     @Value("${app.cors.allowed-origins:http://localhost:4200,http://localhost:50288,http://127.0.0.1:4200,http://127.0.0.1:50288}")
     private String allowedOrigins;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // Facteur de coût 12 (par défaut Spring Security = 10) : plus lent à
-        // calculer pour un attaquant en cas de fuite de la base, tout en
-        // restant négligeable pour un utilisateur légitime.
+
         return new BCryptPasswordEncoder(12);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // API stateless consommée via Authorization: Bearer, pas de cookies de session
+                .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .headers(headers -> headers

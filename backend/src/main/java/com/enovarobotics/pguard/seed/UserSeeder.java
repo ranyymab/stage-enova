@@ -11,19 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Crée les comptes par défaut (administrateur + opérateur) au premier
- * démarrage, pour permettre de se connecter immédiatement en
- * développement sans devoir créer un compte manuellement.
- *
- * IMPORTANT — sécurité : ces identifiants sont uniquement pour le
- * développement local. Avant toute mise en production, supprimer ce
- * seeder ou changer les mots de passe par défaut.
- */
 @Component
 @RequiredArgsConstructor
 @Slf4j
-@Order(1) // s'exécute avant DataSeeder, sans dépendance fonctionnelle entre les deux
+@Order(1)
 public class UserSeeder {
 
     private final UserRepository userRepository;

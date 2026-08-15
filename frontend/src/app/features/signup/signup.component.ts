@@ -29,7 +29,7 @@ function passwordStrengthValidator(control: AbstractControl): ValidationErrors |
 }
 
 interface PasswordStrength {
-  score: number; // 0-4
+  score: number;
   label: string;
   color: string;
 }
@@ -41,7 +41,7 @@ interface PasswordStrength {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="signup-screen" [attr.data-theme]="themeService.mode()">
-      <!-- Background animation -->
+
       <div class="animated-bg" aria-hidden="true">
         <div class="floating-orb orb-1"></div>
         <div class="floating-orb orb-2"></div>
@@ -49,16 +49,16 @@ interface PasswordStrength {
       </div>
 
       <div class="signup-container">
-        <!-- Illustration Section -->
+
         <div class="illustration-section">
           <div class="illustration-wrapper">
             <svg class="security-icon" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
               <g transform="translate(30, 20)">
-                <!-- Shield -->
-                <path d="M 70 10 L 120 35 L 120 100 Q 70 150 70 150 Q 70 150 20 100 L 20 35 Z" 
+
+                <path d="M 70 10 L 120 35 L 120 100 Q 70 150 70 150 Q 70 150 20 100 L 20 35 Z"
                       fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                <!-- Checkmark -->
-                <path d="M 50 100 L 65 120 L 90 85" fill="none" stroke="currentColor" stroke-width="3" 
+
+                <path d="M 50 100 L 65 120 L 90 85" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
               </g>
             </svg>
@@ -67,20 +67,17 @@ interface PasswordStrength {
           </div>
         </div>
 
-        <!-- Form Section -->
         <div class="form-section">
           <div class="header">
             <h1>Inscription</h1>
             <p class="subtitle">Operator access — a verification code will be sent to your email</p>
           </div>
 
-          <!-- Google Sign-Up -->
           <div #googleButton class="google-btn-container" *ngIf="googleConfigured" ></div>
           <div class="divider" *ngIf="googleConfigured" ><span>ou</span></div>
 
-          <!-- Signup Form -->
           <form [formGroup]="form" (ngSubmit)="onSubmit()" class="signup-form">
-            <!-- Full Name -->
+
             <label class="field">
               <span class="field-label">Full name</span>
               <div class="field-input-wrap">
@@ -88,10 +85,10 @@ interface PasswordStrength {
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                <input 
-                  type="text" 
-                  formControlName="fullName" 
-                  placeholder="Jean Dupont" 
+                <input
+                  type="text"
+                  formControlName="fullName"
+                  placeholder="Jean Dupont"
                   autocomplete="name"
                   [disabled]="loading"
                 />
@@ -104,7 +101,6 @@ interface PasswordStrength {
               </span>
             </label>
 
-            <!-- Email -->
             <label class="field">
               <span class="field-label">Email address</span>
               <div class="field-input-wrap">
@@ -112,10 +108,10 @@ interface PasswordStrength {
                   <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                   <path d="M22 6l-10 7-10-7"></path>
                 </svg>
-                <input 
-                  type="email" 
-                  formControlName="email" 
-                  placeholder="vous@enovarobotics.eu" 
+                <input
+                  type="email"
+                  formControlName="email"
+                  placeholder="vous@enovarobotics.eu"
                   autocomplete="username"
                   [disabled]="loading"
                 />
@@ -128,7 +124,6 @@ interface PasswordStrength {
               </span>
             </label>
 
-            <!-- Password -->
             <label class="field">
               <span class="field-label">Password</span>
               <div class="field-input-wrap">
@@ -136,19 +131,18 @@ interface PasswordStrength {
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
-                <input 
-                  type="password" 
-                  formControlName="password" 
-                  placeholder="••••••••" 
+                <input
+                  type="password"
+                  formControlName="password"
+                  placeholder="••••••••"
                   autocomplete="new-password"
                   [disabled]="loading"
                 />
               </div>
 
-              <!-- Password Strength Indicator -->
               <div class="password-strength" *ngIf="form.get('password')?.value">
                 <div class="strength-bar">
-                  <div class="strength-fill" [style.width.%]="getPasswordStrength().score * 25" 
+                  <div class="strength-fill" [style.width.%]="getPasswordStrength().score * 25"
                        [style.background-color]="getPasswordStrength().color"></div>
                 </div>
                 <span class="strength-label" [style.color]="getPasswordStrength().color">
@@ -156,7 +150,6 @@ interface PasswordStrength {
                 </span>
               </div>
 
-              <!-- Password Requirements -->
               <div class="password-requirements">
                 <div class="requirement" [class.met]="hasPasswordRequirement('lower')">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -195,7 +188,6 @@ interface PasswordStrength {
               </span>
             </label>
 
-            <!-- Confirm Password -->
             <label class="field">
               <span class="field-label">Confirm password</span>
               <div class="field-input-wrap">
@@ -203,10 +195,10 @@ interface PasswordStrength {
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
-                <input 
-                  type="password" 
-                  formControlName="confirmPassword" 
-                  placeholder="••••••••" 
+                <input
+                  type="password"
+                  formControlName="confirmPassword"
+                  placeholder="••••••••"
                   autocomplete="new-password"
                   [disabled]="loading"
                 />
@@ -217,7 +209,6 @@ interface PasswordStrength {
               </span>
             </label>
 
-            <!-- Error/Success Messages -->
             <div class="messages">
               <p class="error-msg" *ngIf="errorMessage" [@fadeIn]>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -233,9 +224,8 @@ interface PasswordStrength {
               </p>
             </div>
 
-            <!-- Submit Button -->
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               class="btn-create"
               [disabled]="form.invalid || loading"
               [class.loading]="loading"
@@ -253,7 +243,6 @@ interface PasswordStrength {
             </button>
           </form>
 
-          <!-- Login Link -->
           <p class="switch-link">
             Already have an account? <a routerLink="/login">Sign in</a>
           </p>
@@ -835,4 +824,3 @@ export class SignupComponent implements AfterViewInit, OnDestroy {
       });
   }
 }
-

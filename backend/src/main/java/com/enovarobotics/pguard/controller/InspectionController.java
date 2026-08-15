@@ -12,14 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * F2 — GET /api/inspection : historique des points d'inspection.
- *
- * Note : sert les données de la table obstacle_progress (catégorie réelle
- * "Obstacle"), qui correspond fonctionnellement au suivi d'inspection
- * décrit dans le cahier des charges (Last_point/Delay). Voir
- * ObstacleProgress.java pour le détail de cet écart de nommage.
- */
 @RestController
 @RequestMapping("/api/inspection")
 @RequiredArgsConstructor
@@ -34,9 +26,7 @@ public class InspectionController {
         if (date != null) {
             return repository.findByEventDateOrderByEventDatetimeAsc(date);
         }
-        // Garde-fou : jamais un point d'inspection date dans le futur, et plus
-        // de limite arbitraire a 20 lignes (voir AnomaliesController, meme
-        // correctif).
+
         return repository.findByEventDateLessThanEqualOrderByEventDatetimeDesc(LocalDate.now());
     }
 }

@@ -66,7 +66,6 @@ export class App {
     this.router.navigate(['/anomalies']);
   }
 
-  /** Declenche une courte animation de fondu sur le contenu a chaque changement de page. */
   onRouteActivate(): void {
     if (this.routeTransitionTimer) clearTimeout(this.routeTransitionTimer);
     this.routeTransitioning = true;

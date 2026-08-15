@@ -14,19 +14,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 
-/**
- * F1 — Réception et traitement des fichiers JSON par catégorie.
- * Endpoint générique POST /api/upload/{categorie}, qui route vers le
- * service de parsing correspondant.
- *
- * Catégories supportées : mission, inspecting, back_home, docking,
- * obstacle, teleoperation, kilometrage, detection.
- *
- * Note : les noms de catégorie dans l'URL suivent la casse réelle des
- * dossiers du robot (Inspecting, Back_home, Obstacle, Teleoperation) en
- * minuscules, et non les noms du cahier des charges là où ils diffèrent
- * (ex: "obstacle" et non "inspection" pour les données Last_point/Delay).
- */
 @RestController
 @RequestMapping("/api/upload")
 @RequiredArgsConstructor
@@ -108,11 +95,6 @@ public class UploadController {
         }
     }
 
-    /**
-     * Pour kilometrage/detection, la date n'est pas dans le contenu JSON :
-     * on utilise le paramètre "date" explicite si fourni (recommandé, le
-     * nom de fichier réel en étant la source), sinon la date du jour.
-     */
     private LocalDate resolveDate(String dateParam) {
         if (dateParam == null || dateParam.isBlank()) {
             return LocalDate.now();

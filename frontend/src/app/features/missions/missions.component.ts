@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { API_ORIGIN } from '../../core/config/api.config';
 import { FormsModule } from '@angular/forms';
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
 
@@ -153,7 +154,7 @@ export class MissionsComponent implements OnInit {
 
   load() {
     this.loading = true;
-    this.http.get<Mission[]>('https://stage-enova-3.onrender.com/api/mission?date=' + this.selectedDate).subscribe({
+    this.http.get<Mission[]>(API_ORIGIN + '/api/mission?date=' + this.selectedDate).subscribe({
       next: d => { this.missions = d; this.loading = false; },
       error: () => { this.loading = false; },
     });

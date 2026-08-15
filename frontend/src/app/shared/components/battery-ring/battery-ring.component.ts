@@ -1,16 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-/**
- * Anneau de batterie anime en SVG. Le remplissage (stroke-dashoffset) est
- * recalcule directement dans le template a chaque verification Angular, a
- * partir des @Input() courants, plutot que d'etre mis en cache dans un
- * champ mis a jour uniquement depuis ngOnChanges. L'ancienne version
- * pouvait rester bloquee sur une valeur perimee (anneau visuellement vide
- * alors que le pourcentage affiche a cote indiquait 100%) si Angular ne
- * redeclenchait pas ngOnChanges exactement au moment attendu ; calculer la
- * valeur en continu dans le template elimine cette classe de bug.
- */
 @Component({
   selector: 'app-battery-ring',
   standalone: true,
@@ -71,7 +61,6 @@ export class BatteryRingComponent {
     return Math.max(0, Math.min(100, this.percent || 0));
   }
 
-  // 0% -> offset plein cercle (rien de visible), 100% -> offset 0 (cercle complet).
   dashOffset(): number {
     return this.circumference() * (1 - this.clampedPercent() / 100);
   }

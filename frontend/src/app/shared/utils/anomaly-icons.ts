@@ -1,15 +1,3 @@
-/**
- * Icones minimalistes par type d'objet detecte, utilisees partout ou une
- * anomalie doit etre representee visuellement sans photo reelle (ce qui est
- * desormais systematiquement le cas : voir DataSeeder/RobotSimulationService,
- * qui ne referencent plus jamais de fichier image inexistant). Un seul
- * endroit pour ces SVG, importe par : anomalies.component.ts, le tableau
- * du dashboard, et les popups d'anomalie de live-map.component.ts.
- *
- * "obstacle" reutilise volontairement l'icone "default" (inconnu) : le
- * robot ne classifie pas ce type plus precisement, il n'y a donc pas plus
- * d'information a representer visuellement qu'un type non reconnu.
- */
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export const ANOMALY_ICONS: Record<string, string> = {
@@ -31,16 +19,6 @@ export function getAnomalyIcon(type: string | null | undefined): string {
   return ANOMALY_ICONS[(type ?? '').toLowerCase()] ?? ANOMALY_ICONS['default'];
 }
 
-/**
- * Version "prete pour [innerHTML]" de getAnomalyIcon : Angular sanitize par
- * defaut tout ce qui passe par [innerHTML], et son sanitizer HTML retire
- * purement et simplement les balises <svg> (elles ne sont pas dans sa liste
- * blanche). Sans passer par bypassSecurityTrustHtml, ces icones sont donc
- * silencieusement supprimees a l'affichage - la case reste vide, sans
- * erreur console visible. On centralise donc le bypass ici : le SVG vient
- * toujours du code (jamais d'une entree utilisateur), donc aucun risque
- * d'injection.
- */
 export function getSafeAnomalyIcon(sanitizer: DomSanitizer, type: string | null | undefined): SafeHtml {
   return sanitizer.bypassSecurityTrustHtml(getAnomalyIcon(type));
 }

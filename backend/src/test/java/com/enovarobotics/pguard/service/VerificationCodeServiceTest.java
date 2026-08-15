@@ -52,7 +52,7 @@ class VerificationCodeServiceTest {
 
         VerificationCode saved = captor.getValue();
         assertNotNull(saved.getCodeHash());
-        assertTrue(saved.getCodeHash().startsWith("$2")); // format BCrypt
+        assertTrue(saved.getCodeHash().startsWith("$2"));
         assertFalse(saved.isConsumed());
         assertEquals(0, saved.getAttempts());
 
@@ -153,7 +153,7 @@ class VerificationCodeServiceTest {
                 .codeHash(passwordEncoder.encode("123456"))
                 .purpose(VerificationCode.Purpose.SIGNUP_VERIFICATION)
                 .expiresAt(LocalDateTime.now().plusMinutes(5))
-                .attempts(5) // MAX_ATTEMPTS already reached
+                .attempts(5)
                 .consumed(false)
                 .build();
 

@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-/**
- * F2 + F4 — Gestion des anomalies.
- * GET /api/anomalies               : liste avec filtres (statut, criticite, date)
- * PUT /api/anomalies/{id}/traiter  : changer le statut (NOUVELLE -> EN_COURS -> RESOLUE)
- */
 @RestController
 @RequestMapping("/api/anomalies")
 @RequiredArgsConstructor
@@ -28,10 +23,7 @@ public class AnomaliesController {
             @RequestParam(required = false) DetectionEvent.Criticite criticite,
             @RequestParam(required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) java.time.LocalDate date
     ) {
-        // Garde-fou : sans date precise, on liste tout l'historique passe/present
-        // (jamais le futur) plutot que de se limiter arbitrairement aux 20
-        // dernieres lignes toutes dates confondues, ce qui masquait des
-        // anomalies reelles des qu'il y en avait plus de 20 au total.
+
         List<DetectionEvent> all = date != null
                 ? repository.findByEventDateOrderByEventDatetimeDesc(date)
                 : repository.findByEventDateLessThanEqualOrderByEventDatetimeDesc(java.time.LocalDate.now());

@@ -50,47 +50,25 @@ public class AuthController {
 
         Optional<User> existing = userRepository.findByEmail(email);
 
-        if (existing.isPresent() && existing.get().isEmailVerified()) {
+        if (existing.isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(Map.of("error", "Un compte existe déjà pour cet e-mail. Essayez de vous connecter."));
         }
 
-        User user = existing.orElseGet(User::new);
+        User user = new User();
         user.setEmail(email);
         user.setFullName(request.getFullName());
         user.setPasswordHash(passwordEncoder.encode(request.getPassword()));
         user.setAuthProvider(User.AuthProvider.LOCAL);
-        user.setEmailVerified(false);
-        if (existing.isEmpty()) {
-            user.setRole(parseRole(defaultRegistrationRole));
-        }
+        // Email verification has been removed: accounts are active immediately.
+        user.setEmailVerified(true);
+        user.setRole(parseRole(defaultRegistrationRole));
+        user.setLastLoginAt(LocalDateTime.now());
         userRepository.save(user);
 
-        String devCode = verificationCodeService.generateAndSend(email, user.getFullName(), VerificationCode.Purpose.SIGNUP_VERIFICATION);
-        CodeMetadata metadata = verificationCodeService.getCodeMetadata(email, VerificationCode.Purpose.SIGNUP_VERIFICATION);
+        log.info("Account created immediately (no email verification) for: {}", email);
 
-        log.info("Registration code generated for email: {} (expires in {} seconds)", email, metadata.expirySeconds);
-
-        if (devCode != null) {
-            log.warn("SMTP not configured: code returned to client (dev mode) for {}", email);
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(VerificationResponse.success(
-                            "Serveur SMTP non configuré. Voici votre code de test (ne s'affichera pas en production).",
-                            metadata.expirySeconds,
-                            metadata.maxAttempts,
-                            metadata.attemptsRemaining,
-                            60,
-                            devCode));
-        }
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(VerificationResponse.success(
-                        "Un code de vérification a été envoyé à " + email,
-                        metadata.expirySeconds,
-                        metadata.maxAttempts,
-                        metadata.attemptsRemaining,
-                        60,
-                        null));
+        return ResponseEntity.status(HttpStatus.CREATED).body(buildLoginResponse(user));
     }
 
     @PostMapping("/verify-email")

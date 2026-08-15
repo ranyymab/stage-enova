@@ -58,7 +58,13 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
   animaux: 'animal.png',
 
-  débris: 'debris.jpg'
+  débris: 'debris.jpg',
+
+  unknown: 'unknown.png',
+  inconnu: 'unknown.png',
+  obstacle: 'unknown.png',
+  other: 'unknown.png',
+  autre: 'unknown.png'
 };
 
 @Component({
@@ -581,9 +587,49 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
       }
 
+      .card-image[data-obj='unknown'],
+      .card-image[data-obj='inconnu'],
+      .card-image[data-obj='obstacle'],
+      .card-image[data-obj='other'],
+      .card-image[data-obj='autre'] {
+
+        background:
+          linear-gradient(
+            135deg,
+            color-mix(
+              in srgb,
+              var(--accent-warning) 10%,
+              var(--panel-raised)
+            ),
+            var(--panel-raised)
+          );
+
+      }
+
       /* ==========================================================
          IMAGE PHOTO
          ========================================================== */
+
+      .card-image::after {
+
+        content: '';
+
+        position: absolute;
+
+        inset: 0;
+
+        z-index: 3;
+
+        pointer-events: none;
+
+        background:
+          linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(0, 0, 0, 0.28) 100%
+          );
+
+      }
 
       .card-image-photo {
 

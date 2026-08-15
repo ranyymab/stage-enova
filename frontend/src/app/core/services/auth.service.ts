@@ -53,15 +53,11 @@ export class AuthService {
       .pipe(tap((response) => this.persistSession(response)));
   }
 
-  register(request: RegisterRequest): Observable<VerificationResponse> {
+  register(request: RegisterRequest): Observable<LoginResponse> {
+    // Accounts are created and activated immediately — no email verification step.
     return this.http
-      .post<VerificationResponse>(`${this.API_URL}/register`, request)
-      .pipe(
-        tap((response) => {
-          this.setPendingVerificationEmail(request.email);
-          this.setPendingDevCode(response.devCode ?? null);
-        })
-      );
+      .post<LoginResponse>(`${this.API_URL}/register`, request)
+      .pipe(tap((response) => this.persistSession(response)));
   }
 
   verifyEmail(request: VerifyEmailRequest): Observable<LoginResponse> {

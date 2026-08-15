@@ -75,40 +75,70 @@
   color: #111827;
 
   background:
+    radial-gradient(
+      circle at 8% 0%,
+      rgba(45, 116, 201, 0.10) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 96% 12%,
+      rgba(45, 116, 201, 0.07) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(201, 135, 24, 0.05) 0%,
+      transparent 45%
+    ),
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.72) 0%,
-      rgba(248, 250, 252, 0.78) 100%
-    ),
-    url('/assets/1.png');
+      #f6f9fd 0%,
+      #eef3f9 55%,
+      #eaf1f8 100%
+    );
 
-  background-size: cover;
-  background-position: center;
   background-attachment: fixed;
-  background-repeat: no-repeat;
 }
 
 :host-context([data-theme='light']) .dashboard .enova-hero-banner {
   background:
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.94) 0%,
-      rgba(255, 255, 255, 0.76) 42%,
-      rgba(255, 255, 255, 0.18) 100%
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(45, 116, 201, 0.16) 0%,
+      transparent 55%
     ),
-    url('/assets/1.png');
-
-  background-size: cover;
-  background-position: center;
+    linear-gradient(
+      100deg,
+      #ffffff 0%,
+      #f7fafd 48%,
+      #eaf2fb 100%
+    );
 
   color: #111827;
 
-  border-color: rgba(45, 116, 201, 0.45);
+  border-color: rgba(45, 116, 201, 0.28);
 
   box-shadow:
     0 20px 50px rgba(45, 116, 201, 0.10),
-    0 10px 25px rgba(15, 23, 42, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 10px 25px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+:host-context([data-theme='light']) .dashboard .enova-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(45, 116, 201, 0.14) 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(115deg, transparent 30%, rgba(0,0,0,.9) 78%, transparent 100%);
+  mask-image: linear-gradient(115deg, transparent 30%, rgba(0,0,0,.9) 78%, transparent 100%);
+}
+
+:host-context([data-theme='light']) .dashboard .hero-bg-graphic {
+  opacity: 0.16;
+  mix-blend-mode: multiply;
 }
 
 :host-context([data-theme='light']) .dashboard .hero-title {
@@ -790,14 +820,27 @@
 :host-context([data-theme='light']) .dashboard .summary-card,
 :host-context([data-theme='light']) .dashboard .target-section,
 :host-context([data-theme='light']) .dashboard .chart-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.90);
 
-  border-color: rgba(17, 24, 39, 0.12);
+  border-color: rgba(45, 116, 201, 0.14);
 
   color: #111827;
 
   box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.08);
+    0 14px 34px rgba(24, 66, 115, 0.09),
+    0 2px 8px rgba(24, 66, 115, 0.05);
+
+  backdrop-filter: blur(6px);
+}
+
+:host-context([data-theme='light']) .dashboard .panel:hover,
+:host-context([data-theme='light']) .dashboard .summary-card:hover,
+:host-context([data-theme='light']) .dashboard .chart-panel:hover {
+  box-shadow:
+    0 18px 42px rgba(24, 66, 115, 0.13),
+    0 4px 12px rgba(24, 66, 115, 0.07);
+
+  border-color: rgba(45, 116, 201, 0.28);
 }
 
 :host-context([data-theme='light']) .dashboard .panel-header h2 {
@@ -1928,33 +1971,34 @@
 
   :host-context([data-theme='light']) .dashboard {
     background:
+      radial-gradient(
+        circle at 10% 0%,
+        rgba(45, 116, 201, 0.10) 0%,
+        transparent 42%
+      ),
       linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.76),
-        rgba(248, 250, 252, 0.84)
-      ),
-      url('/assets/1.png');
-
-    background-size: cover;
-
-    background-position: center;
+        #f6f9fd 0%,
+        #eef3f9 55%,
+        #eaf1f8 100%
+      );
 
     background-attachment: scroll;
   }
 
   :host-context([data-theme='light']) .dashboard .enova-hero-banner {
     background:
-      linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.93) 0%,
-        rgba(255, 255, 255, 0.72) 48%,
-        rgba(255, 255, 255, 0.22) 100%
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(45, 116, 201, 0.16) 0%,
+        transparent 55%
       ),
-      url('/assets/1.png');
-
-    background-size: cover;
-
-    background-position: center;
+      linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #f7fafd 48%,
+        #eaf2fb 100%
+      );
   }
 
   :host-context([data-theme='light']) .dashboard .hero-title,

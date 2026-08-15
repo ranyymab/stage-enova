@@ -106,7 +106,7 @@ class AuthControllerTest {
     }
 
     @Test
-    void register_existingVerifiedEmail_returnsConflictWithoutLeakingDetails() {
+    void register_existingEmail_returnsConflictWithoutLeakingDetails() {
         User existing = localUser("user@example.com", "Password1!", true);
         when(userRepository.findByEmail("user@example.com")).thenReturn(Optional.of(existing));
 
@@ -118,7 +118,7 @@ class AuthControllerTest {
     }
 
     @Test
-    void register_newEmail_createsUnverifiedUserAndSendsCode() {
+    void register_newEmail_createsVerifiedUserAndLogsInImmediately() {
         when(userRepository.findByEmail("new@example.com")).thenReturn(Optional.empty());
 
         ResponseEntity<?> response = controller.register(
@@ -128,9 +128,14 @@ class AuthControllerTest {
 
         org.mockito.ArgumentCaptor<User> captor = org.mockito.ArgumentCaptor.forClass(User.class);
         verify(userRepository).save(captor.capture());
-        assertEquals(false, captor.getValue().isEmailVerified());
+        // Email verification has been removed: new accounts are active immediately.
+        assertEquals(true, captor.getValue().isEmailVerified());
         assertEquals("new@example.com", captor.getValue().getEmail());
 
-        verify(verificationCodeService).generateAndSend(eq("new@example.com"), any(), any());
+        // No verification code should be generated anymore.
+        verify(verificationCodeService, never()).generateAndSend(any(), any(), any());
+
+        // The response body should already be a usable login token (VerificationResponse dance is gone).
+        assertTrue(response.getBody() instanceof com.enovarobotics.pguard.model.dto.LoginResponse);
     }
 }

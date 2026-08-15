@@ -5,60 +5,66 @@
      app.css (offset du contenu + topbar) et par sidebar.component.ts
      (largeur reelle du panneau) pour eviter tout desalignement entre
      les deux si l'un des deux est modifie sans l'autre. */
-  --sidebar-width: 268px;
+  --sidebar-width: 285px;
 
-  /* Palette — Enova Robotics (light theme, default) */
-  --bg-app: #F4F7F6;
-  --panel-base: #FFFFFF;
-  --panel-raised: #F0F6F5;
-  --border-subtle: #E2ECE9;
+  /* Palette — Enova Robotics (light theme, default)
+     Navy / electric blue command-center theme, matching the sidebar
+     and login screen exactly. */
+  --bg-app: #f3f6fa;
+  --panel-base: #ffffff;
+  --panel-raised: #edf2f7;
+  --border-subtle: #d7e0ea;
+  --border-strong: #c1cedc;
 
-  --text-primary: #111E1C;
-  --text-secondary: #4A635E;
-  --text-muted: #8A9E9A;
+  --text-primary: #102033;
+  --text-secondary: #526579;
+  --text-muted: #8190a1;
 
-  --brand-primary: #00AEA0;    /* Persian Green */
-  --brand-accent: #CA5215;     /* Orange Roughy */
-  --brand-secondary: #E9BE87;  /* Gold Sand */
+  --brand-primary: #2468b5;
+  --brand-accent: #c98718;
+  --brand-secondary: #4d7fc4;
 
   --accent-primary: var(--brand-primary);
-  --accent-primary-soft: rgba(0, 174, 160, 0.1);
-  --accent-active: #00AEA0;
-  --accent-warning: #CA5215;
-  --accent-critical: #E5484D;
-  --accent-info: #2196C7;
+  --accent-primary-soft: rgba(45, 116, 201, 0.10);
+  --accent-active: #2d74c9;
+  --accent-warning: #c98718;
+  --accent-critical: #c83d45;
+  --accent-info: #4d7fc4;
 
-  --shadow-card: 0 4px 20px -2px rgba(0, 50, 45, 0.05), 0 2px 6px -1px rgba(0, 50, 45, 0.03);
-  --shadow-card-hover: 0 12px 28px -4px rgba(0, 174, 160, 0.16);
+  --shadow-card: 0 8px 28px rgba(20, 45, 70, 0.07);
+  --shadow-card-hover: 0 14px 36px rgba(20, 45, 70, 0.12);
 
   --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Roboto Mono', monospace;
 }
 
 :root[data-theme='dark'] {
-  /* Palette — Enova Robotics (dark / night-ops variant) */
-  --bg-app: #081412;
-  --panel-base: #0D1F1C;
-  --panel-raised: #122926;
-  --border-subtle: #1C3B37;
+  /* Palette — Enova Robotics (dark / night-ops variant)
+     Same navy / electric blue family, matching the sidebar's own
+     navy-950 / navy-900 tones so panels don't clash with it. */
+  --bg-app: #070b12;
+  --panel-base: #0c121c;
+  --panel-raised: #111a27;
+  --border-subtle: #1c2a3b;
+  --border-strong: #2a3b50;
 
-  --text-primary: #EEF8F6;
-  --text-secondary: #9DBAB5;
-  --text-muted: #5E7E78;
+  --text-primary: #f4f7fb;
+  --text-secondary: #aab7c7;
+  --text-muted: #66758a;
 
-  --brand-primary: #1FC9BA;
-  --brand-accent: #E37A3A;
-  --brand-secondary: #E9BE87;
+  --brand-primary: #2d74c9;
+  --brand-accent: #f2a93b;
+  --brand-secondary: #5b8def;
 
   --accent-primary: var(--brand-primary);
-  --accent-primary-soft: rgba(31, 201, 186, 0.14);
-  --accent-active: #1FC9BA;
-  --accent-warning: #E37A3A;
-  --accent-critical: #E5484D;
-  --accent-info: #4FB8E0;
+  --accent-primary-soft: rgba(45, 116, 201, 0.14);
+  --accent-active: #3b82d6;
+  --accent-warning: #f2a93b;
+  --accent-critical: #e5484d;
+  --accent-info: #5b8def;
 
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
-  --shadow-card-hover: 0 10px 30px -2px rgba(31, 201, 186, 0.22);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.20);
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.30);
 }
 
 * {

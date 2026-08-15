@@ -289,14 +289,14 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
           html: `
             <div style="position:relative;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
               <!-- Outer pulsing halo -->
-              <div style="position:absolute;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle,rgba(0,174,160,0.4) 0%,rgba(0,174,160,0) 70%);animation:robotHalo 2s ease-out infinite;"></div>
+              <div style="position:absolute;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle,rgba(45,116,201,0.4) 0%,rgba(45,116,201,0) 70%);animation:robotHalo 2s ease-out infinite;"></div>
               <!-- Status indicator background -->
-              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#1FC9BA 0%,#00AEA0 100%);border:3px solid #fff;box-shadow:0 0 0 2px #0D2622,0 4px 12px rgba(0,174,160,.4);display:flex;align-items:center;justify-content:center;position:relative;z-index:2;">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#3B82D6 0%,#2468B5 100%);border:3px solid #fff;box-shadow:0 0 0 2px #0B1B2D,0 4px 12px rgba(36,104,181,.4);display:flex;align-items:center;justify-content:center;position:relative;z-index:2;">
                 <!-- Robot icon inside -->
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="9" y1="7" x2="15" y2="7"></line><circle cx="12" cy="16" r="2"></circle></svg>
               </div>
               <!-- Status label -->
-              <div style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:rgba(13,38,34,0.9);border:1px solid rgba(31,201,186,0.4);border-radius:4px;padding:2px 8px;color:#1FC9BA;font-size:8px;font-weight:700;white-space:nowrap;letter-spacing:0.05em;z-index:1;backdrop-filter:blur(4px);" id="robot-status-label">PATROUILLE</div>
+              <div style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:rgba(6,16,29,0.9);border:1px solid rgba(45,116,201,0.4);border-radius:4px;padding:2px 8px;color:#3B82D6;font-size:8px;font-weight:700;white-space:nowrap;letter-spacing:0.05em;z-index:1;backdrop-filter:blur(4px);" id="robot-status-label">PATROUILLE</div>
             </div>
             <style>
               @keyframes robotHalo {
@@ -769,7 +769,7 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       case 'dock': return '#E9BE87';
       case 'home': return '#CA5215';
       case 'teleop': return '#E5484D';
-      default: return '#00AEA0';
+      default: return '#2468B5';
     }
   }
 }

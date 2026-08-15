@@ -98,7 +98,7 @@ export type KpiTone = 'neutral' | 'good' | 'warning' | 'critical';
     .tone-warning .kpi-icon-chip { background: color-mix(in srgb, var(--accent-warning) 14%, transparent); color: var(--accent-warning); }
     .tone-critical .kpi-icon-chip { background: rgba(229, 72, 77, 0.12); color: var(--accent-critical); }
 
-    :root[data-theme='dark'] .tone-good .kpi-icon-chip { color: #1FC9BA; background: rgba(31, 201, 186, 0.14); }
+    :root[data-theme='dark'] .tone-good .kpi-icon-chip { color: #34D399; background: rgba(52, 211, 153, 0.14); }
 
     .kpi-label {
       font-size: 13px;
@@ -152,8 +152,8 @@ export type KpiTone = 'neutral' | 'good' | 'warning' | 'critical';
     }
 
     :root[data-theme='dark'] .trend-up {
-      background: rgba(31, 201, 186, 0.16);
-      color: #1FC9BA;
+      background: rgba(52, 211, 153, 0.16);
+      color: #34D399;
     }
 
     .trend-down {

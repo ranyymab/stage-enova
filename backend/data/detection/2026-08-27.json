@@ -1,0 +1,14 @@
+[
+    {
+        "hour": "18:32:33",
+        "objectDetected": "unknown",
+        "gps": {
+            "latitude": 35.817402393,
+            "longitude": 10.5908944698
+        },
+        "image": {
+            "fileName": "unknown.png",
+            "filePath": ""
+        }
+    }
+]

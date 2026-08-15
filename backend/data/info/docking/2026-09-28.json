@@ -1,0 +1,20 @@
+[
+    {
+        "0-Info": "docking",
+        "1-State": "start",
+        "2-Date": "28-9-2026",
+        "3-Hour": "05:35:55",
+        "4-Battery": 41.7,
+        "5-Latitude": 35.8171691689,
+        "6-Longitude": 10.5914765433
+    },
+    {
+        "0-Info": "undocking",
+        "1-State": "start",
+        "2-Date": "28-9-2026",
+        "3-Hour": "14:50:50",
+        "4-Battery": 93.9,
+        "5-Latitude": 35.8178585861,
+        "6-Longitude": 10.5910451664
+    }
+]

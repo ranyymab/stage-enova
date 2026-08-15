@@ -1,13 +1,4 @@
 <div class="dashboard">
-  <!-- Initial loading veil: shown only until the first KPI response arrives,
-       so the page never flashes an empty/broken-looking layout while data
-       is still in flight. Automatic background refreshes use the thin
-       refresh-bar below instead and never bring this back. -->
-  <div class="dashboard-loading-veil" *ngIf="!firstLoadComplete">
-    <div class="loading-spinner" aria-hidden="true"></div>
-    <span>Chargement du tableau de bord&#8230;</span>
-  </div>
-
   <!-- Toast Notification for anomalies -->
   <div class="anomaly-toast" *ngIf="anomalyToast" (click)="dismissAnomalyToast()">
     <span class="toast-pulse"></span>
@@ -111,8 +102,8 @@
         <app-live-map [trajectory]="robotLive?.trajectory ?? []" [chargeCycles]="robotLive?.chargeCycles ?? []" [anomalies]="anomaliesForMap()"></app-live-map>
 
         <div class="map-legend" *ngIf="robotLive">
-          <span class="legend-item"><span class="legend-dot" style="background:#00AEA0"></span>Position Robot</span>
-          <span class="legend-item"><span class="legend-line" style="background:#00AEA0"></span>Ronde active</span>
+          <span class="legend-item"><span class="legend-dot legend-position"></span>Position Robot</span>
+          <span class="legend-item"><span class="legend-line legend-active"></span>Ronde active</span>
           <span class="legend-item"><span class="legend-line legend-line-dashed" style="background:#E9BE87"></span>Vers Docking</span>
           <span class="legend-item"><span class="legend-line" style="background:#CA5215"></span>Retour Base</span>
           <span class="legend-item"><span class="legend-dot legend-diamond" style="background:#E5484D"></span>Anomalie</span>
@@ -185,7 +176,7 @@
                 <span class="target-label">Temps Dynamique</span>
                 <span class="target-pct mono">{{ pctDynamique() }}%</span>
               </div>
-              <div class="target-bar-bg"><div class="target-bar-fill" [style.width.%]="pctDynamique()" style="background:#00AEA0"></div></div>
+              <div class="target-bar-bg"><div class="target-bar-fill legend-active-fill" [style.width.%]="pctDynamique()"></div></div>
             </div>
             <div class="target-item">
               <div class="target-top">

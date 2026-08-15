@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2409.json",
+        "2-Date": "2026-09-24",
+        "3-Hour": "19:25:27",
+        "4-Notes": "Between None and None; Goal : 34",
+        "5-Start_point": "10",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.816905603,
+        "8-Longitude": 10.5913405391
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2409.json",
+        "2-Date": "2026-09-24",
+        "3-Hour": "19:35:27",
+        "4-Notes": "Target_reached : 28",
+        "5-Stop_point": "28",
+        "6-Latitude": 35.8173477217,
+        "7-Longitude": 10.5907168925
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2409.json",
+        "2-Date": "2026-09-24",
+        "3-Hour": "16:48:53",
+        "4-Notes": "Between None and None; Goal : 22",
+        "5-Start_point": "28",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8169214994,
+        "8-Longitude": 10.5907049486
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2409.json",
+        "2-Date": "2026-09-24",
+        "3-Hour": "16:59:53",
+        "4-Notes": "Target_reached : 12",
+        "5-Stop_point": "12",
+        "6-Latitude": 35.8171715189,
+        "7-Longitude": 10.5917523822
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 2409.json",
+        "2-Date": "2026-09-24",
+        "3-Hour": "15:08:06",
+        "4-Notes": "Between None and None; Goal : 42",
+        "5-Start_point": "12",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8176064048,
+        "8-Longitude": 10.5909004242
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 2409.json",
+        "2-Date": "2026-09-24",
+        "3-Hour": "15:17:06",
+        "4-Notes": "Target_reached : 7",
+        "5-Stop_point": "7",
+        "6-Latitude": 35.8172578427,
+        "7-Longitude": 10.5910489934
+    }
+]

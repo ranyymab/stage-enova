@@ -1,0 +1,14 @@
+[
+    {
+        "hour": "22:58:13",
+        "objectDetected": "vehicle",
+        "gps": {
+            "latitude": 35.8180691761,
+            "longitude": 10.5908864526
+        },
+        "image": {
+            "fileName": "car.png",
+            "filePath": ""
+        }
+    }
+]

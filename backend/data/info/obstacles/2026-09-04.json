@@ -1,0 +1,20 @@
+[
+    {
+        "0-Date": "2026-09-04",
+        "1-Hour": "12:30:13",
+        "2-Mission_name": "test_RTK.json",
+        "3-Last_point": "4",
+        "4-Delay": "62.4211856316",
+        "5-Latitude": 35.8169184004,
+        "6-Longitude": 10.5918245917
+    },
+    {
+        "0-Date": "2026-09-04",
+        "1-Hour": "09:47:48",
+        "2-Mission_name": "test_RTK.json",
+        "3-Last_point": "3",
+        "4-Delay": "46.7375771423",
+        "5-Latitude": 35.8177445223,
+        "6-Longitude": 10.5911759585
+    }
+]

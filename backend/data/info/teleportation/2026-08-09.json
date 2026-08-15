@@ -1,0 +1,18 @@
+[
+    {
+        "0-Info": "start",
+        "1-Date": "9-8-2026",
+        "2-Hour": "00:24:16",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.8172422991,
+        "5-Longitude": 10.5915359098
+    },
+    {
+        "0-Info": "stop",
+        "1-Date": "9-8-2026",
+        "2-Hour": "01:03:16",
+        "3-Mode": "Keyboard",
+        "4-Latitude": 35.8177766064,
+        "5-Longitude": 10.5916400338
+    }
+]

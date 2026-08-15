@@ -1,0 +1,44 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1208.json",
+        "2-Date": "2026-08-12",
+        "3-Hour": "23:53:00",
+        "4-Notes": "Between None and None; Goal : 28",
+        "5-Start_point": "6",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8171522192,
+        "8-Longitude": 10.5916429106
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1208.json",
+        "2-Date": "2026-08-12",
+        "3-Hour": "00:00:00",
+        "4-Notes": "Target_reached : 24",
+        "5-Stop_point": "24",
+        "6-Latitude": 35.8176856467,
+        "7-Longitude": 10.5912579858
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission GreenPath 1208.json",
+        "2-Date": "2026-08-12",
+        "3-Hour": "20:43:13",
+        "4-Notes": "Between None and None; Goal : 40",
+        "5-Start_point": "24",
+        "6-Distance": "Unknown",
+        "7-Latitude": 35.8178524825,
+        "8-Longitude": 10.5918517984
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission GreenPath 1208.json",
+        "2-Date": "2026-08-12",
+        "3-Hour": "20:54:13",
+        "4-Notes": "Target_reached : 15",
+        "5-Stop_point": "15",
+        "6-Latitude": 35.8176906209,
+        "7-Longitude": 10.5910405437
+    }
+]

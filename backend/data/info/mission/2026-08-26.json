@@ -1,0 +1,65 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "26-8-2026",
+        "3-Hour": "02:37:42",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "2",
+        "6-Distance": "0.485",
+        "7-Latitude": 35.817738176,
+        "8-Longitude": 10.5911703496
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "26-8-2026",
+        "3-Hour": "02:56:42",
+        "4-Notes": "Automatic_end",
+        "5-Stop_point": "4",
+        "6-Latitude": 35.8176140495,
+        "7-Longitude": 10.5918256026
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "26-8-2026",
+        "3-Hour": "17:24:41",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "4",
+        "6-Distance": "0.366",
+        "7-Latitude": 35.8180365303,
+        "8-Longitude": 10.5918965969
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "26-8-2026",
+        "3-Hour": "17:55:41",
+        "4-Notes": "Target_reached",
+        "5-Stop_point": "10",
+        "6-Latitude": 35.8179949376,
+        "7-Longitude": 10.5908121436
+    },
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_B.json",
+        "2-Date": "26-8-2026",
+        "3-Hour": "13:32:23",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "10",
+        "6-Distance": "0.131",
+        "7-Latitude": 35.8171570312,
+        "8-Longitude": 10.5918372019
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_B.json",
+        "2-Date": "26-8-2026",
+        "3-Hour": "13:43:23",
+        "4-Notes": "Automatic_end",
+        "5-Stop_point": "4",
+        "6-Latitude": 35.8174835251,
+        "7-Longitude": 10.5909718517
+    }
+]

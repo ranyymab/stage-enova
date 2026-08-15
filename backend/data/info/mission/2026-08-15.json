@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "Mission_B.json",
+        "2-Date": "15-8-2026",
+        "3-Hour": "10:00:54",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "8",
+        "6-Distance": "0.245",
+        "7-Latitude": 35.8173346256,
+        "8-Longitude": 10.59176989
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "Mission_B.json",
+        "2-Date": "15-8-2026",
+        "3-Hour": "10:36:54",
+        "4-Notes": "Automatic_end",
+        "5-Stop_point": "1",
+        "6-Latitude": 35.8174516872,
+        "7-Longitude": 10.5908835894
+    }
+]

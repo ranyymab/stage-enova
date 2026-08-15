@@ -1,0 +1,23 @@
+[
+    {
+        "0-Info": "start",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "10-9-2026",
+        "3-Hour": "13:38:08",
+        "4-Notes": "Start_pressed",
+        "5-Start_point": "8",
+        "6-Distance": "0.269",
+        "7-Latitude": 35.8175448551,
+        "8-Longitude": 10.5918029932
+    },
+    {
+        "0-Info": "end",
+        "1-Mission_name": "test_RTK.json",
+        "2-Date": "10-9-2026",
+        "3-Hour": "14:12:08",
+        "4-Notes": "Automatic_end",
+        "5-Stop_point": "2",
+        "6-Latitude": 35.8180168339,
+        "7-Longitude": 10.5909078818
+    }
+]

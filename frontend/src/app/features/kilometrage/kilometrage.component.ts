@@ -6,12 +6,12 @@ import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
 interface KmSummary {
   id: number;
   robotId: string;
-  summaryDate: string;
-  distanceKm: number;
-  dynamicMinutes: number;
-  staticMinutes: number;
-  totalMinutes: number;
-  dynamicPercentage: number;
+  summaryDate: string | null;
+  distanceKm: number | null;
+  dynamicMinutes: number | null;
+  staticMinutes: number | null;
+  totalMinutes: number | null;
+  dynamicPercentage: number | null;
 }
 
 @Component({
@@ -59,15 +59,15 @@ interface KmSummary {
           </thead>
           <tbody>
             <tr *ngFor="let s of summaries">
-              <td class="mono">{{ s.summaryDate }}</td>
-              <td class="mono bold">{{ s.distanceKm.toFixed(2) }} km</td>
-              <td class="mono">{{ s.dynamicMinutes.toFixed(0) }} min</td>
-              <td class="mono">{{ s.staticMinutes.toFixed(0) }} min</td>
-              <td class="mono">{{ s.totalMinutes.toFixed(0) }} min</td>
+              <td class="mono">{{ s.summaryDate ?? '—' }}</td>
+              <td class="mono bold">{{ (s.distanceKm ?? 0).toFixed(2) }} km</td>
+              <td class="mono">{{ (s.dynamicMinutes ?? 0).toFixed(0) }} min</td>
+              <td class="mono">{{ (s.staticMinutes ?? 0).toFixed(0) }} min</td>
+              <td class="mono">{{ (s.totalMinutes ?? 0).toFixed(0) }} min</td>
               <td>
                 <div class="pct-bar-wrap">
-                  <span class="pct-bar-track"><span class="pct-bar" [style.width.%]="s.dynamicPercentage"></span></span>
-                  <span class="mono pct-label">{{ s.dynamicPercentage.toFixed(0) }}%</span>
+                  <span class="pct-bar-track"><span class="pct-bar" [style.width.%]="s.dynamicPercentage ?? 0"></span></span>
+                  <span class="mono pct-label">{{ (s.dynamicPercentage ?? 0).toFixed(0) }}%</span>
                 </div>
               </td>
             </tr>
@@ -152,7 +152,7 @@ export class KilometrageComponent implements OnInit {
     });
   }
 
-  totalKm() { return this.summaries.reduce((s, x) => s + x.distanceKm, 0); }
+  totalKm() { return this.summaries.reduce((s, x) => s + (x.distanceKm ?? 0), 0); }
   avgKm() { return this.summaries.length ? this.totalKm() / this.summaries.length : 0; }
-  maxKm() { return this.summaries.length ? Math.max(...this.summaries.map(s => s.distanceKm)) : 0; }
+  maxKm() { return this.summaries.length ? Math.max(...this.summaries.map(s => s.distanceKm ?? 0)) : 0; }
 }

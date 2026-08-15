@@ -19,6 +19,25 @@ interface Anomalie {
   longitude: number | null;
 }
 
+/**
+ * Image generique par type d'objet detecte, utilisee des qu'une anomalie
+ * n'a pas sa propre photo (ce qui est le cas le plus frequent : voir
+ * imageUrl()). Ces fichiers doivent exister dans backend/data/images/ - ils
+ * sont alors servis automatiquement par le WebConfig existant sous
+ * /images/detections/** (meme mecanisme que les vraies photos de
+ * detection). "obstacle" partage volontairement l'image "unknown" : le
+ * robot ne classifie pas ce type plus precisement qu'un objet non
+ * identifie, il n'y a donc pas d'illustration plus specifique a lui donner.
+ */
+const TYPE_IMAGE_FILE: Record<string, string> = {
+  person: 'person.png',
+  vehicle: 'car.png',
+  animal: 'animal.png',
+  debris: 'debris.jpg',
+  obstacle: 'unknown.png',
+  default: 'unknown.png',
+};
+
 @Component({
   selector: 'app-anomalies',
   standalone: true,
@@ -55,8 +74,9 @@ interface Anomalie {
         <div class="anomalie-card" *ngFor="let a of anomalies; let i = index" [style.animation-delay.ms]="i * 40" [attr.data-anomaly-id]="a.id">
 
           <div class="card-image" [attr.data-obj]="a.objectDetected?.toLowerCase()">
-            <img *ngIf="imageUrl(a) as src" [src]="src" [alt]="a.objectDetected" class="card-image-photo" (error)="onImageError($event)">
-            <span class="card-image-icon" *ngIf="!imageUrl(a)" [innerHTML]="objectIcon(a.objectDetected)"></span>
+            <img *ngIf="imageUrl(a) as src" [src]="src" [alt]="a.objectDetected" class="card-image-photo" (error)="onImageError($event, a.id, 'photo')">
+            <img *ngIf="!imageUrl(a) && typeImageUrl(a) as src2" [src]="src2" [alt]="a.objectDetected" class="card-image-photo" (error)="onImageError($event, a.id, 'type')">
+            <span class="card-image-icon" *ngIf="!imageUrl(a) && !typeImageUrl(a)" [innerHTML]="objectIcon(a.objectDetected)"></span>
           </div>
 
           <div class="card-top">
@@ -215,8 +235,10 @@ export class AnomaliesComponent implements OnInit {
   loading = true;
   private statutFilter = '';
   private criticiteFilter = '';
-  /** Anomalies dont l'image a echoue a charger (404) -> on revient a l'icone emoji plutot que de laisser une image cassee. */
+  /** Anomalies dont l'image reelle a echoue a charger (404) -> on retombe sur l'image generique du type plutot que de laisser une image cassee. */
   private brokenImages = new Set<number>();
+  /** Anomalies dont MEME l'image generique du type a echoue (fichier absent de backend/data/images/) -> dernier repli, l'icone SVG. */
+  private brokenTypeImages = new Set<number>();
 
   ngOnInit() { this.load(); }
 
@@ -240,7 +262,7 @@ export class AnomaliesComponent implements OnInit {
     return s === 'NOUVELLE' ? 'Nouvelle' : s === 'EN_COURS' ? 'En cours' : 'Resolue';
   }
 
-  /** Construit l'URL absolue de l'image (le backend ne renvoie que le nom/chemin relatif). Null si pas d'image, ou si son chargement a deja echoue. */
+  /** Construit l'URL absolue de la vraie photo de detection (le backend ne renvoie que le nom/chemin relatif). Null si pas d'image fournie, ou si son chargement a deja echoue - dans ce cas typeImageUrl() prend le relais. */
   imageUrl(a: Anomalie): string | null {
     if (this.brokenImages.has(a.id)) return null;
     const path = a.imageFilePath && a.imageFilePath.trim() !== ''
@@ -250,12 +272,21 @@ export class AnomaliesComponent implements OnInit {
     return path.startsWith('http') ? path : `${this.API_ORIGIN}${path}`;
   }
 
-  /** Repli sur l'icone (photo cassee ou jamais fournie) plutot qu'une icone d'image cassee du navigateur. */
-  onImageError(event: Event): void {
-    const img = event.target as HTMLImageElement;
-    const card = img.closest('.anomalie-card');
-    const id = card?.getAttribute('data-anomaly-id');
-    if (id) this.brokenImages.add(Number(id));
+  /** Image generique par type (personne/vehicule/animal/debris/obstacle), servie depuis backend/data/images/ via le meme WebConfig que les vraies photos. C'est le cas le plus courant : la grande majorite des anomalies n'ont pas de photo individuelle. Null seulement si ce fichier-la a lui-meme echoue a charger. */
+  typeImageUrl(a: Anomalie): string | null {
+    if (this.brokenTypeImages.has(a.id)) return null;
+    const key = (a.objectDetected ?? '').toLowerCase();
+    const file = TYPE_IMAGE_FILE[key] ?? TYPE_IMAGE_FILE['default'];
+    return `${this.API_ORIGIN}/images/detections/${file}`;
+  }
+
+  /** Repli en cascade : vraie photo cassee -> image du type ; image du type cassee (fichier pas encore depose sur le serveur) -> icone SVG. */
+  onImageError(event: Event, id: number, level: 'photo' | 'type'): void {
+    if (level === 'photo') {
+      this.brokenImages.add(id);
+    } else {
+      this.brokenTypeImages.add(id);
+    }
   }
 
   objectIcon(type: string | null | undefined): SafeHtml {

@@ -1,0 +1,6 @@
+In dashboard.component.ts, replace the old Chart.js fallback colors:
+#3DDC97 -> #2D74C9
+#232938 -> #0E1B2A
+#1A2030 -> #DBE3EC
+#5C6577 -> #7A899B
+pointBorderColor: '#fff' -> pointBorderColor: this.cssVar('--text-primary') || '#0B1726'

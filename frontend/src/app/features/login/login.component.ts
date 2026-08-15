@@ -22,6 +22,7 @@ import {
 
 import { AuthService } from '../../core/services/auth.service';
 import { GoogleIdentityService } from '../../core/services/google-identity.service';
+import { ThemeService } from '../../core/services/theme.service';
 
 
 @Component({
@@ -3043,7 +3044,13 @@ export class LoginComponent
 
   googleConfigured = false;
 
-  darkMode = true;
+  /** Delegue au ThemeService partage (meme cle localStorage / meme etat que
+   * le reste de l'app) au lieu d'un booleen local isole : sans ca, le choix
+   * clair/sombre fait sur la page de login ne survivait pas au passage au
+   * dashboard, et inversement. */
+  get darkMode(): boolean {
+    return this.themeService.mode() === 'dark';
+  }
 
 
   /* ===============================================================
@@ -3069,6 +3076,8 @@ export class LoginComponent
       GoogleIdentityService,
 
     private readonly router: Router,
+
+    public readonly themeService: ThemeService,
 
   ) {
 
@@ -3205,8 +3214,7 @@ export class LoginComponent
 
   toggleTheme(): void {
 
-    this.darkMode =
-      !this.darkMode;
+    this.themeService.toggle();
 
   }
 

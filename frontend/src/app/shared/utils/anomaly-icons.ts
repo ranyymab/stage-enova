@@ -10,6 +10,8 @@
  * robot ne classifie pas ce type plus precisement, il n'y a donc pas plus
  * d'information a representer visuellement qu'un type non reconnu.
  */
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 export const ANOMALY_ICONS: Record<string, string> = {
   person:
     '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.5"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>',
@@ -27,4 +29,18 @@ export const ANOMALY_ICONS: Record<string, string> = {
 
 export function getAnomalyIcon(type: string | null | undefined): string {
   return ANOMALY_ICONS[(type ?? '').toLowerCase()] ?? ANOMALY_ICONS['default'];
+}
+
+/**
+ * Version "prete pour [innerHTML]" de getAnomalyIcon : Angular sanitize par
+ * defaut tout ce qui passe par [innerHTML], et son sanitizer HTML retire
+ * purement et simplement les balises <svg> (elles ne sont pas dans sa liste
+ * blanche). Sans passer par bypassSecurityTrustHtml, ces icones sont donc
+ * silencieusement supprimees a l'affichage - la case reste vide, sans
+ * erreur console visible. On centralise donc le bypass ici : le SVG vient
+ * toujours du code (jamais d'une entree utilisateur), donc aucun risque
+ * d'injection.
+ */
+export function getSafeAnomalyIcon(sanitizer: DomSanitizer, type: string | null | undefined): SafeHtml {
+  return sanitizer.bypassSecurityTrustHtml(getAnomalyIcon(type));
 }

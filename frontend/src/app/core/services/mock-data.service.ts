@@ -143,8 +143,8 @@ export class MockDataService {
       position: { latitude: last.latitude, longitude: last.longitude, heure: '21:50:00', source: 'GPS', label: 'Site Principal ENOVA' },
       trajectory,
       chargeCycles: [
-        { dockHeure: '10:57', undockHeure: '11:30', status: 'TERMINE', batteryBefore: 41, batteryAfter: 88, batteryGained: 47, durationMinutes: 33, stationLatitude: 36.8002, stationLongitude: 10.1805 },
-        { dockHeure: '17:00', undockHeure: '17:45', status: 'TERMINE', batteryBefore: 38, batteryAfter: 95, batteryGained: 57, durationMinutes: 45, stationLatitude: 36.8002, stationLongitude: 10.1805 },
+        { dockHeure: '10:57', undockHeure: '11:30', status: 'TERMINE', batteryBefore: 41, batteryAfter: 88, batteryGained: 47, durationMinutes: 33, stationLatitude: 35.8176, stationLongitude: 10.5913 },
+        { dockHeure: '17:00', undockHeure: '17:45', status: 'TERMINE', batteryBefore: 38, batteryAfter: 95, batteryGained: 57, durationMinutes: 45, stationLatitude: 35.8176, stationLongitude: 10.5913 },
       ],
     };
     return this.http.get<RobotLive>(`${this.API_URL}/robot-live`, { params: this.dateParams(date) }).pipe(
@@ -166,16 +166,21 @@ export class MockDataService {
     anomalies: Anomalie[];
     activity: ActivityFeedEntry[];
   } {
-    // Boucle de 8 balises autour du site (Tunis) - la meme boucle est reparcourue a chaque ronde.
+    // Boucle de 8 balises autour du site reel Enova (35.8176 / 10.5913 -
+    // meme point de depart que la simulation backend RobotSimulationService),
+    // reparcourue a chaque ronde. Historiquement ces coordonnees pointaient
+    // par erreur vers un tout autre site (36.80 / 10.18, a ~120km) : en cas
+    // de secours (API injoignable), la carte affichait alors une boucle
+    // geographiquement incoherente avec les donnees reelles.
     const loop: [number, number][] = [
-      [36.8002, 10.1805], // A - base / station de charge
-      [36.8009, 10.1807], // B
-      [36.8014, 10.1815], // C
-      [36.8011, 10.1823], // D
-      [36.8003, 10.1826], // E
-      [36.7996, 10.1820], // F
-      [36.7993, 10.1811], // G
-      [36.7997, 10.1803], // H
+      [35.8176, 10.5913], // A - base / station de charge
+      [35.8183, 10.5915], // B
+      [35.8188, 10.5923], // C
+      [35.8185, 10.5931], // D
+      [35.8177, 10.5934], // E
+      [35.8170, 10.5928], // F
+      [35.8167, 10.5919], // G
+      [35.8171, 10.5911], // H
     ];
 
     const trajectory: RobotLive['trajectory'] = [];

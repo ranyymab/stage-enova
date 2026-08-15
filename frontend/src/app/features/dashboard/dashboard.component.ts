@@ -9,7 +9,8 @@ import { BatteryRingComponent } from '../../shared/components/battery-ring/batte
 import { ThemeService } from '../../core/services/theme.service';
 import { LiveSimService } from '../../core/services/live-sim.service';
 import { Anomalie, ChargeCycle, DashboardKpi, InspectionPoint, MissionEvent, RepartitionTemps, RobotLive, ActivityFeedEntry } from '../../shared/models/dashboard.models';
-import { getAnomalyIcon } from '../../shared/utils/anomaly-icons';
+import { getSafeAnomalyIcon } from '../../shared/utils/anomaly-icons';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import type { Chart } from 'chart.js';
 
 @Component({
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private platformId = inject(PLATFORM_ID);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly sanitizer = inject(DomSanitizer);
   private readonly themeService = inject(ThemeService);
   protected readonly liveSim = inject(LiveSimService);
 
@@ -356,12 +358,12 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.mockData.resolveImageUrl(anomalie.imageUrl);
   }
 
-  anomalyIcon(type: string): string {
-    return getAnomalyIcon(type);
+  anomalyIcon(type: string): SafeHtml {
+    return getSafeAnomalyIcon(this.sanitizer, type);
   }
 
   /** Icone par type d'operation, pour l'avatar de chaque ligne du fil d'activite. */
-  activityIcon(kind: string): string {
+  activityIcon(kind: string): SafeHtml {
     const icons: Record<string, string> = {
       MISSION: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4l5 2 6-2 5 2v13l-5-2-6 2z"/><path d="M9 6v13M15 4v13"/></svg>',
       INSPECTING: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/></svg>',
@@ -370,7 +372,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       TELEOPERATION: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="8.5" width="19" height="9" rx="4"/><circle cx="8" cy="13" r="1"/><circle cx="16" cy="11" r="0.6" fill="currentColor" stroke="none"/><circle cx="18.2" cy="13" r="0.6" fill="currentColor" stroke="none"/></svg>',
       DETECTION: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 21 20H3z"/><path d="M12 9.5v4.2"/><circle cx="12" cy="16.8" r="0.6" fill="currentColor" stroke="none"/></svg>',
     };
-    return icons[kind] ?? icons['MISSION'];
+    return this.sanitizer.bypassSecurityTrustHtml(icons[kind] ?? icons['MISSION']);
   }
 
   // trackBy : sans ca, chaque rafraichissement (toutes les 1s) recree

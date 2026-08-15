@@ -74,11 +74,34 @@ interface KmSummary {
           </tbody>
         </table>
 
-        <div class="empty" *ngIf="!loading && summaries.length === 0">Aucune donnee disponible.</div>
+        <div class="empty" *ngIf="!loading && !loadError && summaries.length === 0">Aucune donnee disponible.</div>
+
+        <div class="empty" *ngIf="!loading && loadError">
+          <strong>Impossible de charger l'historique.</strong>
+          <span>Le serveur n'a pas repondu (il peut etre en veille et mettre quelques secondes a redemarrer).</span>
+          <button type="button" class="retry-btn" (click)="load()">Reessayer</button>
+        </div>
       </div>
     </div>
   `,
   styles: [FEATURE_PAGE_STYLES, `
+    .retry-btn {
+      margin-top: 4px;
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: var(--panel-base);
+      color: var(--text-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .retry-btn:hover {
+      background: var(--panel-raised);
+      border-color: var(--accent-primary);
+    }
     .pct-bar-wrap {
       display: flex;
       align-items: center;
@@ -114,11 +137,18 @@ export class KilometrageComponent implements OnInit {
   private http = inject(HttpClient);
   summaries: KmSummary[] = [];
   loading = true;
+  loadError = false;
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
+    this.loading = true;
+    this.loadError = false;
     this.http.get<KmSummary[]>('https://stage-enova-3.onrender.com/api/kilometrage').subscribe({
       next: d => { this.summaries = [...d].reverse(); this.loading = false; },
-      error: () => { this.loading = false; },
+      error: () => { this.loading = false; this.loadError = true; },
     });
   }
 

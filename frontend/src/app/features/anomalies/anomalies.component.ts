@@ -1,8 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { FEATURE_PAGE_STYLES } from '../../shared/styles/feature-page.styles';
-import { getAnomalyIcon } from '../../shared/utils/anomaly-icons';
+import { getSafeAnomalyIcon } from '../../shared/utils/anomaly-icons';
 
 interface Anomalie {
   id: number;
@@ -208,6 +209,7 @@ interface Anomalie {
 })
 export class AnomaliesComponent implements OnInit {
   private http = inject(HttpClient);
+  private sanitizer = inject(DomSanitizer);
   private readonly API_ORIGIN = 'https://stage-enova-3.onrender.com';
   anomalies: Anomalie[] = [];
   loading = true;
@@ -256,8 +258,8 @@ export class AnomaliesComponent implements OnInit {
     if (id) this.brokenImages.add(Number(id));
   }
 
-  objectIcon(type: string | null | undefined): string {
-    return getAnomalyIcon(type);
+  objectIcon(type: string | null | undefined): SafeHtml {
+    return getSafeAnomalyIcon(this.sanitizer, type);
   }
 
 }

@@ -181,11 +181,17 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
     const L = this.L;
     const container = this.mapEl.nativeElement;
 
-    // Vue initiale centree sur le site Enova (meme point que la station de
-    // charge / base de la boucle de patrouille), avant que la trajectoire
-    // reelle du jour ne soit chargee et ne recentre la carte automatiquement.
+    // Vue initiale centree sur le site reel Enova : meme point de depart que
+    // la boucle de patrouille simulee cote backend (RobotSimulationService,
+    //35.8176 / 10.5913), avant que la trajectoire reelle du jour ne soit
+    // chargee et ne recentre la carte automatiquement.
+    //
+    // (Ce point ne doit PAS etre confondu avec le jeu de donnees de secours
+    // local utilise uniquement quand l'API est injoignable, qui lui utilise
+    // par erreur un tout autre couple de coordonnees - voir le correctif
+    // apporte a mock-data.service.ts pour harmoniser les deux.)
     this.map = L.map(container, { zoomControl: true, attributionControl: false }).setView(
-      [36.8002, 10.1805],
+      [35.8176, 10.5913],
       16,
     );
 

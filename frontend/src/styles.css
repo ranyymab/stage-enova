@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
+  /* Largeur de la sidebar : SEULE source de verite, reutilisee par
+     app.css (offset du contenu + topbar) et par sidebar.component.ts
+     (largeur reelle du panneau) pour eviter tout desalignement entre
+     les deux si l'un des deux est modifie sans l'autre. */
+  --sidebar-width: 268px;
+
   /* Palette — Enova Robotics (light theme, default) */
   --bg-app: #F4F7F6;
   --panel-base: #FFFFFF;

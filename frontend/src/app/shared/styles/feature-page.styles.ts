@@ -1405,4 +1405,508 @@ export const FEATURE_PAGE_STYLES = `
 
   }
 
-`;
+  /* ================================================================
+     ENOVA ROBOTICS — GLOBAL LIGHT MODE
+     Applies to ALL feature pages:
+     Missions
+     Anomalies
+     Kilometrage
+     Inspection
+     Teleoperation
+     Docking
+     ================================================================ */
+
+  body.light {
+    --page-bg: #f7f9fc;
+
+    --panel-base: #ffffff;
+    --panel-raised: #ffffff;
+
+    --border-subtle: #dfe7f1;
+
+    --text-primary: #17263d;
+    --text-secondary: #52647c;
+    --text-muted: #8291a6;
+
+    --accent-primary: #2f78d4;
+    --accent-active: #2877d2;
+
+    --accent-warning: #e4a21a;
+    --accent-critical: #e5484d;
+
+    --shadow-card:
+      0 2px 10px rgba(24, 55, 92, .055);
+
+    --shadow-card-hover:
+      0 8px 24px rgba(24, 55, 92, .10);
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — PAGE
+     ================================================================ */
+
+  body.light .page {
+    background: #f7f9fc;
+    color: #17263d;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — HEADERS
+     ================================================================ */
+
+  body.light .page-header h1 {
+    color: #17263d;
+  }
+
+  body.light .page-header h1::before {
+    background: #2f78d4;
+
+    box-shadow:
+      0 0 10px
+      rgba(47, 120, 212, .20);
+  }
+
+  body.light .page-sub {
+    color: #8291a6;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — KPI / SUMMARY GRID
+     ================================================================ */
+
+  body.light .summary-cards {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    column-gap: 22px;
+    row-gap: 18px;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — KPI CARD
+     ================================================================ */
+
+  body.light .summary-card {
+    background: #ffffff;
+
+    border:
+      1px solid
+      #dfe7f1;
+
+    border-radius: 15px;
+
+    box-shadow:
+      0 2px 10px
+      rgba(24, 55, 92, .055);
+  }
+
+  body.light .summary-card::before {
+    background: #2f78d4;
+  }
+
+  body.light .summary-card::after {
+    background:
+      rgba(47, 120, 212, .035);
+  }
+
+  body.light .summary-card:hover {
+    border-color: #b9cee8;
+
+    box-shadow:
+      0 8px 24px
+      rgba(24, 55, 92, .10);
+  }
+
+  body.light .card-label {
+    color: #52647c;
+  }
+
+  body.light .card-value {
+    color: #17263d;
+  }
+
+  body.light .unit {
+    color: #8291a6;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — PANELS
+     ================================================================ */
+
+  body.light .panel {
+    background: #ffffff;
+
+    border:
+      1px solid
+      #dfe7f1;
+
+    border-radius: 15px;
+
+    box-shadow:
+      0 2px 10px
+      rgba(24, 55, 92, .055);
+  }
+
+  body.light .panel:hover {
+    border-color: #c6d8ed;
+
+    box-shadow:
+      0 8px 24px
+      rgba(24, 55, 92, .09);
+  }
+
+  body.light .panel::before {
+    background: #2f78d4;
+  }
+
+  body.light .panel-header h2 {
+    color: #17263d;
+  }
+
+  body.light .panel-header h2::before {
+    background: #2f78d4;
+
+    box-shadow:
+      0 0 8px
+      rgba(47, 120, 212, .30);
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — TABLES
+     ================================================================ */
+
+  body.light .km-table,
+  body.light .data-table {
+    color: #52647c;
+  }
+
+  body.light .km-table th,
+  body.light .data-table th {
+    color: #8291a6;
+
+    border-bottom:
+      1px solid
+      #dfe7f1;
+  }
+
+  body.light .km-table td,
+  body.light .data-table td {
+    color: #52647c;
+
+    border-bottom:
+      1px solid
+      #e8edf4;
+  }
+
+  body.light .km-table tbody tr:hover,
+  body.light .data-table tbody tr:hover {
+    background:
+      rgba(47, 120, 212, .035);
+  }
+
+  body.light .km-table tr:last-child td,
+  body.light .data-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  body.light .bold {
+    color: #17263d !important;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — DATE / FILTER CONTROLS
+     ================================================================ */
+
+  body.light .date-nav button,
+  body.light .nav-btn,
+  body.light .date-nav input[type='date'],
+  body.light .date-input,
+  body.light select {
+    color: #52647c;
+
+    background: #ffffff;
+
+    border:
+      1px solid
+      #dfe7f1;
+
+    box-shadow:
+      0 1px 3px
+      rgba(24, 55, 92, .025);
+  }
+
+  body.light .date-nav button:hover,
+  body.light .nav-btn:hover {
+    color: #2877d2;
+
+    background: #f7faff;
+
+    border-color: #b9cee8;
+
+    box-shadow:
+      0 5px 18px
+      rgba(47, 120, 212, .08);
+  }
+
+  body.light .date-nav input[type='date']:hover,
+  body.light .date-input:hover,
+  body.light select:hover {
+    border-color: #b9cee8;
+  }
+
+  body.light .date-nav input[type='date']:focus,
+  body.light .date-input:focus,
+  body.light select:focus {
+    border-color: #2f78d4;
+
+    box-shadow:
+      0 0 0 3px
+      rgba(47, 120, 212, .10);
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — BUTTONS
+     ================================================================ */
+
+  body.light .btn-secondary {
+    color: #52647c;
+
+    background: #ffffff;
+
+    border:
+      1px solid
+      #dfe7f1;
+  }
+
+  body.light .btn-secondary:hover {
+    color: #2877d2;
+
+    background: #f7faff;
+
+    border-color: #b9cee8;
+  }
+
+  body.light .btn-primary {
+    color: #ffffff;
+
+    background: #2f78d4;
+
+    border-color: #2f78d4;
+
+    box-shadow:
+      0 4px 12px
+      rgba(47, 120, 212, .16);
+  }
+
+  body.light .btn-primary:hover {
+    box-shadow:
+      0 7px 20px
+      rgba(47, 120, 212, .22);
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — STATUS / TYPE PILLS
+     ================================================================ */
+
+  body.light .delay-pill,
+  body.light .type-pill,
+  body.light .cat-pill,
+  body.light .criticite-badge,
+  body.light .statut-badge,
+  body.light .type-badge {
+    background: #f3f7fc;
+    border-color: #dfe7f1;
+    color: #52647c;
+  }
+
+  body.light .delay-pill {
+    color: #2877d2;
+
+    background:
+      rgba(47, 120, 212, .08);
+
+    border-color:
+      rgba(47, 120, 212, .15);
+  }
+
+  body.light .delay-pill.is-late {
+    color: #e5484d;
+
+    background:
+      rgba(229, 72, 77, .08);
+
+    border-color:
+      rgba(229, 72, 77, .15);
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — STATUS DOTS
+     ================================================================ */
+
+  body.light .status-dot {
+    background: #2f78d4;
+
+    box-shadow:
+      0 0 9px
+      rgba(47, 120, 212, .30);
+  }
+
+  body.light .status-dot.warning {
+    background: #e4a21a;
+
+    box-shadow:
+      0 0 9px
+      rgba(228, 162, 26, .30);
+  }
+
+  body.light .status-dot.critical {
+    background: #e5484d;
+
+    box-shadow:
+      0 0 9px
+      rgba(229, 72, 77, .30);
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — EMPTY STATES
+     ================================================================ */
+
+  body.light .empty {
+    color: #8291a6;
+
+    background:
+      #f8fafc;
+
+    border:
+      1px dashed
+      #dfe7f1;
+  }
+
+  body.light .empty strong {
+    color: #52647c;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — LOADING
+     ================================================================ */
+
+  body.light .skeleton-row {
+    border-color: #dfe7f1;
+
+    background:
+      linear-gradient(
+        90deg,
+        #f1f5f9 20%,
+        #e8f0fa 50%,
+        #f1f5f9 80%
+      );
+
+    background-size:
+      200%
+      100%;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — TECHNICAL TEXT
+     ================================================================ */
+
+  body.light .technical-label {
+    color: #8291a6;
+  }
+
+  body.light .mono {
+    color: inherit;
+  }
+
+  body.light .muted {
+    color: #8291a6;
+  }
+
+
+  /* ================================================================
+     LIGHT MODE — ROW STATES
+     ================================================================ */
+
+  body.light .row-late {
+    background:
+      rgba(229, 72, 77, .045);
+  }
+
+  body.light .row-late:hover {
+    background:
+      rgba(229, 72, 77, .075) !important;
+  }
+
+
+  /* ================================================================
+     RESPONSIVE — LIGHT MODE KPI GRID
+     ================================================================ */
+
+  @media (max-width: 1200px) {
+
+    body.light .summary-cards {
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      column-gap: 18px;
+      row-gap: 16px;
+    }
+
+  }
+
+
+  @media (max-width: 860px) {
+
+    body.light .summary-cards {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      column-gap: 16px;
+      row-gap: 16px;
+    }
+
+  }
+
+
+  @media (max-width: 560px) {
+
+    body.light .summary-cards {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      column-gap: 10px;
+      row-gap: 10px;
+    }
+
+    body.light .summary-card {
+      min-height: 118px;
+
+      padding:
+        13px
+        12px;
+    }
+
+    body.light .card-label {
+      font-size: 9.5px;
+    }
+
+    body.light .card-value {
+      font-size: 21px;
+    }
+
+  }`;

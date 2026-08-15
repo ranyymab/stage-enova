@@ -8,18 +8,20 @@ import { getSafeAnomalyIcon } from '../../shared/utils/anomaly-icons';
 
 interface Anomalie {
   id: number;
+
   objectDetected: string;
+
   eventDate: string;
   rawHour: string;
+
   criticite: string;
   statut: string;
+
   robotId: string;
 
   imageFileName: string | null;
   imageFilePath: string | null;
 
-  // Supported by the frontend in case the backend returns
-  // one of these directly.
   imageUrl?: string | null;
   photoUrl?: string | null;
 
@@ -27,63 +29,146 @@ interface Anomalie {
   longitude: number | null;
 }
 
+
 /*
- * Generic images used when an anomaly does not have
- * an individual detection photo.
+ * Generic images available on the backend.
  *
- * These files must exist on the backend under:
+ * IMPORTANT:
+ *
+ * These correspond to:
  *
  * backend/data/images/
  *
- * and be accessible through:
+ * They are exposed publicly through:
  *
  * /images/detections/<filename>
+ *
+ * There is intentionally NO unknown.png here.
+ *
+ * If there is no matching generic image,
+ * the component falls back to the SVG icon.
  */
 const TYPE_IMAGE_FILE: Record<string, string> = {
+
+  /* English */
+
   person: 'person.png',
+  people: 'person.png',
+  pedestrian: 'person.png',
+
   vehicle: 'car.png',
   car: 'car.png',
+  automobile: 'car.png',
+
   animal: 'animal.png',
+
   debris: 'debris.jpg',
-  obstacle: 'unknown.png',
-  unknown: 'unknown.png',
-  default: 'unknown.png',
+  rubbish: 'debris.jpg',
+  waste: 'debris.jpg',
+
+
+  /* French */
+
+  personne: 'person.png',
+  personnes: 'person.png',
+
+  pieton: 'person.png',
+  piéton: 'person.png',
+
+  vehicule: 'car.png',
+  véhicule: 'car.png',
+  voiture: 'car.png',
+
+  animaux: 'animal.png',
+
+  débris: 'debris.jpg'
 };
+
 
 @Component({
   selector: 'app-anomalies',
+
   standalone: true,
-  imports: [CommonModule],
+
+  imports: [
+    CommonModule
+  ],
 
   template: `
+
     <div class="page">
 
-      <!-- HEADER -->
+
+      <!-- =========================================================
+           HEADER
+           ========================================================= -->
+
       <header class="page-header">
 
         <div>
-          <h1>Anomalies</h1>
+
+          <h1>
+            Anomalies
+          </h1>
 
           <span class="page-sub">
             {{ anomalies.length }} detection(s)
           </span>
+
         </div>
+
 
         <div class="filters">
 
-          <select (change)="filterStatut($event)">
-            <option value="">All statuses</option>
-            <option value="NOUVELLE">New</option>
-            <option value="EN_COURS">In progress</option>
-            <option value="RESOLUE">Resolved</option>
+          <select
+            [value]="statutFilter"
+            (change)="filterStatut($event)"
+          >
+
+            <option value="">
+              All statuses
+            </option>
+
+            <option value="NOUVELLE">
+              New
+            </option>
+
+            <option value="EN_COURS">
+              In progress
+            </option>
+
+            <option value="RESOLUE">
+              Resolved
+            </option>
+
           </select>
 
-          <select (change)="filterCriticite($event)">
-            <option value="">All severities</option>
-            <option value="FAIBLE">Low</option>
-            <option value="MOYENNE">Medium</option>
-            <option value="HAUTE">High</option>
-            <option value="CRITIQUE">Critical</option>
+
+          <select
+            [value]="criticiteFilter"
+            (change)="filterCriticite($event)"
+          >
+
+            <option value="">
+              All severities
+            </option>
+
+            <option value="FAIBLE">
+              Low
+            </option>
+
+            <option value="MOYENNE">
+              Medium
+            </option>
+
+            <option value="HAUTE">
+              High
+            </option>
+
+            <option value="CRITIQUE">
+              Critical
+            </option>
+
           </select>
 
         </div>
@@ -91,8 +176,14 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
       </header>
 
 
-      <!-- LOADING -->
-      <div class="loading" *ngIf="loading">
+      <!-- =========================================================
+           LOADING
+           ========================================================= -->
+
+      <div
+        class="loading"
+        *ngIf="loading"
+      >
 
         <div
           class="skeleton-row"
@@ -102,96 +193,192 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
       </div>
 
 
-      <!-- ANOMALIES -->
+      <!-- =========================================================
+           ANOMALIES
+           ========================================================= -->
+
       <div
         class="anomalies-grid"
-        *ngIf="!loading && anomalies.length > 0"
+        *ngIf="
+          !loading &&
+          anomalies.length > 0
+        "
       >
 
         <div
           class="anomalie-card"
-          *ngFor="let a of anomalies; let i = index"
+          *ngFor="
+            let a of anomalies;
+            let i = index
+          "
           [style.animation-delay.ms]="i * 40"
           [attr.data-anomaly-id]="a.id"
         >
 
-          <!-- IMAGE -->
+
+          <!-- =====================================================
+               IMAGE
+               ===================================================== -->
+
           <div
             class="card-image"
             [attr.data-obj]="getObjectType(a.objectDetected)"
           >
 
-            <!--
-              1. REAL ANOMALY IMAGE
-            -->
+
+            <!-- ===================================================
+                 1. REAL ANOMALY PHOTO
+                 =================================================== -->
+
             <img
               *ngIf="imageUrl(a) as src"
               [src]="src"
-              [alt]="a.objectDetected || 'Anomaly'"
+              [alt]="
+                a.objectDetected ||
+                'Anomaly'
+              "
               class="card-image-photo"
               loading="lazy"
-              (error)="onImageError($event, a.id, 'photo')"
-              (load)="onImageLoad(a.id, 'photo')"
+
+              (error)="
+                onImageError(
+                  $event,
+                  a.id,
+                  'photo'
+                )
+              "
+
+              (load)="
+                onImageLoad(
+                  a.id,
+                  'photo'
+                )
+              "
             />
 
 
-            <!--
-              2. GENERIC TYPE IMAGE
-            -->
+            <!-- ===================================================
+                 2. GENERIC TYPE IMAGE
+                 =================================================== -->
+
             <img
               *ngIf="
                 !imageUrl(a) &&
                 typeImageUrl(a) as src2
               "
               [src]="src2"
-              [alt]="a.objectDetected || 'Anomaly'"
+              [alt]="
+                a.objectDetected ||
+                'Anomaly'
+              "
               class="card-image-photo"
               loading="lazy"
-              (error)="onImageError($event, a.id, 'type')"
-              (load)="onImageLoad(a.id, 'type')"
+
+              (error)="
+                onImageError(
+                  $event,
+                  a.id,
+                  'type'
+                )
+              "
+
+              (load)="
+                onImageLoad(
+                  a.id,
+                  'type'
+                )
+              "
             />
 
 
-            <!--
-              3. SVG FALLBACK
-            -->
+            <!-- ===================================================
+                 3. SVG FALLBACK
+                 =================================================== -->
+
             <span
               class="card-image-icon"
+
               *ngIf="
                 !imageUrl(a) &&
                 !typeImageUrl(a)
               "
-              [innerHTML]="objectIcon(a.objectDetected)"
+
+              [innerHTML]="
+                objectIcon(
+                  a.objectDetected
+                )
+              "
             ></span>
+
+
+            <!-- ===================================================
+                 TECHNICAL LABEL
+                 =================================================== -->
+
+            <span
+              class="image-type-label"
+              *ngIf="
+                !imageUrl(a) &&
+                !typeImageUrl(a)
+              "
+            >
+              NO IMAGE
+            </span>
 
           </div>
 
 
-          <!-- TOP -->
+          <!-- =====================================================
+               TOP
+               ===================================================== -->
+
           <div class="card-top">
 
             <span class="type-badge">
-              {{ a.objectDetected || 'UNKNOWN' | uppercase }}
+
+              {{
+                a.objectDetected ||
+                'UNKNOWN'
+              | uppercase }}
+
             </span>
+
 
             <span
               class="criticite-badge"
-              [attr.data-level]="a.criticite"
+
+              [attr.data-level]="
+                a.criticite
+              "
             >
-              {{ criticiteLabel(a.criticite) }}
+
+              {{
+                criticiteLabel(
+                  a.criticite
+                )
+              }}
+
             </span>
 
           </div>
 
 
-          <!-- META -->
+          <!-- =====================================================
+               META
+               ===================================================== -->
+
           <div class="card-meta">
 
             <span class="mono">
+
               {{ a.eventDate || '—' }}
+
               -
+
               {{ a.rawHour || '—' }}
+
             </span>
+
 
             <span
               *ngIf="
@@ -200,21 +387,34 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
               "
               class="mono coords"
             >
+
               {{ a.latitude.toFixed(4) }},
               {{ a.longitude.toFixed(4) }}
+
             </span>
 
           </div>
 
 
-          <!-- FOOTER -->
+          <!-- =====================================================
+               FOOTER
+               ===================================================== -->
+
           <div class="card-footer">
 
             <span
               class="statut-badge"
-              [attr.data-statut]="a.statut"
+              [attr.data-statut]="
+                a.statut
+              "
             >
-              {{ statutLabel(a.statut) }}
+
+              {{
+                statutLabel(
+                  a.statut
+                )
+              }}
+
             </span>
 
           </div>
@@ -224,23 +424,36 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
       </div>
 
 
-      <!-- EMPTY -->
+      <!-- =========================================================
+           EMPTY
+           ========================================================= -->
+
       <div
         class="empty"
+
         *ngIf="
           !loading &&
           !loadError &&
           anomalies.length === 0
         "
       >
+
         No anomalies found.
+
       </div>
 
 
-      <!-- ERROR -->
+      <!-- =========================================================
+           ERROR
+           ========================================================= -->
+
       <div
         class="empty"
-        *ngIf="!loading && loadError"
+
+        *ngIf="
+          !loading &&
+          loadError
+        "
       >
 
         <strong>
@@ -249,7 +462,8 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
 
         <span>
           The server did not respond
-          (it may be asleep and take a few seconds to restart).
+          (it may be asleep and take a few
+          seconds to restart).
         </span>
 
         <button
@@ -265,282 +479,603 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
     </div>
   `,
 
+
   styles: [
+
     FEATURE_PAGE_STYLES,
 
     `
+
+      /* ==========================================================
+         GRID
+         ========================================================== */
+
       .anomalies-grid {
+
         display: grid;
+
         grid-template-columns:
           repeat(
             auto-fill,
-            minmax(300px, 1fr)
+            minmax(
+              300px,
+              1fr
+            )
           );
+
         gap: 16px;
+
       }
+
+
+      /* ==========================================================
+         CARD
+         ========================================================== */
 
       .anomalie-card {
-        background: var(--panel-base);
-        border: 1px solid var(--border-subtle);
-        border-radius: 16px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        box-shadow: var(--shadow-card);
+
+        background:
+          var(--panel-base);
+
+        border:
+          1px solid
+          var(--border-subtle);
+
+        border-radius:
+          16px;
+
+        overflow:
+          hidden;
+
+        display:
+          flex;
+
+        flex-direction:
+          column;
+
+        box-shadow:
+          var(--shadow-card);
+
         transition:
-          box-shadow 0.2s ease,
-          transform 0.2s ease;
+          box-shadow .2s ease,
+          transform .2s ease,
+          border-color .2s ease;
+
         animation:
-          cardRise 0.4s ease both;
+          cardRise
+          .4s
+          ease
+          both;
+
       }
+
 
       .anomalie-card:hover {
-        box-shadow: var(--shadow-card-hover);
-        transform: translateY(-3px);
+
+        box-shadow:
+          var(--shadow-card-hover);
+
+        border-color:
+          color-mix(
+            in srgb,
+            var(--accent-primary) 25%,
+            var(--border-subtle)
+          );
+
+        transform:
+          translateY(-3px);
+
       }
 
 
-      /* IMAGE AREA */
+      /* ==========================================================
+         IMAGE
+         ========================================================== */
 
       .card-image {
-        height: 180px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        position: relative;
-        overflow: hidden;
-        background: var(--panel-raised);
+
+        height:
+          180px;
+
+        display:
+          flex;
+
+        flex-direction:
+          column;
+
+        align-items:
+          center;
+
+        justify-content:
+          center;
+
+        gap:
+          7px;
+
+        position:
+          relative;
+
+        overflow:
+          hidden;
+
+        background:
+          var(--panel-raised);
+
       }
 
 
-      /* Object-specific backgrounds */
+      /* ==========================================================
+         TYPE BACKGROUNDS
+         ========================================================== */
 
-      .card-image[data-obj='person'] {
+      .card-image[data-obj='person'],
+      .card-image[data-obj='personne'],
+      .card-image[data-obj='personnes'],
+      .card-image[data-obj='pedestrian'],
+      .card-image[data-obj='pieton'],
+      .card-image[data-obj='piéton'] {
+
         background:
           linear-gradient(
             135deg,
-            rgba(229, 72, 77, 0.15),
-            rgba(229, 72, 77, 0.05)
+            color-mix(
+              in srgb,
+              var(--accent-primary) 12%,
+              var(--panel-raised)
+            ),
+            var(--panel-raised)
           );
+
       }
+
 
       .card-image[data-obj='vehicle'],
-      .card-image[data-obj='car'] {
+      .card-image[data-obj='car'],
+      .card-image[data-obj='automobile'],
+      .card-image[data-obj='vehicule'],
+      .card-image[data-obj='véhicule'],
+      .card-image[data-obj='voiture'] {
+
         background:
           linear-gradient(
             135deg,
-            rgba(91, 141, 239, 0.15),
-            rgba(91, 141, 239, 0.05)
+            color-mix(
+              in srgb,
+              var(--accent-primary) 11%,
+              var(--panel-raised)
+            ),
+            var(--panel-raised)
           );
+
       }
 
-      .card-image[data-obj='animal'] {
+
+      .card-image[data-obj='animal'],
+      .card-image[data-obj='animaux'] {
+
         background:
           linear-gradient(
             135deg,
-            rgba(61, 220, 151, 0.15),
-            rgba(61, 220, 151, 0.05)
+            color-mix(
+              in srgb,
+              var(--accent-active) 10%,
+              var(--panel-raised)
+            ),
+            var(--panel-raised)
           );
+
       }
 
-      .card-image[data-obj='obstacle'] {
-        background:
-          linear-gradient(
-            135deg,
-            rgba(242, 169, 59, 0.15),
-            rgba(242, 169, 59, 0.05)
-          );
-      }
 
       .card-image[data-obj='debris'] {
+
         background:
           linear-gradient(
             135deg,
-            rgba(155, 163, 180, 0.15),
-            rgba(155, 163, 180, 0.05)
+            color-mix(
+              in srgb,
+              var(--text-muted) 9%,
+              var(--panel-raised)
+            ),
+            var(--panel-raised)
           );
+
       }
 
 
-      /* REAL IMAGE */
+      /* ==========================================================
+         IMAGE PHOTO
+         ========================================================== */
 
       .card-image-photo {
-        position: absolute;
-        inset: 0;
 
-        width: 100%;
-        height: 100%;
+        position:
+          absolute;
 
-        object-fit: cover;
+        inset:
+          0;
 
-        display: block;
+        width:
+          100%;
 
-        z-index: 2;
+        height:
+          100%;
 
-        background: var(--panel-raised);
+        object-fit:
+          cover;
+
+        display:
+          block;
+
+        z-index:
+          2;
+
+        background:
+          var(--panel-raised);
 
         transition:
-          transform 0.25s ease,
-          opacity 0.25s ease;
+          transform .25s ease,
+          opacity .25s ease;
+
       }
+
 
       .anomalie-card:hover
       .card-image-photo {
-        transform: scale(1.03);
+
+        transform:
+          scale(1.035);
+
       }
 
 
-      /* SVG FALLBACK */
+      /* ==========================================================
+         SVG FALLBACK
+         ========================================================== */
 
       .card-image-icon {
-        display: inline-flex;
 
-        width: 44px;
-        height: 44px;
+        width:
+          52px;
 
-        color: var(--text-secondary);
+        height:
+          52px;
 
-        opacity: 0.75;
+        display:
+          inline-flex;
 
-        position: relative;
-        z-index: 1;
+        align-items:
+          center;
+
+        justify-content:
+          center;
+
+        color:
+          var(--accent-primary);
+
+        opacity:
+          .8;
+
+        position:
+          relative;
+
+        z-index:
+          1;
 
         transition:
-          transform 0.2s ease;
+          transform .2s ease;
+
       }
+
+
+      .card-image-icon svg {
+
+        width:
+          100%;
+
+        height:
+          100%;
+
+      }
+
 
       .anomalie-card:hover
       .card-image-icon {
-        transform: scale(1.08);
+
+        transform:
+          scale(1.08);
+
       }
 
 
-      /* TOP */
+      .image-type-label {
+
+        position:
+          relative;
+
+        z-index:
+          1;
+
+        color:
+          var(--text-muted);
+
+        font-family:
+          var(--font-mono);
+
+        font-size:
+          8px;
+
+        font-weight:
+          700;
+
+        letter-spacing:
+          .12em;
+
+        text-transform:
+          uppercase;
+
+      }
+
+
+      /* ==========================================================
+         TOP
+         ========================================================== */
 
       .card-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+
+        display:
+          flex;
+
+        align-items:
+          center;
+
+        justify-content:
+          space-between;
+
+        gap:
+          10px;
 
         padding:
           12px
           14px
           4px;
+
       }
 
-      .type-badge {
-        font-size: 12.5px;
-        font-weight: 700;
 
-        color: var(--text-primary);
+      .type-badge {
+
+        min-width:
+          0;
+
+        overflow:
+          hidden;
+
+        text-overflow:
+          ellipsis;
+
+        color:
+          var(--text-primary);
 
         font-family:
           var(--font-mono);
+
+        font-size:
+          12px;
+
+        font-weight:
+          800;
+
+        letter-spacing:
+          .02em;
+
       }
 
 
-      /* CRITICALITY */
+      /* ==========================================================
+         CRITICALITY
+         ========================================================== */
+
+      .criticite-badge {
+
+        flex:
+          0 0 auto;
+
+      }
+
 
       .criticite-badge[data-level='FAIBLE'] {
+
         background:
-          rgba(91, 141, 239, 0.15);
-        color: #5B8DEF;
+          color-mix(
+            in srgb,
+            var(--accent-primary) 11%,
+            transparent
+          );
+
+        color:
+          var(--accent-primary);
+
       }
+
 
       .criticite-badge[data-level='MOYENNE'] {
+
         background:
-          rgba(242, 169, 59, 0.15);
-        color: #F2A93B;
+          color-mix(
+            in srgb,
+            var(--accent-warning) 12%,
+            transparent
+          );
+
+        color:
+          var(--accent-warning);
+
       }
+
 
       .criticite-badge[data-level='HAUTE'] {
+
         background:
-          rgba(229, 72, 77, 0.15);
-        color: #E5484D;
+          color-mix(
+            in srgb,
+            var(--accent-critical) 12%,
+            transparent
+          );
+
+        color:
+          var(--accent-critical);
+
       }
+
 
       .criticite-badge[data-level='CRITIQUE'] {
+
         background:
-          rgba(229, 72, 77, 0.3);
-        color: #ff5c5c;
+          color-mix(
+            in srgb,
+            var(--accent-critical) 20%,
+            transparent
+          );
+
+        color:
+          var(--accent-critical);
+
       }
 
 
-      /* META */
+      /* ==========================================================
+         META
+         ========================================================== */
 
       .card-meta {
-        display: flex;
-        flex-direction: column;
 
-        gap: 3px;
+        display:
+          flex;
+
+        flex-direction:
+          column;
+
+        gap:
+          3px;
 
         padding:
           4px
           14px;
 
-        font-size: 12px;
+        font-size:
+          12px;
 
         color:
           var(--text-muted);
+
       }
+
 
       .coords {
-        font-size: 11px;
-        opacity: 0.8;
+
+        font-size:
+          11px;
+
+        opacity:
+          .8;
+
       }
 
 
-      /* FOOTER */
+      /* ==========================================================
+         FOOTER
+         ========================================================== */
 
       .card-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+
+        display:
+          flex;
+
+        align-items:
+          center;
+
+        justify-content:
+          space-between;
 
         padding:
           10px
           14px
           14px;
 
-        margin-top: auto;
+        margin-top:
+          auto;
 
-        gap: 8px;
+        gap:
+          8px;
+
       }
 
 
-      /* STATUS */
+      /* ==========================================================
+         STATUS
+         ========================================================== */
 
       .statut-badge[data-statut='NOUVELLE'] {
+
         background:
-          rgba(229, 72, 77, 0.15);
-        color: #E5484D;
+          color-mix(
+            in srgb,
+            var(--accent-critical) 11%,
+            transparent
+          );
+
+        color:
+          var(--accent-critical);
+
       }
+
 
       .statut-badge[data-statut='EN_COURS'] {
+
         background:
-          rgba(242, 169, 59, 0.15);
-        color: #F2A93B;
+          color-mix(
+            in srgb,
+            var(--accent-warning) 12%,
+            transparent
+          );
+
+        color:
+          var(--accent-warning);
+
       }
+
 
       .statut-badge[data-statut='RESOLUE'] {
+
         background:
-          rgba(61, 220, 151, 0.15);
-        color: #3DDC97;
+          color-mix(
+            in srgb,
+            var(--accent-active) 11%,
+            transparent
+          );
+
+        color:
+          var(--accent-active);
+
       }
 
 
-      /* RETRY */
+      /* ==========================================================
+         RETRY
+         ========================================================== */
 
       .retry-btn {
-        margin-top: 4px;
+
+        margin-top:
+          4px;
 
         padding:
           7px
           16px;
 
-        border-radius: 8px;
+        border-radius:
+          8px;
 
         border:
           1px solid
@@ -552,85 +1087,136 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
         color:
           var(--text-primary);
 
-        font-size: 12.5px;
+        font-size:
+          12.5px;
 
-        font-weight: 600;
+        font-weight:
+          600;
 
-        cursor: pointer;
+        cursor:
+          pointer;
 
         transition:
-          background 0.15s ease,
-          border-color 0.15s ease;
+          background .15s ease,
+          border-color .15s ease,
+          color .15s ease;
+
       }
 
+
       .retry-btn:hover {
+
         background:
           var(--panel-raised);
 
         border-color:
           var(--accent-primary);
+
+        color:
+          var(--accent-primary);
+
       }
+
+
+      /* ==========================================================
+         MOBILE
+         ========================================================== */
+
+      @media (max-width: 700px) {
+
+        .anomalies-grid {
+
+          grid-template-columns:
+            1fr;
+
+        }
+
+        .card-image {
+
+          height:
+            190px;
+
+        }
+
+      }
+
     `
-  ],
+  ]
 })
-export class AnomaliesComponent implements OnInit {
+export class AnomaliesComponent
+  implements OnInit {
 
-  private http = inject(HttpClient);
 
-  private sanitizer = inject(DomSanitizer);
+  private http =
+    inject(HttpClient);
+
+
+  private sanitizer =
+    inject(DomSanitizer);
+
 
   /*
    * Backend origin.
    */
+
   private readonly API_ORIGIN =
     'https://stage-enova-3.onrender.com';
 
 
   anomalies: Anomalie[] = [];
 
-  loading = true;
 
-  loadError = false;
+  loading =
+    true;
 
 
-  private statutFilter = '';
+  loadError =
+    false;
 
-  private criticiteFilter = '';
+
+  statutFilter =
+    '';
+
+
+  criticiteFilter =
+    '';
 
 
   /*
-   * IDs whose REAL image failed.
+   * REAL image failures.
    */
+
   private brokenImages =
     new Set<number>();
 
 
   /*
-   * IDs whose GENERIC image failed.
+   * GENERIC image failures.
    */
+
   private brokenTypeImages =
     new Set<number>();
 
 
   ngOnInit(): void {
+
     this.load();
+
   }
 
 
-  /*
-   * LOAD ANOMALIES
-   */
+  /* ==============================================================
+     LOAD
+     ============================================================== */
 
   load(): void {
 
-    this.loading = true;
+    this.loading =
+      true;
 
-    this.loadError = false;
+    this.loadError =
+      false;
 
-    /*
-     * Clear previous broken-image state
-     * when reloading/filtering.
-     */
     this.brokenImages.clear();
 
     this.brokenTypeImages.clear();
@@ -640,7 +1226,8 @@ export class AnomaliesComponent implements OnInit {
       `${this.API_ORIGIN}/api/anomalies`;
 
 
-    const params: string[] = [];
+    const params: string[] =
+      [];
 
 
     if (this.statutFilter) {
@@ -650,6 +1237,7 @@ export class AnomaliesComponent implements OnInit {
           this.statutFilter
         )}`
       );
+
     }
 
 
@@ -660,12 +1248,15 @@ export class AnomaliesComponent implements OnInit {
           this.criticiteFilter
         )}`
       );
+
     }
 
 
     if (params.length > 0) {
 
-      url += `?${params.join('&')}`;
+      url +=
+        `?${params.join('&')}`;
+
     }
 
 
@@ -687,12 +1278,6 @@ export class AnomaliesComponent implements OnInit {
           );
 
 
-          /*
-           * Log every image-related field.
-           *
-           * This makes it very easy to see
-           * what the backend actually returns.
-           */
           data.forEach((a) => {
 
             console.log(
@@ -715,15 +1300,21 @@ export class AnomaliesComponent implements OnInit {
 
                 calculatedImageUrl:
                   this.buildImageUrl(a),
+
+                genericImageUrl:
+                  this.typeImageUrl(a)
               }
             );
 
           });
 
 
-          this.anomalies = data;
+          this.anomalies =
+            data;
 
-          this.loading = false;
+          this.loading =
+            false;
+
         },
 
 
@@ -734,42 +1325,60 @@ export class AnomaliesComponent implements OnInit {
             error
           );
 
-          this.loading = false;
+          this.loading =
+            false;
 
-          this.loadError = true;
+          this.loadError =
+            true;
+
         }
 
       });
+
   }
 
 
-  /*
-   * FILTERS
-   */
+  /* ==============================================================
+     FILTERS
+     ============================================================== */
 
-  filterStatut(event: Event): void {
+  filterStatut(
+    event: Event
+  ): void {
 
     this.statutFilter =
-      (event.target as HTMLSelectElement).value;
+      (
+        event.target as
+        HTMLSelectElement
+      ).value;
 
     this.load();
+
   }
 
 
-  filterCriticite(event: Event): void {
+  filterCriticite(
+    event: Event
+  ): void {
 
     this.criticiteFilter =
-      (event.target as HTMLSelectElement).value;
+      (
+        event.target as
+        HTMLSelectElement
+      ).value;
 
     this.load();
+
   }
 
 
-  /*
-   * STATUS LABEL
-   */
+  /* ==============================================================
+     STATUS LABEL
+     ============================================================== */
 
-  statutLabel(status: string): string {
+  statutLabel(
+    status: string
+  ): string {
 
     switch (status) {
 
@@ -783,14 +1392,17 @@ export class AnomaliesComponent implements OnInit {
         return 'Resolved';
 
       default:
-        return status || 'Unknown';
+        return status ||
+          'Unknown';
+
     }
+
   }
 
 
-  /*
-   * CRITICALITY LABEL
-   */
+  /* ==============================================================
+     CRITICALITY LABEL
+     ============================================================== */
 
   criticiteLabel(
     criticite: string
@@ -811,111 +1423,119 @@ export class AnomaliesComponent implements OnInit {
         return 'Critical';
 
       default:
-        return criticite || 'Unknown';
+        return criticite ||
+          'Unknown';
+
     }
+
   }
 
 
-  /*
-   * NORMALIZE OBJECT TYPE
-   */
+  /* ==============================================================
+     NORMALIZE OBJECT TYPE
+     ============================================================== */
 
   getObjectType(
-    type: string | null | undefined
+    type:
+      string |
+      null |
+      undefined
   ): string {
 
-    return (type ?? 'unknown')
+    return (
+      type ??
+      'unknown'
+    )
       .trim()
       .toLowerCase();
+
   }
 
 
-  /*
-   * BUILD THE REAL IMAGE URL
-   *
-   * Priority:
-   *
-   * 1. imageUrl
-   * 2. photoUrl
-   * 3. imageFilePath
-   * 4. imageFileName
-   */
+  /* ==============================================================
+     REAL IMAGE URL
+     ============================================================== */
 
   private buildImageUrl(
     a: Anomalie
   ): string | null {
 
-    let path: string | null = null;
+
+    let path:
+      string |
+      null =
+      null;
 
 
     /*
-     * 1. Direct image URL
+     * Direct image URL.
      */
 
     if (
       a.imageUrl &&
-      a.imageUrl.trim() !== ''
+      a.imageUrl.trim()
     ) {
 
       path =
         a.imageUrl.trim();
+
     }
 
 
     /*
-     * 2. Direct photo URL
+     * Direct photo URL.
      */
 
     else if (
       a.photoUrl &&
-      a.photoUrl.trim() !== ''
+      a.photoUrl.trim()
     ) {
 
       path =
         a.photoUrl.trim();
+
     }
 
 
     /*
-     * 3. Backend image path
+     * Backend path.
      */
 
     else if (
       a.imageFilePath &&
-      a.imageFilePath.trim() !== ''
+      a.imageFilePath.trim()
     ) {
 
       path =
         a.imageFilePath.trim();
+
     }
 
 
     /*
-     * 4. Image filename
+     * Filename.
      */
 
     else if (
       a.imageFileName &&
-      a.imageFileName.trim() !== ''
+      a.imageFileName.trim()
     ) {
 
       path =
         `/images/detections/${a.imageFileName.trim()}`;
+
     }
 
-
-    /*
-     * Nothing available.
-     */
 
     if (!path) {
 
       return null;
+
     }
 
 
     /*
-     * Already absolute.
+     * Absolute URL.
      */
 
     if (
@@ -924,57 +1544,71 @@ export class AnomaliesComponent implements OnInit {
     ) {
 
       return path;
+
     }
 
 
     /*
-     * Normalize relative path.
+     * Normalize path.
      */
 
-    if (!path.startsWith('/')) {
+    if (
+      !path.startsWith('/')
+    ) {
 
       path =
         `/${path}`;
+
     }
 
 
-    return `${this.API_ORIGIN}${path}`;
+    return (
+      `${this.API_ORIGIN}${path}`
+    );
+
   }
 
 
-  /*
-   * REAL IMAGE
-   */
+  /* ==============================================================
+     REAL IMAGE
+     ============================================================== */
 
   imageUrl(
     a: Anomalie
   ): string | null {
 
     if (
-      this.brokenImages.has(a.id)
+      this.brokenImages.has(
+        a.id
+      )
     ) {
 
       return null;
+
     }
 
 
     return this.buildImageUrl(a);
+
   }
 
 
-  /*
-   * GENERIC IMAGE
-   */
+  /* ==============================================================
+     GENERIC IMAGE
+     ============================================================== */
 
   typeImageUrl(
     a: Anomalie
   ): string | null {
 
     if (
-      this.brokenTypeImages.has(a.id)
+      this.brokenTypeImages.has(
+        a.id
+      )
     ) {
 
       return null;
+
     }
 
 
@@ -985,45 +1619,68 @@ export class AnomaliesComponent implements OnInit {
 
 
     const file =
-      TYPE_IMAGE_FILE[key] ??
-      TYPE_IMAGE_FILE['default'];
+      TYPE_IMAGE_FILE[key];
 
 
-    const url =
-      `${this.API_ORIGIN}/images/detections/${file}`;
+    /*
+     * IMPORTANT:
+     *
+     * If there is no generic image
+     * for this object type, return null.
+     *
+     * This causes Angular to use
+     * the SVG fallback.
+     */
+
+    if (!file) {
+
+      return null;
+
+    }
 
 
-    return url;
+    return (
+      `${this.API_ORIGIN}` +
+      `/images/detections/` +
+      `${file}`
+    );
+
   }
 
 
-  /*
-   * IMAGE LOADED SUCCESSFULLY
-   */
+  /* ==============================================================
+     IMAGE LOADED
+     ============================================================== */
 
   onImageLoad(
     id: number,
-    level: 'photo' | 'type'
+    level:
+      'photo' |
+      'type'
   ): void {
 
     console.log(
       `[ANOMALIES] ${level} image loaded successfully for anomaly ${id}`
     );
+
   }
 
 
-  /*
-   * IMAGE FAILED
-   */
+  /* ==============================================================
+     IMAGE ERROR
+     ============================================================== */
 
   onImageError(
     event: Event,
     id: number,
-    level: 'photo' | 'type'
+    level:
+      'photo' |
+      'type'
   ): void {
 
     const img =
-      event.target as HTMLImageElement;
+      event.target as
+      HTMLImageElement;
 
 
     console.error(
@@ -1033,42 +1690,55 @@ export class AnomaliesComponent implements OnInit {
 
 
     /*
-     * REAL PHOTO failed.
+     * REAL PHOTO FAILED.
      *
-     * Hide it so Angular displays
-     * the generic type image.
+     * Hide it.
+     *
+     * Angular will then attempt
+     * the generic image.
      */
 
-    if (level === 'photo') {
+    if (
+      level === 'photo'
+    ) {
 
       this.brokenImages.add(id);
 
       return;
+
     }
 
 
     /*
-     * GENERIC TYPE image also failed.
+     * GENERIC IMAGE FAILED.
      *
-     * Hide it so Angular displays
+     * Hide it.
+     *
+     * Angular will then use
      * the SVG icon.
      */
 
     this.brokenTypeImages.add(id);
+
   }
 
 
-  /*
-   * SVG FALLBACK
-   */
+  /* ==============================================================
+     SVG FALLBACK
+     ============================================================== */
 
   objectIcon(
-    type: string | null | undefined
+    type:
+      string |
+      null |
+      undefined
   ): SafeHtml {
 
     return getSafeAnomalyIcon(
       this.sanitizer,
       type
     );
+
   }
+
 }

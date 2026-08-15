@@ -23,31 +23,31 @@ interface KmSummary {
       <header class="page-header">
         <div>
           <h1>Kilometrage</h1>
-          <span class="page-sub">Historique complet - ROBOT-001</span>
+          <span class="page-sub">Full history - ROBOT-001</span>
         </div>
       </header>
 
       <div class="summary-cards" *ngIf="summaries.length > 0">
         <div class="summary-card">
-          <span class="card-label">Distance totale</span>
+          <span class="card-label">Total distance</span>
           <span class="card-value">{{ totalKm().toFixed(2) }}<span class="unit"> km</span></span>
         </div>
         <div class="summary-card">
-          <span class="card-label">Jours actifs</span>
+          <span class="card-label">Active days</span>
           <span class="card-value">{{ summaries.length }}</span>
         </div>
         <div class="summary-card">
-          <span class="card-label">Moyenne / jour</span>
+          <span class="card-label">Average / day</span>
           <span class="card-value">{{ avgKm().toFixed(2) }}<span class="unit"> km</span></span>
         </div>
         <div class="summary-card">
-          <span class="card-label">Meilleure journee</span>
+          <span class="card-label">Best day</span>
           <span class="card-value">{{ maxKm().toFixed(2) }}<span class="unit"> km</span></span>
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-header"><h2>Detail par jour</h2></div>
+        <div class="panel-header"><h2>Daily details</h2></div>
 
         <div class="loading" *ngIf="loading">
           <div class="skeleton-row" *ngFor="let i of [1,2,3,4,5]"></div>
@@ -55,7 +55,7 @@ interface KmSummary {
 
         <table class="km-table" *ngIf="!loading && summaries.length > 0">
           <thead>
-            <tr><th>Date</th><th>Distance</th><th>Dynamique</th><th>Statique</th><th>Total</th><th>% Dyn</th></tr>
+            <tr><th>Date</th><th>Distance</th><th>Active</th><th>Idle</th><th>Total</th><th>% Active</th></tr>
           </thead>
           <tbody>
             <tr *ngFor="let s of summaries">
@@ -74,12 +74,12 @@ interface KmSummary {
           </tbody>
         </table>
 
-        <div class="empty" *ngIf="!loading && !loadError && summaries.length === 0">Aucune donnee disponible.</div>
+        <div class="empty" *ngIf="!loading && !loadError && summaries.length === 0">No data available.</div>
 
         <div class="empty" *ngIf="!loading && loadError">
-          <strong>Impossible de charger l'historique.</strong>
-          <span>Le serveur n'a pas repondu (il peut etre en veille et mettre quelques secondes a redemarrer).</span>
-          <button type="button" class="retry-btn" (click)="load()">Reessayer</button>
+          <strong>Unable to load history.</strong>
+          <span>The server did not respond (it may be asleep and take a few seconds to restart).</span>
+          <button type="button" class="retry-btn" (click)="load()">Retry</button>
         </div>
       </div>
     </div>

@@ -1000,7 +1000,6 @@
 
 .dashboard .panel,
 .dashboard .summary-card,
-.dashboard .date-navigator-card,
 .dashboard .target-section,
 .dashboard .chart-panel {
   background: var(--panel-base) !important;

@@ -62,8 +62,8 @@ interface PasswordStrength {
                       stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
               </g>
             </svg>
-            <h2>Créer votre compte</h2>
-            <p>Surveillance sécurisée pour vos robots</p>
+            <h2>Create your account</h2>
+            <p>Secure surveillance for your robots</p>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ interface PasswordStrength {
         <div class="form-section">
           <div class="header">
             <h1>Inscription</h1>
-            <p class="subtitle">Accès opérateur — un code de vérification vous sera envoyé par e-mail</p>
+            <p class="subtitle">Operator access — a verification code will be sent to your email</p>
           </div>
 
           <!-- Google Sign-Up -->
@@ -82,7 +82,7 @@ interface PasswordStrength {
           <form [formGroup]="form" (ngSubmit)="onSubmit()" class="signup-form">
             <!-- Full Name -->
             <label class="field">
-              <span class="field-label">Nom complet</span>
+              <span class="field-label">Full name</span>
               <div class="field-input-wrap">
                 <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -97,16 +97,16 @@ interface PasswordStrength {
                 />
               </div>
               <span class="field-error" *ngIf="form.get('fullName')?.hasError('required') && form.get('fullName')?.touched">
-                Le nom est requis
+                Name is required
               </span>
               <span class="field-error" *ngIf="form.get('fullName')?.hasError('minlength') && form.get('fullName')?.touched">
-                Minimum 2 caractères
+                Minimum 2 characters
               </span>
             </label>
 
             <!-- Email -->
             <label class="field">
-              <span class="field-label">Adresse e-mail</span>
+              <span class="field-label">Email address</span>
               <div class="field-input-wrap">
                 <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <rect x="2" y="4" width="20" height="16" rx="2"></rect>
@@ -121,16 +121,16 @@ interface PasswordStrength {
                 />
               </div>
               <span class="field-error" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
-                L'e-mail est requis
+                Email is required
               </span>
               <span class="field-error" *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">
-                Format e-mail invalide
+                Invalid email format
               </span>
             </label>
 
             <!-- Password -->
             <label class="field">
-              <span class="field-label">Mot de passe</span>
+              <span class="field-label">Password</span>
               <div class="field-input-wrap">
                 <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -162,42 +162,42 @@ interface PasswordStrength {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>Une lettre minuscule (a-z)</span>
+                  <span>A lowercase letter (a-z)</span>
                 </div>
                 <div class="requirement" [class.met]="hasPasswordRequirement('upper')">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>Une lettre majuscule (A-Z)</span>
+                  <span>An uppercase letter (A-Z)</span>
                 </div>
                 <div class="requirement" [class.met]="hasPasswordRequirement('digit')">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>Un chiffre (0-9)</span>
+                  <span>A digit (0-9)</span>
                 </div>
                 <div class="requirement" [class.met]="hasPasswordRequirement('special')">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>Un caractère spécial (!@#$%^&*)</span>
+                  <span>A special character (!@#$%^&*)</span>
                 </div>
                 <div class="requirement" [class.met]="hasPasswordRequirement('length')">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>8 caractères minimum</span>
+                  <span>8 characters minimum</span>
                 </div>
               </div>
 
               <span class="field-error" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">
-                Le mot de passe est requis
+                Password is required
               </span>
             </label>
 
             <!-- Confirm Password -->
             <label class="field">
-              <span class="field-label">Confirmer le mot de passe</span>
+              <span class="field-label">Confirm password</span>
               <div class="field-input-wrap">
                 <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -213,7 +213,7 @@ interface PasswordStrength {
               </div>
 
               <span class="field-error" *ngIf="form.errors?.['mismatch'] && form.get('confirmPassword')?.touched">
-                Les mots de passe ne correspondent pas
+                Passwords do not match
               </span>
             </label>
 
@@ -244,18 +244,18 @@ interface PasswordStrength {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 5v14M5 12h14"></path>
                 </svg>
-                Créer mon compte
+                Create my account
               </span>
               <span class="btn-loader" *ngIf="loading">
                 <span class="spinner"></span>
-                Création en cours...
+                Creating account...
               </span>
             </button>
           </form>
 
           <!-- Login Link -->
           <p class="switch-link">
-            Déjà un compte ? <a routerLink="/login">Se connecter</a>
+            Already have an account? <a routerLink="/login">Sign in</a>
           </p>
         </div>
       </div>
@@ -763,7 +763,7 @@ export class SignupComponent implements AfterViewInit, OnDestroy {
     if (/[^a-zA-Z0-9]/.test(value)) score++;
     if (value.length >= 8) score++;
 
-    const labels = ['Très faible', 'Faible', 'Moyen', 'Bon', 'Excellent'];
+    const labels = ['Very weak', 'Weak', 'Fair', 'Good', 'Excellent'];
     const colors = ['#E54854', '#F2A93B', '#F2D93B', '#8BC34A', '#1FA76B'];
 
     return {
@@ -798,7 +798,7 @@ export class SignupComponent implements AfterViewInit, OnDestroy {
       .subscribe({
         next: () => {
           this.loading = false;
-          this.successMessage = 'Compte créé avec succès ! Redirection...';
+          this.successMessage = 'Account created successfully! Redirecting...';
           setTimeout(() => {
             this.router.navigate(['/verify-email'], { queryParams: { email } });
           }, 800);
@@ -806,7 +806,7 @@ export class SignupComponent implements AfterViewInit, OnDestroy {
         error: (err) => {
           this.loading = false;
           const errorData = err?.error;
-          this.errorMessage = errorData?.error || "Impossible de créer le compte. Réessayez.";
+          this.errorMessage = errorData?.error || "Unable to create account. Please try again.";
           if (errorData?.fields) {
             const fieldErrors = Object.entries(errorData.fields)
               .map(([key, value]) => `${key}: ${value}`)

@@ -47,20 +47,20 @@ interface VerificationState {
                 </g>
               </g>
             </svg>
-            <p class="illustration-text" *ngIf="!verificationSuccess">Vérification en cours...</p>
-            <p class="illustration-text success" *ngIf="verificationSuccess">Email vérifié !</p>
+            <p class="illustration-text" *ngIf="!verificationSuccess">Verifying...</p>
+            <p class="illustration-text success" *ngIf="verificationSuccess">Email verified!</p>
           </div>
         </div>
 
         <!-- Form Section -->
         <div class="form-section">
           <div class="header">
-            <h1>Vérifiez votre e-mail</h1>
+            <h1>Verify your email</h1>
             <p class="subtitle" *ngIf="email && !devCode">
-              Un code à 6 chiffres a été envoyé à <strong>{{ email }}</strong>
+              A 6-digit code has been sent to <strong>{{ email }}</strong>
             </p>
             <p class="subtitle" *ngIf="!email">
-              Saisissez l'adresse e-mail utilisée à l'inscription.
+              Enter the email address used at sign-up.
             </p>
           </div>
 
@@ -72,15 +72,15 @@ interface VerificationState {
               <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
             <div>
-              <strong>Mode développement</strong>
-              <p>Aucun e-mail n'a été envoyé. Voici votre code de test, pré-rempli ci-dessous.</p>
+              <strong>Development mode</strong>
+              <p>No email was sent. Here is your test code, pre-filled below.</p>
             </div>
           </div>
 
           <!-- Verification State Info -->
           <div class="verification-info" *ngIf="verificationState$ | async as state">
             <div class="info-row">
-              <span class="info-label">Code expire dans:</span>
+              <span class="info-label">Code expires in:</span>
               <span class="info-value" [class.warning]="state.codeExpirySeconds < 60">
                 {{ formatExpiryTime(state.codeExpirySeconds) }}
               </span>
@@ -111,7 +111,7 @@ interface VerificationState {
 
             <div class="code-field">
               <label class="field">
-                <span class="field-label">Code de vérification</span>
+                <span class="field-label">Verification code</span>
                 <div class="code-input-wrapper">
                   <input
                     type="text"
@@ -158,11 +158,11 @@ interface VerificationState {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
-                Vérifier
+                Verify
               </span>
               <span class="btn-loader" *ngIf="loading">
                 <span class="spinner"></span>
-                Vérification...
+                Verifying...
               </span>
             </button>
           </form>
@@ -181,14 +181,14 @@ interface VerificationState {
               </svg>
               <span class="spinner-mini" *ngIf="resending"></span>
               <span class="resend-text">
-                {{ resendCooldown > 0 ? 'Renvoyer dans ' + resendCooldown + 's' : (resending ? 'Envoi...' : 'Renvoyer le code') }}
+                {{ resendCooldown > 0 ? 'Resend in ' + resendCooldown + 's' : (resending ? 'Sending...' : 'Resend code') }}
               </span>
             </button>
           </div>
 
           <!-- Back Link -->
           <p class="back-link">
-            <a routerLink="/login" [queryParams]="{}">← Retour à la connexion</a>
+            <a routerLink="/login" [queryParams]="{}">&#8592; Back to sign in</a>
           </p>
         </div>
       </div>
@@ -761,9 +761,9 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
           const errorData = err?.error;
           if (errorData?.attemptsRemaining !== undefined) {
             const remaining = errorData.attemptsRemaining;
-            this.errorMessage = `${errorData.error || 'Code invalide.'} (${remaining} tentative${remaining > 1 ? 's' : ''} restante${remaining > 1 ? 's' : ''})`;
+            this.errorMessage = `${errorData.error || 'Invalid code.'} (${remaining} attempt${remaining > 1 ? 's' : ''} remaining)`;
           } else {
-            this.errorMessage = errorData?.error || 'Erreur lors de la vérification.';
+            this.errorMessage = errorData?.error || 'Error during verification.';
           }
         },
       });
@@ -797,13 +797,13 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           this.resending = false;
-          this.errorMessage = err?.error?.error || 'Impossible de renvoyer le code.';
+          this.errorMessage = err?.error?.error || 'Unable to resend code.';
         },
       });
   }
 
   formatExpiryTime(seconds: number): string {
-    if (seconds <= 0) return 'Expiré';
+    if (seconds <= 0) return 'Expired';
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     if (minutes > 0) {
@@ -830,7 +830,7 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
       if (remaining > 0) {
         requestAnimationFrame(updateState);
       } else {
-        this.errorMessage = 'Le code a expiré. Veuillez en demander un nouveau.';
+        this.errorMessage = 'The code has expired. Please request a new one.';
       }
     };
     

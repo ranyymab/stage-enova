@@ -17,7 +17,7 @@ interface DockingEvent {
   template: `
     <div class="page">
       <header class="page-header">
-        <div><h1>Docking</h1><span class="page-sub">Cycles de recharge a la station</span></div>
+        <div><h1>Docking</h1><span class="page-sub">Charging cycles at the station</span></div>
         <div class="date-nav">
           <button class="nav-btn" (click)="prevDay()">&#8249;</button>
           <input type="date" class="date-input" [(ngModel)]="selectedDate" [attr.max]="maxDate" (change)="load()" />
@@ -39,7 +39,7 @@ interface DockingEvent {
         </div>
 
         <table class="km-table" *ngIf="!loading && events.length > 0">
-          <thead><tr><th>Heure</th><th>Type</th><th>Mission</th><th>Batterie</th><th>GPS</th></tr></thead>
+          <thead><tr><th>Time</th><th>Type</th><th>Mission</th><th>Battery</th><th>GPS</th></tr></thead>
           <tbody>
             <tr *ngFor="let e of events">
               <td class="mono">{{ e.rawHour }}</td>

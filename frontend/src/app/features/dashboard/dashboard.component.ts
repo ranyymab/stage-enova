@@ -244,24 +244,24 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   referenceDateLabel(): string {
     const base = this.selectedDate || this.maxDate;
     const d = new Date(base + 'T12:00:00');
-    return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    return d.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   }
 
   chargingStatusLabel(): string {
     if (this.liveSim.state().ready) {
       switch (this.liveSim.state().phase) {
-        case 'dock': return 'En charge';
-        case 'home': return 'Retour a la base';
-        case 'teleop': return 'Téléopération active';
-        default: return 'En mission';
+        case 'dock': return 'Charging';
+        case 'home': return 'Returning to base';
+        case 'teleop': return 'Teleoperation active';
+        default: return 'On mission';
       }
     }
     const status = this.robotLive?.chargingStatus ?? this.kpi?.chargingStatus;
     switch (status) {
-      case 'EN_CHARGE': return 'En charge';
-      case 'EN_DEPLACEMENT': return 'En mission';
-      case 'EN_TELEPORTATION': return 'Téléopération active';
-      default: return 'À la station';
+      case 'EN_CHARGE': return 'Charging';
+      case 'EN_DEPLACEMENT': return 'On mission';
+      case 'EN_TELEPORTATION': return 'Teleoperation active';
+      default: return 'At station';
     }
   }
 

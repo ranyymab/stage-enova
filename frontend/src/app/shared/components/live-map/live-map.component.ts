@@ -594,13 +594,13 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
   private updateRobotStatusLabel(phase: string): void {
     if (!this.robotMarker) return;
     const statusMap: { [key: string]: string } = {
-      'patrol': 'PATROUILLE',
+      'patrol': 'PATROL',
       'dock': 'STATION',
       'home': 'BASE',
       'inspect': 'INSPECTION',
-      'teleop': 'TÉLÉOP',
-      'charge': 'CHARGE',
-      'done': 'JOURNÉE TERMINÉE',
+      'teleop': 'TELEOP',
+      'charge': 'CHARGING',
+      'done': 'DAY COMPLETE',
     };
     const status = statusMap[phase] || phase.toUpperCase();
     const container = this.robotMarker.getElement();
@@ -638,7 +638,13 @@ export class LiveMapComponent implements AfterViewInit, OnChanges, OnDestroy {
       // remise a zero visuelle).
       const anomalySec = this.toSeconds(a.heure);
       if (!this.revealedAnomalyIdx.has(idx)) {
-        if (nowSec != null && anomalySec != null && anomalySec > nowSec) {
+        // Tant que la position courante du robot n'est pas encore connue
+        // (nowSec === null, ex. tout premier rendu avant que currentPoint
+        // ne soit initialise), on NE revele PAS l'anomalie : le defaut
+        // precedent revelait tout par erreur des ce cas, avant meme que le
+        // robot n'ait bouge. On attend une vraie position + un horodatage
+        // d'anomalie atteint ou depasse avant de l'afficher.
+        if (nowSec == null || (anomalySec != null && anomalySec > nowSec)) {
           return;
         }
         this.revealedAnomalyIdx.add(idx);

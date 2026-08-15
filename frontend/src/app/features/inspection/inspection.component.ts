@@ -40,7 +40,7 @@ interface InspectionPoint {
         </div>
 
         <table class="km-table" *ngIf="!loading && points.length > 0">
-          <thead><tr><th>Mission</th><th>Point</th><th>Heure</th><th>Retard</th><th>GPS</th></tr></thead>
+          <thead><tr><th>Mission</th><th>Point</th><th>Time</th><th>Delay</th><th>GPS</th></tr></thead>
           <tbody>
             <tr *ngFor="let p of points" [class.row-late]="p.delaySeconds > 30">
               <td class="mono">{{ p.missionName ?? '-' }}</td>

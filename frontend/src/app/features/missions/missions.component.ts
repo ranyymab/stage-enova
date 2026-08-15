@@ -37,7 +37,7 @@ interface Mission {
 
       <div class="summary-cards" *ngIf="missions.length > 0">
         <div class="summary-card">
-          <span class="card-label">Missions du jour</span>
+          <span class="card-label">Missions today</span>
           <span class="card-value">{{ startCount() }}</span>
         </div>
         <div class="summary-card">

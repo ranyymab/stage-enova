@@ -3,7 +3,7 @@
   <div class="anomaly-toast" *ngIf="anomalyToast" (click)="dismissAnomalyToast()">
     <span class="toast-pulse"></span>
     <div class="toast-body">
-      <strong>Nouvelle anomalie d&#233;tect&#233;e</strong>
+      <strong>New anomaly detected</strong>
       <span>{{ anomalyToast.type }} &#183; <span class="crit-pill" [class]="'crit-' + anomalyToast.criticite.toLowerCase()">{{ anomalyToast.criticite }}</span> &#183; {{ anomalyToast.heure }}</span>
     </div>
   </div>
@@ -20,10 +20,9 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
-        <span>ENOVA ROBOTICS &#183; SYST&#200;ME AUTONOME</span>
+        <span>ENOVA ROBOTICS &#183; AUTONOMOUS SYSTEM</span>
       </div>
-      <h1 class="hero-title">Tableau de bord de Surveillance</h1>
-      <p class="hero-subtitle">Contr&#244;le de la flotte P-Guard, supervision de t&#233;l&#233;op&#233;ration et t&#233;l&#233;m&#233;trie en temps r&#233;el.</p>
+      <h1 class="hero-title">Surveillance Dashboard</h1>
       
       <div class="hero-chips">
         <div class="chip">
@@ -31,11 +30,11 @@
           <span class="chip-val">P-Guard #001</span>
         </div>
         <div class="chip">
-          <span class="chip-label">STATUT:</span>
-          <span class="chip-val highlight">{{ kpi?.teleportationEnCours ? 'T&#201;L&#201;OP&#201;RATION' : (kpi?.statutMission ?? 'AUTONOME') }}</span>
+          <span class="chip-label">STATUS:</span>
+          <span class="chip-val highlight">{{ kpi?.teleportationEnCours ? 'TELEOPERATION' : (kpi?.statutMission ?? 'AUTONOMOUS') }}</span>
         </div>
         <div class="chip" *ngIf="(selectedDate || maxDate) === maxDate">
-          <span class="chip-label">TEMPS R&#201;EL:</span>
+          <span class="chip-label">LIVE:</span>
           <span class="chip-val mono">{{ liveClock }}</span>
         </div>
       </div>
@@ -43,12 +42,12 @@
 
     <div class="hero-actions">
       <div class="date-navigator-card">
-        <span class="date-label">P&#233;riode observ&#233;e</span>
+        <span class="date-label">Observed period</span>
         <div class="date-controls">
-          <button class="date-nav-btn" (click)="prevDay()" title="Jour pr&#233;c&#233;dent">&#8249;</button>
+          <button class="date-nav-btn" (click)="prevDay()" title="Previous day">&#8249;</button>
           <input type="date" class="date-input" [(ngModel)]="selectedDate" (change)="changeDate()" [attr.max]="maxDate" />
-          <button class="date-nav-btn" (click)="goToLatest()" title="Derni&#232;res donn&#233;es">&#8635;</button>
-          <button class="date-nav-btn" (click)="nextDay()" title="Jour suivant">&#8250;</button>
+          <button class="date-nav-btn" (click)="goToLatest()" title="Latest data">&#8635;</button>
+          <button class="date-nav-btn" (click)="nextDay()" title="Next day">&#8250;</button>
         </div>
         <span class="date-display">{{ referenceDateLabel() }}</span>
       </div>
@@ -57,35 +56,34 @@
 
   <!-- Banner for Missing Data -->
   <div class="no-data-banner enter-fade-up" *ngIf="kpi && !kpi.hasDataForDate">
-    <span>Aucune donn&#233;e enregistr&#233;e pour le {{ referenceDateLabel() }}.</span>
-    <button class="link-btn" (click)="goToLatest()">Consulter la derni&#232;re donn&#233;e disponible</button>
+    <span>No data recorded for {{ referenceDateLabel() }}.</span>
+    <button class="link-btn" (click)="goToLatest()">View latest available data</button>
   </div>
 
   <div class="dashboard-body" [class.is-refreshing]="isRefreshing">
     <!-- Section Title & Overview Header -->
     <div class="section-header enter-fade-up">
       <div class="section-title-wrap">
-        <h2>Indicateurs Cl&#233;s de Performance</h2>
-        <p>Aper&#231;u analytique des op&#233;rations du jour</p>
+        <h2>Key Performance Indicators</h2>
       </div>
       <app-status-badge [statut]="kpi?.teleportationEnCours ? 'EN_TELEPORTATION' : (kpi?.statutMission ?? 'EN_REPOS')" [missionEnCours]="kpi?.missionEnCours ?? null" [modeRobot]="kpi?.modeRobot ?? robotLive?.modeRobot ?? 'AUTONOME'"></app-status-badge>
     </div>
 
     <!-- Hero KPI Grid -->
     <section class="kpi-grid">
-      <app-kpi-card class="enter-fade-up" style="--stagger-index: 0" label="Distance parcourue" [value]="distanceKmDisplay()" unit="km" tone="good" trend="+14%" trendDir="up" sublabel="Cumul des rondes" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20L15 4M8 20L19 4"/><path d="M9.5 13h2M13 8h2"/></svg>'></app-kpi-card>
+      <app-kpi-card class="enter-fade-up" style="--stagger-index: 0" label="Distance traveled" [value]="distanceKmDisplay()" unit="km" tone="good" trend="+14%" trendDir="up" sublabel="Cumulative patrols" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20L15 4M8 20L19 4"/><path d="M9.5 13h2M13 8h2"/></svg>'></app-kpi-card>
 
-      <app-kpi-card class="enter-fade-up" style="--stagger-index: 1" label="Autonomie Batterie" [value]="batteryValue()" unit="%" [tone]="chargingTone()" [trend]="batteryStateLabel() ?? '100%'" trendDir="up" [sublabel]="chargingStatusLabel()" [hideIcon]="true">
+      <app-kpi-card class="enter-fade-up" style="--stagger-index: 1" label="Battery Level" [value]="batteryValue()" unit="%" [tone]="chargingTone()" [trend]="batteryStateLabel() ?? '100%'" trendDir="up" [sublabel]="chargingStatusLabel()" [hideIcon]="true">
         <app-battery-ring kpi-visual [percent]="batteryPercentNumber()" [charging]="chargingTone() === 'good'" [size]="38"></app-battery-ring>
       </app-kpi-card>
 
-      <app-kpi-card class="enter-fade-up" style="--stagger-index: 2" label="Anomalies du jour" [value]="kpi?.anomaliesOuvertes ?? 0" [tone]="(kpi?.anomaliesOuvertes ?? 0) > 0 ? 'critical' : 'good'" [trend]="(kpi?.anomaliesOuvertes ?? 0) > 0 ? 'Action' : 'Syst&#232;me OK'" [trendDir]="(kpi?.anomaliesOuvertes ?? 0) > 0 ? 'down' : 'up'" sublabel="Non r&#233;solues" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l9.5 16.5H2.5z"/><path d="M12 9.5v4.2"/><circle cx="12" cy="16.7" r="0.6" fill="currentColor"/></svg>'></app-kpi-card>
+      <app-kpi-card class="enter-fade-up" style="--stagger-index: 2" label="Anomalies today" [value]="kpi?.anomaliesOuvertes ?? 0" [tone]="(kpi?.anomaliesOuvertes ?? 0) > 0 ? 'critical' : 'good'" [trend]="(kpi?.anomaliesOuvertes ?? 0) > 0 ? 'Action' : 'System OK'" [trendDir]="(kpi?.anomaliesOuvertes ?? 0) > 0 ? 'down' : 'up'" sublabel="Unresolved" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l9.5 16.5H2.5z"/><path d="M12 9.5v4.2"/><circle cx="12" cy="16.7" r="0.6" fill="currentColor"/></svg>'></app-kpi-card>
 
-      <app-kpi-card class="enter-fade-up" style="--stagger-index: 3" label="T&#233;l&#233;op&#233;ration" [value]="kpi?.sessionsTeleoperation ?? 0" tone="warning" trend="Normal" trendDir="neutral" sublabel="Sessions de contr&#244;le" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="8" rx="2"/><circle cx="8.5" cy="14" r="1.3" fill="currentColor" stroke="none"/><path d="M13 14h5M12 10V6h4"/></svg>'></app-kpi-card>
+      <app-kpi-card class="enter-fade-up" style="--stagger-index: 3" label="Teleoperation" [value]="kpi?.sessionsTeleoperation ?? 0" tone="warning" trend="Normal" trendDir="neutral" sublabel="Control sessions" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="8" rx="2"/><circle cx="8.5" cy="14" r="1.3" fill="currentColor" stroke="none"/><path d="M13 14h5M12 10V6h4"/></svg>'></app-kpi-card>
 
-      <app-kpi-card class="enter-fade-up" style="--stagger-index: 4" label="Rondes r&#233;alis&#233;es" [value]="rondesValue()" tone="good" trend="+76%" trendDir="up" sublabel="Patrouilles accomplies" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V4l5 2 6-2 5 2v13l-5-2-6 2z"/><path d="M9 6v13M15 4v13"/></svg>'></app-kpi-card>
+      <app-kpi-card class="enter-fade-up" style="--stagger-index: 4" label="Patrols completed" [value]="rondesValue()" tone="good" trend="+76%" trendDir="up" sublabel="Patrols accomplished" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V4l5 2 6-2 5 2v13l-5-2-6 2z"/><path d="M9 6v13M15 4v13"/></svg>'></app-kpi-card>
 
-      <app-kpi-card class="enter-fade-up" style="--stagger-index: 5" label="Retour &#224; la base" [value]="kpi?.retoursBase ?? 0" [tone]="kpi?.retourBaseEnCours ? 'warning' : 'neutral'" [trend]="kpi?.retourBaseEnCours ? 'En cours' : 'Station'" [trendDir]="kpi?.retourBaseEnCours ? 'down' : 'neutral'" [sublabel]="kpi?.retourBaseEnCours ? 'En trajet actuellement' : 'Docking disponible'" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg>'></app-kpi-card>
+      <app-kpi-card class="enter-fade-up" style="--stagger-index: 5" label="Return to base" [value]="kpi?.retoursBase ?? 0" [tone]="kpi?.retourBaseEnCours ? 'warning' : 'neutral'" [trend]="kpi?.retourBaseEnCours ? 'In progress' : 'Station'" [trendDir]="kpi?.retourBaseEnCours ? 'down' : 'neutral'" [sublabel]="kpi?.retourBaseEnCours ? 'Currently en route' : 'Docking available'" icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg>'></app-kpi-card>
     </section>
 
     <!-- Fleet Live Operation Center -->
@@ -93,31 +91,31 @@
       <div class="panel panel-map enter-fade-up" style="--stagger-index: 5">
         <div class="panel-header">
           <div>
-            <h2>G&#233;olocalisation &amp; Suivi en Direct</h2>
-            <span class="panel-sub">Position GPS actuelle : {{ positionLabel() }}</span>
+            <h2>Geolocation &amp; Live Tracking</h2>
+            <span class="panel-sub">Current GPS position: {{ positionLabel() }}</span>
           </div>
-          <span class="map-badge">{{ robotLive?.trajectory?.length ?? 0 }} Points GPS</span>
+          <span class="map-badge">{{ robotLive?.trajectory?.length ?? 0 }} GPS Points</span>
         </div>
         
         <app-live-map [trajectory]="robotLive?.trajectory ?? []" [chargeCycles]="robotLive?.chargeCycles ?? []" [anomalies]="anomaliesForMap()"></app-live-map>
 
         <div class="map-legend" *ngIf="robotLive">
-          <span class="legend-item"><span class="legend-dot legend-position"></span>Position Robot</span>
-          <span class="legend-item"><span class="legend-line legend-active"></span>Ronde active</span>
-          <span class="legend-item"><span class="legend-line legend-line-dashed" style="background:#E9BE87"></span>Vers Docking</span>
-          <span class="legend-item"><span class="legend-line" style="background:#CA5215"></span>Retour Base</span>
-          <span class="legend-item"><span class="legend-dot legend-diamond" style="background:#E5484D"></span>Anomalie</span>
+          <span class="legend-item"><span class="legend-dot legend-position"></span>Robot Position</span>
+          <span class="legend-item"><span class="legend-line legend-active"></span>Active patrol</span>
+          <span class="legend-item"><span class="legend-line legend-line-dashed" style="background:#E9BE87"></span>To Docking</span>
+          <span class="legend-item"><span class="legend-line" style="background:#CA5215"></span>Return Base</span>
+          <span class="legend-item"><span class="legend-dot legend-diamond" style="background:#E5484D"></span>Anomaly</span>
         </div>
 
         <div class="position-card" *ngIf="robotLive?.position?.latitude" [class.is-retour]="kpi?.retourBaseEnCours">
           <div class="position-row">
-            <span class="position-label">Dernier point t&#233;l&#233;m&#233;trique</span>
+            <span class="position-label">Last telemetry point</span>
             <span class="mono badge-time">{{ robotLive!.position.heure }}</span>
           </div>
           <div class="position-coords mono">{{ positionLabel() }}</div>
           <div class="position-meta">{{ robotLive!.position.source }} &#10073; {{ robotLive!.position.label }}</div>
           <div class="position-backhome" *ngIf="kpi?.retourBaseEnCours">
-            <svg class="backhome-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg> Retour &#224; la base automatique en cours
+            <svg class="backhome-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg> Automatic return to base in progress
           </div>
         </div>
       </div>
@@ -125,15 +123,15 @@
       <div class="panel enter-fade-up" style="--stagger-index: 6">
         <div class="panel-header">
           <div>
-            <h2>T&#233;l&#233;m&#233;trie Docking</h2>
-            <span class="panel-sub">Historique de recharge auto-docking</span>
+            <h2>Docking Telemetry</h2>
+            <span class="panel-sub">Auto-docking charge history</span>
           </div>
         </div>
         <ul class="charge-list">
           <li *ngFor="let cycle of robotLive?.chargeCycles ?? []; let i = index; trackBy: trackByIndex" class="charge-item enter-fade-up" [style.--stagger-index]="i">
             <div class="charge-top">
               <span class="charge-status" [class.is-active]="cycle.status === 'EN_COURS'">{{ cycleStatusLabel(cycle) }}</span>
-              <span class="mono time-tag">{{ cycle.dockHeure }} &#8212; {{ cycle.undockHeure ?? 'En cours' }}</span>
+              <span class="mono time-tag">{{ cycle.dockHeure }} &#8212; {{ cycle.undockHeure ?? 'In progress' }}</span>
             </div>
             <div class="charge-battery">
               <span class="battery-bar-wrap"><span class="battery-bar" [style.width.%]="cycle.batteryBefore ?? 0"></span></span>
@@ -142,9 +140,9 @@
               <span class="mono battery-text">{{ cycle.batteryAfter != null ? batteryLabel(cycle.batteryAfter) : '...' }}</span>
               <span class="battery-gain" *ngIf="cycle.batteryGained != null && cycle.batteryGained > 0">+{{ cycle.batteryGained }}%</span>
             </div>
-            <div class="charge-meta" *ngIf="cycle.durationMinutes != null">Dur&#233;e de recharge : {{ cycle.durationMinutes }} min</div>
+            <div class="charge-meta" *ngIf="cycle.durationMinutes != null">Charge duration: {{ cycle.durationMinutes }} min</div>
           </li>
-          <li *ngIf="!robotLive?.chargeCycles?.length" class="timeline-empty">Aucun cycle de recharge enregistr&#233; aujourd'hui.</li>
+          <li *ngIf="!robotLive?.chargeCycles?.length" class="timeline-empty">No charge cycle recorded today.</li>
         </ul>
       </div>
     </section>
@@ -154,8 +152,8 @@
       <div class="panel panel-chart enter-fade-up" style="--stagger-index: 7">
         <div class="panel-header">
           <div>
-            <h2>Progression du Kilom&#233;trage</h2>
-            <span class="panel-sub">Distance cumul&#233;e (km)</span>
+            <h2>Distance Progression</h2>
+            <span class="panel-sub">Cumulative distance (km)</span>
           </div>
         </div>
         <div class="chart-wrap"><canvas #distanceCanvas></canvas></div>
@@ -164,8 +162,8 @@
       <div class="panel panel-chart enter-fade-up" style="--stagger-index: 8">
         <div class="panel-header">
           <div>
-            <h2>R&#233;partition Op&#233;rationnelle</h2>
-            <span class="panel-sub" *ngIf="repartition?.dateReference">Temps Dynamique vs Statique</span>
+            <h2>Operational Breakdown</h2>
+            <span class="panel-sub" *ngIf="repartition?.dateReference">Active vs Idle time</span>
           </div>
         </div>
         <div class="chart-split">
@@ -173,21 +171,21 @@
           <div class="target-section">
             <div class="target-item">
               <div class="target-top">
-                <span class="target-label">Temps Dynamique</span>
+                <span class="target-label">Active Time</span>
                 <span class="target-pct mono">{{ pctDynamique() }}%</span>
               </div>
               <div class="target-bar-bg"><div class="target-bar-fill legend-active-fill" [style.width.%]="pctDynamique()"></div></div>
             </div>
             <div class="target-item">
               <div class="target-top">
-                <span class="target-label">Temps Statique</span>
+                <span class="target-label">Idle Time</span>
                 <span class="target-pct mono">{{ pctStatique() }}%</span>
               </div>
               <div class="target-bar-bg"><div class="target-bar-fill" [style.width.%]="pctStatique()" style="background:#E9BE87"></div></div>
             </div>
             <div class="target-item">
               <div class="target-top">
-                <span class="target-label">Objectif de Couverture</span>
+                <span class="target-label">Coverage Target</span>
                 <span class="target-pct mono">94%</span>
               </div>
               <div class="target-bar-bg"><div class="target-bar-fill" style="width: 94%; background:#CA5215"></div></div>
@@ -202,8 +200,8 @@
       <div class="panel panel-activity enter-fade-up" style="--stagger-index: 9">
         <div class="panel-header">
           <div>
-            <h2>Journal d'Op&#233;rations</h2>
-            <span class="panel-sub">{{ activityFeed.length }} &#233;v&#233;nement(s) enregistr&#233;(s)</span>
+            <h2>Operations Log</h2>
+            <span class="panel-sub">{{ activityFeed.length }} event(s) recorded</span>
           </div>
         </div>
         <ul class="activity-feed">
@@ -218,20 +216,20 @@
               <span class="activity-badge" [class]="'tone-' + a.tone" *ngIf="a.batteryLevel != null">{{ a.batteryLevel }}%</span>
             </div>
           </li>
-          <li *ngIf="activityFeed.length === 0" class="timeline-empty">Aucune op&#233;ration enregistr&#233;e pour cette date.</li>
+          <li *ngIf="activityFeed.length === 0" class="timeline-empty">No operation recorded for this date.</li>
         </ul>
       </div>
 
       <div class="panel enter-fade-up" style="--stagger-index: 10">
         <div class="panel-header">
           <div>
-            <h2>Anomalies R&#233;cemment D&#233;tect&#233;es</h2>
-            <span class="panel-sub">{{ anomalies.length }} d&#233;tection(s) active(s)</span>
+            <h2>Recently Detected Anomalies</h2>
+            <span class="panel-sub">{{ anomalies.length }} active detection(s)</span>
           </div>
         </div>
         <div class="table-scroll">
           <table class="data-table">
-            <thead><tr><th>Anomalie</th><th>Heure</th><th>Criticit&#233;</th><th>Statut</th><th>Visuel</th></tr></thead>
+            <thead><tr><th>Anomaly</th><th>Time</th><th>Severity</th><th>Status</th><th>Image</th></tr></thead>
             <tbody>
               <tr *ngFor="let a of anomalies; let i = index; trackBy: trackByAnomaly" [class.is-pending]="isPending(a.heure)" class="enter-fade-up" [style.--stagger-index]="i">
                 <td>
@@ -244,11 +242,11 @@
                 <td><span class="crit-pill" [class]="'crit-' + a.criticite.toLowerCase()">{{ a.criticite }}</span></td>
                 <td><span class="statut-pill" [class]="'statut-' + a.statut.toLowerCase()">{{ a.statut }}</span></td>
                 <td>
-                  <a *ngIf="anomalyImageUrl(a)" [href]="anomalyImageUrl(a)" target="_blank" rel="noreferrer" class="image-link-btn">Capturer</a>
+                  <a *ngIf="anomalyImageUrl(a)" [href]="anomalyImageUrl(a)" target="_blank" rel="noreferrer" class="image-link-btn">View</a>
                   <span *ngIf="!anomalyImageUrl(a)" class="no-img-text">&#8212;</span>
                 </td>
               </tr>
-              <tr *ngIf="anomalies.length === 0"><td colspan="5" class="empty-cell">Aucune anomalie d&#233;tect&#233;e sur la p&#233;riode.</td></tr>
+              <tr *ngIf="anomalies.length === 0"><td colspan="5" class="empty-cell">No anomaly detected for this period.</td></tr>
             </tbody>
           </table>
         </div>

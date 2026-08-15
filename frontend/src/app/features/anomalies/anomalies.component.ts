@@ -51,17 +51,17 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
         </div>
         <div class="filters">
           <select (change)="filterStatut($event)">
-            <option value="">Tous statuts</option>
-            <option value="NOUVELLE">Nouvelle</option>
-            <option value="EN_COURS">En cours</option>
-            <option value="RESOLUE">Resolue</option>
+            <option value="">All statuses</option>
+            <option value="NOUVELLE">New</option>
+            <option value="EN_COURS">In progress</option>
+            <option value="RESOLUE">Resolved</option>
           </select>
           <select (change)="filterCriticite($event)">
-            <option value="">Toutes criticites</option>
-            <option value="FAIBLE">Faible</option>
-            <option value="MOYENNE">Moyenne</option>
-            <option value="HAUTE">Haute</option>
-            <option value="CRITIQUE">Critique</option>
+            <option value="">All severities</option>
+            <option value="FAIBLE">Low</option>
+            <option value="MOYENNE">Medium</option>
+            <option value="HAUTE">High</option>
+            <option value="CRITIQUE">Critical</option>
           </select>
         </div>
       </header>
@@ -80,8 +80,8 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
           </div>
 
           <div class="card-top">
-            <span class="type-badge">{{ a.objectDetected?.toUpperCase() ?? 'INCONNU' }}</span>
-            <span class="criticite-badge" [attr.data-level]="a.criticite">{{ a.criticite }}</span>
+            <span class="type-badge">{{ a.objectDetected?.toUpperCase() ?? 'UNKNOWN' }}</span>
+            <span class="criticite-badge" [attr.data-level]="a.criticite">{{ criticiteLabel(a.criticite) }}</span>
           </div>
 
           <div class="card-meta">
@@ -97,7 +97,7 @@ const TYPE_IMAGE_FILE: Record<string, string> = {
         </div>
       </div>
 
-      <div class="empty" *ngIf="!loading && anomalies.length === 0">Aucune anomalie trouvee.</div>
+      <div class="empty" *ngIf="!loading && anomalies.length === 0">No anomalies found.</div>
     </div>
   `,
   styles: [FEATURE_PAGE_STYLES, `
@@ -259,7 +259,17 @@ export class AnomaliesComponent implements OnInit {
   filterCriticite(e: Event) { this.criticiteFilter = (e.target as HTMLSelectElement).value; this.load(); }
 
   statutLabel(s: string) {
-    return s === 'NOUVELLE' ? 'Nouvelle' : s === 'EN_COURS' ? 'En cours' : 'Resolue';
+    return s === 'NOUVELLE' ? 'New' : s === 'EN_COURS' ? 'In progress' : 'Resolved';
+  }
+
+  criticiteLabel(c: string) {
+    switch (c) {
+      case 'FAIBLE': return 'Low';
+      case 'MOYENNE': return 'Medium';
+      case 'HAUTE': return 'High';
+      case 'CRITIQUE': return 'Critical';
+      default: return c;
+    }
   }
 
   /** Construit l'URL absolue de la vraie photo de detection (le backend ne renvoie que le nom/chemin relatif). Null si pas d'image fournie, ou si son chargement a deja echoue - dans ce cas typeImageUrl() prend le relais. */

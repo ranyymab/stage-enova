@@ -41,7 +41,7 @@ interface Anomalie {
  *
  * They are exposed publicly through:
  *
- * /images/detections/<filename>
+ * /data/images/<filename>
  *
  * There is intentionally NO unknown.png here.
  *
@@ -1522,7 +1522,7 @@ export class AnomaliesComponent
     ) {
 
       path =
-        `/images/detections/${a.imageFileName.trim()}`;
+        `/data/images/${a.imageFileName.trim()}`;
 
     }
 
@@ -1641,7 +1641,7 @@ export class AnomaliesComponent
 
     return (
       `${this.API_ORIGIN}` +
-      `/images/detections/` +
+      `/data/images/` +
       `${file}`
     );
 
